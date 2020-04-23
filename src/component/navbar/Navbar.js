@@ -14,7 +14,8 @@ import {
   ListItemIcon,
   ListItemText,
   ListSubheader,
-  Typography
+  Typography,
+  Toolbar
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
@@ -29,9 +30,9 @@ import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+
 import NavbarStyles from "./NavbarStyles";
 import "../../index.css";
-import Toolbar from "@material-ui/core/Toolbar";
 
 export const Navbar = (props) => {
 
