@@ -30,6 +30,7 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import NavbarStyles from "./NavbarStyles";
+import "../../index.css";
 
 export const Navbar = (props) => {
 
@@ -53,7 +54,9 @@ export const Navbar = (props) => {
         <IconButton
           color="inherit"
           onClick={handleDrawerOpen}
-          className={isOpen ? navbarStyles.menuButton && navbarStyles.menuButtonHidden : navbarStyles.menuButton}
+          className={isOpen ?
+            navbarStyles.menuButton && navbarStyles.menuButtonHidden
+            : navbarStyles.menuButton}
         >
           <MenuIcon/>
         </IconButton>
@@ -61,8 +64,9 @@ export const Navbar = (props) => {
     };
 
     const renderTitle = () => {
+      //TODO
       return (
-        <Link to={PATH_HOME} className="navbar-brand mr-auto">
+        <Link to={PATH_HOME} className="custom-color-inherit mr-auto">
           <Typography className="mr-3" variant="h6" noWrap>
             {props.title}
           </Typography>
@@ -81,7 +85,8 @@ export const Navbar = (props) => {
     const renderAccountButton = () => {
       return (
         <>
-          <Link to={props.isUserLoggedIn ? PATH_ACCOUNT : PATH_LOGIN} className="text-white">
+          <Link to={props.isUserLoggedIn ? PATH_ACCOUNT : PATH_LOGIN}
+                className="custom-color-inherit">
             <IconButton color="inherit">
               <AccountCircle/>
             </IconButton>
@@ -104,7 +109,7 @@ export const Navbar = (props) => {
         className={isOpen ? navbarStyles.appBar && navbarStyles.appBarShift : navbarStyles.appBar}
         position="absolute"
       >
-        <nav className="navbar navbar-expand-lg navbar-dark text-white">
+        <nav className="navbar navbar-expand-lg navbar-dark custom-color-inherit">
           {renderSlider()}
           {renderTitle()}
           {renderThemeToggler()}
@@ -119,7 +124,7 @@ export const Navbar = (props) => {
 
     const renderListItem = (Component = PR(), text = PR(), redirectPath = PR()) => {
       return (
-        <Link to={redirectPath}>
+        <Link to={redirectPath} className="custom-color-inherit">
           <ListItem button>
             <ListItemIcon>
               <Component/>

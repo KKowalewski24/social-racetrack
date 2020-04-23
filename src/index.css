@@ -76,3 +76,11 @@
 .custom-font-size-7 {
     font-size: 7rem !important;
 }
+
+.custom-color-inherit {
+    color: inherit;
+}
+
+.custom-color-inherit:hover {
+    color: inherit;
+}
