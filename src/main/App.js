@@ -4,6 +4,7 @@ import Routes from "./Routes";
 import {ApplicationContext} from "./controller/ApplicationContextProvider";
 import {logoutUser} from "./controller/AccountController";
 import Navbar from "../component/navbar/Navbar";
+import {NAVBAR_TITLE} from "../constants";
 import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -32,15 +33,15 @@ export const App = (props) => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline/>
       <BrowserRouter>
-        <Navbar
-          msg="Film Website"
-          isDarkMode={isDarkMode}
-          handleDarkMode={handleDarkMode}
-          isUserLoggedIn={isUserLoggedIn}
-          logout={logoutUser}
-        >
+        {/*<Navbar*/}
+        {/*  msg={NAVBAR_TITLE}*/}
+        {/*  isDarkMode={isDarkMode}*/}
+        {/*  handleDarkMode={handleDarkMode}*/}
+        {/*  isUserLoggedIn={isUserLoggedIn}*/}
+        {/*  logout={logoutUser}*/}
+        {/*>*/}
           <Routes/>
-        </Navbar>
+        {/*</Navbar>*/}
       </BrowserRouter>
     </ThemeProvider>
   );
