@@ -2,9 +2,10 @@ import React, {useState} from "react";
 import propTypes from "prop-types";
 import {PR} from "../../main/controller/Util";
 import {Link} from "react-router-dom";
-import {PATH_HOME} from "../../constants";
+import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN} from "../../constants";
 import clsx from "clsx";
 import {
+  AppBar,
   Divider,
   Drawer,
   IconButton,
@@ -12,8 +13,15 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  ListSubheader
+  ListSubheader,
+  Typography
 } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import NightsStayIcon from "@material-ui/icons/NightsStay";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -39,9 +47,71 @@ export const Navbar = (props) => {
 
   /*----------------------------------------------------------------------------------------------*/
   const renderTopBar = () => {
-    // return (
-    //
-    // );
+
+    const renderSlider = () => {
+      return (
+        <IconButton
+          color="inherit"
+          onClick={handleDrawerOpen}
+          className={isOpen ? navbarStyles.menuButton && navbarStyles.menuButtonHidden : navbarStyles.menuButton}
+        >
+          <MenuIcon/>
+        </IconButton>
+      );
+    };
+
+    const renderTitle = () => {
+      return (
+        <Link to={PATH_HOME} className="navbar-brand mr-auto">
+          <Typography className="mr-3" variant="h6" noWrap>
+            {props.title}
+          </Typography>
+        </Link>
+      );
+    };
+
+    const renderThemeToggler = () => {
+      return (
+        <IconButton color="inherit" onClick={props.handleDarkMode}>
+          {props.isDarkMode ? <WbSunnyIcon/> : <NightsStayIcon/>}
+        </IconButton>
+      );
+    };
+
+    const renderAccountButton = () => {
+      return (
+        <>
+          <Link to={props.isUserLoggedIn ? PATH_ACCOUNT : PATH_LOGIN} className="text-white">
+            <IconButton color="inherit">
+              <AccountCircle/>
+            </IconButton>
+          </Link>
+          <div onClick={props.logout}>
+            {
+              props.isUserLoggedIn ?
+                <IconButton color="inherit">
+                  <ExitToAppIcon/>
+                </IconButton>
+                : null
+            }
+          </div>
+        </>
+      );
+    };
+
+    return (
+      <AppBar
+        className={isOpen ? navbarStyles.appBar && navbarStyles.appBarShift : navbarStyles.appBar}
+        position="absolute"
+      >
+        <nav className="navbar navbar-expand-lg navbar-dark text-white">
+          {renderSlider()}
+          {renderTitle()}
+          {renderThemeToggler()}
+          {renderAccountButton()}
+        </nav>
+      </AppBar>
+    );
   };
 
   /*----------------------------------------------------------------------------------------------*/
@@ -49,14 +119,14 @@ export const Navbar = (props) => {
 
     const renderListItem = (Component = PR(), text = PR(), redirectPath = PR()) => {
       return (
-          <Link to={redirectPath}>
-            <ListItem button>
-              <ListItemIcon>
-                <Component/>
-              </ListItemIcon>
-              <ListItemText primary={text}/>
-            </ListItem>
-          </Link>
+        <Link to={redirectPath}>
+          <ListItem button>
+            <ListItemIcon>
+              <Component/>
+            </ListItemIcon>
+            <ListItemText primary={text}/>
+          </ListItem>
+        </Link>
       )
     };
 
