@@ -31,6 +31,7 @@ import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import NavbarStyles from "./NavbarStyles";
 import "../../index.css";
+import Toolbar from "@material-ui/core/Toolbar";
 
 export const Navbar = (props) => {
 
@@ -52,6 +53,7 @@ export const Navbar = (props) => {
     const renderSlider = () => {
       return (
         <IconButton
+          edge="start"
           color="inherit"
           onClick={handleDrawerOpen}
           className={isOpen ?
@@ -64,13 +66,13 @@ export const Navbar = (props) => {
     };
 
     const renderTitle = () => {
-      //TODO
       return (
-        <Link to={PATH_HOME} className="custom-color-inherit mr-auto">
-          <Typography className="mr-3" variant="h6" noWrap>
+        <Typography component="h1" variant="h6" color="inherit" noWrap
+                    className={navbarStyles.title}>
+          <Link to={PATH_HOME} className="custom-color-inherit">
             {props.title}
-          </Typography>
-        </Link>
+          </Link>
+        </Typography>
       );
     };
 
@@ -109,12 +111,12 @@ export const Navbar = (props) => {
         className={isOpen ? navbarStyles.appBar && navbarStyles.appBarShift : navbarStyles.appBar}
         position="absolute"
       >
-        <nav className="navbar navbar-expand-lg navbar-dark custom-color-inherit">
+        <Toolbar className={navbarStyles.toolbar}>
           {renderSlider()}
           {renderTitle()}
           {renderThemeToggler()}
           {renderAccountButton()}
-        </nav>
+        </Toolbar>
       </AppBar>
     );
   };
