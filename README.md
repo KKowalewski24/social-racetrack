@@ -1,12 +1,14 @@
 # Bachelor of Science Thesis
 
-## Available Scripts
+## Storage
+#### [Heroku Deployed Project](https://social-racetrack.herokuapp.com/)
+#### [Google Drive Report](https://drive.google.com/open?id=1QU418ihDzM2fBo6UxbA8GqxavGlbpZGK)
 
+## Available Scripts
 In the project directory, you can run:
 
 ### `yarn start`
 Runs the app in the development mode.<br />
-
 
 ### `yarn test`
 Launches the test runner in the interactive watch mode.<br />
