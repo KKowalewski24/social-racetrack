@@ -33,15 +33,15 @@ export const App = (props) => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline/>
       <BrowserRouter>
-        {/*<Navbar*/}
-        {/*  msg={NAVBAR_TITLE}*/}
-        {/*  isDarkMode={isDarkMode}*/}
-        {/*  handleDarkMode={handleDarkMode}*/}
-        {/*  isUserLoggedIn={isUserLoggedIn}*/}
-        {/*  logout={logoutUser}*/}
-        {/*>*/}
+        <Navbar
+          title={NAVBAR_TITLE}
+          isDarkMode={isDarkMode}
+          handleDarkMode={handleDarkMode}
+          isUserLoggedIn={isUserLoggedIn}
+          logout={logoutUser}
+        >
           <Routes/>
-        {/*</Navbar>*/}
+        </Navbar>
       </BrowserRouter>
     </ThemeProvider>
   );
