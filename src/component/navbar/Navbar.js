@@ -135,7 +135,7 @@ export const Navbar = (props) => {
             <ListItemText primary={text}/>
           </ListItem>
         </Link>
-      )
+      );
     };
 
     return (
@@ -182,7 +182,7 @@ export const Navbar = (props) => {
         <div className={navbarStyles.appBarSpacer}/>
         {props.children}
       </div>
-    )
+    );
   };
 
   /*------------------------ RETURN REGION ------------------------*/

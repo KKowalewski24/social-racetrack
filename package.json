@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "clsx": "^1.1.0",
+    "firebase": "^7.14.4",
     "jquery": "^3.5.0",
     "mdbreact": "^4.25.6",
     "prop-types": "^15.7.2",
@@ -39,14 +40,15 @@
         "error",
         "double"
       ],
-      "indent": [
-        "error",
-        2
-      ],
       "arrow-parens": [
         "error",
         "always"
-      ]
+      ],
+      "eol-last": [
+        "error",
+        "always"
+      ],
+      "no-multiple-empty-lines": "error"
     }
   },
   "browserslist": {

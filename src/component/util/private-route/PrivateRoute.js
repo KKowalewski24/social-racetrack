@@ -11,7 +11,7 @@ export const PrivateRoute = ({privacyCondition, redirectPath, component: Compone
     <Route
       {...rest}
       render={(it) =>
-        !!privacyCondition ? <Component {...it}/> : <Redirect to={redirectPath}/>
+        !privacyCondition ? <Component {...it}/> : <Redirect to={redirectPath}/>
       }
     />
   );
