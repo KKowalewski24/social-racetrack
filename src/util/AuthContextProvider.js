@@ -1,29 +1,27 @@
 import React, {createContext, useEffect, useState} from "react";
 import config from "../config";
 
-export const ApplicationContext = createContext(null);
+export const AuthContext = createContext(null);
 
-export const ApplicationContextProvider = (props) => {
+export const AuthContextProvider = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [firebaseAuthState, setFirebaseAuthState] = useState(null);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   useEffect(() => {
-    //TODO UNCOMMENT
-    // config.auth().onAuthStateChanged(setFirebaseAuthState);
-    // firebaseAuthState ? setIsUserLoggedIn(true) : setIsUserLoggedIn(false);
+    config.auth().onAuthStateChanged(setFirebaseAuthState);
+    firebaseAuthState ? setIsUserLoggedIn(true) : setIsUserLoggedIn(false);
   }, [firebaseAuthState]);
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <ApplicationContext.Provider value={{isUserLoggedIn}}>
+    <AuthContext.Provider value={{isUserLoggedIn}}>
       {props.children}
-    </ApplicationContext.Provider>
+    </AuthContext.Provider>
   );
 };
 
-ApplicationContextProvider.propTypes = {};
+AuthContextProvider.propTypes = {};
 
-export default ApplicationContextProvider;
-    
+export default AuthContextProvider;

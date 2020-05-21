@@ -1,8 +1,8 @@
 import React, {useContext, useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 import Routes from "./Routes";
-import {ApplicationContext} from "../util/ApplicationContextProvider";
-import {logoutUser} from "../util/AccountController";
+import {AuthContext} from "../util/AuthContextProvider";
+import {logoutUser} from "../util/controller/AccountController";
 import Navbar from "../component/navbar/Navbar";
 import {NAVBAR_TITLE} from "../constants";
 import {createMuiTheme} from "@material-ui/core";
@@ -13,7 +13,7 @@ export const App = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const {isUserLoggedIn} = useContext(ApplicationContext);
+  const {isUserLoggedIn} = useContext(AuthContext);
 
   const darkTheme = createMuiTheme({
     palette: {

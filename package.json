@@ -32,6 +32,9 @@
       "eslint:recommended"
     ],
     "rules": {
+      "no-multiple-empty-lines": "error",
+      "prefer-const": "error",
+      "no-var": "error",
       "semi": [
         "error",
         "always"
@@ -47,8 +50,7 @@
       "eol-last": [
         "error",
         "always"
-      ],
-      "no-multiple-empty-lines": "error"
+      ]
     }
   },
   "browserslist": {

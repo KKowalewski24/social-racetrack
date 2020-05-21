@@ -1,5 +1,5 @@
 /*----------------------- SESSION STORAGE -----------------------*/
-import {PR} from "./Helper";
+import {PR} from "../Helper";
 
 export const SessionStorageSaveItem = (key = PR(), item = PR()) => {
   sessionStorage.setItem(key, JSON.stringify(item));

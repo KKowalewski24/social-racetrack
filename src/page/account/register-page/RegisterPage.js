@@ -2,7 +2,7 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_LOGIN} from "../../../constants";
-import {registerUser} from "../../../util/AccountController";
+import {registerUser} from "../../../util/controller/AccountController";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
