@@ -32,18 +32,19 @@
       "eslint:recommended"
     ],
     "rules": {
-      "no-multiple-empty-lines": [
-        "error",
-        {
-          "max": 1
-        }
-      ],
       "prefer-const": "error",
       "no-var": "error",
+      "no-extra-boolean-cast": "off",
       "max-len": [
         "error",
         {
           "code": 105
+        }
+      ],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 1
         }
       ],
       "semi": [
