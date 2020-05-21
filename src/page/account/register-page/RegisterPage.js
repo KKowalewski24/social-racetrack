@@ -9,6 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import GlobalStyles from "../../../main/GlobalStyles";
+import {PR} from "../../../util/Helper";
 
 export const RegisterPage = (props) => {
 
@@ -16,7 +17,7 @@ export const RegisterPage = (props) => {
   const {register, handleSubmit} = useForm();
   const globalStyles = GlobalStyles();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data = PR()) => {
     registerUser(data.firstName, data.lastName, data.email, data.password);
   };
 

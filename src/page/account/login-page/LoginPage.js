@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import "../../../index.css";
 import GlobalStyles from "../../../main/GlobalStyles";
+import {PR} from "../../../util/Helper";
 
 export const LoginPage = (props) => {
 
@@ -17,7 +18,7 @@ export const LoginPage = (props) => {
   const {register, handleSubmit} = useForm();
   const globalStyles = GlobalStyles();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data = PR()) => {
     loginUser(data.email, data.password);
   };
 

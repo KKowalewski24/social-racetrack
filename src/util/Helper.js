@@ -3,7 +3,7 @@
  * @param object
  * @returns {unknown[]}
  */
-export const keyValueObjectToArray = (object) => {
+export const keyValueObjectToArray = (object = PR()) => {
   return Object.entries(object).map(([key, value]) => (value));
 };
 
