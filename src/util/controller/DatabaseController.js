@@ -1,15 +1,15 @@
-const createData = () => {
-
+export const createData = () => {
+//TODO
 };
 
-const readData = () => {
-
+export const readData = () => {
+//TODO
 };
 
-const updateData = () => {
-
+export const updateData = () => {
+//TODO
 };
 
-const deleteData = () => {
-
+export const deleteData = () => {
+//TODO
 };
