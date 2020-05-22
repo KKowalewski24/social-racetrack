@@ -1,7 +1,7 @@
 # Bachelor of Science Thesis
 
 ## Storage
-#### [Heroku Deployed Project](https://social-racetrack.herokuapp.com/)
+#### [Firebase Hosting Deployed Project]()
 #### [Google Drive Report](https://drive.google.com/open?id=1QU418ihDzM2fBo6UxbA8GqxavGlbpZGK)
 
 ## Available Scripts
