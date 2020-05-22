@@ -1,4 +1,4 @@
-import config from "../../config";
+import config from "../../config/config";
 import {PR} from "../Helper";
 import {Person} from "../../model/person/Person";
 import {createData} from "./DatabaseController";

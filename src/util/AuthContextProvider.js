@@ -1,5 +1,5 @@
 import React, {createContext, useEffect, useState} from "react";
-import config from "../config";
+import config from "../config/config";
 
 export const AuthContext = createContext(null);
 

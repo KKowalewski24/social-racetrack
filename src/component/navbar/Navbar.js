@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import propTypes from "prop-types";
 import {PR} from "../../util/Helper";
 import {Link} from "react-router-dom";
-import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN} from "../../constants";
+import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN} from "../../config/constants";
 import clsx from "clsx";
 import {
   AppBar,

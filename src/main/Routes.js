@@ -4,7 +4,7 @@ import HomePage from "../page/home-page/HomePage";
 import LoginPage from "../page/account/login-page/LoginPage";
 import RegisterPage from "../page/account/register-page/RegisterPage";
 import AccountPage from "../page/account/account-page/AccountPage";
-import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN, PATH_REGISTER} from "../constants";
+import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN, PATH_REGISTER} from "../config/constants";
 import PrivateRoute from "../component/util/private-route/PrivateRoute";
 import {AuthContext} from "../util/AuthContextProvider";
 
