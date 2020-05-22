@@ -5,6 +5,8 @@
 #### [Google Drive Report](https://drive.google.com/open?id=1QU418ihDzM2fBo6UxbA8GqxavGlbpZGK)
 
 ## How To Deploy Updated Version to Firebase Hosting
+* Run `python script\main.py -d` 
+<br /><br />OR<br /><br />
 * Go to project directory
 * Checkout branch to master `git checkout master`
 * Pull changes `git pull`
