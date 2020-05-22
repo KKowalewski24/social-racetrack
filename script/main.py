@@ -12,13 +12,12 @@ from typing import List
 # VAR ------------------------------------------------------------------------ #
 
 # DEF ------------------------------------------------------------------------ #
-def deploy_project() -> None:
-    go_to_parent_directory(get_current_directory())
-    run_command(["git", "checkout", "master"])
-    run_command(["git", "pull"])
-    run_command(["yarn", "build"])
-    run_command(["firebase", "deploy"])
-    pass
+# def deploy_project() -> None:
+#     go_to_parent_directory(get_current_directory())
+#     run_command(["git", "checkout", "master"])
+#     run_command(["git", "pull"])
+#     run_command(["yarn", "build"])
+#     run_command(["firebase", "deploy"])
 
 
 def clean_project() -> None:
