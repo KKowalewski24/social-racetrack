@@ -27,3 +27,7 @@ yarn-error.log*
 *.iws
 *.iml
 *.ipr
+
+.firebase
+.mypy_cache
+__pycache__/
