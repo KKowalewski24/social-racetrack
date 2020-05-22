@@ -4,9 +4,16 @@ import HomePage from "../page/home-page/HomePage";
 import LoginPage from "../page/account/login-page/LoginPage";
 import RegisterPage from "../page/account/register-page/RegisterPage";
 import AccountPage from "../page/account/account-page/AccountPage";
-import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN, PATH_REGISTER} from "../config/constants";
+import {
+  PATH_ACCOUNT,
+  PATH_HOME,
+  PATH_LOGIN,
+  PATH_REGISTER,
+  PATH_RESET_PASSWORD
+} from "../config/constants";
 import PrivateRoute from "../component/util/private-route/PrivateRoute";
 import {AuthContext} from "../util/AuthContextProvider";
+import ResetPasswordPage from "../page/account/reset-password-page/ResetPasswordPage";
 
 export const Routes = (props) => {
 
@@ -20,6 +27,10 @@ export const Routes = (props) => {
 
       <PrivateRoute
         exact path={PATH_LOGIN} component={LoginPage}
+        redirectPath={PATH_ACCOUNT} privacyCondition={!isUserLoggedIn}
+      />
+      <PrivateRoute
+        exact path={PATH_RESET_PASSWORD} component={ResetPasswordPage}
         redirectPath={PATH_ACCOUNT} privacyCondition={!isUserLoggedIn}
       />
       <PrivateRoute

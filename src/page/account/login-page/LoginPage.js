@@ -1,7 +1,7 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
-import {PATH_REGISTER} from "../../../config/constants";
+import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constants";
 import {loginUser} from "../../../util/controller/AccountController";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -11,6 +11,10 @@ import Typography from "@material-ui/core/Typography";
 import "../../../index.css";
 import GlobalStyles from "../../../main/GlobalStyles";
 import {PR} from "../../../util/Helper";
+import {toast, ToastContainer} from "react-toastify";
+import {customToast} from "../../../config/ToastSetup";
+import WrongCredentialsError from "../../../logic/exception/auth/WrongCredentialsError";
+import EmailNotVerifiedError from "../../../logic/exception/auth/EmailNotVerifiedError";
 
 export const LoginPage = (props) => {
 
@@ -19,7 +23,17 @@ export const LoginPage = (props) => {
   const globalStyles = GlobalStyles();
 
   const onSubmit = (data = PR()) => {
-    loginUser(data.email, data.password);
+    //TODO CHECK IF WORKS WELL
+    // try {
+    //   loginUser(data.email, data.password);
+    // } catch (e) {
+    //   if (e instanceof WrongCredentialsError) {
+    //     toast.error("Wrong email or password", customToast);
+    //   }
+    //   if (e instanceof EmailNotVerifiedError) {
+    //     toast.error("Email has not been verified yet!", customToast);
+    //   }
+    // }
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -67,12 +81,19 @@ export const LoginPage = (props) => {
         </Button>
 
         <div className="row justify-content-center mt-2">
+          <Link to={PATH_RESET_PASSWORD} className={globalStyles.materialBlueFont}>
+            Forgot password?
+          </Link>
+        </div>
+
+        <div className="row justify-content-center mt-2">
           <Link to={PATH_REGISTER} className={globalStyles.materialBlueFont}>
             Don't have an account? Sign Up
           </Link>
         </div>
-
       </form>
+
+      <ToastContainer/>
     </div>
   );
 };
