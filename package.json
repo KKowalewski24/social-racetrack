@@ -1,5 +1,5 @@
 {
-  "name": "bsc-project",
+  "name": "social-racetrack",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "bootstrap": "^4.4.1",
     "clsx": "^1.1.0",
     "firebase": "^7.14.4",
+    "firebase-tools": "^8.4.0",
     "jquery": "^3.5.0",
     "mdbreact": "^4.25.6",
     "prop-types": "^15.7.2",
