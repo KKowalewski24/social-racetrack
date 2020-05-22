@@ -46,7 +46,7 @@ def run_command(sub_commands: List) -> None:
     for it in sub_commands:
         result_command.append(it)
 
-    subprocess.call(result_command)
+    subprocess.call(result_command, shell=True)
 
 
 def get_current_directory():
