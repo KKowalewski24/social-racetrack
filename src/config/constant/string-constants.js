@@ -25,7 +25,6 @@ export const strings = {
   },
   resetPasswordPage: {
     checkEmailCorrect: "Check if email is correct",
-    emailSent: "Email has been sent",
     resetPassword: "Reset password",
     emailAddress: "Email Address",
     sendEmail: "Send email",

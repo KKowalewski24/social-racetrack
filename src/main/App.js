@@ -8,7 +8,6 @@ import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {strings} from "../config/constant/string-constants";
-import {errorNotification} from "../component/notification/notification";
 
 export const App = (props) => {
 

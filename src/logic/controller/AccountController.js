@@ -42,8 +42,7 @@ export const changeUserEmail = () => {
 //TODO
 };
 
-export const resetUserPassword = (email = PR(),
-                                  resetUserPasswordErrorFunction = PR()) => {
+export const resetUserPassword = (email = PR(), resetUserPasswordErrorFunction = PR()) => {
   config.auth()
     .sendPasswordResetEmail(email)
     .catch((error) => {
