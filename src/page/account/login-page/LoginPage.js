@@ -11,11 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import "../../../index.css";
 import GlobalStyles from "../../../main/GlobalStyles";
 import {PR} from "../../../logic/Helper";
-import {toast, ToastContainer} from "react-toastify";
-import {customToast} from "../../../config/toast-config";
-import WrongCredentialsError from "../../../logic/exception/auth/WrongCredentialsError";
-import EmailNotVerifiedError from "../../../logic/exception/auth/EmailNotVerifiedError";
+import {ToastContainer} from "react-toastify";
 import strings from "../../../config/constant/string-constants";
+import {errorNotification} from "../../../component/notification/notification";
 
 export const LoginPage = (props) => {
 
@@ -24,17 +22,10 @@ export const LoginPage = (props) => {
   const globalStyles = GlobalStyles();
 
   const onSubmit = (data = PR()) => {
-    //TODO CHECK IF WORKS WELL
-    // try {
-    //   loginUser(data.email, data.password);
-    // } catch (e) {
-    //   if (e instanceof WrongCredentialsError) {
-    //     toast.error("Wrong email or password", customToast);
-    //   }
-    //   if (e instanceof EmailNotVerifiedError) {
-    //     toast.error("Email has not been verified yet!", customToast);
-    //   }
-    // }
+    loginUser(
+      data.email, data.password,
+      () => errorNotification(strings.loginPage.wrongEmailPassword)
+    );
   };
 
   /*------------------------ RETURN REGION ------------------------*/

@@ -1,57 +1,40 @@
 import config from "../../config/config";
 import {PR} from "../Helper";
-import {Person} from "../model/person/Person";
-import {createData} from "./DatabaseController";
-import {EmailNotVerifiedError} from "../exception/auth/EmailNotVerifiedError";
-import WrongCredentialsError from "../exception/auth/WrongCredentialsError";
-import VerificationEmailError from "../exception/auth/VerificationEmailError";
-import CreateUserError from "../exception/auth/CreateUserError";
-import LogOutError from "../exception/auth/LogOutError";
-import ResetUserPasswordError from "../exception/auth/ResetUserPasswordError";
+import {createUser} from "./model/UserDatabaseController";
 
-export const registerUser = (firstName = PR(), lastName = PR(), email = PR(), password = PR()) => {
-
-  const person = new Person(firstName, lastName);
-
+export const registerUser = (firstName = PR(), lastName = PR(),
+                             email = PR(), password = PR(),
+                             verificationEmailErrorFunction = PR(),
+                             createUserErrorFunction = PR()) => {
   config.auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
-      createData(person);
-
+      createUser(firstName, lastName, email, password);
       config.auth()
         .currentUser
         .sendEmailVerification()
         .catch((error) => {
-          throw new VerificationEmailError(error);
+          verificationEmailErrorFunction();
         });
     })
     .catch((error) => {
-      throw new CreateUserError(error);
+      createUserErrorFunction();
     });
 };
 
-export const loginUser = (email = PR(), password = PR()) => {
-
-  //TODO CHECK IF WORKS WELL
-  // config.auth()
-  //   .signInWithEmailAndPassword(email, password)
-  //   .then(() => {
-  //     if (!(!!(config.auth().currentUser && config.auth().currentUser.emailVerified))) {
-  //       logoutUser();
-  //       throw new EmailNotVerifiedError();
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     alert(error);
-  //     throw new WrongCredentialsError();
-  //   });
+export const loginUser = (email, password, wrongCredentialsErrorFunction) => {
+  config.auth()
+    .signInWithEmailAndPassword(email, password)
+    .catch((error) => {
+      wrongCredentialsErrorFunction();
+    });
 };
 
 export const logoutUser = () => {
   config.auth()
     .signOut()
     .catch((error) => {
-      throw new LogOutError(error);
+
     });
 };
 
@@ -59,10 +42,11 @@ export const changeUserEmail = () => {
 //TODO
 };
 
-export const resetUserPassword = (email = PR()) => {
+export const resetUserPassword = (email = PR(),
+                                  resetUserPasswordErrorFunction = PR()) => {
   config.auth()
     .sendPasswordResetEmail(email)
     .catch((error) => {
-      throw new ResetUserPasswordError(error);
+      resetUserPasswordErrorFunction();
     });
 };

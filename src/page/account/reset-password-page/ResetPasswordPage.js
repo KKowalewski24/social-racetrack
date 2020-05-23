@@ -1,18 +1,17 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {PR} from "../../../logic/Helper";
-import {resetUserPassword} from "../../../logic/controller/AccountController";
 import GlobalStyles from "../../../main/GlobalStyles";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import RestoreIcon from "@material-ui/icons/Restore";
-import {PATH_LOGIN} from "../../../config/constant/path-constants";
-import {toast, ToastContainer} from "react-toastify";
-import {customToast} from "../../../config/toast-config";
-import ResetUserPasswordError from "../../../logic/exception/auth/ResetUserPasswordError";
+import {ToastContainer} from "react-toastify";
 import strings from "../../../config/constant/string-constants";
+import {resetUserPassword} from "../../../logic/controller/AccountController";
+import {PATH_LOGIN} from "../../../config/constant/path-constants";
+import {warningNotification} from "../../../component/notification/notification";
 
 export const ResetPasswordPage = (props) => {
 
@@ -21,15 +20,11 @@ export const ResetPasswordPage = (props) => {
   const globalStyles = GlobalStyles();
 
   const onSubmit = (data = PR()) => {
-    //TODO CHECK IF WORKS WELL
-    // try {
-    //   resetUserPassword(data.email);
-    //   window.location.replace(PATH_LOGIN);
-    // } catch (e) {
-    //   if (e instanceof ResetUserPasswordError) {
-    //     toast.error("Check if email is correct", customToast);
-    //   }
-    // }
+    resetUserPassword(
+      data.email,
+      () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
+    );
+    window.location.replace(PATH_LOGIN);
   };
 
   /*------------------------ RETURN REGION ------------------------*/

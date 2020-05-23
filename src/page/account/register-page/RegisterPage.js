@@ -11,6 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import GlobalStyles from "../../../main/GlobalStyles";
 import {PR} from "../../../logic/Helper";
 import strings from "../../../config/constant/string-constants";
+import {ToastContainer} from "react-toastify";
+import {errorNotification, warningNotification} from "../../../component/notification/notification";
 
 export const RegisterPage = (props) => {
 
@@ -19,8 +21,11 @@ export const RegisterPage = (props) => {
   const globalStyles = GlobalStyles();
 
   const onSubmit = (data = PR()) => {
-    //todo
-    registerUser(data.firstName, data.lastName, data.email, data.password);
+    registerUser(
+      data.firstName, data.lastName, data.email, data.password,
+      () => warningNotification(strings.registerPage.verificationEmailNotSent),
+      () => errorNotification(strings.registerPage.userAccountNotCreated)
+    );
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -99,8 +104,9 @@ export const RegisterPage = (props) => {
             {strings.registerPage.alreadyHaveAccount}
           </Link>
         </div>
-
       </form>
+
+      <ToastContainer/>
     </div>
   );
 };

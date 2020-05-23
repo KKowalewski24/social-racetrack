@@ -1,4 +1,4 @@
-export const customToast = {
+export const customNotificationConfig = {
   position: "top-right",
   autoClose: 3000,
   hideProgressBar: true,
