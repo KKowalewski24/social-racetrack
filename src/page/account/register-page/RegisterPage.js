@@ -19,6 +19,7 @@ export const RegisterPage = (props) => {
   const globalStyles = GlobalStyles();
 
   const onSubmit = (data = PR()) => {
+    //todo
     registerUser(data.firstName, data.lastName, data.email, data.password);
   };
 

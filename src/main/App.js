@@ -34,7 +34,7 @@ export const App = (props) => {
       <CssBaseline/>
       <BrowserRouter>
         <Navbar
-          title={strings.navbarTitle}
+          title={strings.navbar.title}
           isDarkMode={isDarkMode}
           handleDarkMode={handleDarkMode}
           isUserLoggedIn={isUserLoggedIn}

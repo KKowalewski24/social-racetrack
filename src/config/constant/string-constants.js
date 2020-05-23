@@ -1,5 +1,7 @@
 export const strings = {
-  navbarTitle: "Social Racetrack",
+  navbar: {
+    title: "Social Racetrack",
+  },
   accountPage: {},
   loginPage: {
     signIn: "Sign in",
@@ -17,9 +19,9 @@ export const strings = {
     alreadyHaveAccount: "Already have an account? Sign in",
   },
   resetPasswordPage: {
-    resetPassword:"Reset password",
+    resetPassword: "Reset password",
     emailAddress: "Email Address",
-    sendEmail:"Send email",
+    sendEmail: "Send email",
   },
   homePage: {},
 };
