@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
-import {PR} from "../../util/Helper";
+import {PR} from "../../logic/Helper";
 import {Link} from "react-router-dom";
 import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN} from "../../config/constants";
 import clsx from "clsx";
@@ -14,8 +14,8 @@ import {
   ListItemIcon,
   ListItemText,
   ListSubheader,
-  Typography,
-  Toolbar
+  Toolbar,
+  Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NightsStayIcon from "@material-ui/icons/NightsStay";

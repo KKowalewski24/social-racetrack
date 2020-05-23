@@ -12,7 +12,7 @@ import {
   PATH_RESET_PASSWORD
 } from "../config/constants";
 import PrivateRoute from "../component/util/private-route/PrivateRoute";
-import {AuthContext} from "../util/AuthContextProvider";
+import {AuthContext} from "../logic/AuthContextProvider";
 import ResetPasswordPage from "../page/account/reset-password-page/ResetPasswordPage";
 
 export const Routes = (props) => {

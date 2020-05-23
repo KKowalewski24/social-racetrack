@@ -1,8 +1,8 @@
 import React, {useContext, useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 import Routes from "./Routes";
-import {AuthContext} from "../util/AuthContextProvider";
-import {logoutUser} from "../util/controller/AccountController";
+import {AuthContext} from "../logic/AuthContextProvider";
+import {logoutUser} from "../logic/controller/AccountController";
 import Navbar from "../component/navbar/Navbar";
 import {NAVBAR_TITLE} from "../config/constants";
 import {createMuiTheme} from "@material-ui/core";

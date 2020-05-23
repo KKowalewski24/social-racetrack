@@ -2,14 +2,14 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_LOGIN} from "../../../config/constants";
-import {registerUser} from "../../../util/controller/AccountController";
+import {registerUser} from "../../../logic/controller/AccountController";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import GlobalStyles from "../../../main/GlobalStyles";
-import {PR} from "../../../util/Helper";
+import {PR} from "../../../logic/Helper";
 
 export const RegisterPage = (props) => {
 

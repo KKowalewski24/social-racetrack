@@ -1,13 +1,13 @@
 import config from "../../config/config";
 import {PR} from "../Helper";
-import {Person} from "../../model/person/Person";
+import {Person} from "../model/person/Person";
 import {createData} from "./DatabaseController";
-import {EmailNotVerifiedError} from "../../logic/exception/auth/EmailNotVerifiedError";
-import WrongCredentialsError from "../../logic/exception/auth/WrongCredentialsError";
-import VerificationEmailError from "../../logic/exception/auth/VerificationEmailError";
-import CreateUserError from "../../logic/exception/auth/CreateUserError";
-import LogOutError from "../../logic/exception/auth/LogOutError";
-import ResetUserPasswordError from "../../logic/exception/auth/ResetUserPasswordError";
+import {EmailNotVerifiedError} from "../exception/auth/EmailNotVerifiedError";
+import WrongCredentialsError from "../exception/auth/WrongCredentialsError";
+import VerificationEmailError from "../exception/auth/VerificationEmailError";
+import CreateUserError from "../exception/auth/CreateUserError";
+import LogOutError from "../exception/auth/LogOutError";
+import ResetUserPasswordError from "../exception/auth/ResetUserPasswordError";
 
 export const registerUser = (firstName = PR(), lastName = PR(), email = PR(), password = PR()) => {
 

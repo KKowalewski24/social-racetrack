@@ -1,5 +1,5 @@
 import BaseEntity from "../base/BaseEntity";
-import {PR} from "../../util/Helper";
+import {PR} from "../../Helper";
 
 export class Person extends BaseEntity {
 
