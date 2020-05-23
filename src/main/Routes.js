@@ -10,7 +10,7 @@ import {
   PATH_LOGIN,
   PATH_REGISTER,
   PATH_RESET_PASSWORD
-} from "../config/constants";
+} from "../config/constant/path-constants";
 import PrivateRoute from "../component/util/private-route/PrivateRoute";
 import {AuthContext} from "../logic/AuthContextProvider";
 import ResetPasswordPage from "../page/account/reset-password-page/ResetPasswordPage";

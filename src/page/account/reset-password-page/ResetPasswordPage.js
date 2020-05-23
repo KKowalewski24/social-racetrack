@@ -8,9 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import RestoreIcon from "@material-ui/icons/Restore";
-import {PATH_LOGIN} from "../../../config/constants";
+import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {toast, ToastContainer} from "react-toastify";
-import {customToast} from "../../../config/ToastSetup";
+import {customToast} from "../../../config/toast-config";
 import ResetUserPasswordError from "../../../logic/exception/auth/ResetUserPasswordError";
 
 export const ResetPasswordPage = (props) => {

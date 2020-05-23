@@ -14,6 +14,3 @@ export const PATH_ACCOUNT = SLASH + ACCOUNT;
 /*---------- STRINGS ----------*/
 export const NAVBAR_TITLE = "Social Racetrack";
 
-/*---------- API ----------*/
-
-/*---------- STORAGE KEY ----------*/

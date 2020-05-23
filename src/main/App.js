@@ -4,7 +4,7 @@ import Routes from "./Routes";
 import {AuthContext} from "../logic/AuthContextProvider";
 import {logoutUser} from "../logic/controller/AccountController";
 import Navbar from "../component/navbar/Navbar";
-import {NAVBAR_TITLE} from "../config/constants";
+import {NAVBAR_TITLE} from "../config/constant/path-constants";
 import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";

@@ -1,7 +1,7 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
-import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constants";
+import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constant/path-constants";
 import {loginUser} from "../../../logic/controller/AccountController";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -12,7 +12,7 @@ import "../../../index.css";
 import GlobalStyles from "../../../main/GlobalStyles";
 import {PR} from "../../../logic/Helper";
 import {toast, ToastContainer} from "react-toastify";
-import {customToast} from "../../../config/ToastSetup";
+import {customToast} from "../../../config/toast-config";
 import WrongCredentialsError from "../../../logic/exception/auth/WrongCredentialsError";
 import EmailNotVerifiedError from "../../../logic/exception/auth/EmailNotVerifiedError";
 
