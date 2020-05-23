@@ -4,6 +4,9 @@ import HomePage from "../page/home-page/HomePage";
 import LoginPage from "../page/account/login-page/LoginPage";
 import RegisterPage from "../page/account/register-page/RegisterPage";
 import AccountPage from "../page/account/account-page/AccountPage";
+import PrivateRoute from "../component/util/private-route/PrivateRoute";
+import {AuthContext} from "../logic/AuthContextProvider";
+import ResetPasswordPage from "../page/account/reset-password-page/ResetPasswordPage";
 import {
   PATH_ACCOUNT,
   PATH_HOME,
@@ -11,9 +14,6 @@ import {
   PATH_REGISTER,
   PATH_RESET_PASSWORD
 } from "../config/constant/path-constants";
-import PrivateRoute from "../component/util/private-route/PrivateRoute";
-import {AuthContext} from "../logic/AuthContextProvider";
-import ResetPasswordPage from "../page/account/reset-password-page/ResetPasswordPage";
 
 export const Routes = (props) => {
 

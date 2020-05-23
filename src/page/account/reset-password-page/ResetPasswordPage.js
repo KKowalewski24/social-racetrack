@@ -1,17 +1,17 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {PR} from "../../../logic/Helper";
+import {resetUserPassword} from "../../../logic/controller/AccountController";
+import {PATH_LOGIN} from "../../../config/constant/path-constants";
+import {warningNotification} from "../../../component/notification/notification";
+import {ToastContainer} from "react-toastify";
+import strings from "../../../config/constant/string-constants";
 import GlobalStyles from "../../../main/GlobalStyles";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import RestoreIcon from "@material-ui/icons/Restore";
-import {ToastContainer} from "react-toastify";
-import strings from "../../../config/constant/string-constants";
-import {resetUserPassword} from "../../../logic/controller/AccountController";
-import {PATH_LOGIN} from "../../../config/constant/path-constants";
-import {warningNotification} from "../../../component/notification/notification";
 
 export const ResetPasswordPage = (props) => {
 

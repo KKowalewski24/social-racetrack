@@ -3,11 +3,11 @@ import {BrowserRouter} from "react-router-dom";
 import Routes from "./Routes";
 import {AuthContext} from "../logic/AuthContextProvider";
 import {logoutUser} from "../logic/controller/AccountController";
+import {strings} from "../config/constant/string-constants";
 import Navbar from "../component/navbar/Navbar";
 import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import {strings} from "../config/constant/string-constants";
 
 export const App = (props) => {
 

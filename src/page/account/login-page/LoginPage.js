@@ -3,6 +3,10 @@ import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constant/path-constants";
 import {loginUser} from "../../../logic/controller/AccountController";
+import {PR} from "../../../logic/Helper";
+import {errorNotification} from "../../../component/notification/notification";
+import strings from "../../../config/constant/string-constants";
+import {ToastContainer} from "react-toastify";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -10,10 +14,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import "../../../index.css";
 import GlobalStyles from "../../../main/GlobalStyles";
-import {PR} from "../../../logic/Helper";
-import {ToastContainer} from "react-toastify";
-import strings from "../../../config/constant/string-constants";
-import {errorNotification} from "../../../component/notification/notification";
 
 export const LoginPage = (props) => {
 
