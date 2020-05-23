@@ -12,6 +12,7 @@ import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {toast, ToastContainer} from "react-toastify";
 import {customToast} from "../../../config/toast-config";
 import ResetUserPasswordError from "../../../logic/exception/auth/ResetUserPasswordError";
+import strings from "../../../config/constant/string-constants";
 
 export const ResetPasswordPage = (props) => {
 
@@ -44,7 +45,7 @@ export const ResetPasswordPage = (props) => {
 
         <div className="row justify-content-center">
           <Typography component="h1" variant="h5">
-            Reset password
+            {strings.resetPasswordPage.resetPassword}
           </Typography>
         </div>
       </div>
@@ -54,7 +55,7 @@ export const ResetPasswordPage = (props) => {
           type="email"
           inputRef={register({required: true})}
           name="email"
-          label="Email Address"
+          label={strings.resetPasswordPage.emailAddress}
           variant="outlined"
           margin="normal"
           fullWidth
@@ -62,7 +63,7 @@ export const ResetPasswordPage = (props) => {
         />
 
         <Button type="submit" className="mt-2" variant="contained" color="primary" fullWidth>
-          Send email
+          {strings.resetPasswordPage.sendEmail}
         </Button>
       </form>
 

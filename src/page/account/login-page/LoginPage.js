@@ -15,6 +15,7 @@ import {toast, ToastContainer} from "react-toastify";
 import {customToast} from "../../../config/toast-config";
 import WrongCredentialsError from "../../../logic/exception/auth/WrongCredentialsError";
 import EmailNotVerifiedError from "../../../logic/exception/auth/EmailNotVerifiedError";
+import strings from "../../../config/constant/string-constants";
 
 export const LoginPage = (props) => {
 
@@ -49,7 +50,7 @@ export const LoginPage = (props) => {
 
         <div className="row justify-content-center">
           <Typography component="h1" variant="h5">
-            Sign in
+            {strings.loginPage.signIn}
           </Typography>
         </div>
       </div>
@@ -59,7 +60,7 @@ export const LoginPage = (props) => {
           type="email"
           inputRef={register({required: true})}
           name="email"
-          label="Email Address"
+          label={strings.loginPage.emailAddress}
           variant="outlined"
           margin="normal"
           fullWidth
@@ -70,25 +71,25 @@ export const LoginPage = (props) => {
           type="password"
           inputRef={register({required: true, min: 1})}
           name="password"
-          label="Password"
+          label={strings.loginPage.password}
           variant="outlined"
           margin="normal"
           fullWidth
         />
 
         <Button type="submit" className="mt-4" variant="contained" color="primary" fullWidth>
-          Sign in
+          {strings.loginPage.signIn}
         </Button>
 
         <div className="row justify-content-center mt-2">
           <Link to={PATH_RESET_PASSWORD} className={globalStyles.materialBlueFont}>
-            Forgot password?
+            {strings.loginPage.forgotPassword}
           </Link>
         </div>
 
         <div className="row justify-content-center mt-2">
           <Link to={PATH_REGISTER} className={globalStyles.materialBlueFont}>
-            Don't have an account? Sign Up
+            {strings.loginPage.dontHaveAccount}
           </Link>
         </div>
       </form>

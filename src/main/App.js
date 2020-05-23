@@ -4,10 +4,10 @@ import Routes from "./Routes";
 import {AuthContext} from "../logic/AuthContextProvider";
 import {logoutUser} from "../logic/controller/AccountController";
 import Navbar from "../component/navbar/Navbar";
-import {NAVBAR_TITLE} from "../config/constant/path-constants";
 import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import {strings} from "../config/constant/string-constants";
 
 export const App = (props) => {
 
@@ -34,7 +34,7 @@ export const App = (props) => {
       <CssBaseline/>
       <BrowserRouter>
         <Navbar
-          title={NAVBAR_TITLE}
+          title={strings.navbarTitle}
           isDarkMode={isDarkMode}
           handleDarkMode={handleDarkMode}
           isUserLoggedIn={isUserLoggedIn}

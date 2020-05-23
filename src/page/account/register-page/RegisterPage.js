@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import GlobalStyles from "../../../main/GlobalStyles";
 import {PR} from "../../../logic/Helper";
+import strings from "../../../config/constant/string-constants";
 
 export const RegisterPage = (props) => {
 
@@ -34,7 +35,7 @@ export const RegisterPage = (props) => {
 
         <div className="row justify-content-center">
           <Typography component="h1" variant="h5">
-            Sign up
+            {strings.registerPage.signUp}
           </Typography>
         </div>
       </div>
@@ -47,7 +48,7 @@ export const RegisterPage = (props) => {
               type="text"
               inputRef={register({required: true})}
               name="firstName"
-              label="First Name"
+              label={strings.registerPage.firstName}
               variant="outlined"
               margin="normal"
               fullWidth
@@ -60,7 +61,7 @@ export const RegisterPage = (props) => {
               type="text"
               inputRef={register({required: true})}
               name="lastName"
-              label="Last Name"
+              label={strings.registerPage.lastName}
               variant="outlined"
               margin="normal"
               fullWidth
@@ -72,7 +73,7 @@ export const RegisterPage = (props) => {
           type="email"
           inputRef={register({required: true})}
           name="email"
-          label="Email Address"
+          label={strings.registerPage.emailAddress}
           variant="outlined"
           margin="normal"
           fullWidth
@@ -82,19 +83,19 @@ export const RegisterPage = (props) => {
           type="password"
           inputRef={register({required: true})}
           name="password"
-          label="Password"
+          label={strings.registerPage.password}
           variant="outlined"
           margin="normal"
           fullWidth
         />
 
         <Button type="submit" className="mt-4" variant="contained" color="primary" fullWidth>
-          Sign up
+          {strings.registerPage.signUp}
         </Button>
 
         <div className="row justify-content-center mt-2">
           <Link to={PATH_LOGIN} className={globalStyles.materialBlueFont}>
-            Already have an account? Sign in
+            {strings.registerPage.alreadyHaveAccount}
           </Link>
         </div>
 
