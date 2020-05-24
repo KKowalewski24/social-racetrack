@@ -1,8 +1,12 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
-import {PATH_REGISTER} from "../../../constants";
-import {loginUser} from "../../../util/controller/AccountController";
+import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constant/path-constants";
+import {loginUser} from "../../../logic/controller/AccountController";
+import {PR} from "../../../logic/Helper";
+import {errorNotification} from "../../../component/notification/notification";
+import strings from "../../../config/constant/string-constants";
+import {ToastContainer} from "react-toastify";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -10,7 +14,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import "../../../index.css";
 import GlobalStyles from "../../../main/GlobalStyles";
-import {PR} from "../../../util/Helper";
 
 export const LoginPage = (props) => {
 
@@ -19,7 +22,10 @@ export const LoginPage = (props) => {
   const globalStyles = GlobalStyles();
 
   const onSubmit = (data = PR()) => {
-    loginUser(data.email, data.password);
+    loginUser(
+      data.email, data.password,
+      () => errorNotification(strings.loginPage.wrongEmailPassword)
+    );
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -35,7 +41,7 @@ export const LoginPage = (props) => {
 
         <div className="row justify-content-center">
           <Typography component="h1" variant="h5">
-            Sign in
+            {strings.loginPage.signIn}
           </Typography>
         </div>
       </div>
@@ -45,7 +51,7 @@ export const LoginPage = (props) => {
           type="email"
           inputRef={register({required: true})}
           name="email"
-          label="Email Address"
+          label={strings.loginPage.emailAddress}
           variant="outlined"
           margin="normal"
           fullWidth
@@ -56,23 +62,30 @@ export const LoginPage = (props) => {
           type="password"
           inputRef={register({required: true, min: 1})}
           name="password"
-          label="Password"
+          label={strings.loginPage.password}
           variant="outlined"
           margin="normal"
           fullWidth
         />
 
         <Button type="submit" className="mt-4" variant="contained" color="primary" fullWidth>
-          Sign in
+          {strings.loginPage.signIn}
         </Button>
 
         <div className="row justify-content-center mt-2">
-          <Link to={PATH_REGISTER} className={globalStyles.materialBlueFont}>
-            Don't have an account? Sign Up
+          <Link to={PATH_RESET_PASSWORD} className={globalStyles.materialBlueFont}>
+            {strings.loginPage.forgotPassword}
           </Link>
         </div>
 
+        <div className="row justify-content-center mt-2">
+          <Link to={PATH_REGISTER} className={globalStyles.materialBlueFont}>
+            {strings.loginPage.dontHaveAccount}
+          </Link>
+        </div>
       </form>
+
+      <ToastContainer/>
     </div>
   );
 };

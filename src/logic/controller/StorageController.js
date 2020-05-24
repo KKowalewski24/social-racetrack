@@ -1,6 +1,6 @@
-/*----------------------- SESSION STORAGE -----------------------*/
 import {PR} from "../Helper";
 
+/*----------------------- SESSION STORAGE -----------------------*/
 export const SessionStorageSaveItem = (key = PR(), item = PR()) => {
   sessionStorage.setItem(key, JSON.stringify(item));
 };

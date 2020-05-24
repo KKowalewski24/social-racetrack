@@ -1,11 +1,11 @@
-import Person from "./Person";
+import BaseEntity from "../base/BaseEntity";
 
-export class User extends Person {
+export class Vehicle extends BaseEntity {
 
   /*------------------------ FIELDS REGION ------------------------*/
-
+// TODO
   /*------------------------ METHODS REGION ------------------------*/
 
 }
 
-export default User;
+export default Vehicle;

@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
-import {PR} from "../../util/Helper";
+import {PR} from "../../logic/Helper";
 import {Link} from "react-router-dom";
-import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN} from "../../constants";
+import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN} from "../../config/constant/path-constants";
 import clsx from "clsx";
 import {
   AppBar,
@@ -14,8 +14,8 @@ import {
   ListItemIcon,
   ListItemText,
   ListSubheader,
-  Typography,
-  Toolbar
+  Toolbar,
+  Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
@@ -153,6 +153,7 @@ export const Navbar = (props) => {
         </div>
         <Divider/>
 
+        {/*TODO MOVE STRING INTO CONSTANTS*/}
         <List>
           {renderListItem(DashboardIcon, "Dashboard", PATH_HOME)}
           {renderListItem(ShoppingCartIcon, "Orders", PATH_HOME)}
@@ -165,8 +166,10 @@ export const Navbar = (props) => {
 
         <List>
           <ListSubheader inset>
+            {/*TODO MOVE STRING INTO CONSTANTS*/}
             Saved reports
           </ListSubheader>
+          {/*TODO MOVE STRING INTO CONSTANTS*/}
           {renderListItem(AssignmentIcon, "month", PATH_HOME)}
           {renderListItem(AssignmentIcon, "quarter", PATH_HOME)}
           {renderListItem(AssignmentIcon, "year", PATH_HOME)}
