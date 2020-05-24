@@ -5,6 +5,8 @@
 #### [Google Drive Report](https://drive.google.com/open?id=1QU418ihDzM2fBo6UxbA8GqxavGlbpZGK)
 
 ## How To Deploy Updated Version to Firebase Hosting
+* Firebase Tools must be install globally `npm install -g firebase-tools`
+* You must login `firebase login`
 * Go to project directory
 * Checkout branch to master `git checkout master`
 * Pull changes `git pull`
