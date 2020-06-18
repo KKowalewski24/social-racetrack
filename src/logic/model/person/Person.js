@@ -1,7 +1,7 @@
 import BaseEntity from "../base/BaseEntity";
 import {PR} from "../../Helper";
 
-export class Person extends BaseEntity {
+export default class Person extends BaseEntity {
 
   /*------------------------ FIELDS REGION ------------------------*/
   #_firstName;
@@ -30,5 +30,3 @@ export class Person extends BaseEntity {
     this._lastName = value;
   }
 }
-
-export default Person;

@@ -1,4 +1,4 @@
-export class BaseEntity {
+export default class BaseEntity {
 
   /*------------------------ FIELDS REGION ------------------------*/
   #_id;
@@ -12,5 +12,3 @@ export class BaseEntity {
     this._id = value;
   }
 }
-
-export default BaseEntity;
