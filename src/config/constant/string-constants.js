@@ -2,6 +2,7 @@ export const strings = {
   app: {
     title: "Social Racetrack",
     logOutFailed: "Logout failed",
+    createEvent: "Create Event",
     futureEvents: "Future Events",
     pastEvents: "Past Events",
     racetracks: "Racetracks",

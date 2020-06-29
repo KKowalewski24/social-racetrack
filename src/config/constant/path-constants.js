@@ -5,6 +5,7 @@ const RESET_PASSWORD = "reset-password";
 const REGISTER = "register";
 const ACCOUNT = "account";
 
+const CREATE_EVENT = "create-event";
 const FUTURE_EVENTS = "future-events";
 const PAST_EVENTS = "past-events";
 const RACETRACKS = "racetracks";
@@ -16,6 +17,7 @@ export const PATH_RESET_PASSWORD = SLASH + RESET_PASSWORD;
 export const PATH_REGISTER = SLASH + REGISTER;
 export const PATH_ACCOUNT = SLASH + ACCOUNT;
 
+export const PATH_CREATE_EVENT = SLASH + CREATE_EVENT;
 export const PATH_FUTURE_EVENTS = SLASH + FUTURE_EVENTS;
 export const PATH_HOME = SLASH;
 export const PATH_MEMBERS = SLASH + MEMBERS;

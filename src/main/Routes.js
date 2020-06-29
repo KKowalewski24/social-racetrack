@@ -13,6 +13,7 @@ import RacetracksPage from "../page/main/racetracks-page/RacetracksPage";
 import MembersPage from "../page/main/members-page/MembersPage";
 import {
   PATH_ACCOUNT,
+  PATH_CREATE_EVENT,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
   PATH_LOGIN,
@@ -22,6 +23,8 @@ import {
   PATH_REGISTER,
   PATH_RESET_PASSWORD
 } from "../config/constant/path-constants";
+import ErrorPage from "../page/util/error-page/ErrorPage";
+import CreateEventPage from "../page/main/create-event-page/CreateEventPage";
 
 export const Routes = (props) => {
 
@@ -31,22 +34,6 @@ export const Routes = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <Switch>
-      <Route exact path={PATH_HOME} component={HomePage}/>
-      <Route exact path={PATH_FUTURE_EVENTS} component={FutureEventsPage}/>
-
-      <PrivateRoute
-        exact path={PATH_MEMBERS} component={MembersPage}
-        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
-      />
-      <PrivateRoute
-        exact path={PATH_PAST_EVENTS} component={PastEventsPage}
-        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
-      />
-      <PrivateRoute
-        exact path={PATH_RACETRACKS} component={RacetracksPage}
-        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
-      />
-
       <PrivateRoute
         exact path={PATH_LOGIN} component={LoginPage}
         redirectPath={PATH_ACCOUNT} privacyCondition={!isUserLoggedIn}
@@ -64,6 +51,23 @@ export const Routes = (props) => {
         redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
       />
 
+      <Route exact path={PATH_HOME} component={HomePage}/>
+      <Route exact path={PATH_FUTURE_EVENTS} component={FutureEventsPage}/>
+      <Route exact path={PATH_RACETRACKS} component={RacetracksPage}/>
+      <PrivateRoute
+        exact path={PATH_CREATE_EVENT} component={CreateEventPage}
+        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
+      />
+      <PrivateRoute
+        exact path={PATH_PAST_EVENTS} component={PastEventsPage}
+        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
+      />
+      <PrivateRoute
+        exact path={PATH_MEMBERS} component={MembersPage}
+        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
+      />
+
+      <Route component={ErrorPage}/>
     </Switch>
   );
 };

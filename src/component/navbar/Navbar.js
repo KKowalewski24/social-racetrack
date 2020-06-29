@@ -6,6 +6,7 @@ import {strings} from "../../config/constant/string-constants";
 import clsx from "clsx";
 import {
   PATH_ACCOUNT,
+  PATH_CREATE_EVENT,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
   PATH_LOGIN,
@@ -35,6 +36,7 @@ import PeopleIcon from "@material-ui/icons/People";
 import EventIcon from "@material-ui/icons/Event";
 import HistoryIcon from "@material-ui/icons/History";
 import FlagIcon from "@material-ui/icons/Flag";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 
 import NavbarStyles from "./NavbarStyles";
 import "../../index.css";
@@ -160,6 +162,7 @@ export const Navbar = (props) => {
 
         <List>
           {renderListItem(EventIcon, strings.app.futureEvents, PATH_FUTURE_EVENTS)}
+          {renderListItem(AddBoxIcon, strings.app.createEvent, PATH_CREATE_EVENT)}
           {renderListItem(HistoryIcon, strings.app.pastEvents, PATH_PAST_EVENTS)}
         </List>
         <Divider/>
