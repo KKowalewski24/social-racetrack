@@ -2,8 +2,14 @@ export const strings = {
   app: {
     title: "Social Racetrack",
     logOutFailed: "Logout failed",
+    futureEvents: "Future Events",
+    pastEvents: "Past Events",
+    racetracks: "Racetracks",
+    members: "Members",
   },
-  accountPage: {},
+  accountPage: {
+    //  TODO
+  },
   loginPage: {
     emailNotVerified: "Email has not been verified yet!",
     wrongEmailPassword: "Wrong email or password",
@@ -29,7 +35,21 @@ export const strings = {
     emailAddress: "Email Address",
     sendEmail: "Send email",
   },
-  homePage: {},
+  homePage: {
+    //  TODO
+  },
+  futureEventsPage: {
+    //  TODO
+  },
+  membersPage: {
+    //  TODO
+  },
+  pastEventsPage: {
+    //  TODO
+  },
+  racetracksPage: {
+    //  TODO
+  }
 };
 
 export default strings;

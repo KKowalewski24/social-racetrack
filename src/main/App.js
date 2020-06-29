@@ -3,7 +3,6 @@ import {BrowserRouter} from "react-router-dom";
 import Routes from "./Routes";
 import {AuthContext} from "../logic/AuthContextProvider";
 import {logoutUser} from "../logic/controller/AccountController";
-import {strings} from "../config/constant/string-constants";
 import Navbar from "../component/navbar/Navbar";
 import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
@@ -34,7 +33,6 @@ export const App = (props) => {
       <CssBaseline/>
       <BrowserRouter>
         <Navbar
-          title={strings.app.title}
           isDarkMode={isDarkMode}
           handleDarkMode={handleDarkMode}
           isUserLoggedIn={isUserLoggedIn}

@@ -1,13 +1,23 @@
 /*---------- KEYWORDS ----------*/
-export const SLASH = "/";
-export const LOGIN = "login";
-export const RESET_PASSWORD = "reset-password";
-export const REGISTER = "register";
-export const ACCOUNT = "account";
+const SLASH = "/";
+const LOGIN = "login";
+const RESET_PASSWORD = "reset-password";
+const REGISTER = "register";
+const ACCOUNT = "account";
+
+const FUTURE_EVENTS = "future-events";
+const PAST_EVENTS = "past-events";
+const RACETRACKS = "racetracks";
+const MEMBERS = "members";
 
 /*---------- PATHS ----------*/
-export const PATH_HOME = SLASH;
 export const PATH_LOGIN = SLASH + LOGIN;
 export const PATH_RESET_PASSWORD = SLASH + RESET_PASSWORD;
 export const PATH_REGISTER = SLASH + REGISTER;
 export const PATH_ACCOUNT = SLASH + ACCOUNT;
+
+export const PATH_FUTURE_EVENTS = SLASH + FUTURE_EVENTS;
+export const PATH_HOME = SLASH;
+export const PATH_MEMBERS = SLASH + MEMBERS;
+export const PATH_PAST_EVENTS = SLASH + PAST_EVENTS;
+export const PATH_RACETRACKS = SLASH + RACETRACKS;
