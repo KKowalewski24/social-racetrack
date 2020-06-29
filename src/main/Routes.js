@@ -12,8 +12,15 @@ import PastEventsPage from "../page/main/past-events-page/PastEventsPage";
 import RacetracksPage from "../page/main/racetracks-page/RacetracksPage";
 import MembersPage from "../page/main/members-page/MembersPage";
 import {
-  PATH_ACCOUNT, PATH_FUTURE_EVENTS, PATH_HOME, PATH_LOGIN, PATH_MEMBERS, PATH_PAST_EVENTS,
-  PATH_RACETRACKS, PATH_REGISTER, PATH_RESET_PASSWORD
+  PATH_ACCOUNT,
+  PATH_FUTURE_EVENTS,
+  PATH_HOME,
+  PATH_LOGIN,
+  PATH_MEMBERS,
+  PATH_PAST_EVENTS,
+  PATH_RACETRACKS,
+  PATH_REGISTER,
+  PATH_RESET_PASSWORD
 } from "../config/constant/path-constants";
 
 export const Routes = (props) => {

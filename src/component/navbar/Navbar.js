@@ -2,24 +2,39 @@ import React, {useState} from "react";
 import propTypes from "prop-types";
 import {PR} from "../../logic/Helper";
 import {Link} from "react-router-dom";
-import {
-  PATH_ACCOUNT, PATH_FUTURE_EVENTS, PATH_HOME, PATH_LOGIN, PATH_MEMBERS, PATH_PAST_EVENTS,
-  PATH_RACETRACKS
-} from "../../config/constant/path-constants";
 import {strings} from "../../config/constant/string-constants";
 import clsx from "clsx";
 import {
-  AppBar, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar,
+  PATH_ACCOUNT,
+  PATH_FUTURE_EVENTS,
+  PATH_HOME,
+  PATH_LOGIN,
+  PATH_MEMBERS,
+  PATH_PAST_EVENTS,
+  PATH_RACETRACKS
+} from "../../config/constant/path-constants";
+import {
+  AppBar,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
   Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import DashboardIcon from "@material-ui/icons/Dashboard";
+import PeopleIcon from "@material-ui/icons/People";
+import EventIcon from "@material-ui/icons/Event";
+import HistoryIcon from "@material-ui/icons/History";
+import FlagIcon from "@material-ui/icons/Flag";
 
 import NavbarStyles from "./NavbarStyles";
 import "../../index.css";
@@ -144,18 +159,18 @@ export const Navbar = (props) => {
         <Divider/>
 
         <List>
-          {renderListItem(DashboardIcon, strings.app.futureEvents, PATH_FUTURE_EVENTS)}
-          {renderListItem(DashboardIcon, strings.app.pastEvents, PATH_PAST_EVENTS)}
+          {renderListItem(EventIcon, strings.app.futureEvents, PATH_FUTURE_EVENTS)}
+          {renderListItem(HistoryIcon, strings.app.pastEvents, PATH_PAST_EVENTS)}
         </List>
         <Divider/>
 
         <List>
-          {renderListItem(DashboardIcon, strings.app.racetracks, PATH_RACETRACKS)}
+          {renderListItem(FlagIcon, strings.app.racetracks, PATH_RACETRACKS)}
         </List>
         <Divider/>
 
         <List>
-          {renderListItem(DashboardIcon, strings.app.members, PATH_MEMBERS)}
+          {renderListItem(PeopleIcon, strings.app.members, PATH_MEMBERS)}
         </List>
       </Drawer>
     );
