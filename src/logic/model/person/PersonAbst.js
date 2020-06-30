@@ -4,8 +4,8 @@ import {PR} from "../../Helper";
 export class PersonAbst extends BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  #_firstName;
-  #_lastName;
+  _firstName;
+  _lastName;
 
   /*------------------------ METHODS REGION ------------------------*/
   constructor(firstName = PR(), lastName = PR()) {

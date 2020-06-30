@@ -1,9 +1,14 @@
 import {PersonAbst} from "./PersonAbst";
 
-export class Admin extends PersonAbst {
+export class Member extends PersonAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  // TODO
+// TODO
+  _age;
+  _nationality;
+  _vehicleArray;
+  _receivedAwardsArray;
+
   /*------------------------ METHODS REGION ------------------------*/
 
 }

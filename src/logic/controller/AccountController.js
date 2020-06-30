@@ -1,11 +1,11 @@
-import config from "../../config/config";
+import {MembersDatabaseController} from "./model/MembersDatabaseController";
 import {PR} from "../Helper";
-import {UserDatabaseController} from "./model/UserDatabaseController";
+import config from "../../config/config";
 
 export class AccountController {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  userDatabaseController = new UserDatabaseController();
+  _userDatabaseController = new MembersDatabaseController();
 
   /*------------------------ METHODS REGION ------------------------*/
   registerUser = (firstName = PR(), lastName = PR(),
@@ -15,7 +15,8 @@ export class AccountController {
     config.auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.userDatabaseController.createUser(firstName, lastName, email, password);
+        //TODO CHECK IF ADDING USERS TO DB WORKS WELL
+        this._userDatabaseController.createUser(firstName, lastName, email, password);
         config.auth()
           .currentUser
           .sendEmailVerification()
@@ -44,15 +45,20 @@ export class AccountController {
       });
   };
 
-  changeUserEmail = () => {
-//TODO
-  };
-
   resetUserPassword = (email = PR(), resetUserPasswordErrorFunction = PR()) => {
     config.auth()
       .sendPasswordResetEmail(email)
       .catch((error) => {
         resetUserPasswordErrorFunction();
+      });
+  };
+
+  deleteAccount = (deleteAccountErrorFunction) => {
+    this._auth
+      .currentUser
+      .delete()
+      .catch((error) => {
+        deleteAccountErrorFunction();
       });
   };
 }

@@ -8,6 +8,30 @@ export const strings = {
     racetracks: "Racetracks",
     members: "Members",
   },
+  type: {
+    carType: {
+      raceCar: "Race car",
+      rallyCar: "Rally car",
+    },
+    driveTrainType: {
+      fwd: "FWD",
+      rwd: "RWD",
+      awd: "AWD"
+    },
+    engineType: {
+      inlineThree: "Inline Three",
+      inlineFour: "Inline Four",
+      inlineFive: "Inline Five",
+      straightFour: "Straight Four",
+      straightSix: "Straight Six",
+      flatFour: "Flat Four",
+      flatSix: "Flat Six",
+      V6: "V6",
+      V8: "V8",
+      V10: "V10",
+      V12: "V12",
+    },
+  },
   accountPage: {
     //  TODO
   },

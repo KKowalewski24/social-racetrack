@@ -1,9 +1,17 @@
-import {Vehicle} from "./Vehicleexport default VehicleType; ";
+import {BaseEntityAbst} from "../base/BaseEntityAbst";
 
-export class Car extends Vehicle {
+export class Car extends BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  // TODO
+  _brand;
+  _model;
+  _productionYear;
+  _carType;
+  _mileage;
+  _engineType;
+  _enginePower;
+  _driveTrainType;
+
   /*------------------------ METHODS REGION ------------------------*/
 
 }

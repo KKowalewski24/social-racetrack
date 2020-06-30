@@ -1,9 +1,12 @@
-import {PersonAbst} from "./PersonAbst";
+import {BaseEntityAbst} from "../base/BaseEntityAbst";
 
-export class User extends PersonAbst {
+export class Event extends BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
-// TODO
+  _racetrack;
+  _membersArray;
+  _eventDate;
+
   /*------------------------ METHODS REGION ------------------------*/
 
 }

@@ -1,21 +1,21 @@
-export class UserDatabaseController {
+export class RacetrackDatabaseController {
 
   /*------------------------ FIELDS REGION ------------------------*/
 
   /*------------------------ METHODS REGION ------------------------*/
-  createUser = () => {
+  createRacetrack = () => {
 //TODO
   };
 
-  readUser = () => {
+  readRacetrack = () => {
 //TODO
   };
 
-  updateUser = () => {
+  updateRacetrack = () => {
 //TODO
   };
 
-  deleteUser = () => {
+  deleteRacetrack = () => {
 //TODO
   };
 }
