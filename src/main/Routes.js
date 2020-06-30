@@ -11,8 +11,12 @@ import FutureEventsPage from "../page/main/future-events-page/FutureEventsPage";
 import PastEventsPage from "../page/main/past-events-page/PastEventsPage";
 import RacetracksPage from "../page/main/racetracks-page/RacetracksPage";
 import MembersPage from "../page/main/members-page/MembersPage";
+import ErrorPage from "../page/util/error-page/ErrorPage";
+import CreateEventPage from "../page/main/create-event-page/CreateEventPage";
+import AccountSettingsPage from "../page/account/account-settings-page/AccountSettingsPage";
 import {
   PATH_ACCOUNT,
+  PATH_ACCOUNT_SETTINGS,
   PATH_CREATE_EVENT,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
@@ -23,8 +27,6 @@ import {
   PATH_REGISTER,
   PATH_RESET_PASSWORD
 } from "../config/constant/path-constants";
-import ErrorPage from "../page/util/error-page/ErrorPage";
-import CreateEventPage from "../page/main/create-event-page/CreateEventPage";
 
 export const Routes = (props) => {
 
@@ -48,6 +50,10 @@ export const Routes = (props) => {
       />
       <PrivateRoute
         exact path={PATH_ACCOUNT} component={AccountPage}
+        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
+      />
+      <PrivateRoute
+        exact path={PATH_ACCOUNT_SETTINGS} component={AccountSettingsPage}
         redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
       />
 

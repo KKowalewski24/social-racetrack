@@ -36,6 +36,9 @@ export const strings = {
   accountPage: {
     //
   },
+  accountSettingsPage: {
+    //
+  },
   loginPage: {
     emailNotVerified: "Email has not been verified yet!",
     wrongEmailPassword: "Wrong email or password",
