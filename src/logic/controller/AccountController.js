@@ -1,51 +1,58 @@
 import config from "../../config/config";
 import {PR} from "../Helper";
-import {createUser} from "./model/UserDatabaseController";
+import {UserDatabaseController} from "./model/UserDatabaseController";
 
-export const registerUser = (firstName = PR(), lastName = PR(),
-                             email = PR(), password = PR(),
-                             verificationEmailErrorFunction = PR(),
-                             createUserErrorFunction = PR()) => {
-  config.auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      createUser(firstName, lastName, email, password);
-      config.auth()
-        .currentUser
-        .sendEmailVerification()
-        .catch((error) => {
-          verificationEmailErrorFunction();
-        });
-    })
-    .catch((error) => {
-      createUserErrorFunction();
-    });
-};
+export class AccountController {
 
-export const loginUser = (email, password, wrongCredentialsErrorFunction) => {
-  config.auth()
-    .signInWithEmailAndPassword(email, password)
-    .catch((error) => {
-      wrongCredentialsErrorFunction();
-    });
-};
+  /*------------------------ FIELDS REGION ------------------------*/
+  userDatabaseController = new UserDatabaseController();
 
-export const logoutUser = () => {
-  config.auth()
-    .signOut()
-    .catch((error) => {
+  /*------------------------ METHODS REGION ------------------------*/
+  registerUser = (firstName = PR(), lastName = PR(),
+                  email = PR(), password = PR(),
+                  verificationEmailErrorFunction = PR(),
+                  createUserErrorFunction = PR()) => {
+    config.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        this.userDatabaseController.createUser(firstName, lastName, email, password);
+        config.auth()
+          .currentUser
+          .sendEmailVerification()
+          .catch((error) => {
+            verificationEmailErrorFunction();
+          });
+      })
+      .catch((error) => {
+        createUserErrorFunction();
+      });
+  };
 
-    });
-};
+  loginUser = (email, password, wrongCredentialsErrorFunction) => {
+    config.auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => {
+        wrongCredentialsErrorFunction();
+      });
+  };
 
-export const changeUserEmail = () => {
+  logoutUser = () => {
+    config.auth()
+      .signOut()
+      .catch((error) => {
+
+      });
+  };
+
+  changeUserEmail = () => {
 //TODO
-};
+  };
 
-export const resetUserPassword = (email = PR(), resetUserPasswordErrorFunction = PR()) => {
-  config.auth()
-    .sendPasswordResetEmail(email)
-    .catch((error) => {
-      resetUserPasswordErrorFunction();
-    });
-};
+  resetUserPassword = (email = PR(), resetUserPasswordErrorFunction = PR()) => {
+    config.auth()
+      .sendPasswordResetEmail(email)
+      .catch((error) => {
+        resetUserPasswordErrorFunction();
+      });
+  };
+}

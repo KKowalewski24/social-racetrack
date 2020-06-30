@@ -2,7 +2,7 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constant/path-constants";
-import {loginUser} from "../../../logic/controller/AccountController";
+import {AccountController} from "../../../logic/controller/AccountController";
 import {PR} from "../../../logic/Helper";
 import {errorNotification} from "../../../component/notification/notification";
 import strings from "../../../config/constant/string-constants";
@@ -20,9 +20,10 @@ export const LoginPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit} = useForm();
   const globalStyles = GlobalStyles();
+  const accountController = new AccountController();
 
   const onSubmit = (data = PR()) => {
-    loginUser(
+    accountController.loginUser(
       data.email, data.password,
       () => errorNotification(strings.loginPage.wrongEmailPassword)
     );

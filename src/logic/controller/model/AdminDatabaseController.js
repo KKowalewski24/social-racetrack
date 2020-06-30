@@ -1,15 +1,21 @@
-export const createAdmin = () => {
-//TODO
-};
+export class AdminDatabaseController {
 
-export const readAdmin = () => {
-//TODO
-};
+  /*------------------------ FIELDS REGION ------------------------*/
 
-export const updateAdmin = () => {
-//TODO
-};
+  /*------------------------ METHODS REGION ------------------------*/
+  createAdmin = () => {
+    //TODO
+  };
 
-export const deleteAdmin = () => {
-//TODO
-};
+  readAdmin = () => {
+    //TODO
+  };
+
+  updateAdmin = () => {
+    //TODO
+  };
+
+  deleteAdmin = () => {
+    //TODO
+  };
+}

@@ -2,7 +2,7 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_LOGIN} from "../../../config/constant/path-constants";
-import {registerUser} from "../../../logic/controller/AccountController";
+import {AccountController} from "../../../logic/controller/AccountController";
 import {PR} from "../../../logic/Helper";
 import {errorNotification, warningNotification} from "../../../component/notification/notification";
 import strings from "../../../config/constant/string-constants";
@@ -19,9 +19,10 @@ export const RegisterPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit} = useForm();
   const globalStyles = GlobalStyles();
+  const accountController = new AccountController();
 
   const onSubmit = (data = PR()) => {
-    registerUser(
+    accountController.registerUser(
       data.firstName, data.lastName, data.email, data.password,
       () => warningNotification(strings.registerPage.verificationEmailNotSent),
       () => errorNotification(strings.registerPage.userAccountNotCreated)

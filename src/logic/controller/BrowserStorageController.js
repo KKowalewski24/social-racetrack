@@ -1,35 +1,39 @@
 import {PR} from "../Helper";
 
-/*----------------------- SESSION STORAGE -----------------------*/
-export const SessionStorageSaveItem = (key = PR(), item = PR()) => {
-  sessionStorage.setItem(key, JSON.stringify(item));
-};
+export class BrowserStorageController {
 
-export const SessionStorageGetItem = (key = PR()) => {
-  return JSON.parse(sessionStorage.getItem(key));
-};
+  /*------------------------ FIELDS REGION ------------------------*/
 
-export const SessionStorageRemoveItem = (key = PR()) => {
-  sessionStorage.removeItem(key);
-};
+  /*------------------------ METHODS REGION ------------------------*/
+  sessionStorageSaveItem = (key = PR(), item = PR()) => {
+    sessionStorage.setItem(key, JSON.stringify(item));
+  };
 
-export const SessionStorageClear = () => {
-  sessionStorage.clear();
-};
+  sessionStorageGetItem = (key = PR()) => {
+    return JSON.parse(sessionStorage.getItem(key));
+  };
 
-/*----------------------- LOCAL STORAGE -----------------------*/
-export const LocalStorageSaveItem = (key = PR(), item = PR()) => {
-  localStorage.setItem(key, JSON.stringify(item));
-};
+  sessionStorageRemoveItem = (key = PR()) => {
+    sessionStorage.removeItem(key);
+  };
 
-export const LocalStorageGetItem = (key = PR()) => {
-  return JSON.parse(localStorage.getItem(key));
-};
+  sessionStorageClear = () => {
+    sessionStorage.clear();
+  };
 
-export const LocalStorageRemoveItem = (key = PR()) => {
-  localStorage.removeItem(key);
-};
+  localStorageSaveItem = (key = PR(), item = PR()) => {
+    localStorage.setItem(key, JSON.stringify(item));
+  };
 
-export const LocalStorageClear = () => {
-  localStorage.clear();
-};
+  localStorageGetItem = (key = PR()) => {
+    return JSON.parse(localStorage.getItem(key));
+  };
+
+  localStorageRemoveItem = (key = PR()) => {
+    localStorage.removeItem(key);
+  };
+
+  localStorageClear = () => {
+    localStorage.clear();
+  };
+}

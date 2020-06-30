@@ -1,15 +1,21 @@
-export const createUser = () => {
-//TODO
-};
+export class UserDatabaseController {
 
-export const readUser = () => {
-//TODO
-};
+  /*------------------------ FIELDS REGION ------------------------*/
 
-export const updateUser = () => {
+  /*------------------------ METHODS REGION ------------------------*/
+  createUser = () => {
 //TODO
-};
+  };
 
-export const deleteUser = () => {
+  readUser = () => {
 //TODO
-};
+  };
+
+  updateUser = () => {
+//TODO
+  };
+
+  deleteUser = () => {
+//TODO
+  };
+}

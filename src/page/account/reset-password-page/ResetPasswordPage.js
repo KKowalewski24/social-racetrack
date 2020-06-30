@@ -1,7 +1,7 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {PR} from "../../../logic/Helper";
-import {resetUserPassword} from "../../../logic/controller/AccountController";
+import {AccountController} from "../../../logic/controller/AccountController";
 import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {warningNotification} from "../../../component/notification/notification";
 import {ToastContainer} from "react-toastify";
@@ -18,9 +18,10 @@ export const ResetPasswordPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit} = useForm();
   const globalStyles = GlobalStyles();
+  const accountController = new AccountController();
 
   const onSubmit = (data = PR()) => {
-    resetUserPassword(
+    accountController.resetUserPassword(
       data.email,
       () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
     );

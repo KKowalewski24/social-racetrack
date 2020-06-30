@@ -1,15 +1,21 @@
-export const createData = () => {
-//TODO
-};
+export class DatabaseController {
 
-export const readData = () => {
-//TODO
-};
+  /*------------------------ FIELDS REGION ------------------------*/
 
-export const updateData = () => {
+  /*------------------------ METHODS REGION ------------------------*/
+  createData = () => {
 //TODO
-};
+  };
 
-export const deleteData = () => {
+  readData = () => {
 //TODO
-};
+  };
+
+  updateData = () => {
+//TODO
+  };
+
+  deleteData = () => {
+//TODO
+  };
+}

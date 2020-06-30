@@ -1,15 +1,21 @@
-export const createCar = () => {
-//TODO
-};
+export class CarDatabaseController {
 
-export const readCar = () => {
-//TODO
-};
+  /*------------------------ FIELDS REGION ------------------------*/
 
-export const updateCar = () => {
+  /*------------------------ METHODS REGION ------------------------*/
+  createCar = () => {
 //TODO
-};
+  };
 
-export const deleteCar = () => {
+  readCar = () => {
 //TODO
-};
+  };
+
+  updateCar = () => {
+//TODO
+  };
+
+  deleteCar = () => {
+//TODO
+  };
+}
