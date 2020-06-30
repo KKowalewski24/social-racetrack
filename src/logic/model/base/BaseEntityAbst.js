@@ -4,5 +4,11 @@ export class BaseEntityAbst {
   _id;
 
   /*------------------------ METHODS REGION ------------------------*/
+  get id() {
+    return this._id;
+  }
 
+  set id(value) {
+    this._id = value;
+  }
 }
