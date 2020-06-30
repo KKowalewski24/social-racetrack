@@ -54,7 +54,7 @@ export class AccountController {
   };
 
   deleteAccount = (deleteAccountErrorFunction) => {
-    this._auth
+    config.auth()
       .currentUser
       .delete()
       .catch((error) => {
