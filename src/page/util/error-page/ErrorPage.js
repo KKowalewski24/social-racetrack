@@ -2,6 +2,7 @@ import React from "react";
 import ErrorMessage from "../../../component/util/error-message/ErrorMessage";
 import {PATH_HOME} from "../../../config/constant/path-constants";
 import {GlobalStyles} from "../../../main/GlobalStyles";
+import strings from "../../../config/constant/string-constants";
 
 export const ErrorPage = (props) => {
 
@@ -11,10 +12,10 @@ export const ErrorPage = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <ErrorMessage
-      title={"404"}
-      message={"Page Not Found"}
+      title={strings.errorPage.title}
+      message={strings.errorPage.message}
       redirectPath={PATH_HOME}
-      redirectMessage={"Go back to home page"}
+      redirectMessage={strings.errorPage.redirectMessage}
       styles={globalStyles.materialBlueFont}
     />
   );

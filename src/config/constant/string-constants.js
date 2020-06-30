@@ -1,3 +1,4 @@
+// TODO ALL STRING CONSTANTS SHOULD BE HERE
 export const strings = {
   app: {
     title: "Social Racetrack",
@@ -33,7 +34,7 @@ export const strings = {
     },
   },
   accountPage: {
-    //  TODO
+    //
   },
   loginPage: {
     emailNotVerified: "Email has not been verified yet!",
@@ -60,20 +61,28 @@ export const strings = {
     emailAddress: "Email Address",
     sendEmail: "Send email",
   },
-  homePage: {
-    //  TODO
+  createEventPage: {
+    //
   },
   futureEventsPage: {
-    //  TODO
+    //
+  },
+  homePage: {
+    //
   },
   membersPage: {
-    //  TODO
+    //
   },
   pastEventsPage: {
-    //  TODO
+    //
   },
   racetracksPage: {
-    //  TODO
+    //
+  },
+  errorPage: {
+    title: "404",
+    message: "Page Not Found",
+    redirectMessage: "Go back to home page",
   }
 };
 
