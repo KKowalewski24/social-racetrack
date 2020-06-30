@@ -1,4 +1,4 @@
-export default class BaseEntity {
+export class BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
   #_id;

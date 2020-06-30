@@ -1,7 +1,7 @@
-import BaseEntity from "../base/BaseEntity";
+import {BaseEntityAbst} from "../base/BaseEntityAbst";
 import {PR} from "../../Helper";
 
-export default class Person extends BaseEntity {
+export class PersonAbst extends BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
   #_firstName;

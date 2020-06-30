@@ -1,6 +1,6 @@
-import BaseEntity from "../base/BaseEntity";
+import {BaseEntityAbst} from "../base/BaseEntityAbst";
 
-export default class Vehicle extends BaseEntity {
+export class VehicleAbst extends BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
 // TODO

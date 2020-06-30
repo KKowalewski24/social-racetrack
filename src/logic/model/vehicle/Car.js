@@ -1,6 +1,6 @@
-import Vehicle from "./Vehicle";
+import {Vehicle} from "./Vehicleexport default VehicleType; ";
 
-export default class Car extends Vehicle {
+export class Car extends Vehicle {
 
   /*------------------------ FIELDS REGION ------------------------*/
   // TODO

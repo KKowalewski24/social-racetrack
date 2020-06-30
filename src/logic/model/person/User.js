@@ -1,6 +1,6 @@
-import Person from "./Person";
+import {PersonAbst} from "./PersonAbst";
 
-export default class User extends Person {
+export class User extends PersonAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
 // TODO
