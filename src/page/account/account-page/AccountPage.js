@@ -1,18 +1,32 @@
 import React from "react";
 import GlobalStyles from "../../../main/GlobalStyles";
+import {IconButton} from "@material-ui/core";
+import BuildIcon from "@material-ui/icons/Build";
+import LetterAvatar from "../../../component/avatar/LetterAvatar";
 import "../../../index.css";
-import Avatar from "@material-ui/core/Avatar";
 
 export const AccountPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const globalStyles = GlobalStyles();
-  console.log()
+
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container-fluid custom-container-xl  text-white mt-5">
+    <div className="container custom-container-xl text-white mt-5">
       <div className={globalStyles.materialBlueBackground}>
-<Avatar />
+        <div className="row justify-content-center">
+          <div className="my-3">
+            <LetterAvatar
+              fullname={"Kamil Kowalewski"}
+              fontSize={40}
+              backgroundColor={"#ffc107"}
+            />
+
+            <IconButton color="inherit">
+              <BuildIcon fontSize="large"/>
+            </IconButton>
+          </div>
+        </div>
       </div>
     </div>
   );
