@@ -115,6 +115,14 @@
     margin-bottom: 5rem !important;
 }
 
+.custom-font-size-1 {
+    font-size: 1rem !important;
+}
+
+.custom-font-size-1-5 {
+    font-size: 1.5rem !important;
+}
+
 .custom-font-size-5 {
     font-size: 5rem !important;
 }

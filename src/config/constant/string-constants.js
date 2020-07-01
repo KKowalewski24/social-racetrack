@@ -34,7 +34,12 @@ export const strings = {
     },
   },
   accountPage: {
-    fullName: "Full Name"
+    name: "Name",
+    country: "Country",
+    city: "City",
+    age: "Age",
+    lastLogin: "Last Login",
+    joinDate: "Join Date"
   },
   accountSettingsPage: {
     //

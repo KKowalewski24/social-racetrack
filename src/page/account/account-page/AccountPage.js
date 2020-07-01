@@ -5,14 +5,15 @@ import HorizontalContainer from "../../../component/horizontal-container/Horizon
 import LetterAvatar from "../../../component/avatar/LetterAvatar";
 import SettingsIcon from "@material-ui/icons/Settings";
 import GlobalStyles from "../../../main/GlobalStyles";
-import "../../../index.css";
 import {Member} from "../../../logic/model/person/Member";
 import {Car} from "../../../logic/model/vehicle/Car";
 import {Award} from "../../../logic/model/award/Award";
 import {CarType} from "../../../logic/model/vehicle/CarType";
 import {EngineType} from "../../../logic/model/vehicle/EngineType";
 import {DriveTrainType} from "../../../logic/model/vehicle/DriveTrainType";
-import strings from "../../../config/constant/string-constants";
+import DisplayUserData from "../../../component/display-user-data/DisplayUserData";
+import config from "../../../config/config";
+import "../../../index.css";
 
 export const AccountPage = (props) => {
 
@@ -20,15 +21,17 @@ export const AccountPage = (props) => {
   const globalStyles = GlobalStyles();
 
   //TODO REMOVE THIS
-  const member = new Member("Kamil", "Kowalewski", 22, "Polish",
+  const member = new Member(
+    "Kamil", "Kowalewski", 22, "Poland", "Lodz",
     [new Car("Audi", "RS3", 2019, CarType.RACE_CAR,
       55000, EngineType.INLINE_FIVE, 400, DriveTrainType.AWD)],
-    [new Award("First place in SPA", 2018)]);
+    [new Award("First place in SPA", 2018)]
+  );
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <>
-      <HorizontalContainer panelBackgroundColor={globalStyles.greyBackground700}>
+      <HorizontalContainer panelBackgroundColor={globalStyles.materialBlueBackground}>
         <div className="row justify-content-center">
           <div className="my-2">
             <LetterAvatar
@@ -46,14 +49,16 @@ export const AccountPage = (props) => {
         </div>
       </HorizontalContainer>
 
-      <HorizontalContainer panelBackgroundColor={globalStyles.greyBackground700}>
-        <div className="row justify-content-center">
-          <div className="col-md-6 text-center">
-            <b>{strings.accountPage.fullName + ": " + member.firstName + " " + member.lastName}</b>
-          </div>
-        </div>
-
-      </HorizontalContainer>
+      <DisplayUserData
+        panelBackgroundColor={globalStyles.materialBlueBackground}
+        firstName={member.firstName}
+        lastName={member.lastName}
+        country={member.country}
+        city={member.city}
+        age={member.age}
+        joinDate={config.auth().currentUser.metadata.creationTime}
+        lastLogin={config.auth().currentUser.metadata.lastSignInTime}
+      />
     </>
   );
 };

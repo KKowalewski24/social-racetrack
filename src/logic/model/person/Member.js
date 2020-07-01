@@ -5,17 +5,19 @@ export class Member extends PersonAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
   _age;
-  _nationality;
+  _country;
+  _city;
   _vehicleArray;
   _receivedAwardsArray;
 
   /*------------------------ METHODS REGION ------------------------*/
   constructor(firstName = PR(), lastName = PR(),
-              age = PR(), nationality = PR(),
+              age = PR(), nationality = PR(), city = PR(),
               vehicleArray = PR(), receivedAwardsArray = PR()) {
     super(firstName, lastName);
     this._age = age;
-    this._nationality = nationality;
+    this._country = nationality;
+    this._city = city;
     this._vehicleArray = vehicleArray;
     this._receivedAwardsArray = receivedAwardsArray;
   }
@@ -28,12 +30,20 @@ export class Member extends PersonAbst {
     this._age = value;
   }
 
-  get nationality() {
-    return this._nationality;
+  get country() {
+    return this._country;
   }
 
-  set nationality(value) {
-    this._nationality = value;
+  set country(value) {
+    this._country = value;
+  }
+
+  get city() {
+    return this._city;
+  }
+
+  set city(value) {
+    this._city = value;
   }
 
   get vehicleArray() {
