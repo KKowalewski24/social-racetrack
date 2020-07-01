@@ -3,16 +3,16 @@ import {Link} from "react-router-dom";
 import {PATH_ACCOUNT_SETTINGS} from "../../../config/constant/path-constants";
 import HorizontalContainer from "../../../component/horizontal-container/HorizontalContainer";
 import LetterAvatar from "../../../component/avatar/LetterAvatar";
-import SettingsIcon from "@material-ui/icons/Settings";
-import GlobalStyles from "../../../main/GlobalStyles";
 import {Member} from "../../../logic/model/person/Member";
-import {Car} from "../../../logic/model/vehicle/Car";
+import {Car} from "../../../logic/model/car/Car";
 import {Award} from "../../../logic/model/award/Award";
-import {CarType} from "../../../logic/model/vehicle/CarType";
-import {EngineType} from "../../../logic/model/vehicle/EngineType";
-import {DriveTrainType} from "../../../logic/model/vehicle/DriveTrainType";
+import {CarType} from "../../../logic/model/car/CarType";
+import {EngineType} from "../../../logic/model/car/EngineType";
+import {DriveTrainType} from "../../../logic/model/car/DriveTrainType";
 import DisplayUserData from "../../../component/display-user-data/DisplayUserData";
 import config from "../../../config/config";
+import GlobalStyles from "../../../main/GlobalStyles";
+import SettingsIcon from "@material-ui/icons/Settings";
 import "../../../index.css";
 
 export const AccountPage = (props) => {
@@ -56,8 +56,10 @@ export const AccountPage = (props) => {
         country={member.country}
         city={member.city}
         age={member.age}
-        joinDate={config.auth().currentUser.metadata.creationTime}
-        lastLogin={config.auth().currentUser.metadata.lastSignInTime}
+        joinDate={config.auth().currentUser?.metadata.creationTime}
+        lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
+        carsArray={member.carsArray}
+        receivedAwardsArray={member.receivedAwardsArray}
       />
     </>
   );

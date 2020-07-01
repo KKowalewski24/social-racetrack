@@ -39,7 +39,19 @@ export const strings = {
     city: "City",
     age: "Age",
     lastLogin: "Last Login",
-    joinDate: "Join Date"
+    joinDate: "Join Date",
+    cars: "Cars",
+    brand: "Brand",
+    model: "Model",
+    productionYear: "Year",
+    carType: "Type",
+    mileage: "Mileage",
+    engineType: "Engine",
+    enginePower: "Power",
+    driveTrainType: "Drive",
+    awards: "Awards",
+    description: "Description",
+    year: "Year",
   },
   accountSettingsPage: {
     //

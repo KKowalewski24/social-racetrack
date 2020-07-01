@@ -7,7 +7,7 @@ export class Member extends PersonAbst {
   _age;
   _country;
   _city;
-  _vehicleArray;
+  _carsArray;
   _receivedAwardsArray;
 
   /*------------------------ METHODS REGION ------------------------*/
@@ -18,7 +18,7 @@ export class Member extends PersonAbst {
     this._age = age;
     this._country = nationality;
     this._city = city;
-    this._vehicleArray = vehicleArray;
+    this._carsArray = vehicleArray;
     this._receivedAwardsArray = receivedAwardsArray;
   }
 
@@ -46,12 +46,12 @@ export class Member extends PersonAbst {
     this._city = value;
   }
 
-  get vehicleArray() {
-    return this._vehicleArray;
+  get carsArray() {
+    return this._carsArray;
   }
 
-  set vehicleArray(value) {
-    this._vehicleArray = value;
+  set carsArray(value) {
+    this._carsArray = value;
   }
 
   get receivedAwardsArray() {
