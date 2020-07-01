@@ -8,7 +8,7 @@ export const HorizontalContainer = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <div className="container-fluid text-white mt-4">
-      <div className={"border border-primary rounded " + props.panelBackgroundColor}>
+      <div className={"border border-primary rounded py-2 " + props.panelBackgroundColor}>
         {props.children}
       </div>
     </div>

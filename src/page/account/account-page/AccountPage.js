@@ -33,7 +33,7 @@ export const AccountPage = (props) => {
     <>
       <HorizontalContainer panelBackgroundColor={globalStyles.materialBlueBackground}>
         <div className="row justify-content-center">
-          <div className="my-2">
+          <div>
             <LetterAvatar
               fullname={"Kamil Kowalewski"}
               fontSize={110}
