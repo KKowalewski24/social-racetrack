@@ -5,6 +5,7 @@ import LetterAvatar from "../../../component/avatar/LetterAvatar";
 import SettingsIcon from "@material-ui/icons/Settings";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
+import HorizontalContainer from "../../../component/horizontal-container/HorizontalContainer";
 
 export const AccountPage = (props) => {
 
@@ -13,25 +14,21 @@ export const AccountPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-xl text-white rounded-0 mt-5">
-      <div className={globalStyles.materialBlueBackground}>
-        <div className="row justify-content-center">
-          <div className="my-2">
-            <LetterAvatar
-              fullname={"Kamil Kowalewski"}
-              fontSize={130}
-            />
+    <HorizontalContainer panelBackgroundColor={globalStyles.lightGreyBackground}>
+      <div className="my-2">
+        <LetterAvatar
+          fullname={"Kamil Kowalewski"}
+          fontSize={110}
+        />
 
-            <Link to={PATH_ACCOUNT_SETTINGS}>
-              <SettingsIcon
-                fontSize="inherit"
-                className="custom-font-size-7 ml-5 custom-light_grey"
-              />
-            </Link>
-          </div>
-        </div>
+        <Link to={PATH_ACCOUNT_SETTINGS}>
+          <SettingsIcon
+            fontSize="inherit"
+            className="custom-font-size-5 ml-5 text-white"
+          />
+        </Link>
       </div>
-    </div>
+    </HorizontalContainer>
   );
 };
 

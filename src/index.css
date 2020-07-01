@@ -115,6 +115,10 @@
     margin-bottom: 5rem !important;
 }
 
+.custom-font-size-5 {
+    font-size: 5rem !important;
+}
+
 .custom-font-size-7 {
     font-size: 7rem !important;
 }
@@ -125,8 +129,4 @@
 
 .custom-color-inherit:hover {
     color: inherit;
-}
-
-.custom-light_grey {
-    color: #eeeeee;
 }

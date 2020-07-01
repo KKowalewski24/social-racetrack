@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import propTypes from "prop-types";
 import Avatar from "react-avatar";
 
 export const LetterAvatar = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const [color, setColor] = useState("");
+
   const colorsArray = [
     "#ffeb3b",
     "#ffc107",
@@ -27,10 +29,15 @@ export const LetterAvatar = (props) => {
     return colorsArray[getRandomNumber(0, colorsArray.length)];
   };
 
+  useEffect(() => {
+    setColor(getRandomColor());
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, []);
+
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <Avatar
-      color={getRandomColor()}
+      color={color}
       name={props.fullname}
       size={props.fontSize}
       round={true}
