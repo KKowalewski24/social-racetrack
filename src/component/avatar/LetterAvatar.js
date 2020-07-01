@@ -1,5 +1,5 @@
 import React from "react";
-import propTypes, {string} from "prop-types";
+import propTypes from "prop-types";
 import Avatar from "react-avatar";
 
 export const LetterAvatar = (props) => {
@@ -32,6 +32,7 @@ export const LetterAvatar = (props) => {
     <Avatar
       color={getRandomColor()}
       name={props.fullname}
+      size={props.fontSize}
       round={true}
     />
   );
@@ -40,8 +41,6 @@ export const LetterAvatar = (props) => {
 LetterAvatar.propTypes = {
   fullname: propTypes.string.isRequired,
   fontSize: propTypes.number.isRequired,
-  backgroundColor: propTypes.string.isRequired,
-
 };
 
 export default LetterAvatar;

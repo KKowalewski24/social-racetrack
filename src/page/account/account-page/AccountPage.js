@@ -1,8 +1,9 @@
 import React from "react";
-import GlobalStyles from "../../../main/GlobalStyles";
-import {IconButton} from "@material-ui/core";
-import BuildIcon from "@material-ui/icons/Build";
+import {Link} from "react-router-dom";
+import {PATH_ACCOUNT_SETTINGS} from "../../../config/constant/path-constants";
 import LetterAvatar from "../../../component/avatar/LetterAvatar";
+import SettingsIcon from "@material-ui/icons/Settings";
+import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
 export const AccountPage = (props) => {
@@ -12,19 +13,21 @@ export const AccountPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-xl text-white mt-5">
+    <div className="container custom-container-xl text-white rounded-0 mt-5">
       <div className={globalStyles.materialBlueBackground}>
         <div className="row justify-content-center">
-          <div className="my-3">
+          <div className="my-2">
             <LetterAvatar
               fullname={"Kamil Kowalewski"}
-              fontSize={40}
-              backgroundColor={"#ffc107"}
+              fontSize={130}
             />
 
-            <IconButton color="inherit">
-              <BuildIcon fontSize="large"/>
-            </IconButton>
+            <Link to={PATH_ACCOUNT_SETTINGS}>
+              <SettingsIcon
+                fontSize="inherit"
+                className="custom-font-size-7 ml-5 custom-light_grey"
+              />
+            </Link>
           </div>
         </div>
       </div>

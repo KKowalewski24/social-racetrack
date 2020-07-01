@@ -126,3 +126,7 @@
 .custom-color-inherit:hover {
     color: inherit;
 }
+
+.custom-light_grey {
+    color: #eeeeee;
+}
