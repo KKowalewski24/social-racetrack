@@ -34,7 +34,7 @@ export const strings = {
     },
   },
   accountPage: {
-    //
+    fullName: "Full Name"
   },
   accountSettingsPage: {
     //

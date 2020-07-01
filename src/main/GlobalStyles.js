@@ -8,8 +8,11 @@ export const GlobalStyles = makeStyles((it) => ({
   materialBlueFont: {
     color: it.palette.primary.main,
   },
-  lightGreyBackground: {
+  greyBackground700: {
     backgroundColor: materialColors.grey["700"]
+  },
+  greyFont100: {
+    color: materialColors.grey["100"]
   }
 }));
 

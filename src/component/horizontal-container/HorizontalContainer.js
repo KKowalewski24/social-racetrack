@@ -9,9 +9,7 @@ export const HorizontalContainer = (props) => {
   return (
     <div className="container-fluid text-white mt-4">
       <div className={props.panelBackgroundColor}>
-        <div className="row justify-content-center">
-          {props.children}
-        </div>
+        {props.children}
       </div>
     </div>
   );
