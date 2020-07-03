@@ -7,12 +7,12 @@ import AccountPage from "../page/account/account-page/AccountPage";
 import PrivateRoute from "../component/util/private-route/PrivateRoute";
 import {AuthContext} from "../logic/AuthContextProvider";
 import ResetPasswordPage from "../page/account/reset-password-page/ResetPasswordPage";
-import FutureEventsPage from "../page/main/future-events-page/FutureEventsPage";
-import PastEventsPage from "../page/main/past-events-page/PastEventsPage";
+import FutureEventsPage from "../page/main/event/future-events-page/FutureEventsPage";
+import PastEventsPage from "../page/main/event/past-events-page/PastEventsPage";
 import RacetracksPage from "../page/main/racetracks-page/RacetracksPage";
 import MembersPage from "../page/main/members-page/MembersPage";
 import ErrorPage from "../page/util/error-page/ErrorPage";
-import CreateEventPage from "../page/main/create-event-page/CreateEventPage";
+import CreateEventPage from "../page/main/event/create-event-page/CreateEventPage";
 import AccountSettingsPage from "../page/account/account-settings-page/AccountSettingsPage";
 import {
   PATH_ACCOUNT,
