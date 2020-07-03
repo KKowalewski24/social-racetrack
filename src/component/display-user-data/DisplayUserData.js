@@ -112,7 +112,7 @@ export const DisplayUserData = (props) => {
       <HorizontalContainer panelBackgroundColor={props.panelBackgroundColor}>
         {renderHeaderTitle(strings.accountPage.cars)}
 
-        <div className="row justify-content-center">
+        <div className="row justify-content-center px-3">
           <table
             className="table table-responsive table-striped w-auto custom-font-size-0-5 text-white"
           >
@@ -158,7 +158,7 @@ export const DisplayUserData = (props) => {
       <HorizontalContainer panelBackgroundColor={props.panelBackgroundColor}>
         {renderHeaderTitle(strings.accountPage.awards)}
 
-        <div className="row justify-content-center">
+        <div className="row justify-content-center px-3">
           <table
             className="table table-responsive table-striped w-auto custom-font-size-0-5 text-white"
           >
