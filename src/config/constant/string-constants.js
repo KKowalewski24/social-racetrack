@@ -39,6 +39,7 @@ export const strings = {
     country: "Country",
     city: "City",
     age: "Age",
+    email: "Email",
     lastLogin: "Last Login",
     joinDate: "Join Date",
     cars: "Cars",
