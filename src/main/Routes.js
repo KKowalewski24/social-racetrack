@@ -1,12 +1,12 @@
 import React, {useContext} from "react";
 import {Route, Switch} from "react-router-dom";
 import HomePage from "../page/main/home-page/HomePage";
-import LoginPage from "../page/account/login-page/LoginPage";
-import RegisterPage from "../page/account/register-page/RegisterPage";
+import LoginPage from "../page/account/auth/login-page/LoginPage";
+import RegisterPage from "../page/account/auth/register-page/RegisterPage";
 import AccountPage from "../page/account/account-page/AccountPage";
 import PrivateRoute from "../component/util/private-route/PrivateRoute";
 import {AuthContext} from "../logic/AuthContextProvider";
-import ResetPasswordPage from "../page/account/reset-password-page/ResetPasswordPage";
+import ResetPasswordPage from "../page/account/auth/reset-password-page/ResetPasswordPage";
 import FutureEventsPage from "../page/main/event/future-events-page/FutureEventsPage";
 import PastEventsPage from "../page/main/event/past-events-page/PastEventsPage";
 import RacetracksPage from "../page/main/racetracks-page/RacetracksPage";
