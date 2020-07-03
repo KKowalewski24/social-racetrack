@@ -6,6 +6,7 @@ import {strings} from "../../config/constant/string-constants";
 import clsx from "clsx";
 import {
   PATH_ACCOUNT,
+  PATH_ADMIN_PANEL,
   PATH_CREATE_EVENT,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
@@ -32,11 +33,12 @@ import NightsStayIcon from "@material-ui/icons/NightsStay";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import PeopleIcon from "@material-ui/icons/People";
 import EventIcon from "@material-ui/icons/Event";
 import HistoryIcon from "@material-ui/icons/History";
 import FlagIcon from "@material-ui/icons/Flag";
 import AddBoxIcon from "@material-ui/icons/AddBox";
+import PersonIcon from "@material-ui/icons/Person";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 
 import NavbarStyles from "./NavbarStyles";
 import "../../index.css";
@@ -173,8 +175,20 @@ export const Navbar = (props) => {
         <Divider/>
 
         <List>
-          {renderListItem(PeopleIcon, strings.app.members, PATH_MEMBERS)}
+          {renderListItem(PersonIcon, strings.app.members, PATH_MEMBERS)}
         </List>
+
+        {/*TODO CHANGE CONDITION FOR REAL isAdmin*/}
+        {
+          true ?
+          <>
+            <Divider/>
+            <List>
+              {renderListItem(SupervisorAccountIcon, strings.app.adminPanel, PATH_ADMIN_PANEL)}
+            </List>
+          </>
+          : null
+        }
       </Drawer>
     );
   };

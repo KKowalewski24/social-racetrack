@@ -8,6 +8,7 @@ export const strings = {
     pastEvents: "Past Events",
     racetracks: "Racetracks",
     members: "Members",
+    adminPanel: "Admin Panel",
   },
   type: {
     carType: {
@@ -54,6 +55,9 @@ export const strings = {
     year: "Year",
   },
   accountSettingsPage: {
+    //
+  },
+  adminPanelPage: {
     //
   },
   loginPage: {

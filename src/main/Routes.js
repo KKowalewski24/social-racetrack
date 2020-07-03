@@ -14,9 +14,11 @@ import MembersPage from "../page/main/members-page/MembersPage";
 import ErrorPage from "../page/util/error-page/ErrorPage";
 import CreateEventPage from "../page/main/event/create-event-page/CreateEventPage";
 import AccountSettingsPage from "../page/account/account-settings-page/AccountSettingsPage";
+import AdminPanelPage from "../page/account/admin-panel-page/AdminPanelPage";
 import {
   PATH_ACCOUNT,
   PATH_ACCOUNT_SETTINGS,
+  PATH_ADMIN_PANEL,
   PATH_CREATE_EVENT,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
@@ -55,6 +57,11 @@ export const Routes = (props) => {
       <PrivateRoute
         exact path={PATH_ACCOUNT_SETTINGS} component={AccountSettingsPage}
         redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
+      />
+      {/*TODO - SET CONDITION*/}
+      <PrivateRoute
+        exact path={PATH_ADMIN_PANEL} component={AdminPanelPage}
+        redirectPath={PATH_HOME} privacyCondition={true}
       />
 
       <Route exact path={PATH_HOME} component={HomePage}/>
