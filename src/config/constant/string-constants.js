@@ -54,6 +54,8 @@ export const strings = {
     awards: "Awards",
     description: "Description",
     year: "Year",
+    add: "Add",
+    remove: "Remove",
   },
   accountSettingsPage: {
     edit: "Edit",

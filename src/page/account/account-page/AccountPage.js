@@ -23,6 +23,9 @@ export const AccountPage = (props) => {
       55000, EngineType.INLINE_FIVE, 400, DriveTrainType.AWD)],
     [new Award("First place in SPA", 2018)]
   );
+  member.id = 1;
+  member.carsArray[0].id = 1;
+  member.receivedAwardsArray[0].id = 1;
 
   /*------------------------ RETURN REGION ------------------------*/
   return (

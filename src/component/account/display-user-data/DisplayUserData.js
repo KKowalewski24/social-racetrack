@@ -2,6 +2,7 @@ import React from "react";
 import propTypes from "prop-types";
 import strings from "../../../config/constant/string-constants";
 import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
+import Button from "@material-ui/core/Button";
 import {PR} from "../../../logic/Helper";
 import "../../../index.css";
 
@@ -70,6 +71,11 @@ export const DisplayUserData = (props) => {
 
   const renderUserCars = () => {
 
+    const handleRemoveCar = (id = PR()) => {
+      console.log("todo");
+      //  TODO ADD IMPL !!!
+    };
+
     const renderHead = () => {
       return (
         <thead>
@@ -82,6 +88,7 @@ export const DisplayUserData = (props) => {
             <th>{strings.accountPage.engineType}</th>
             <th>{strings.accountPage.enginePower}</th>
             <th>{strings.accountPage.driveTrainType}</th>
+            <th>{strings.accountPage.remove}</th>
           </tr>
         </thead>
       );
@@ -102,6 +109,16 @@ export const DisplayUserData = (props) => {
                   <td>{it.engineType}</td>
                   <td>{it.enginePower}</td>
                   <td>{it.driveTrainType}</td>
+                  <td>
+                    <Button
+                      onClick={() => handleRemoveCar(it.id)}
+                      color="secondary"
+                      variant="contained"
+                      size="small"
+                    >
+                      {strings.accountPage.remove}
+                    </Button>
+                  </td>
                 </tr>
               );
             })
@@ -116,7 +133,8 @@ export const DisplayUserData = (props) => {
 
         <div className="row justify-content-center px-3">
           <table
-            className="table table-responsive table-striped w-auto custom-font-size-0-5 text-white"
+            className="table table-responsive table-striped text-center
+                        w-auto custom-font-size-0-5 text-white"
           >
             {renderHead()}
             {renderBody()}
@@ -128,12 +146,18 @@ export const DisplayUserData = (props) => {
 
   const renderUserAwards = () => {
 
+    const handleRemoveAward = (id = PR()) => {
+      console.log("todo");
+      //  TODO ADD IMPL !!!
+    };
+
     const renderHead = () => {
       return (
         <thead>
           <tr>
             <th>{strings.accountPage.description}</th>
             <th>{strings.accountPage.year}</th>
+            <th>{strings.accountPage.remove}</th>
           </tr>
         </thead>
       );
@@ -148,6 +172,16 @@ export const DisplayUserData = (props) => {
                 <tr key={index}>
                   <td>{it.description}</td>
                   <td>{it.year}</td>
+                  <td>
+                    <Button
+                      onClick={() => handleRemoveAward(it.id)}
+                      color="secondary"
+                      variant="contained"
+                      size="small"
+                    >
+                      {strings.accountPage.remove}
+                    </Button>
+                  </td>
                 </tr>
               );
             })
@@ -162,7 +196,8 @@ export const DisplayUserData = (props) => {
 
         <div className="row justify-content-center px-3">
           <table
-            className="table table-responsive table-striped w-auto custom-font-size-0-5 text-white"
+            className="table table-responsive table-striped text-center
+                        w-auto custom-font-size-0-5 text-white"
           >
             {renderHead()}
             {renderBody()}
