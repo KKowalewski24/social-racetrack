@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import propTypes from "prop-types";
 import Avatar from "react-avatar";
+import {PR} from "../../../logic/Helper";
 
 export const LetterAvatar = (props) => {
 
@@ -18,7 +19,7 @@ export const LetterAvatar = (props) => {
     "#673ab7",
   ];
 
-  const getRandomNumber = (begin, end) => {
+  const getRandomNumber = (begin=PR(), end=PR()) => {
     const min = Math.ceil(begin);
     const max = Math.floor(end);
 
