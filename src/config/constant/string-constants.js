@@ -56,7 +56,10 @@ export const strings = {
     year: "Year",
   },
   accountSettingsPage: {
-    //
+    edit: "Edit",
+    userData: "User Data",
+    cars: "Cars",
+    awards: "Awards",
   },
   adminPanelPage: {
     //

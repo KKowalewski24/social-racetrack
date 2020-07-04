@@ -38,7 +38,7 @@ import HistoryIcon from "@material-ui/icons/History";
 import FlagIcon from "@material-ui/icons/Flag";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import PersonIcon from "@material-ui/icons/Person";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import BuildIcon from "@material-ui/icons/Build";
 
 import NavbarStyles from "./NavbarStyles";
 import "../../index.css";
@@ -77,8 +77,10 @@ export const Navbar = (props) => {
 
     const renderTitle = () => {
       return (
-        <Typography component="h1" variant="h6" color="inherit" noWrap
-                    className={navbarStyles.title}>
+        <Typography
+          component="h1" variant="h6" color="inherit" noWrap
+          className={navbarStyles.title}
+        >
           <Link to={PATH_HOME} className="custom-color-inherit">
             {strings.app.title}
           </Link>
@@ -97,8 +99,10 @@ export const Navbar = (props) => {
     const renderAccountButton = () => {
       return (
         <>
-          <Link to={props.isUserLoggedIn ? PATH_ACCOUNT : PATH_LOGIN}
-                className="custom-color-inherit">
+          <Link
+            to={props.isUserLoggedIn ? PATH_ACCOUNT : PATH_LOGIN}
+            className="custom-color-inherit"
+          >
             <IconButton color="inherit">
               <AccountCircle/>
             </IconButton>
@@ -181,13 +185,13 @@ export const Navbar = (props) => {
         {/*TODO CHANGE CONDITION FOR REAL isAdmin*/}
         {
           true ?
-          <>
-            <Divider/>
-            <List>
-              {renderListItem(SupervisorAccountIcon, strings.app.adminPanel, PATH_ADMIN_PANEL)}
-            </List>
-          </>
-          : null
+            <>
+              <Divider/>
+              <List>
+                {renderListItem(BuildIcon, strings.app.adminPanel, PATH_ADMIN_PANEL)}
+              </List>
+            </>
+            : null
         }
       </Drawer>
     );
