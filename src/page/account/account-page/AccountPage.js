@@ -9,12 +9,24 @@ import DisplayUserData from "../../../component/account/display-user-data/Displa
 import DisplayUserAvatar from "../../../component/account/display-user-avatar/DisplayUserAvatar";
 import config from "../../../config/config";
 import GlobalStyles from "../../../main/GlobalStyles";
+import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
+import strings from "../../../config/constant/string-constants";
+import Button from "@material-ui/core/Button";
+import {AccountController} from "../../../logic/controller/AccountController";
+import {errorNotification} from "../../../component/util/notification/notification";
 import "../../../index.css";
 
 export const AccountPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const accountController = new AccountController();
   const globalStyles = GlobalStyles();
+
+  const handleDeleteUser = () => {
+    accountController.deleteAccount(() => {
+      return errorNotification(strings.accountPage.deleteAccountError);
+    });
+  };
 
   //TODO REMOVE THIS
   const member = new Member(
@@ -44,12 +56,28 @@ export const AccountPage = (props) => {
         country={member.country}
         city={member.city}
         birthDate={member.birthDate}
-        email={config.auth().currentUser.email}
+        email={config.auth().currentUser?.email}
         joinDate={config.auth().currentUser?.metadata.creationTime}
         lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
         carsArray={member.carsArray}
         receivedAwardsArray={member.receivedAwardsArray}
       />
+
+      <HorizontalContainer
+        panelBackgroundColor={globalStyles.materialBlueBackground}
+        margin={"mt-3 mb-3"}
+      >
+        <div className="row justify-content-center">
+          <Button
+            onClick={handleDeleteUser}
+            color="secondary"
+            variant="contained"
+            size="large"
+          >
+            {strings.accountPage.deleteAccount}
+          </Button>
+        </div>
+      </HorizontalContainer>
     </>
   );
 };

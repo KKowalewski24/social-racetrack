@@ -47,7 +47,11 @@ export const DisplayUserData = (props) => {
       return (
         <div className="col-md-6 text-center">
           {renderBoldText(strings.accountPage.birthDate + ": " + formatDate(props.birthDate))}
-          {renderBoldText(strings.accountPage.email + ": " + props.email)}
+          {
+            props.email ?
+              renderBoldText(strings.accountPage.email + ": " + props.email)
+              : null
+          }
           {
             props.lastLogin ?
               renderBoldText(strings.accountPage.lastLogin + ": " + props.lastLogin)
@@ -224,7 +228,7 @@ DisplayUserData.propTypes = {
   country: propTypes.string.isRequired,
   city: propTypes.string.isRequired,
   birthDate: propTypes.instanceOf(Date).isRequired,
-  email: propTypes.string.isRequired,
+  email: propTypes.string,
   lastLogin: propTypes.string,
   joinDate: propTypes.string,
   carsArray: propTypes.array.isRequired,

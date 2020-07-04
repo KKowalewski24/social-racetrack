@@ -59,6 +59,8 @@ export const strings = {
     car: "Car",
     award: "Award",
     or: "or",
+    deleteAccount: "Delete Account",
+    deleteAccountError: "User account has not been deleted!",
   },
   accountSettingsPage: {
     add: "Add",
