@@ -65,8 +65,11 @@ export const Routes = (props) => {
       />
 
       <Route exact path={PATH_HOME} component={HomePage}/>
-      <Route exact path={PATH_FUTURE_EVENTS} component={FutureEventsPage}/>
       <Route exact path={PATH_RACETRACKS} component={RacetracksPage}/>
+      <PrivateRoute
+        exact path={PATH_FUTURE_EVENTS} component={FutureEventsPage}
+        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
+      />
       <PrivateRoute
         exact path={PATH_CREATE_EVENT} component={CreateEventPage}
         redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
