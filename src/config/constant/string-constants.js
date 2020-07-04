@@ -56,12 +56,14 @@ export const strings = {
     year: "Year",
     add: "Add",
     remove: "Remove",
+    car: "Car",
+    award: "Award",
+    or: "or",
   },
   accountSettingsPage: {
-    edit: "Edit",
-    userData: "User Data",
-    cars: "Cars",
-    awards: "Awards",
+    add: "Add",
+    car: "Car",
+    award: "Award",
   },
   adminPanelPage: {
     //

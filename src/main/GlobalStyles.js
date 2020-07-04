@@ -13,6 +13,12 @@ export const GlobalStyles = makeStyles((it) => ({
   },
   greyFont100: {
     color: materialColors.grey["100"]
+  },
+  greenBackground500: {
+    backgroundColor: materialColors.green["500"]
+  },
+  greenFont500: {
+    color: materialColors.green["500"]
   }
 }));
 

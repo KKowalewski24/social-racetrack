@@ -4,7 +4,9 @@ import {Link} from "react-router-dom";
 import LetterAvatar from "../avatar/LetterAvatar";
 import {PATH_ACCOUNT_SETTINGS} from "../../../config/constant/path-constants";
 import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
-import SettingsIcon from "@material-ui/icons/Settings";
+import strings from "../../../config/constant/string-constants";
+import Tooltip from "@material-ui/core/Tooltip";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 
 export const DisplayUserAvatar = (props) => {
 
@@ -21,10 +23,15 @@ export const DisplayUserAvatar = (props) => {
           />
 
           <Link to={PATH_ACCOUNT_SETTINGS}>
-            <SettingsIcon
-              fontSize="inherit"
-              className={"custom-font-size-5 ml-5 " + props.settingsColor}
-            />
+            <Tooltip
+              title={strings.accountPage.add + " " + strings.accountPage.car
+              + " " + strings.accountPage.or + " " + strings.accountPage.award}
+            >
+              <AddBoxIcon
+                fontSize="inherit"
+                className={"custom-font-size-5 ml-5 " + props.AddIconColor}
+              />
+            </Tooltip>
           </Link>
         </div>
       </div>
@@ -36,7 +43,7 @@ DisplayUserAvatar.propTypes = {
   firstName: propTypes.string.isRequired,
   lastName: propTypes.string.isRequired,
   backgroundStyle: propTypes.string.isRequired,
-  settingsColor: propTypes.string.isRequired,
+  AddIconColor: propTypes.string.isRequired,
 };
 
 export default DisplayUserAvatar;
