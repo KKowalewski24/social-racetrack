@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 
-export const EditAwards = (props) => {
+export const AddAward = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
 
@@ -13,6 +13,6 @@ awa
   );
 };
 
-EditAwards.propTypes = {};
+AddAward.propTypes = {};
 
-export default EditAwards;
+export default AddAward;

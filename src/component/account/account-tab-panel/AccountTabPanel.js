@@ -27,19 +27,14 @@ export const AccountTabPanel = (props) => {
     <Paper variant="outlined">
       <div className="d-flex justify-content-center">
         {
-          renderButton(strings.accountSettingsPage.edit
-            + " " + strings.accountSettingsPage.userData,
+          renderButton(strings.accountSettingsPage.add
+            + " " + strings.accountSettingsPage.car,
             props.tabsIdArray[0], props.tabIdNumber)
         }
         {
-          renderButton(strings.accountSettingsPage.edit
-            + " " + strings.accountSettingsPage.cars,
+          renderButton(strings.accountSettingsPage.add
+            + " " + strings.accountSettingsPage.award,
             props.tabsIdArray[1], props.tabIdNumber)
-        }
-        {
-          renderButton(strings.accountSettingsPage.edit
-            + " " + strings.accountSettingsPage.awards,
-            props.tabsIdArray[2], props.tabIdNumber)
         }
       </div>
     </Paper>

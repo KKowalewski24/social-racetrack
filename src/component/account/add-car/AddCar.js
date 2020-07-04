@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 
-export const EditUserData = (props) => {
+export const AddCar = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
 
@@ -13,6 +13,6 @@ export const EditUserData = (props) => {
   );
 };
 
-EditUserData.propTypes = {};
+AddCar.propTypes = {};
 
-export default EditUserData;
+export default AddCar;

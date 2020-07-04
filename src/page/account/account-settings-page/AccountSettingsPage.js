@@ -1,14 +1,13 @@
 import React from "react";
+import AddCar from "../../../component/account/add-car/AddCar";
+import AddAward from "../../../component/account/add-award/AddAward";
 import AccountTabPanel from "../../../component/account/account-tab-panel/AccountTabPanel";
-import EditUserData from "../../../component/account/edit-user-data/EditUserData";
-import EditCars from "../../../component/account/edit-cars/EditCars";
-import EditAwards from "../../../component/account/edit-awards/EditAwards";
 import {PR} from "../../../logic/Helper";
 
 export const AccountSettingsPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const tabsIdArray = ["tabUserData", "tabCars", "tabAwards"];
+  const tabsIdArray = ["tabCars", "tabAwards"];
   const [tabIdNumber, setTabIdNumber] = React.useState(tabsIdArray[0]);
 
   const handleTabChange = (value = PR()) => {
@@ -20,17 +19,12 @@ export const AccountSettingsPage = (props) => {
     switch (tabIdNumber) {
       case tabsIdArray[0]: {
         return (
-          <EditUserData/>
+          <AddCar/>
         );
       }
       case tabsIdArray[1]: {
         return (
-          <EditCars/>
-        );
-      }
-      case tabsIdArray[2]: {
-        return (
-          <EditAwards/>
+          <AddAward/>
         );
       }
     }
