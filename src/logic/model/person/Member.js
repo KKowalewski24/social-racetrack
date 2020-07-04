@@ -12,11 +12,11 @@ export class Member extends PersonAbst {
 
   /*------------------------ METHODS REGION ------------------------*/
   constructor(firstName = PR(), lastName = PR(),
-              age = PR(), nationality = PR(), city = PR(),
+              birthDate = PR(), country = PR(), city = PR(),
               vehicleArray = PR(), receivedAwardsArray = PR()) {
     super(firstName, lastName);
-    this._birthDate = age;
-    this._country = nationality;
+    this._birthDate = birthDate;
+    this._country = country;
     this._city = city;
     this._carsArray = vehicleArray;
     this._receivedAwardsArray = receivedAwardsArray;

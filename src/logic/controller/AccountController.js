@@ -10,13 +10,15 @@ export class AccountController {
   /*------------------------ METHODS REGION ------------------------*/
   registerUser = (firstName = PR(), lastName = PR(),
                   email = PR(), password = PR(),
+                  country = PR(), city = PR(),
+                  //TODO ADD BIRTHDATE
                   verificationEmailErrorFunction = PR(),
                   createUserErrorFunction = PR()) => {
     config.auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         //TODO CHECK IF ADDING USERS TO DB WORKS WELL
-        this._userDatabaseController.createUser(firstName, lastName, email, password);
+        this._userDatabaseController.createMember(firstName, lastName, email, country, city);
         config.auth()
           .currentUser
           .sendEmailVerification()

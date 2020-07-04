@@ -3,19 +3,19 @@ export class MembersDatabaseController {
   /*------------------------ FIELDS REGION ------------------------*/
 
   /*------------------------ METHODS REGION ------------------------*/
-  createUser = () => {
+  createMember = () => {
 //TODO
   };
 
-  readUser = () => {
+  readMember = () => {
 //TODO
   };
 
-  updateUser = () => {
+  updateMember = () => {
 //TODO
   };
 
-  deleteUser = () => {
+  deleteMember = () => {
 //TODO
   };
 }

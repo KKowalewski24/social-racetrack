@@ -85,6 +85,9 @@ export const strings = {
     lastName: "Last Name",
     emailAddress: "Email Address",
     password: "Password",
+    country: "Country",
+    city: "City",
+    birthDate: "Birth Date",
     alreadyHaveAccount: "Already have an account? Sign in",
   },
   resetPasswordPage: {

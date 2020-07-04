@@ -1,10 +1,14 @@
 import React from "react";
+import "date-fns";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_LOGIN} from "../../../../config/constant/path-constants";
 import {AccountController} from "../../../../logic/controller/AccountController";
 import {PR} from "../../../../logic/Helper";
-import {errorNotification, warningNotification} from "../../../../component/util/notification/notification";
+import {
+  errorNotification,
+  warningNotification
+} from "../../../../component/util/notification/notification";
 import strings from "../../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
 import Avatar from "@material-ui/core/Avatar";
@@ -23,7 +27,7 @@ export const RegisterPage = (props) => {
 
   const onSubmit = (data = PR()) => {
     accountController.registerUser(
-      data.firstName, data.lastName, data.email, data.password,
+      data.firstName, data.lastName, data.email, data.password, data.country, data.city,
       () => warningNotification(strings.registerPage.verificationEmailNotSent),
       () => errorNotification(strings.registerPage.userAccountNotCreated)
     );
@@ -95,6 +99,28 @@ export const RegisterPage = (props) => {
           margin="normal"
           fullWidth
         />
+
+        <TextField
+          type="text"
+          inputRef={register({required: true})}
+          name="country"
+          label={strings.registerPage.country}
+          variant="outlined"
+          margin="normal"
+          fullWidth
+        />
+
+        <TextField
+          type="text"
+          inputRef={register({required: true})}
+          name="city"
+          label={strings.registerPage.city}
+          variant="outlined"
+          margin="normal"
+          fullWidth
+        />
+
+        {/*TODO ADD DATEPICKER*/}
 
         <Button type="submit" className="mt-4" variant="contained" color="primary" fullWidth>
           {strings.registerPage.signUp}
