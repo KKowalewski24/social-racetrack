@@ -34,7 +34,7 @@ export const AccountPage = (props) => {
         firstName={member.firstName}
         lastName={member.lastName}
         backgroundStyle={globalStyles.materialBlueBackground}
-        AddIconColor={globalStyles.greyFont100}
+        addIconColor={globalStyles.greyFont100}
       />
 
       <DisplayUserData

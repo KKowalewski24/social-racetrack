@@ -29,7 +29,7 @@ export const DisplayUserAvatar = (props) => {
             >
               <AddBoxIcon
                 fontSize="inherit"
-                className={"custom-font-size-5 ml-5 " + props.AddIconColor}
+                className={"custom-font-size-5 ml-5 " + props.addIconColor}
               />
             </Tooltip>
           </Link>
@@ -43,7 +43,7 @@ DisplayUserAvatar.propTypes = {
   firstName: propTypes.string.isRequired,
   lastName: propTypes.string.isRequired,
   backgroundStyle: propTypes.string.isRequired,
-  AddIconColor: propTypes.string.isRequired,
+  addIconColor: propTypes.string.isRequired,
 };
 
 export default DisplayUserAvatar;
