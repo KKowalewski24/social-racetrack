@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import {PR} from "../../../../logic/Helper";
 import {AccountController} from "../../../../logic/controller/AccountController";
 import {PATH_LOGIN} from "../../../../config/constant/path-constants";
-import {warningNotification} from "../../../../component/notification/notification";
+import {warningNotification} from "../../../../component/util/notification/notification";
 import {ToastContainer} from "react-toastify";
 import strings from "../../../../config/constant/string-constants";
 import GlobalStyles from "../../../../main/GlobalStyles";

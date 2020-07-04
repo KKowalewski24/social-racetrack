@@ -2,8 +2,8 @@ import React from "react";
 import propTypes from "prop-types";
 import {Link} from "react-router-dom";
 import LetterAvatar from "../avatar/LetterAvatar";
-import {PATH_ACCOUNT_SETTINGS} from "../../config/constant/path-constants";
-import HorizontalContainer from "../horizontal-container/HorizontalContainer";
+import {PATH_ACCOUNT_SETTINGS} from "../../../config/constant/path-constants";
+import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
 import SettingsIcon from "@material-ui/icons/Settings";
 
 export const DisplayUserAvatar = (props) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import AccountTabPanel from "../../../component/account-tab-panel/AccountTabPanel";
+import AccountTabPanel from "../../../component/account/account-tab-panel/AccountTabPanel";
 
 export const AccountSettingsPage = (props) => {
 

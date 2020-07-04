@@ -1,6 +1,6 @@
 import {toast} from "react-toastify";
-import {PR} from "../../logic/Helper";
-import {customNotificationConfig} from "../../config/notification-config";
+import {PR} from "../../../logic/Helper";
+import {customNotificationConfig} from "../../../config/notification-config";
 
 export const successNotification = (message = PR()) => {
   return toast.success(message, customNotificationConfig);

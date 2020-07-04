@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {PATH_LOGIN} from "../../../../config/constant/path-constants";
 import {AccountController} from "../../../../logic/controller/AccountController";
 import {PR} from "../../../../logic/Helper";
-import {errorNotification, warningNotification} from "../../../../component/notification/notification";
+import {errorNotification, warningNotification} from "../../../../component/util/notification/notification";
 import strings from "../../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
 import Avatar from "@material-ui/core/Avatar";

@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 import Button from "@material-ui/core/Button";
-import strings from "../../config/constant/string-constants";
+import strings from "../../../config/constant/string-constants";
 import Paper from "@material-ui/core/Paper";
 
 export const AccountTabPanel = (props) => {

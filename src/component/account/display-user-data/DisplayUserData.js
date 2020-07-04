@@ -1,8 +1,8 @@
 import React from "react";
 import propTypes from "prop-types";
-import strings from "../../config/constant/string-constants";
-import HorizontalContainer from "../horizontal-container/HorizontalContainer";
-import "../../index.css";
+import strings from "../../../config/constant/string-constants";
+import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
+import "../../../index.css";
 
 export const DisplayUserData = (props) => {
 
