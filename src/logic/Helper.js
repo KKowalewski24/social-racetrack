@@ -14,3 +14,7 @@ export const keyValueObjectToArray = (object = PR()) => {
 export const PR = () => {
   throw new Error("Param Is Required!");
 };
+
+export const formatDate = (date) => {
+  return date.toDateString();
+};

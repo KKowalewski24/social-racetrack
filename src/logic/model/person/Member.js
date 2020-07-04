@@ -4,7 +4,7 @@ import {PR} from "../../Helper";
 export class Member extends PersonAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  _age;
+  _birthDate;
   _country;
   _city;
   _carsArray;
@@ -15,19 +15,19 @@ export class Member extends PersonAbst {
               age = PR(), nationality = PR(), city = PR(),
               vehicleArray = PR(), receivedAwardsArray = PR()) {
     super(firstName, lastName);
-    this._age = age;
+    this._birthDate = age;
     this._country = nationality;
     this._city = city;
     this._carsArray = vehicleArray;
     this._receivedAwardsArray = receivedAwardsArray;
   }
 
-  get age() {
-    return this._age;
+  get birthDate() {
+    return this._birthDate;
   }
 
-  set age(value) {
-    this._age = value;
+  set birthDate(value) {
+    this._birthDate = value;
   }
 
   get country() {

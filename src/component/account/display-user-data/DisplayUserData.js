@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import strings from "../../../config/constant/string-constants";
 import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
 import Button from "@material-ui/core/Button";
-import {PR} from "../../../logic/Helper";
+import {formatDate, PR} from "../../../logic/Helper";
 import "../../../index.css";
 
 export const DisplayUserData = (props) => {
@@ -46,7 +46,7 @@ export const DisplayUserData = (props) => {
     const renderRightSide = () => {
       return (
         <div className="col-md-6 text-center">
-          {renderBoldText(strings.accountPage.age + ": " + props.age)}
+          {renderBoldText(strings.accountPage.birthDate + ": " + formatDate(props.birthDate))}
           {renderBoldText(strings.accountPage.email + ": " + props.email)}
           {
             props.lastLogin ?
@@ -223,7 +223,7 @@ DisplayUserData.propTypes = {
   lastName: propTypes.string.isRequired,
   country: propTypes.string.isRequired,
   city: propTypes.string.isRequired,
-  age: propTypes.number.isRequired,
+  birthDate: propTypes.instanceOf(Date).isRequired,
   email: propTypes.string.isRequired,
   lastLogin: propTypes.string,
   joinDate: propTypes.string,
