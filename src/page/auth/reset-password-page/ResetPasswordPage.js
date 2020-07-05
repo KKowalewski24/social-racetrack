@@ -46,7 +46,7 @@ export const ResetPasswordPage = (props) => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
         <TextField
           type="email"
           inputRef={register({required: true})}
