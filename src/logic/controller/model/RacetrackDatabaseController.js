@@ -1,6 +1,9 @@
+import {DatabaseController} from "../DatabaseController";
+
 export class RacetrackDatabaseController {
 
   /*------------------------ FIELDS REGION ------------------------*/
+  databaseController = new DatabaseController();
 
   /*------------------------ METHODS REGION ------------------------*/
   createRacetrack = () => {
