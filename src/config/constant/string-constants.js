@@ -74,8 +74,8 @@ export const strings = {
     engineType: "Engine Type",
     enginePower: "Engine Power",
     driveTrainType: "Drive Train Type",
-    awards: "Awards",
     description: "Description",
+    year: "Year",
     confirm: "Confirm",
   },
   adminPanelPage: {

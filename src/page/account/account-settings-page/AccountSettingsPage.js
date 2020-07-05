@@ -5,6 +5,7 @@ import AccountTabPanel from "../../../component/account/account-tab-panel/Accoun
 import {PR} from "../../../logic/Helper";
 import {Car} from "../../../logic/model/car/Car";
 import GlobalStyles from "../../../main/GlobalStyles";
+import {Award} from "../../../logic/model/award/Award";
 
 export const AccountSettingsPage = (props) => {
 
@@ -20,10 +21,13 @@ export const AccountSettingsPage = (props) => {
   const handleAddCar = (data = PR()) => {
     console.log(data)
     // const car = new Car();
+    //  TODO ADD IMPL
   };
 
-  const handleAddAward = () => {
-
+  const handleAddAward = (data = PR()) => {
+    console.log(data)
+    // const award = new Award();
+    //  TODO ADD IMPL
   };
 
   const renderChosenTab = () => {
@@ -41,7 +45,9 @@ export const AccountSettingsPage = (props) => {
       case tabsIdArray[1]: {
         return (
           <AddAward
-
+            handleAddAward={handleAddAward}
+            margin="mt-3"
+            backgroundColor={globalStyles.materialBlueBackground}
           />
         );
       }
