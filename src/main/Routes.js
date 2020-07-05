@@ -1,20 +1,20 @@
 import React, {useContext} from "react";
 import {Route, Switch} from "react-router-dom";
 import HomePage from "../page/main/home-page/HomePage";
-import LoginPage from "../page/account/auth/login-page/LoginPage";
-import RegisterPage from "../page/account/auth/register-page/RegisterPage";
+import LoginPage from "../page/auth/login-page/LoginPage";
+import RegisterPage from "../page/auth/register-page/RegisterPage";
 import AccountPage from "../page/account/account-page/AccountPage";
 import PrivateRoute from "../component/util/private-route/PrivateRoute";
 import {AuthContext} from "../logic/AuthContextProvider";
-import ResetPasswordPage from "../page/account/auth/reset-password-page/ResetPasswordPage";
-import FutureEventsPage from "../page/main/event/future-events-page/FutureEventsPage";
-import PastEventsPage from "../page/main/event/past-events-page/PastEventsPage";
+import ResetPasswordPage from "../page/auth/reset-password-page/ResetPasswordPage";
+import FutureEventsPage from "../page/event/future-events-page/FutureEventsPage";
+import PastEventsPage from "../page/event/past-events-page/PastEventsPage";
 import RacetracksPage from "../page/main/racetracks-page/RacetracksPage";
 import MembersPage from "../page/main/members-page/MembersPage";
 import ErrorPage from "../page/util/error-page/ErrorPage";
-import CreateEventPage from "../page/main/event/create-event-page/CreateEventPage";
+import CreateEventPage from "../page/event/create-event-page/CreateEventPage";
 import AccountSettingsPage from "../page/account/account-settings-page/AccountSettingsPage";
-import AdminPanelPage from "../page/account/admin-panel-page/AdminPanelPage";
+import AdminPanelPage from "../page/admin/admin-panel-page/AdminPanelPage";
 import {
   PATH_ACCOUNT,
   PATH_ACCOUNT_SETTINGS,
