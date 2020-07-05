@@ -75,11 +75,6 @@ export const DisplayUserData = (props) => {
 
   const renderUserCars = () => {
 
-    const handleRemoveCar = (id = PR()) => {
-      console.log("todo");
-      //  TODO ADD IMPL !!!
-    };
-
     const renderHead = () => {
       return (
         <thead>
@@ -115,7 +110,7 @@ export const DisplayUserData = (props) => {
                   <td>{it.driveTrainType}</td>
                   <td>
                     <Button
-                      onClick={() => handleRemoveCar(it.id)}
+                      onClick={() => props.handleRemoveCar(it.id)}
                       color="secondary"
                       variant="contained"
                       size="small"
@@ -150,11 +145,6 @@ export const DisplayUserData = (props) => {
 
   const renderUserAwards = () => {
 
-    const handleRemoveAward = (id = PR()) => {
-      console.log("todo");
-      //  TODO ADD IMPL !!!
-    };
-
     const renderHead = () => {
       return (
         <thead>
@@ -178,7 +168,7 @@ export const DisplayUserData = (props) => {
                   <td>{it.year}</td>
                   <td>
                     <Button
-                      onClick={() => handleRemoveAward(it.id)}
+                      onClick={() => props.handleRemoveAward(it.id)}
                       color="secondary"
                       variant="contained"
                       size="small"
@@ -233,6 +223,8 @@ DisplayUserData.propTypes = {
   joinDate: propTypes.string,
   carsArray: propTypes.array.isRequired,
   receivedAwardsArray: propTypes.array.isRequired,
+  handleRemoveCar: propTypes.func.isRequired,
+  handleRemoveAward: propTypes.func.isRequired,
 };
 
 export default DisplayUserData;

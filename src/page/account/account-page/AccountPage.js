@@ -14,6 +14,7 @@ import strings from "../../../config/constant/string-constants";
 import Button from "@material-ui/core/Button";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {errorNotification} from "../../../component/util/notification/notification";
+import {PR} from "../../../logic/Helper";
 import "../../../index.css";
 
 export const AccountPage = (props) => {
@@ -26,6 +27,16 @@ export const AccountPage = (props) => {
     accountController.deleteAccount(() => {
       return errorNotification(strings.accountPage.deleteAccountError);
     });
+  };
+
+  const handleRemoveCar = (id = PR()) => {
+    console.log("todo");
+    //  TODO ADD IMPL !!!
+  };
+
+  const handleRemoveAward = (id = PR()) => {
+    console.log("todo");
+    //  TODO ADD IMPL !!!
   };
 
   //TODO REMOVE THIS
@@ -61,6 +72,8 @@ export const AccountPage = (props) => {
         lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
         carsArray={member.carsArray}
         receivedAwardsArray={member.receivedAwardsArray}
+        handleRemoveCar={handleRemoveCar}
+        handleRemoveAward={handleRemoveAward}
       />
 
       <HorizontalContainer
