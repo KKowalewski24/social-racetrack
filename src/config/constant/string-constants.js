@@ -117,16 +117,25 @@ export const strings = {
   futureEventsPage: {
     //
   },
+  pastEventsPage: {
+    //
+  },
+  eventDetailsPage: {
+    //
+  },
   homePage: {
     //
   },
   membersPage: {
     //
   },
-  pastEventsPage: {
+  memberDetailsPage: {
     //
   },
   racetracksPage: {
+    //
+  },
+  racetrackDetailsPage: {
     //
   },
   errorPage: {
