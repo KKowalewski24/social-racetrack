@@ -41,10 +41,15 @@ export const AccountPage = (props) => {
 
   //TODO REMOVE THIS
   const member = new Member(
-    "Kamil", "Kowalewski", new Date("2020-07-04"), "Poland", "Lodz",
-    [new Car("Audi", "RS3", 2019, CarType.RACE_CAR,
-      55000, EngineType.INLINE_FIVE, 400, DriveTrainType.AWD)],
-    [new Award("First place in SPA", 2018)]
+    "Kamil", "Kowalewski", new Date("2020-07-04"),
+    "Poland", "Lodz", "sample@gmail.com",
+    [
+      new Car("Audi", "RS3", 2019, CarType.RACE_CAR,
+        55000, EngineType.INLINE_FIVE, 400, DriveTrainType.AWD)
+    ],
+    [
+      new Award("First place in SPA", 2018)
+    ]
   );
   member.id = 1;
   member.carsArray[0].id = 1;
@@ -67,7 +72,7 @@ export const AccountPage = (props) => {
         country={member.country}
         city={member.city}
         birthDate={member.birthDate}
-        email={config.auth().currentUser?.email}
+        email={member.email}
         joinDate={config.auth().currentUser?.metadata.creationTime}
         lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
         carsArray={member.carsArray}

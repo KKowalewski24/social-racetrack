@@ -4,46 +4,16 @@ import {PR} from "../../Helper";
 export class Member extends PersonAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  _birthDate;
-  _country;
-  _city;
   _carsArray;
   _receivedAwardsArray;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(firstName = PR(), lastName = PR(),
-              birthDate = PR(), country = PR(), city = PR(),
-              vehicleArray = PR(), receivedAwardsArray = PR()) {
-    super(firstName, lastName);
-    this._birthDate = birthDate;
-    this._country = country;
-    this._city = city;
-    this._carsArray = vehicleArray;
+  constructor(firstName = PR(), lastName = PR(), birthDate = PR(),
+              country = PR(), city = PR(), email = PR(),
+              carsArray = PR(), receivedAwardsArray = PR()) {
+    super(firstName, lastName, birthDate, country, city, email);
+    this._carsArray = carsArray;
     this._receivedAwardsArray = receivedAwardsArray;
-  }
-
-  get birthDate() {
-    return this._birthDate;
-  }
-
-  set birthDate(value) {
-    this._birthDate = value;
-  }
-
-  get country() {
-    return this._country;
-  }
-
-  set country(value) {
-    this._country = value;
-  }
-
-  get city() {
-    return this._city;
-  }
-
-  set city(value) {
-    this._city = value;
   }
 
   get carsArray() {

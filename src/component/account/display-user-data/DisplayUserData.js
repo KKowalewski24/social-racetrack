@@ -47,11 +47,7 @@ export const DisplayUserData = (props) => {
       return (
         <div className="col-md-6 text-center">
           {renderBoldText(strings.accountPage.birthDate + ": " + formatDate(props.birthDate))}
-          {
-            props.email ?
-              renderBoldText(strings.accountPage.email + ": " + props.email)
-              : null
-          }
+          {renderBoldText(strings.accountPage.email + ": " + props.email)}
           {
             props.lastLogin ?
               renderBoldText(strings.accountPage.lastLogin + ": " + props.lastLogin)
