@@ -68,7 +68,9 @@ export const strings = {
     award: "Award",
   },
   adminPanelPage: {
-    //
+    grantAdminStatus: "Grant Admin Status",
+    emailAddress: "Email Address",
+    confirm: "Confirm",
   },
   loginPage: {
     emailNotVerified: "Email has not been verified yet!",
