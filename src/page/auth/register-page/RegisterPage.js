@@ -135,7 +135,13 @@ export const RegisterPage = (props) => {
           fullWidth
         />
 
-        <Button type="submit" className="mt-4" variant="contained" color="primary" fullWidth>
+        <Button
+          type="submit"
+          className="mt-4"
+          variant="contained"
+          color="primary"
+          fullWidth
+        >
           {strings.registerPage.signUp}
         </Button>
 

@@ -69,7 +69,13 @@ export const LoginPage = (props) => {
           fullWidth
         />
 
-        <Button type="submit" className="mt-4" variant="contained" color="primary" fullWidth>
+        <Button
+          type="submit"
+          className="mt-4"
+          variant="contained"
+          color="primary"
+          fullWidth
+        >
           {strings.loginPage.signIn}
         </Button>
 

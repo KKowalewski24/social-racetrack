@@ -2,7 +2,6 @@ import React from "react";
 import propTypes from "prop-types";
 import {Link} from "react-router-dom";
 import LetterAvatar from "../avatar/LetterAvatar";
-import {PATH_ACCOUNT_SETTINGS} from "../../../config/constant/path-constants";
 import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -22,7 +21,7 @@ export const DisplayUserAvatar = (props) => {
             fontSize={110}
           />
 
-          <Link to={PATH_ACCOUNT_SETTINGS}>
+          <Link to={props.avatarRedirectPath}>
             <Tooltip
               title={strings.accountPage.add + " " + strings.accountPage.car
               + " " + strings.accountPage.or + " " + strings.accountPage.award}
@@ -42,6 +41,7 @@ export const DisplayUserAvatar = (props) => {
 DisplayUserAvatar.propTypes = {
   firstName: propTypes.string.isRequired,
   lastName: propTypes.string.isRequired,
+  avatarRedirectPath: propTypes.string.isRequired,
   backgroundStyle: propTypes.string.isRequired,
   addIconColor: propTypes.string.isRequired,
 };

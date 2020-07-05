@@ -53,7 +53,13 @@ export const AdminPanelPage = (props) => {
           autoFocus
         />
 
-        <Button type="submit" className="mt-2" variant="contained" color="primary" fullWidth>
+        <Button
+          type="submit"
+          className="mt-2"
+          variant="contained"
+          color="primary"
+          fullWidth
+        >
           {strings.adminPanelPage.confirm}
         </Button>
       </form>

@@ -8,13 +8,14 @@ import {DriveTrainType} from "../../../logic/model/car/DriveTrainType";
 import DisplayUserData from "../../../component/account/display-user-data/DisplayUserData";
 import DisplayUserAvatar from "../../../component/account/display-user-avatar/DisplayUserAvatar";
 import config from "../../../config/config";
-import GlobalStyles from "../../../main/GlobalStyles";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import Button from "@material-ui/core/Button";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {errorNotification} from "../../../component/util/notification/notification";
 import {PR} from "../../../logic/Helper";
+import {PATH_ACCOUNT_SETTINGS} from "../../../config/constant/path-constants";
+import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
 export const AccountPage = (props) => {
@@ -61,6 +62,7 @@ export const AccountPage = (props) => {
       <DisplayUserAvatar
         firstName={member.firstName}
         lastName={member.lastName}
+        avatarRedirectPath={PATH_ACCOUNT_SETTINGS}
         backgroundStyle={globalStyles.materialBlueBackground}
         addIconColor={globalStyles.greyFont100}
       />
