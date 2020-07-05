@@ -1,3 +1,5 @@
+import {CarType} from "./model/car/CarType";
+
 /**
  * Change object into array
  * @param object
@@ -15,6 +17,23 @@ export const PR = () => {
   throw new Error("Param Is Required!");
 };
 
-export const formatDate = (date) => {
+export const formatDate = (date = PR()) => {
   return date.toDateString();
+};
+
+export const getCurrentYear = () => {
+  return new Date().getFullYear();
+};
+
+export const getEnumKeyValueArray = (enumObject = PR()) => {
+  const keyValueArray = [];
+
+  Object.entries(enumObject).forEach(([key, value]) => {
+    keyValueArray.push({
+      key: key,
+      value: value,
+    });
+  });
+
+  return keyValueArray;
 };

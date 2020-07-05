@@ -45,8 +45,8 @@ export const AccountPage = (props) => {
     "Kamil", "Kowalewski", new Date("2020-07-04"),
     "Poland", "Lodz", "sample@gmail.com",
     [
-      new Car("Audi", "RS3", 2019, CarType.RACE_CAR,
-        55000, EngineType.INLINE_FIVE, 400, DriveTrainType.AWD)
+      new Car("Audi", "RS3", 2019, 55000,
+        CarType.RACE_CAR, EngineType.INLINE_FIVE, 400, DriveTrainType.AWD)
     ],
     [
       new Award("First place in SPA", 2018)

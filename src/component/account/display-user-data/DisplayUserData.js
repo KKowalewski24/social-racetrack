@@ -78,8 +78,8 @@ export const DisplayUserData = (props) => {
             <th>{strings.accountPage.brand}</th>
             <th>{strings.accountPage.model}</th>
             <th>{strings.accountPage.productionYear}</th>
-            <th>{strings.accountPage.carType}</th>
             <th>{strings.accountPage.mileage}</th>
+            <th>{strings.accountPage.carType}</th>
             <th>{strings.accountPage.engineType}</th>
             <th>{strings.accountPage.enginePower}</th>
             <th>{strings.accountPage.driveTrainType}</th>
@@ -99,8 +99,8 @@ export const DisplayUserData = (props) => {
                   <td>{it.brand}</td>
                   <td>{it.model}</td>
                   <td>{it.productionYear}</td>
-                  <td>{it.carType}</td>
                   <td>{it.mileage}</td>
+                  <td>{it.carType}</td>
                   <td>{it.engineType}</td>
                   <td>{it.enginePower}</td>
                   <td>{it.driveTrainType}</td>
