@@ -11,14 +11,14 @@ export class AccountController {
   registerUser = (firstName = PR(), lastName = PR(),
                   email = PR(), password = PR(),
                   country = PR(), city = PR(),
-                  //TODO ADD BIRTHDATE
+                  birthDate = PR(),
                   verificationEmailErrorFunction = PR(),
                   createUserErrorFunction = PR()) => {
     config.auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         //TODO CHECK IF ADDING USERS TO DB WORKS WELL
-        this._userDatabaseController.createMember(firstName, lastName, email, country, city);
+        this._userDatabaseController.createMember(firstName, lastName, email, country, city, birthDate);
         config.auth()
           .currentUser
           .sendEmailVerification()
