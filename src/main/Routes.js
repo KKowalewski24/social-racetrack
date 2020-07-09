@@ -65,11 +65,11 @@ export const Routes = (props) => {
       />
       <PrivateRoute
         exact path={PATH_RESET_PASSWORD} component={ResetPasswordPage}
-        privacyCondition={!isUserLoggedIn}
+        redirectPath={PATH_LOGIN} privacyCondition={!isUserLoggedIn}
       />
       <PrivateRoute
         exact path={PATH_REGISTER} component={RegisterPage}
-        privacyCondition={!isUserLoggedIn}
+        redirectPath={PATH_ACCOUNT} privacyCondition={!isUserLoggedIn}
       />
 
       <PrivateRoute
