@@ -182,9 +182,8 @@ export const Navbar = (props) => {
           {renderListItem(PersonIcon, strings.app.members, PATH_MEMBERS)}
         </List>
 
-        {/*TODO CHANGE CONDITION FOR REAL isAdmin*/}
         {
-          true ?
+          props.isAdmin ?
             <>
               <Divider/>
               <List>
@@ -221,7 +220,8 @@ Navbar.propTypes = {
   isDarkMode: propTypes.bool.isRequired,
   handleDarkMode: propTypes.func.isRequired,
   isUserLoggedIn: propTypes.bool,
-  logout: propTypes.func.isRequired,
+  isAdmin: propTypes.bool,
+  logout: propTypes.func.isRequired
 };
 
 export default Navbar;
