@@ -1,6 +1,8 @@
 import {MembersDatabaseController} from "./model/MembersDatabaseController";
 import {PR} from "../Helper";
 import config from "../../config/config";
+import {grantStandardUser} from "../CloudFunctions";
+import strings from "../../config/constant/string-constants";
 
 export class AccountController {
 
@@ -17,50 +19,51 @@ export class AccountController {
     config.auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
+
+        grantStandardUser({email: email})
+          .then((result) => console.log(result))
+          .catch((error) => createUserErrorFunction());
+
         //TODO CHECK IF ADDING USERS TO DB WORKS WELL
         this._userDatabaseController.createMember(firstName, lastName, email, country, city, birthDate);
+
         config.auth()
           .currentUser
           .sendEmailVerification()
-          .catch((error) => {
-            verificationEmailErrorFunction();
-          });
+          .catch(() => verificationEmailErrorFunction());
+
+        setTimeout(() => {
+          alert(strings.app.haveToLogout);
+          this.logoutUser();
+        }, 1000);
+
       })
-      .catch((error) => {
-        createUserErrorFunction();
-      });
+      .catch(() => createUserErrorFunction());
   };
 
   loginUser = (email, password, wrongCredentialsErrorFunction) => {
     config.auth()
       .signInWithEmailAndPassword(email, password)
-      .catch((error) => {
-        wrongCredentialsErrorFunction();
-      });
+      .catch(() => wrongCredentialsErrorFunction());
   };
 
   logoutUser = () => {
     config.auth()
       .signOut()
-      .catch((error) => {
-
+      .catch(() => {
       });
   };
 
   resetUserPassword = (email = PR(), resetUserPasswordErrorFunction = PR()) => {
     config.auth()
       .sendPasswordResetEmail(email)
-      .catch((error) => {
-        resetUserPasswordErrorFunction();
-      });
+      .catch(() => resetUserPasswordErrorFunction());
   };
 
   deleteAccount = (deleteAccountErrorFunction) => {
     config.auth()
       .currentUser
       .delete()
-      .catch((error) => {
-        deleteAccountErrorFunction();
-      });
+      .catch(() => deleteAccountErrorFunction());
   };
 }

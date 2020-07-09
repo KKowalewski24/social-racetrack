@@ -9,6 +9,7 @@ export const strings = {
     racetracks: "Racetracks",
     members: "Members",
     adminPanel: "Admin Panel",
+    haveToLogout: "You have to logout",
   },
   type: {
     carType: {
