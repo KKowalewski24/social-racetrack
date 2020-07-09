@@ -1,11 +1,11 @@
 import React, {useContext} from "react";
 import {Route, Switch} from "react-router-dom";
+import {AuthContext} from "../logic/AuthContextProvider";
+import PrivateRoute from "../component/util/private-route/PrivateRoute";
 import HomePage from "../page/main/home-page/HomePage";
 import LoginPage from "../page/auth/login-page/LoginPage";
 import RegisterPage from "../page/auth/register-page/RegisterPage";
 import AccountPage from "../page/account/account-page/AccountPage";
-import PrivateRoute from "../component/util/private-route/PrivateRoute";
-import {AuthContext} from "../logic/AuthContextProvider";
 import ResetPasswordPage from "../page/auth/reset-password-page/ResetPasswordPage";
 import FutureEventsPage from "../page/event/future-events-page/FutureEventsPage";
 import PastEventsPage from "../page/event/past-events-page/PastEventsPage";
@@ -19,12 +19,15 @@ import {
   PATH_ACCOUNT,
   PATH_ACCOUNT_SETTINGS,
   PATH_ADMIN_PANEL,
-  PATH_CREATE_EVENT, PATH_EVENT_DETAILS,
+  PATH_CREATE_EVENT,
+  PATH_EVENT_DETAILS,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
-  PATH_LOGIN, PATH_MEMBER_DETAILS,
+  PATH_LOGIN,
+  PATH_MEMBER_DETAILS,
   PATH_MEMBERS,
-  PATH_PAST_EVENTS, PATH_RACETRACK_DETAILS,
+  PATH_PAST_EVENTS,
+  PATH_RACETRACK_DETAILS,
   PATH_RACETRACKS,
   PATH_REGISTER,
   PATH_RESET_PASSWORD
@@ -56,19 +59,17 @@ export const Routes = (props) => {
         redirectPath={PATH_HOME} privacyCondition={true}
       />
 
-      {/*TODO FIX ISSUE WITH REDIRECT - window.history.back()*/}
       <PrivateRoute
         exact path={PATH_LOGIN} component={LoginPage}
-        redirectPath={PATH_ACCOUNT} privacyCondition={!isUserLoggedIn}
+        privacyCondition={!isUserLoggedIn}
       />
       <PrivateRoute
         exact path={PATH_RESET_PASSWORD} component={ResetPasswordPage}
-        redirectPath={PATH_ACCOUNT} privacyCondition={!isUserLoggedIn}
+        privacyCondition={!isUserLoggedIn}
       />
-      {/*TODO FIX ISSUE WITH REDIRECT - window.history.back()*/}
       <PrivateRoute
         exact path={PATH_REGISTER} component={RegisterPage}
-        redirectPath={PATH_LOGIN} privacyCondition={!isUserLoggedIn}
+        privacyCondition={!isUserLoggedIn}
       />
 
       <PrivateRoute
