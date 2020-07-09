@@ -8,7 +8,7 @@ exports.grantStandardUser = functions.https.onCall((data, context) => {
 
     return grantStandardUserRole(email).then(() => {
         return {
-            result: `Request succeed - ${email} is a standard user`
+            result: `Request succeeded - ${email} is a standard user`
         }
     });
 });
@@ -32,7 +32,7 @@ exports.grantAdmin = functions.https.onCall((data, context) => {
 
     return grantAdminRole(email).then(() => {
         return {
-            result: `Request succeed - ${email} is an admin`
+            result: `Request succeeded - ${email} is an admin`
         }
     });
 });
