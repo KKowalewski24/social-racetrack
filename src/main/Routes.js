@@ -39,7 +39,7 @@ import RacetrackDetailsPage from "../page/racetrack/racetrack-details-page/Racet
 export const Routes = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const {isUserLoggedIn} = useContext(AuthContext);
+  const {isUserLoggedIn, isAdmin} = useContext(AuthContext);
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
@@ -53,10 +53,9 @@ export const Routes = (props) => {
         redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
       />
 
-      {/*TODO - SET CONDITION*/}
       <PrivateRoute
         exact path={PATH_ADMIN_PANEL} component={AdminPanelPage}
-        redirectPath={PATH_HOME} privacyCondition={true}
+        redirectPath={PATH_HOME} privacyCondition={isAdmin}
       />
 
       <PrivateRoute

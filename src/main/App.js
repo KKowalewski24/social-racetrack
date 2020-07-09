@@ -12,7 +12,7 @@ export const App = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const {isUserLoggedIn} = useContext(AuthContext);
+  const {isUserLoggedIn, isAdmin} = useContext(AuthContext);
   const accountController = new AccountController();
 
   const darkTheme = createMuiTheme({
@@ -37,6 +37,7 @@ export const App = (props) => {
           isDarkMode={isDarkMode}
           handleDarkMode={handleDarkMode}
           isUserLoggedIn={isUserLoggedIn}
+          isAdmin={isAdmin}
           logout={accountController.logoutUser}
         >
           <Routes/>
