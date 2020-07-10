@@ -1,16 +1,24 @@
 import React from "react";
 import propTypes from "prop-types";
 import {useForm} from "react-hook-form";
-import TextField from "@material-ui/core/TextField";
 import strings from "../../../config/constant/string-constants";
-import {getCurrentYear} from "../../../logic/Helper";
-import Button from "@material-ui/core/Button";
+import {getCurrentYear, keyValueObjectToArray} from "../../../logic/Helper";
 import {ToastContainer} from "react-toastify";
+import {warningNotification} from "../../util/notification/notification";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 export const AddAward = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, errors} = useForm();
+
+  const checkInputs = () => {
+    // eslint-disable-next-line no-unused-expressions
+    if (keyValueObjectToArray(errors).length > 0) {
+      warningNotification(strings.accountSettingsPage.inputWarningInfo);
+    }
+  };
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
@@ -53,6 +61,7 @@ export const AddAward = (props) => {
 
       </form>
 
+      {checkInputs()}
       <ToastContainer/>
     </div>
   );

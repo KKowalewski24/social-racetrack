@@ -6,14 +6,20 @@ import TextField from "@material-ui/core/TextField";
 import strings from "../../../config/constant/string-constants";
 import Button from "@material-ui/core/Button";
 import {ToastContainer} from "react-toastify";
-import {getCurrentYear, getEnumKeyValueArray} from "../../../logic/Helper";
-import {CarType} from "../../../logic/model/car/CarType";
-import MenuItem from "@material-ui/core/MenuItem";
+import {getCurrentYear, keyValueObjectToArray} from "../../../logic/Helper";
+import {warningNotification} from "../../util/notification/notification";
 
 export const AddCar = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, errors} = useForm();
+
+  const checkInputs = () => {
+    // eslint-disable-next-line no-unused-expressions
+    if (keyValueObjectToArray(errors).length > 0) {
+      warningNotification(strings.accountSettingsPage.inputWarningInfo);
+    }
+  };
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
@@ -132,6 +138,7 @@ export const AddCar = (props) => {
 
       </form>
 
+      {checkInputs()}
       <ToastContainer/>
     </div>
   );

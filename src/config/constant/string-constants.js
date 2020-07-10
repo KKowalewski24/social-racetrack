@@ -78,6 +78,7 @@ export const strings = {
     description: "Description",
     year: "Year",
     confirm: "Confirm",
+    inputWarningInfo: "All fields are required",
   },
   adminPanelPage: {
     grantAdminStatus: "Grant Admin Status",
