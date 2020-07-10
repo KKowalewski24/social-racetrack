@@ -10,7 +10,7 @@ export const PrivateRoute = (props) => {
   const {privacyCondition, redirectPath, defaultPath, component: Component, ...rest} = props;
 
   const {isUserLoggedIn} = useContext(AuthContext);
-  const [lastLocation, setLastLocation] = useState("");
+  const [lastLocation, setLastLocation] = useState(undefined);
   const location = useLocation();
 
   useEffect(() => {
@@ -27,20 +27,22 @@ export const PrivateRoute = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <Route
-      {...rest}
-      render={(it) => {
-        return (
-          !!privacyCondition ?
-            <Component {...it}/> :
-            <CustomRedirect
-              redirectPath={redirectPath}
-              lastLocation={lastLocation}
-            />
-        );
-      }
-      }
-    />
+    lastLocation ?
+      <Route
+        {...rest}
+        render={(it) => {
+          return (
+            !!privacyCondition ?
+              <Component {...it}/> :
+              <CustomRedirect
+                redirectPath={redirectPath}
+                lastLocation={lastLocation}
+              />
+          );
+        }
+        }
+      />
+      : null
   );
 };
 
