@@ -2,11 +2,12 @@ import React, {Fragment} from "react";
 import propTypes from "prop-types";
 import {Link} from "react-router-dom";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import {PR} from "../../../logic/Helper";
 
 export const BaseCard = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const renderSingleProperty = (key, value) => {
+  const renderSingleProperty = (key = PR(), value = PR()) => {
     return (
       <div className="text-dark">
         <FiberManualRecordIcon fontSize="inherit" className="mb-1"/>
@@ -18,7 +19,7 @@ export const BaseCard = (props) => {
     );
   };
 
-  const renderProperties = (propertiesArray) => {
+  const renderProperties = (propertiesArray = PR()) => {
     propertiesArray.map((it, index) => {
       return (
         <Fragment key={index}>

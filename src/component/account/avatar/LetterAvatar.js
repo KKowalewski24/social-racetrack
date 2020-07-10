@@ -19,7 +19,7 @@ export const LetterAvatar = (props) => {
     "#673ab7",
   ];
 
-  const getRandomNumber = (begin=PR(), end=PR()) => {
+  const getRandomNumber = (begin = PR(), end = PR()) => {
     const min = Math.ceil(begin);
     const max = Math.floor(end);
 

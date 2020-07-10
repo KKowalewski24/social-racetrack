@@ -41,7 +41,7 @@ export class AccountController {
       .catch(() => createUserErrorFunction());
   };
 
-  loginUser = (email, password, wrongCredentialsErrorFunction) => {
+  loginUser = (email = PR(), password = PR(), wrongCredentialsErrorFunction = PR()) => {
     config.auth()
       .signInWithEmailAndPassword(email, password)
       .catch(() => wrongCredentialsErrorFunction());
@@ -60,7 +60,7 @@ export class AccountController {
       .catch(() => resetUserPasswordErrorFunction());
   };
 
-  deleteAccount = (deleteAccountErrorFunction) => {
+  deleteAccount = (deleteAccountErrorFunction = PR()) => {
     config.auth()
       .currentUser
       .delete()
