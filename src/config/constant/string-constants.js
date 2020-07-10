@@ -87,6 +87,7 @@ export const strings = {
   loginPage: {
     emailNotVerified: "Email has not been verified yet!",
     wrongEmailPassword: "Wrong email or password",
+    inputWarningInfo: "All fields are required",
     signIn: "Sign in",
     emailAddress: "Email Address",
     password: "Password",
@@ -96,6 +97,7 @@ export const strings = {
   registerPage: {
     verificationEmailNotSent: "Verification email has not been sent!",
     userAccountNotCreated: "User account has not been created!",
+    inputWarningInfo: "All fields are required and password should have at least 6 characters",
     signUp: "Sign up",
     firstName: "First Name",
     lastName: "Last Name",
@@ -108,6 +110,7 @@ export const strings = {
   },
   resetPasswordPage: {
     checkEmailCorrect: "Check if email is correct",
+    inputWarningInfo: "All fields are required",
     resetPassword: "Reset password",
     emailAddress: "Email Address",
     sendEmail: "Send email",

@@ -1,6 +1,6 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import {PR} from "../../../logic/Helper";
+import {keyValueObjectToArray, PR} from "../../../logic/Helper";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {warningNotification} from "../../../component/util/notification/notification";
@@ -16,7 +16,7 @@ import RestoreIcon from "@material-ui/icons/Restore";
 export const ResetPasswordPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, errors} = useForm();
   const globalStyles = GlobalStyles();
   const accountController = new AccountController();
 
@@ -26,6 +26,13 @@ export const ResetPasswordPage = (props) => {
       () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
     );
     window.location.replace(PATH_LOGIN);
+  };
+
+  const checkInputs = () => {
+    // eslint-disable-next-line no-unused-expressions
+    if (keyValueObjectToArray(errors).length > 0) {
+      warningNotification(strings.resetPasswordPage.inputWarningInfo);
+    }
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -69,6 +76,7 @@ export const ResetPasswordPage = (props) => {
         </Button>
       </form>
 
+      {checkInputs()}
       <ToastContainer/>
     </div>
   );

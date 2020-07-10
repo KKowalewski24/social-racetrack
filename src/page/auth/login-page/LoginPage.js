@@ -3,8 +3,8 @@ import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constant/path-constants";
 import {AccountController} from "../../../logic/controller/AccountController";
-import {PR} from "../../../logic/Helper";
-import {errorNotification} from "../../../component/util/notification/notification";
+import {keyValueObjectToArray, PR} from "../../../logic/Helper";
+import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
 import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
 import Avatar from "@material-ui/core/Avatar";
@@ -18,7 +18,7 @@ import "../../../index.css";
 export const LoginPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, errors} = useForm();
   const globalStyles = GlobalStyles();
   const accountController = new AccountController();
 
@@ -27,6 +27,13 @@ export const LoginPage = (props) => {
       data.email, data.password,
       () => errorNotification(strings.loginPage.wrongEmailPassword)
     );
+  };
+
+  const checkInputs = () => {
+    // eslint-disable-next-line no-unused-expressions
+    if (keyValueObjectToArray(errors).length > 0) {
+      warningNotification(strings.loginPage.inputWarningInfo);
+    }
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -92,6 +99,7 @@ export const LoginPage = (props) => {
         </div>
       </form>
 
+      {checkInputs()}
       <ToastContainer/>
     </div>
   );
