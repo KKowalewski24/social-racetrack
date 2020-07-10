@@ -3,9 +3,7 @@ import AddCar from "../../../component/account/add-car/AddCar";
 import AddAward from "../../../component/account/add-award/AddAward";
 import AccountTabPanel from "../../../component/account/account-tab-panel/AccountTabPanel";
 import {PR} from "../../../logic/Helper";
-import {Car} from "../../../logic/model/car/Car";
 import GlobalStyles from "../../../main/GlobalStyles";
-import {Award} from "../../../logic/model/award/Award";
 
 export const AccountSettingsPage = (props) => {
 
@@ -19,13 +17,13 @@ export const AccountSettingsPage = (props) => {
   };
 
   const handleAddCar = (data = PR()) => {
-    console.log(data)
+    console.log(data);
     // const car = new Car();
     //  TODO ADD IMPL
   };
 
   const handleAddAward = (data = PR()) => {
-    console.log(data)
+    console.log(data);
     // const award = new Award();
     //  TODO ADD IMPL
   };
