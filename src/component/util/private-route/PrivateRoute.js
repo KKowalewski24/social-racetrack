@@ -4,10 +4,11 @@ import {Route, useLocation} from "react-router-dom";
 import CustomRedirect from "../custom-redirect/CustomRedirect";
 import {AuthContext} from "../../../logic/AuthContextProvider";
 
-export const PrivateRoute = ({privacyCondition, redirectPath,
-                               defaultPath, component: Component, ...rest}) => {
+export const PrivateRoute = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const {privacyCondition, redirectPath, defaultPath, component: Component, ...rest} = props;
+
   const {isUserLoggedIn} = useContext(AuthContext);
   const [lastLocation, setLastLocation] = useState("");
   const location = useLocation();
