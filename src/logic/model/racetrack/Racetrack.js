@@ -12,11 +12,12 @@ export class Racetrack extends BaseEntityAbst {
   _maximumExhaustLoudness;
   _minimumRideHeight;
   _description;
+  _imageUrl;
 
   /*------------------------ METHODS REGION ------------------------*/
   constructor(name = PR(), country = PR(), city = PR(), length = PR(),
               turnsNumber = PR(), maximumExhaustLoudness = PR(),
-              minimumRideHeight = PR(), description = PR()) {
+              minimumRideHeight = PR(), description = PR(), imageUrl = PR()) {
     super();
     this._name = name;
     this._country = country;
@@ -26,6 +27,7 @@ export class Racetrack extends BaseEntityAbst {
     this._maximumExhaustLoudness = maximumExhaustLoudness;
     this._minimumRideHeight = minimumRideHeight;
     this._description = description;
+    this._imageUrl = imageUrl;
   }
 
   get name() {
@@ -90,5 +92,13 @@ export class Racetrack extends BaseEntityAbst {
 
   set description(value) {
     this._description = value;
+  }
+
+  get imageUrl() {
+    return this._imageUrl;
+  }
+
+  set imageUrl(value) {
+    this._imageUrl = value;
   }
 }

@@ -18,6 +18,7 @@ const EVENT_DETAILS = "event-details";
 const MEMBERS = "members";
 const MEMBER_DETAILS = "member-details";
 
+const CREATE_RACETRACK = "create-racetrack";
 const RACETRACKS = "racetracks";
 const RACETRACK_DETAILS = "racetrack-details";
 
@@ -41,5 +42,6 @@ export const PATH_HOME = SLASH;
 export const PATH_MEMBERS = SLASH + MEMBERS;
 export const PATH_MEMBER_DETAILS = SLASH + MEMBER_DETAILS;
 
+export const PATH_CREATE_RACETRACK = SLASH + CREATE_RACETRACK;
 export const PATH_RACETRACKS = SLASH + RACETRACKS;
 export const PATH_RACETRACK_DETAILS = SLASH + RACETRACK_DETAILS;

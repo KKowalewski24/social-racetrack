@@ -18,11 +18,13 @@ import AdminPanelPage from "../page/admin/admin-panel-page/AdminPanelPage";
 import EventDetailsPage from "../page/event/event-details-page/EventDetailsPage";
 import MemberDetailsPage from "../page/member/member-details-page/MemberDetailsPage";
 import RacetrackDetailsPage from "../page/racetrack/racetrack-details-page/RacetrackDetailsPage";
+import CreateRacetrackPage from "../page/racetrack/create-racetrack-page/CreateRacetrackPage";
 import {
   PATH_ACCOUNT,
   PATH_ACCOUNT_SETTINGS,
   PATH_ADMIN_PANEL,
   PATH_CREATE_EVENT,
+  PATH_CREATE_RACETRACK,
   PATH_EVENT_DETAILS,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
@@ -103,12 +105,16 @@ export const Routes = (props) => {
       />
 
       <PrivateRoute
+        exact path={PATH_CREATE_RACETRACK} component={CreateRacetrackPage}
+        redirectPath={PATH_HOME} privacyCondition={isAdmin}
+      />
+      <PrivateRoute
         exact path={PATH_RACETRACKS} component={RacetracksPage}
         privacyCondition={true}
       />
       <PrivateRoute
         exact path={PATH_RACETRACK_DETAILS} component={RacetrackDetailsPage}
-        redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
+        privacyCondition={true}
       />
 
       <Route component={ErrorPage}/>

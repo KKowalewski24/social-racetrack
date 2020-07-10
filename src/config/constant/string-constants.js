@@ -139,6 +139,9 @@ export const strings = {
   memberDetailsPage: {
     //
   },
+  createRacetrackPage: {
+    //
+  },
   racetracksPage: {
     //
   },
