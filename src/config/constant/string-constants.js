@@ -143,7 +143,7 @@ export const strings = {
     //
   },
   racetracksPage: {
-    //
+    addNewRacetrack: "Add New Racetrack",
   },
   racetrackDetailsPage: {
     //

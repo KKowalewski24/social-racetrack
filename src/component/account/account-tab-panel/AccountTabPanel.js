@@ -1,9 +1,9 @@
 import React from "react";
 import propTypes from "prop-types";
-import Button from "@material-ui/core/Button";
 import strings from "../../../config/constant/string-constants";
-import Paper from "@material-ui/core/Paper";
 import {PR} from "../../../logic/Helper";
+import TabPanel from "../../util/tab-panel/TabPanel";
+import Button from "@material-ui/core/Button";
 
 export const AccountTabPanel = (props) => {
 
@@ -24,20 +24,18 @@ export const AccountTabPanel = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <Paper variant="outlined">
-      <div className="d-flex justify-content-center">
-        {
-          renderButton(strings.accountSettingsPage.add
-            + " " + strings.accountSettingsPage.car,
-            props.tabsIdArray[0], props.tabIdNumber)
-        }
-        {
-          renderButton(strings.accountSettingsPage.add
-            + " " + strings.accountSettingsPage.award,
-            props.tabsIdArray[1], props.tabIdNumber)
-        }
-      </div>
-    </Paper>
+    <TabPanel>
+      {
+        renderButton(strings.accountSettingsPage.add
+          + " " + strings.accountSettingsPage.car,
+          props.tabsIdArray[0], props.tabIdNumber)
+      }
+      {
+        renderButton(strings.accountSettingsPage.add
+          + " " + strings.accountSettingsPage.award,
+          props.tabsIdArray[1], props.tabIdNumber)
+      }
+    </TabPanel>
   );
 };
 
