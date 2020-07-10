@@ -1,13 +1,17 @@
 import React from "react";
 import propTypes from "prop-types";
 import {useForm} from "react-hook-form";
-import "../../../index.css";
-import TextField from "@material-ui/core/TextField";
 import strings from "../../../config/constant/string-constants";
-import Button from "@material-ui/core/Button";
 import {ToastContainer} from "react-toastify";
 import {getCurrentYear, keyValueObjectToArray} from "../../../logic/Helper";
 import {warningNotification} from "../../util/notification/notification";
+import {CarType} from "../../../logic/model/car/CarType";
+import CustomComboBox from "../../util/custom-combo-box/CustomComboBox";
+import {EngineType} from "../../../logic/model/car/EngineType";
+import {DriveTrainType} from "../../../logic/model/car/DriveTrainType";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import "../../../index.css";
 
 export const AddCar = (props) => {
 
@@ -81,29 +85,21 @@ export const AddCar = (props) => {
 
         <div className="row">
           <div className="col-12 col-sm-6">
-            {/*<TextField*/}
-            {/*  select*/}
-            {/*  inputRef={register({required: true})}*/}
-            {/*  name="carType"*/}
-            {/*  label={strings.accountSettingsPage.carType}*/}
-            {/*  variant="outlined"*/}
-            {/*  margin="normal"*/}
-            {/*  fullWidth*/}
-            {/*>*/}
-            {/*  {getEnumKeyValueArray(CarType).map((it, index) => {*/}
-            {/*    return (*/}
-            {/*      <div*/}
-            {/*        key={index}*/}
-            {/*      >*/}
-            {/*        {it.value}*/}
-            {/*      </div>*/}
-            {/*    );*/}
-            {/*  })}*/}
-            {/*</TextField>*/}
+            <CustomComboBox
+              enum={CarType}
+              inputRef={register({required: true})}
+              name="carType"
+              label={strings.accountSettingsPage.carType}
+            />
           </div>
 
           <div className="col-12 col-sm-6">
-            {/*TODO*/}
+            <CustomComboBox
+              enum={EngineType}
+              inputRef={register({required: true})}
+              name="engineType"
+              label={strings.accountSettingsPage.engineType}
+            />
           </div>
         </div>
 
@@ -121,7 +117,12 @@ export const AddCar = (props) => {
           </div>
 
           <div className="col-12 col-sm-6">
-            {/*TODO*/}
+            <CustomComboBox
+              enum={DriveTrainType}
+              inputRef={register({required: true})}
+              name="driveTrainType"
+              label={strings.accountSettingsPage.driveTrainType}
+            />
           </div>
         </div>
 
