@@ -15,6 +15,9 @@ import ErrorPage from "../page/util/error-page/ErrorPage";
 import CreateEventPage from "../page/event/create-event-page/CreateEventPage";
 import AccountSettingsPage from "../page/account/account-settings-page/AccountSettingsPage";
 import AdminPanelPage from "../page/admin/admin-panel-page/AdminPanelPage";
+import EventDetailsPage from "../page/event/event-details-page/EventDetailsPage";
+import MemberDetailsPage from "../page/member/member-details-page/MemberDetailsPage";
+import RacetrackDetailsPage from "../page/racetrack/racetrack-details-page/RacetrackDetailsPage";
 import {
   PATH_ACCOUNT,
   PATH_ACCOUNT_SETTINGS,
@@ -32,9 +35,6 @@ import {
   PATH_REGISTER,
   PATH_RESET_PASSWORD
 } from "../config/constant/path-constants";
-import EventDetailsPage from "../page/event/event-details-page/EventDetailsPage";
-import MemberDetailsPage from "../page/member/member-details-page/MemberDetailsPage";
-import RacetrackDetailsPage from "../page/racetrack/racetrack-details-page/RacetrackDetailsPage";
 
 export const Routes = (props) => {
 
@@ -60,7 +60,7 @@ export const Routes = (props) => {
 
       <PrivateRoute
         exact path={PATH_LOGIN} component={LoginPage}
-        privacyCondition={!isUserLoggedIn}
+        privacyCondition={!isUserLoggedIn} defaultPath={PATH_ACCOUNT}
       />
       <PrivateRoute
         exact path={PATH_RESET_PASSWORD} component={ResetPasswordPage}
@@ -88,7 +88,10 @@ export const Routes = (props) => {
         redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
       />
 
-      <Route exact path={PATH_HOME} component={HomePage}/>
+      <PrivateRoute
+        exact path={PATH_HOME} component={HomePage}
+        privacyCondition={true}
+      />
 
       <PrivateRoute
         exact path={PATH_MEMBERS} component={MembersPage}
@@ -99,7 +102,10 @@ export const Routes = (props) => {
         redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}
       />
 
-      <Route exact path={PATH_RACETRACKS} component={RacetracksPage}/>
+      <PrivateRoute
+        exact path={PATH_RACETRACKS} component={RacetracksPage}
+        privacyCondition={true}
+      />
       <PrivateRoute
         exact path={PATH_RACETRACK_DETAILS} component={RacetrackDetailsPage}
         redirectPath={PATH_LOGIN} privacyCondition={isUserLoggedIn}

@@ -55,6 +55,13 @@ firebase deploy --only functions
 ```
 Important message - before next deployment remember to remove previous Cloud Function
 
+
+Remember that Deployment of Node.js 8 functions will no longer be allowed after 
+February 15, 2021. Then, executions of already-deployed Node.js 8 functions 
+will stop after March 15, 2021.
+
+Node.js 10 cloud functions require payments so finish BSC at the beginning of February
+
 #### Deploy to Firebase Hosting
 * Run below command
 ```
