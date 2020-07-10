@@ -8,26 +8,41 @@ export class FirebaseStorageController {
   /*------------------------ METHODS REGION ------------------------*/
   uploadFile = (path = PR(), data = PR(),
                 metadata = PR(), errorFunction = PR()) => {
-    //TODO CHECK IF WORKS
     config.storage()
       .ref(path)
       .put(data, metadata)
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         errorFunction();
       });
   };
 
-  downloadFile = () => {
-    //TODO CHECK IF WORKS
+  /**
+   * Sample usage below
+   * firebaseStorageController
+   *  .downloadFile("/abc", (error) => console.log(error))
+   *  .then((result) => console.log(result));
+   */
+  downloadFile = async (path = PR(), errorFunction = PR()) => {
+    let result = "";
 
+    await config.storage()
+      .ref(path)
+      .getDownloadURL()
+      .then((res) => {
+        result = res;
+      })
+      .catch((err) => console.log(err));
+
+    return result;
   };
 
   deleteFile = (path = PR(), errorFunction = PR()) => {
-    //TODO CHECK IF WORKS
     config.storage()
       .ref(path)
       .delete()
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         errorFunction();
       });
   };
