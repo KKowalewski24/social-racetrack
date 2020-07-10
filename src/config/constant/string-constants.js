@@ -140,7 +140,17 @@ export const strings = {
     //
   },
   createRacetrackPage: {
-    //
+    inputWarningInfo: "All fields are required",
+    name: "Name",
+    country: "Country",
+    city: "City",
+    length: "Length",
+    turnsNumber: "Number of Turns",
+    maximumExhaustLoudness: "Maximum Exhaust Loudness",
+    minimumRideHeight: "Minimum Ride Height",
+    description: "Description",
+    imageUrl: "Image URL",
+    confirm: "Confirm",
   },
   racetracksPage: {
     addNewRacetrack: "Add New Racetrack",
