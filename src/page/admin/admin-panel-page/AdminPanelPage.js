@@ -19,7 +19,7 @@ export const AdminPanelPage = (props) => {
   const {register, handleSubmit, errors} = useForm();
   const globalStyles = GlobalStyles();
 
-  const onSubmit = (data = PR()) => {
+  const handleGrantAdmin = (data = PR()) => {
     grantAdmin({email: data.email})
       .then((result) => console.log(result))
       .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
@@ -52,7 +52,7 @@ export const AdminPanelPage = (props) => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+      <form onSubmit={handleSubmit(handleGrantAdmin)} className="mb-4">
         <TextField
           type="email"
           inputRef={register({required: true})}

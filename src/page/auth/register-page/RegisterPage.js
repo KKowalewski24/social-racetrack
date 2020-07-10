@@ -21,7 +21,7 @@ export const RegisterPage = (props) => {
   const globalStyles = GlobalStyles();
   const accountController = new AccountController();
 
-  const onSubmit = (data = PR()) => {
+  const handleRegister = (data = PR()) => {
     accountController.registerUser(
       data.firstName, data.lastName, data.email, data.password,
       data.country, data.city, new Date(data.birthDate),
@@ -55,7 +55,7 @@ export const RegisterPage = (props) => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+      <form onSubmit={handleSubmit(handleRegister)} className="mb-4">
 
         <div className="row">
           <div className="col-12 col-sm-6">

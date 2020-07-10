@@ -22,7 +22,7 @@ export const LoginPage = (props) => {
   const globalStyles = GlobalStyles();
   const accountController = new AccountController();
 
-  const onSubmit = (data = PR()) => {
+  const handleLogin = (data = PR()) => {
     accountController.loginUser(
       data.email, data.password,
       () => errorNotification(strings.loginPage.wrongEmailPassword)
@@ -54,7 +54,7 @@ export const LoginPage = (props) => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+      <form onSubmit={handleSubmit(handleLogin)} className="mb-4">
         <TextField
           type="email"
           inputRef={register({required: true})}

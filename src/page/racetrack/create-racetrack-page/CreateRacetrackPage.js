@@ -12,7 +12,7 @@ export const CreateRacetrackPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
 
-  const onSubmit = (data = PR()) => {
+  const handleCreateRacetrack = (data = PR()) => {
     //TODO ADD IMPL
     console.log(data);
   };
@@ -27,7 +27,7 @@ export const CreateRacetrackPage = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <div className="container custom-container-md mt-3">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleCreateRacetrack)}>
 
         <TextField
           type="text"

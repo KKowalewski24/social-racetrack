@@ -20,7 +20,7 @@ export const ResetPasswordPage = (props) => {
   const globalStyles = GlobalStyles();
   const accountController = new AccountController();
 
-  const onSubmit = (data = PR()) => {
+  const handleResetPassword = (data = PR()) => {
     accountController.resetUserPassword(
       data.email,
       () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
@@ -53,7 +53,7 @@ export const ResetPasswordPage = (props) => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+      <form onSubmit={handleSubmit(handleResetPassword)} className="mb-4">
         <TextField
           type="email"
           inputRef={register({required: true})}
