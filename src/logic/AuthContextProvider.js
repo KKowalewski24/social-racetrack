@@ -18,7 +18,7 @@ export const AuthContextProvider = (props) => {
 
     config.auth().currentUser && config.auth().currentUser.getIdTokenResult()
       .then((idTokenResult) => setIsAdmin(idTokenResult.claims.admin))
-      .catch((err) => console.log("err" + err));
+      .catch((err) => console.log(err));
 
   }, [firebaseAuthState]);
 

@@ -53,7 +53,7 @@ firebase deploy --only storage
 ```
 firebase deploy --only functions
 ```
-Important message - before next deployment remember to remove old previous Cloud Function
+Important message - before next deployment remember to remove previous Cloud Function
 
 #### Deploy to Firebase Hosting
 * Run below command

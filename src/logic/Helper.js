@@ -1,5 +1,3 @@
-import {CarType} from "./model/car/CarType";
-
 /**
  * Change object into array
  * @param object
