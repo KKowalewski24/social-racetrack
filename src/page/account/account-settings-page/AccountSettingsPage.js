@@ -54,14 +54,16 @@ export const AccountSettingsPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="my-4 mx-2">
-      <AccountTabPanel
-        handleTabChange={handleTabChange}
-        tabsIdArray={tabsIdArray}
-        tabIdNumber={tabIdNumber}
-      />
+    <div className="container-fluid">
+      <div className="my-4 mx-2">
+        <AccountTabPanel
+          handleTabChange={handleTabChange}
+          tabsIdArray={tabsIdArray}
+          tabIdNumber={tabIdNumber}
+        />
 
-      {renderChosenTab()}
+        {renderChosenTab()}
+      </div>
     </div>
   );
 };

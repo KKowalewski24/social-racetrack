@@ -58,7 +58,7 @@ export const AccountPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <>
+    <div className="container-fluid">
       <DisplayUserAvatar
         firstName={member.firstName}
         lastName={member.lastName}
@@ -98,7 +98,7 @@ export const AccountPage = (props) => {
           </Button>
         </div>
       </HorizontalContainer>
-    </>
+    </div>
   );
 };
 
