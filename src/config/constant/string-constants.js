@@ -150,6 +150,7 @@ export const strings = {
     minimumRideHeight: "Minimum Ride Height",
     description: "Description",
     imageUrl: "Image URL",
+    imageDropZone: "Drag and drop an racetrack image or click",
     confirm: "Confirm",
   },
   racetracksPage: {
