@@ -84,6 +84,8 @@ export const strings = {
     grantAdminStatus: "Grant Admin Status",
     emailAddress: "Email Address",
     confirm: "Confirm",
+    inputWarningInfo: "All fields are required",
+    grantAdminError: "User has not been granted to admin!",
   },
   loginPage: {
     emailNotVerified: "Email has not been verified yet!",

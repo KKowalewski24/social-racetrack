@@ -7,20 +7,31 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {ToastContainer} from "react-toastify";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import {PR} from "../../../logic/Helper";
+import {keyValueObjectToArray, PR} from "../../../logic/Helper";
 import GlobalStyles from "../../../main/GlobalStyles";
 import {PATH_HOME} from "../../../config/constant/path-constants";
+import {grantAdmin} from "../../../logic/CloudFunctions";
+import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
 
 export const AdminPanelPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, errors} = useForm();
   const globalStyles = GlobalStyles();
 
   const onSubmit = (data = PR()) => {
-    console.log(data.email);
-    //TODO ADD IMPL - GRANT ADMIN
+    grantAdmin({email: data.email})
+      .then((result) => console.log(result))
+      .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
+
     window.location.replace(PATH_HOME);
+  };
+
+  const checkInputs = () => {
+    // eslint-disable-next-line no-unused-expressions
+    if (keyValueObjectToArray(errors).length > 0) {
+      warningNotification(strings.adminPanelPage.inputWarningInfo);
+    }
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -64,6 +75,7 @@ export const AdminPanelPage = (props) => {
         </Button>
       </form>
 
+      {checkInputs()}
       <ToastContainer/>
     </div>
   );

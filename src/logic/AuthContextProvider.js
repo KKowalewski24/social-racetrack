@@ -17,7 +17,9 @@ export const AuthContextProvider = (props) => {
     firebaseAuthState ? setIsUserLoggedIn(true) : setIsUserLoggedIn(false);
 
     config.auth().currentUser && config.auth().currentUser.getIdTokenResult()
-      .then((idTokenResult) => setIsAdmin(idTokenResult.claims.admin))
+      .then((idTokenResult) => {
+        setIsAdmin(idTokenResult.claims.admin);
+      })
       .catch((err) => console.log(err));
 
   }, [firebaseAuthState]);
