@@ -28,7 +28,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "fb:db": "firebase deploy --only firestore:rules",
+    "fb:stor": "firebase deploy --only storage:rules",
+    "fb:fun": "firebase deploy --only functions",
+    "fb:host": "yarn build && firebase deploy --only hosting"
   },
   "eslintConfig": {
     "extends": [

@@ -46,7 +46,7 @@ firebase deploy --only firestore:rules
 #### Deploy Storage Rules
 * Run below command to deploy rules
 ```
-firebase deploy --only storage
+firebase deploy --only storage:rules
 ```
 
 #### Deploy Cloud Functions
