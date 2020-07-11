@@ -18,12 +18,6 @@ export class FirebaseStorageController {
     }
   };
 
-  /**
-   * Sample usage below
-   * firebaseStorageController
-   *  .downloadFile("/abc", (error) => console.log(error))
-   *  .then((result) => console.log(result));
-   */
   downloadFile = async (path = PR(), errorFunction = PR()) => {
     try {
       return await config.storage()
