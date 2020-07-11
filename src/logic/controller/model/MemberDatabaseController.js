@@ -1,6 +1,6 @@
 import {DatabaseController} from "../DatabaseController";
 
-export class MembersDatabaseController {
+export class MemberDatabaseController {
 
   /*------------------------ FIELDS REGION ------------------------*/
   _databaseController = new DatabaseController();
