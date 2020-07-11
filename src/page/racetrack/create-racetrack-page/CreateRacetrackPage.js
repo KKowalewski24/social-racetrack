@@ -3,8 +3,10 @@ import {useForm} from "react-hook-form";
 import {keyValueObjectToArray, PR} from "../../../logic/Helper";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
 import strings from "../../../config/constant/string-constants";
+// eslint-disable-next-line max-len
 import {RacetrackFirebaseStorageController} from "../../../logic/controller/model/RacetrackFirebaseStorageController";
 import {ToastContainer} from "react-toastify";
+import {v4 as uuidv4} from "uuid";
 import {DropzoneArea} from "material-ui-dropzone";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -24,9 +26,8 @@ export const CreateRacetrackPage = (props) => {
       warningNotification(strings.createRacetrackPage.imageWarningInfo);
     } else {
       _racetrackFirebaseStorageController
-        .uploadRacetrackImage(image[0].name, image[0],
-          () => errorNotification(strings.createRacetrackPage.imageNotSavedError)
-        )
+        .uploadRacetrackImage(new Date().getUTCMilliseconds() + uuidv4() + image[0].name, image[0],
+          () => errorNotification(strings.createRacetrackPage.imageNotSavedError))
         .then((result) => {
           const url = result;
           console.log(url);
