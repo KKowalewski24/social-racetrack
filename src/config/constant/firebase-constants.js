@@ -1,8 +1,8 @@
 export const CLOUD_FUNCTIONS_GRANT_ADMIN = "grantAdmin";
 export const CLOUD_FUNCTIONS_GRANT_STANDARD_USER = "grantStandardUser";
 
-export const METADATA = {
-  contentType: "image/jpeg",
+export const METADATA_IMAGE = {
+  contentType: "image/",
 };
 
 const SLASH = "/";

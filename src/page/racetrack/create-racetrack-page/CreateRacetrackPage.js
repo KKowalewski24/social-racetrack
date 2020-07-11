@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import {keyValueObjectToArray, PR} from "../../../logic/Helper";
-import {warningNotification} from "../../../component/util/notification/notification";
+import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
 import strings from "../../../config/constant/string-constants";
+import {RacetrackFirebaseStorageController} from "../../../logic/controller/model/RacetrackFirebaseStorageController";
 import {ToastContainer} from "react-toastify";
 import {DropzoneArea} from "material-ui-dropzone";
 import TextField from "@material-ui/core/TextField";
@@ -14,6 +15,7 @@ export const CreateRacetrackPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
   const [image, setImage] = useState([]);
+  const _racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
 
   const handleCreateRacetrack = (data = PR()) => {
     console.log(data);
@@ -21,8 +23,16 @@ export const CreateRacetrackPage = (props) => {
     if (image.length === 0) {
       warningNotification(strings.createRacetrackPage.imageWarningInfo);
     } else {
-      //TODO ADD IMPL
-      // send to fb storage and then get url and send to db
+      _racetrackFirebaseStorageController
+        .uploadRacetrackImage(image[0].name, image[0],
+          () => errorNotification(strings.createRacetrackPage.imageNotSavedError)
+        )
+        .then((result) => {
+          const url = result;
+          console.log(url);
+          //TODO ADD IMPL
+          // send to fb storage and then get url and send to
+        });
     }
   };
 
