@@ -17,8 +17,8 @@ export const ResetPasswordPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
-  const globalStyles = GlobalStyles();
   const accountController = new AccountController();
+  const globalStyles = GlobalStyles();
 
   const handleResetPassword = (data = PR()) => {
     accountController.resetUserPassword(
@@ -66,6 +66,7 @@ export const ResetPasswordPage = (props) => {
         />
 
         <Button
+          onClick={checkInputs}
           type="submit"
           className="mt-2"
           variant="contained"
@@ -76,7 +77,6 @@ export const ResetPasswordPage = (props) => {
         </Button>
       </form>
 
-      {checkInputs()}
       <ToastContainer/>
     </div>
   );

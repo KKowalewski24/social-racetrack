@@ -19,8 +19,8 @@ export const LoginPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
-  const globalStyles = GlobalStyles();
   const accountController = new AccountController();
+  const globalStyles = GlobalStyles();
 
   const handleLogin = (data = PR()) => {
     accountController.loginUser(
@@ -77,6 +77,7 @@ export const LoginPage = (props) => {
         />
 
         <Button
+          onClick={checkInputs}
           type="submit"
           className="mt-4"
           variant="contained"
@@ -99,7 +100,6 @@ export const LoginPage = (props) => {
         </div>
       </form>
 
-      {checkInputs()}
       <ToastContainer/>
     </div>
   );

@@ -65,6 +65,7 @@ export const AdminPanelPage = (props) => {
         />
 
         <Button
+          onClick={checkInputs}
           type="submit"
           className="mt-2"
           variant="contained"
@@ -75,7 +76,6 @@ export const AdminPanelPage = (props) => {
         </Button>
       </form>
 
-      {checkInputs()}
       <ToastContainer/>
     </div>
   );

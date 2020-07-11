@@ -50,6 +50,7 @@ export const AddAward = (props) => {
 
         <div className="d-flex justify-content-center">
           <Button
+            onClick={checkInputs}
             type="submit"
             className="mt-4"
             variant="contained"
@@ -58,10 +59,8 @@ export const AddAward = (props) => {
             {strings.accountSettingsPage.confirm}
           </Button>
         </div>
-
       </form>
 
-      {checkInputs()}
       <ToastContainer/>
     </div>
   );

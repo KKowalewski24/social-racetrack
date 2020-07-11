@@ -128,6 +128,7 @@ export const AddCar = (props) => {
 
         <div className="d-flex justify-content-center">
           <Button
+            onClick={checkInputs}
             type="submit"
             className="mt-4"
             variant="contained"
@@ -136,10 +137,8 @@ export const AddCar = (props) => {
             {strings.accountSettingsPage.confirm}
           </Button>
         </div>
-
       </form>
 
-      {checkInputs()}
       <ToastContainer/>
     </div>
   );
