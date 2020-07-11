@@ -13,11 +13,17 @@ export const CreateRacetrackPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
-  const [image, setImage] = useState();
+  const [image, setImage] = useState([]);
 
   const handleCreateRacetrack = (data = PR()) => {
-    //TODO ADD IMPL
     console.log(data);
+
+    if (image.length === 0) {
+      warningNotification(strings.createRacetrackPage.imageWarningInfo);
+    } else {
+      //TODO ADD IMPL
+      // send to fb storage and then get url and send to db
+    }
   };
 
   const checkInputs = () => {
@@ -132,20 +138,21 @@ export const CreateRacetrackPage = (props) => {
             fullWidth
           />
 
-          {/*  TODO DROP DOWN*/}
           <div className="row my-3 custom-margin-x-0-1">
             <DropzoneArea
               inputRef={register({required: true})}
               dropzoneText={strings.createRacetrackPage.imageDropZone}
+              onChange={(image) => setImage(image)}
               acceptedFiles={["image/*"]}
               filesLimit={1}
               showFileNames
-              onChange={(image) => setImage(image)}
+              showAlerts={false}
             />
           </div>
 
           <div className="d-flex justify-content-center">
             <Button
+              onClick={checkInputs}
               type="submit"
               className="mt-4"
               variant="contained"
@@ -157,7 +164,6 @@ export const CreateRacetrackPage = (props) => {
         </form>
       </div>
 
-      {checkInputs()}
       <ToastContainer/>
     </div>
   );

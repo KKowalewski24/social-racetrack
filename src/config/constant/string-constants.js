@@ -141,6 +141,7 @@ export const strings = {
   },
   createRacetrackPage: {
     inputWarningInfo: "All fields are required",
+    imageWarningInfo: "Image is required",
     name: "Name",
     country: "Country",
     city: "City",
