@@ -1,15 +1,13 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import propTypes from "prop-types";
 import {Route, useLocation} from "react-router-dom";
 import CustomRedirect from "../custom-redirect/CustomRedirect";
-import {AuthContext} from "../../../logic/AuthContextProvider";
 
 export const PrivateRoute = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {privacyCondition, redirectPath, defaultPath, component: Component, ...rest} = props;
 
-  const {isUserLoggedIn} = useContext(AuthContext);
   const [lastLocation, setLastLocation] = useState(undefined);
   const location = useLocation();
 
@@ -18,7 +16,7 @@ export const PrivateRoute = (props) => {
       setLastLocation(defaultPath);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUserLoggedIn]);
+  }, [props.observedParam]);
 
   useEffect(() => {
     setLastLocation(location.pathname);
@@ -57,6 +55,7 @@ PrivateRoute.propTypes = {
   privacyCondition: propTypes.any,
   redirectPath: propTypes.string,
   defaultPath: propTypes.string,
+  observedParam: propTypes.bool.isRequired,
 };
 
 export default PrivateRoute;
