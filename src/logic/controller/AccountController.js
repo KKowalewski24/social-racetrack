@@ -1,4 +1,4 @@
-import {MembersDatabaseController} from "./model/MembersDatabaseController";
+import {MemberDatabaseController} from "./model/MemberDatabaseController";
 import {PR} from "../Helper";
 import config from "../../config/config";
 import {grantStandardUser} from "../CloudFunctions";
@@ -7,7 +7,7 @@ import strings from "../../config/constant/string-constants";
 export class AccountController {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  _userDatabaseController = new MembersDatabaseController();
+  _memberDatabaseController = new MemberDatabaseController();
 
   /*------------------------ METHODS REGION ------------------------*/
   registerUser = (firstName = PR(), lastName = PR(),
@@ -25,7 +25,8 @@ export class AccountController {
           .catch((error) => createUserErrorFunction());
 
         //TODO CHECK IF ADDING USERS TO DB WORKS WELL
-        this._userDatabaseController.createMember(firstName, lastName, email, country, city, birthDate);
+        this._memberDatabaseController
+          .createMember(firstName, lastName, email, country, city, birthDate);
 
         config.auth()
           .currentUser
