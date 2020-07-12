@@ -131,7 +131,14 @@ export const strings = {
     //
   },
   homePage: {
-    //
+    socialRacetrack:"Social Racetrack",
+    siteIntroFirst: "helps people exchange information between sports car enthusiasts.",
+    siteIntroSecond: "Our foundation firmly believe that everyone should have possibility to ",
+    registerLoginDescription: "Register or Login!",
+    fastAndEasy: "It is fast and easy",
+    dontHaveAccount: "Don't have an account? Sign Up",
+    alreadyHaveAccount: "Already have an account? Sign in",
+
   },
   membersPage: {
     //
