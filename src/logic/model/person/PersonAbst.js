@@ -12,9 +12,10 @@ export class PersonAbst extends BaseEntityAbst {
   _email;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(firstName = PR(), lastName = PR(), birthDate = PR(),
+  constructor(id = PR(), firstName = PR(),
+              lastName = PR(), birthDate = PR(),
               country = PR(), city = PR(), email = PR()) {
-    super();
+    super(id);
     this._firstName = firstName;
     this._lastName = lastName;
     this._birthDate = birthDate;

@@ -14,10 +14,11 @@ export class Car extends BaseEntityAbst {
   _driveTrainType;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(brand = PR(), model = PR(), productionYear = PR(),
-              mileage = PR(), carType = PR(), engineType = PR(),
+  constructor(id = PR(), brand = PR(), model = PR(),
+              productionYear = PR(), mileage = PR(),
+              carType = PR(), engineType = PR(),
               enginePower = PR(), driveTrainType = PR()) {
-    super();
+    super(id);
     this._brand = brand;
     this._model = model;
     this._productionYear = productionYear;

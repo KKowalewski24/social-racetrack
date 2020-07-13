@@ -4,6 +4,10 @@ export class BaseEntityAbst {
   _id;
 
   /*------------------------ METHODS REGION ------------------------*/
+  constructor(id) {
+    this._id = id;
+  }
+
   get id() {
     return this._id;
   }

@@ -9,8 +9,9 @@ export class Event extends BaseEntityAbst {
   _eventDate;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(racetrack = PR(), membersArray = PR(), eventDate = PR()) {
-    super();
+  constructor(id = PR(), racetrack = PR(),
+              membersArray = PR(), eventDate = PR()) {
+    super(id);
     this._racetrack = racetrack;
     this._membersArray = membersArray;
     this._eventDate = eventDate;

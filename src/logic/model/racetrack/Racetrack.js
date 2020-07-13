@@ -15,10 +15,11 @@ export class Racetrack extends BaseEntityAbst {
   _imageUrl;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(name = PR(), country = PR(), city = PR(), length = PR(),
-              turnsNumber = PR(), maximumExhaustLoudness = PR(),
-              minimumRideHeight = PR(), description = PR(), imageUrl = PR()) {
-    super();
+  constructor(id = PR(), name = PR(), country = PR(),
+              city = PR(), length = PR(), turnsNumber = PR(),
+              maximumExhaustLoudness = PR(), minimumRideHeight = PR(),
+              description = PR(), imageUrl = PR()) {
+    super(id);
     this._name = name;
     this._country = country;
     this._city = city;

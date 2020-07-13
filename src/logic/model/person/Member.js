@@ -8,10 +8,10 @@ export class Member extends PersonAbst {
   _receivedAwardsArray;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(firstName = PR(), lastName = PR(), birthDate = PR(),
-              country = PR(), city = PR(), email = PR(),
-              carsArray = PR(), receivedAwardsArray = PR()) {
-    super(firstName, lastName, birthDate, country, city, email);
+  constructor(id = PR(), firstName = PR(), lastName = PR(),
+              birthDate = PR(), country = PR(), city = PR(),
+              email = PR(), carsArray = PR(), receivedAwardsArray = PR()) {
+    super(id, firstName, lastName, birthDate, country, city, email);
     this._carsArray = carsArray;
     this._receivedAwardsArray = receivedAwardsArray;
   }

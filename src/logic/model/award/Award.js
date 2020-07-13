@@ -8,8 +8,8 @@ export class Award extends BaseEntityAbst {
   _year;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(description = PR(), year = PR()) {
-    super();
+  constructor(id = PR(), description = PR(), year = PR()) {
+    super(id);
     this._description = description;
     this._year = year;
   }

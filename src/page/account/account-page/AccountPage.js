@@ -42,19 +42,16 @@ export const AccountPage = (props) => {
 
   //TODO REMOVE THIS
   const member = new Member(
-    "Kamil", "Kowalewski", new Date("2020-07-04"),
+    1, "Kamil", "Kowalewski", new Date("2020-07-04"),
     "Poland", "Lodz", "sample@gmail.com",
     [
-      new Car("Audi", "RS3", 2019, 55000,
+      new Car(1, "Audi", "RS3", 2019, 55000,
         CarType.RACE_CAR, EngineType.INLINE_FIVE, 400, DriveTrainType.AWD)
     ],
     [
-      new Award("First place in SPA", 2018)
+      new Award(1, "First place in SPA", 2018)
     ]
   );
-  member.id = 1;
-  member.carsArray[0].id = 1;
-  member.receivedAwardsArray[0].id = 1;
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
