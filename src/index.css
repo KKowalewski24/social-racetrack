@@ -114,6 +114,10 @@
     margin-top: 4rem;
 }
 
+.custom-margin-top-6 {
+    margin-top: 6rem;
+}
+
 .custom-margin-text {
     margin-top: 10rem !important;
     margin-bottom: 5rem !important;

@@ -131,11 +131,15 @@ export const strings = {
     //
   },
   homePage: {
-    socialRacetrack:"Social Racetrack",
+    socialRacetrack: "Social Racetrack",
     siteIntroFirst: "helps people exchange information between sports car enthusiasts.",
-    siteIntroSecond: "Our foundation firmly believe that everyone should have possibility to ",
+    siteIntroSecond: "Our foundation firmly believes that everyone should have access to a free " +
+      "social networking site dedicated to sports car lovers that provides " +
+      "full data privacy and security.",
     registerLoginDescription: "Register or Login!",
     fastAndEasy: "It is fast and easy",
+    registerNow: "Register Now!",
+    loginNow: "Login Now!",
     dontHaveAccount: "Don't have an account? Sign Up",
     alreadyHaveAccount: "Already have an account? Sign in",
 
