@@ -168,7 +168,6 @@ export const Navbar = (props) => {
 
         <List>
           {renderListItem(EventIcon, strings.app.futureEvents, PATH_FUTURE_EVENTS)}
-          {renderListItem(AddBoxIcon, strings.app.createEvent, PATH_CREATE_EVENT)}
           {renderListItem(HistoryIcon, strings.app.pastEvents, PATH_PAST_EVENTS)}
         </List>
         <Divider/>

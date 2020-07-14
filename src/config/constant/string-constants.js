@@ -119,10 +119,13 @@ export const strings = {
     sendEmail: "Send email",
   },
   createEventPage: {
-    //
+    racetrack: "Racetrack",
+    dateTime: "Date and Time",
+    inputWarningInfo: "All fields are required",
+    confirm: "Confirm",
   },
   futureEventsPage: {
-    //
+    createNewEvent: "Create New Event",
   },
   pastEventsPage: {
     //
