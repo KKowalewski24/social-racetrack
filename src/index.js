@@ -15,11 +15,9 @@ import "./index.css";
 import App from "./main/App";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AuthContextProvider>
-      <App/>
-    </AuthContextProvider>
-  </React.StrictMode>,
+  <AuthContextProvider>
+    <App/>
+  </AuthContextProvider>,
   document.getElementById("root")
 );
 

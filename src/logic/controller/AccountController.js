@@ -1,51 +1,70 @@
-import config from "../../config/config";
+import {MemberDatabaseController} from "./model/MemberDatabaseController";
 import {PR} from "../Helper";
-import {createUser} from "./model/UserDatabaseController";
+import config from "../../config/config";
+import {grantStandardUser} from "../CloudFunctions";
+import strings from "../../config/constant/string-constants";
 
-export const registerUser = (firstName = PR(), lastName = PR(),
-                             email = PR(), password = PR(),
-                             verificationEmailErrorFunction = PR(),
-                             createUserErrorFunction = PR()) => {
-  config.auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      createUser(firstName, lastName, email, password);
-      config.auth()
-        .currentUser
-        .sendEmailVerification()
-        .catch((error) => {
-          verificationEmailErrorFunction();
-        });
-    })
-    .catch((error) => {
-      createUserErrorFunction();
-    });
-};
+export class AccountController {
 
-export const loginUser = (email, password, wrongCredentialsErrorFunction) => {
-  config.auth()
-    .signInWithEmailAndPassword(email, password)
-    .catch((error) => {
-      wrongCredentialsErrorFunction();
-    });
-};
+  /*------------------------ FIELDS REGION ------------------------*/
+  _memberDatabaseController = new MemberDatabaseController();
 
-export const logoutUser = () => {
-  config.auth()
-    .signOut()
-    .catch((error) => {
+  /*------------------------ METHODS REGION ------------------------*/
+  registerUser = (firstName = PR(), lastName = PR(),
+                  email = PR(), password = PR(),
+                  country = PR(), city = PR(),
+                  birthDate = PR(),
+                  verificationEmailErrorFunction = PR(),
+                  createUserErrorFunction = PR()) => {
+    config.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
 
-    });
-};
+        grantStandardUser({email: email})
+          .then((result) => console.log(result))
+          .catch((error) => createUserErrorFunction());
 
-export const changeUserEmail = () => {
-//TODO
-};
+        //TODO CHECK IF ADDING USERS TO DB WORKS WELL
+        this._memberDatabaseController
+          .createMember(firstName, lastName, email, country, city, birthDate);
 
-export const resetUserPassword = (email = PR(), resetUserPasswordErrorFunction = PR()) => {
-  config.auth()
-    .sendPasswordResetEmail(email)
-    .catch((error) => {
-      resetUserPasswordErrorFunction();
-    });
-};
+        config.auth()
+          .currentUser
+          .sendEmailVerification()
+          .catch(() => verificationEmailErrorFunction());
+
+        setTimeout(() => {
+          alert(strings.app.haveToLogout);
+          this.logoutUser();
+        }, 1000);
+
+      })
+      .catch(() => createUserErrorFunction());
+  };
+
+  loginUser = (email = PR(), password = PR(), wrongCredentialsErrorFunction = PR()) => {
+    config.auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(() => wrongCredentialsErrorFunction());
+  };
+
+  logoutUser = () => {
+    config.auth()
+      .signOut()
+      .catch(() => {
+      });
+  };
+
+  resetUserPassword = (email = PR(), resetUserPasswordErrorFunction = PR()) => {
+    config.auth()
+      .sendPasswordResetEmail(email)
+      .catch(() => resetUserPasswordErrorFunction());
+  };
+
+  deleteAccount = (deleteAccountErrorFunction = PR()) => {
+    config.auth()
+      .currentUser
+      .delete()
+      .catch(() => deleteAccountErrorFunction());
+  };
+}

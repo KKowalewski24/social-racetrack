@@ -1,12 +1,96 @@
+// TODO ALL STRING CONSTANTS SHOULD BE HERE
 export const strings = {
   app: {
     title: "Social Racetrack",
     logOutFailed: "Logout failed",
+    createEvent: "Create Event",
+    futureEvents: "Future Events",
+    pastEvents: "Past Events",
+    racetracks: "Racetracks",
+    members: "Members",
+    adminPanel: "Admin Panel",
+    haveToLogout: "You have to logout",
   },
-  accountPage: {},
+  type: {
+    carType: {
+      raceCar: "Race car",
+      rallyCar: "Rally car",
+    },
+    driveTrainType: {
+      fwd: "FWD",
+      rwd: "RWD",
+      awd: "AWD"
+    },
+    engineType: {
+      inlineThree: "Inline Three",
+      inlineFour: "Inline Four",
+      inlineFive: "Inline Five",
+      straightFour: "Straight Four",
+      straightSix: "Straight Six",
+      flatFour: "Flat Four",
+      flatSix: "Flat Six",
+      V6: "V6",
+      V8: "V8",
+      V10: "V10",
+      V12: "V12",
+    },
+  },
+  accountPage: {
+    name: "Name",
+    country: "Country",
+    city: "City",
+    birthDate: "Birth Date",
+    email: "Email",
+    lastLogin: "Last Login",
+    joinDate: "Join Date",
+    cars: "Cars",
+    brand: "Brand",
+    model: "Model",
+    productionYear: "Year",
+    mileage: "Mileage",
+    carType: "Type",
+    engineType: "Engine",
+    enginePower: "Power",
+    driveTrainType: "Drive",
+    awards: "Awards",
+    description: "Description",
+    year: "Year",
+    add: "Add",
+    remove: "Remove",
+    car: "Car",
+    award: "Award",
+    or: "or",
+    deleteAccount: "Delete Account",
+    deleteAccountError: "User account has not been deleted!",
+  },
+  accountSettingsPage: {
+    add: "Add",
+    car: "Car",
+    award: "Award",
+    brand: "Brand",
+    model: "Model",
+    productionYear: "Production Year",
+    mileage: "Mileage",
+    carType: "Car Type",
+    engineType: "Engine Type",
+    enginePower: "Engine Power",
+    driveTrainType: "Drive Train Type",
+    description: "Description",
+    year: "Year",
+    confirm: "Confirm",
+    inputWarningInfo: "All fields are required",
+  },
+  adminPanelPage: {
+    grantAdminStatus: "Grant Admin Status",
+    emailAddress: "Email Address",
+    confirm: "Confirm",
+    inputWarningInfo: "All fields are required",
+    grantAdminError: "User has not been granted to admin!",
+  },
   loginPage: {
     emailNotVerified: "Email has not been verified yet!",
     wrongEmailPassword: "Wrong email or password",
+    inputWarningInfo: "All fields are required",
     signIn: "Sign in",
     emailAddress: "Email Address",
     password: "Password",
@@ -16,20 +100,86 @@ export const strings = {
   registerPage: {
     verificationEmailNotSent: "Verification email has not been sent!",
     userAccountNotCreated: "User account has not been created!",
+    inputWarningInfo: "All fields are required and password should have at least 6 characters",
     signUp: "Sign up",
     firstName: "First Name",
     lastName: "Last Name",
     emailAddress: "Email Address",
     password: "Password",
+    country: "Country",
+    city: "City",
+    birthDate: "Birth Date",
     alreadyHaveAccount: "Already have an account? Sign in",
   },
   resetPasswordPage: {
     checkEmailCorrect: "Check if email is correct",
+    inputWarningInfo: "All fields are required",
     resetPassword: "Reset password",
     emailAddress: "Email Address",
     sendEmail: "Send email",
   },
-  homePage: {},
+  createEventPage: {
+    racetrack: "Racetrack",
+    dateTime: "Date and Time",
+    inputWarningInfo: "All fields are required",
+    confirm: "Confirm",
+  },
+  futureEventsPage: {
+    createNewEvent: "Create New Event",
+  },
+  pastEventsPage: {
+    //
+  },
+  eventDetailsPage: {
+    //
+  },
+  homePage: {
+    socialRacetrack: "Social Racetrack",
+    siteIntroFirst: "helps people exchange information between sports car enthusiasts.",
+    siteIntroSecond: "Our foundation firmly believes that everyone should have access to a free " +
+      "social networking site dedicated to sports car lovers that provides " +
+      "full data privacy and security.",
+    registerLoginDescription: "Register or Login!",
+    fastAndEasy: "It is fast and easy",
+    registerNow: "Register Now!",
+    loginNow: "Login Now!",
+    dontHaveAccount: "Don't have an account? Sign Up",
+    alreadyHaveAccount: "Already have an account? Sign in",
+
+  },
+  membersPage: {
+    //
+  },
+  memberDetailsPage: {
+    //
+  },
+  createRacetrackPage: {
+    inputWarningInfo: "All fields are required",
+    imageWarningInfo: "Image is required",
+    imageNotSavedError: "Image has not been saved!",
+    name: "Name",
+    country: "Country",
+    city: "City",
+    length: "Length",
+    turnsNumber: "Number of Turns",
+    maximumExhaustLoudness: "Maximum Exhaust Loudness",
+    minimumRideHeight: "Minimum Ride Height",
+    description: "Description",
+    imageUrl: "Image URL",
+    imageDropZone: "Drag and drop an racetrack image or click",
+    confirm: "Confirm",
+  },
+  racetracksPage: {
+    addNewRacetrack: "Add New Racetrack",
+  },
+  racetrackDetailsPage: {
+    //
+  },
+  errorPage: {
+    title: "404",
+    message: "Page Not Found",
+    redirectMessage: "Go back to home page",
+  }
 };
 
 export default strings;

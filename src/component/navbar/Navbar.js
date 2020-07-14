@@ -2,8 +2,19 @@ import React, {useState} from "react";
 import propTypes from "prop-types";
 import {PR} from "../../logic/Helper";
 import {Link} from "react-router-dom";
-import {PATH_ACCOUNT, PATH_HOME, PATH_LOGIN} from "../../config/constant/path-constants";
+import {strings} from "../../config/constant/string-constants";
 import clsx from "clsx";
+import {
+  PATH_ACCOUNT,
+  PATH_ADMIN_PANEL,
+  PATH_CREATE_EVENT,
+  PATH_FUTURE_EVENTS,
+  PATH_HOME,
+  PATH_LOGIN,
+  PATH_MEMBERS,
+  PATH_PAST_EVENTS,
+  PATH_RACETRACKS
+} from "../../config/constant/path-constants";
 import {
   AppBar,
   Divider,
@@ -13,23 +24,21 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  ListSubheader,
   Toolbar,
   Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
-import BarChartIcon from "@material-ui/icons/BarChart";
-import LayersIcon from "@material-ui/icons/Layers";
-import AssignmentIcon from "@material-ui/icons/Assignment";
+import EventIcon from "@material-ui/icons/Event";
+import HistoryIcon from "@material-ui/icons/History";
+import FlagIcon from "@material-ui/icons/Flag";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import PersonIcon from "@material-ui/icons/Person";
+import BuildIcon from "@material-ui/icons/Build";
 
 import NavbarStyles from "./NavbarStyles";
 import "../../index.css";
@@ -68,10 +77,12 @@ export const Navbar = (props) => {
 
     const renderTitle = () => {
       return (
-        <Typography component="h1" variant="h6" color="inherit" noWrap
-                    className={navbarStyles.title}>
+        <Typography
+          component="h1" variant="h6" color="inherit" noWrap
+          className={navbarStyles.title}
+        >
           <Link to={PATH_HOME} className="custom-color-inherit">
-            {props.title}
+            {strings.app.title}
           </Link>
         </Typography>
       );
@@ -88,8 +99,10 @@ export const Navbar = (props) => {
     const renderAccountButton = () => {
       return (
         <>
-          <Link to={props.isUserLoggedIn ? PATH_ACCOUNT : PATH_LOGIN}
-                className="custom-color-inherit">
+          <Link
+            to={props.isUserLoggedIn ? PATH_ACCOUNT : PATH_LOGIN}
+            className="custom-color-inherit"
+          >
             <IconButton color="inherit">
               <AccountCircle/>
             </IconButton>
@@ -153,27 +166,31 @@ export const Navbar = (props) => {
         </div>
         <Divider/>
 
-        {/*TODO MOVE STRING INTO CONSTANTS*/}
         <List>
-          {renderListItem(DashboardIcon, "Dashboard", PATH_HOME)}
-          {renderListItem(ShoppingCartIcon, "Orders", PATH_HOME)}
-          {renderListItem(PeopleIcon, "Customers", PATH_HOME)}
-          {renderListItem(BarChartIcon, "Reports", PATH_HOME)}
-          {renderListItem(LayersIcon, "Integrations", PATH_HOME)}
+          {renderListItem(EventIcon, strings.app.futureEvents, PATH_FUTURE_EVENTS)}
+          {renderListItem(HistoryIcon, strings.app.pastEvents, PATH_PAST_EVENTS)}
         </List>
-
         <Divider/>
 
         <List>
-          <ListSubheader inset>
-            {/*TODO MOVE STRING INTO CONSTANTS*/}
-            Saved reports
-          </ListSubheader>
-          {/*TODO MOVE STRING INTO CONSTANTS*/}
-          {renderListItem(AssignmentIcon, "month", PATH_HOME)}
-          {renderListItem(AssignmentIcon, "quarter", PATH_HOME)}
-          {renderListItem(AssignmentIcon, "year", PATH_HOME)}
+          {renderListItem(FlagIcon, strings.app.racetracks, PATH_RACETRACKS)}
         </List>
+        <Divider/>
+
+        <List>
+          {renderListItem(PersonIcon, strings.app.members, PATH_MEMBERS)}
+        </List>
+
+        {
+          props.isAdmin ?
+            <>
+              <Divider/>
+              <List>
+                {renderListItem(BuildIcon, strings.app.adminPanel, PATH_ADMIN_PANEL)}
+              </List>
+            </>
+            : null
+        }
       </Drawer>
     );
   };
@@ -199,11 +216,11 @@ export const Navbar = (props) => {
 };
 
 Navbar.propTypes = {
-  title: propTypes.string.isRequired,
   isDarkMode: propTypes.bool.isRequired,
   handleDarkMode: propTypes.func.isRequired,
   isUserLoggedIn: propTypes.bool,
-  logout: propTypes.func.isRequired,
+  isAdmin: propTypes.bool,
+  logout: propTypes.func.isRequired
 };
 
 export default Navbar;

@@ -12,44 +12,59 @@
 ## Run Social-Racetrack in Development Mode
 * Download source code
 * In project main directory `yarn start` and wait till the development server will start up
+* Open selected browser and open `localhost:3000`
 
-## Configuring Firebase Backend 
+## Firebase Backend Installation Process
+
+#### Firebase Console 
 * Go to `https://console.firebase.google.com/`
 * Login or create Google account
-* Create new project - set name
+* Create new project and set its name
+
+#### Local Machine
+* Go to project directory 
+* Run below commands
+```
+npm install -g firebase-tools
+firebase login
+``` 
 
 #### Project credentials 
 * Go to settings -> General -> At the bottom of page choose config and then fill .env file 
 with data with proper order
 
-#### Authentication
+#### Deploy Authentication Rules
+* There is no way to store Authentication Rules on local machine so there is need to do as it is written below
 * Go to Authentication tab then choose Sign-in method and enable Email/Password authentication
 
-#### Database
-Rules
+#### Deploy Database Rules
+* Run below command to deploy rules
+```
+firebase deploy --only firestore:rules
 ```
 
+#### Deploy Storage Rules
+* Run below command to deploy rules
+```
+firebase deploy --only storage:rules
 ```
 
-#### Storage
-Rules
+#### Deploy Cloud Functions
 ```
-
+firebase deploy --only functions
 ```
-
-#### Hosting
-Go to Hosting and do what the instruction shows
-* `npm install -g firebase-tools`
-* `firebase login`
-* `firebase init`
-* `firebase deploy`
+Important message - before next deployment remember to remove previous Cloud Function
 
 
-## Deploy to Firebase Hosting
-* Firebase Tools must be install globally `npm install -g firebase-tools`
-* You must login `firebase login`
-* Go to project directory
-* Checkout branch to master `git checkout master`
-* Pull changes `git pull`
-* Run `yarn build` command
-* Run `firebase deploy`
+Remember that Deployment of Node.js 8 functions will no longer be allowed after 
+February 15, 2021. Then, executions of already-deployed Node.js 8 functions 
+will stop after March 15, 2021.
+
+Node.js 10 cloud functions require payments so finish BSC at the beginning of February
+
+#### Deploy to Firebase Hosting
+* Run below command
+```
+yarn build
+firebase deploy --only hosting
+```

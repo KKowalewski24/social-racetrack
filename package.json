@@ -15,19 +15,26 @@
     "firebase": "^7.14.4",
     "firebase-tools": "^8.4.0",
     "jquery": "^3.5.0",
+    "material-ui-dropzone": "^3.3.0",
     "mdbreact": "^4.25.6",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-avatar": "^3.9.7",
     "react-dom": "^16.13.1",
     "react-hook-form": "^5.5.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "react-toastify": "^6.0.5"
+    "react-toastify": "^6.0.5",
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "fb:db": "firebase deploy --only firestore:rules",
+    "fb:stor": "firebase deploy --only storage:rules",
+    "fb:fun": "firebase deploy --only functions",
+    "fb:host": "yarn build && firebase deploy --only hosting"
   },
   "eslintConfig": {
     "extends": [
@@ -41,7 +48,7 @@
       "max-len": [
         "error",
         {
-          "code": 105
+          "code": 115
         }
       ],
       "no-multiple-empty-lines": [
