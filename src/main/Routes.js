@@ -102,7 +102,7 @@ export const Routes = (props) => {
 
       <PrivateRoute
         exact path={PATH_HOME} component={HomePage}
-        privacyCondition={!isUserLoggedIn} defaultPath={PATH_FUTURE_EVENTS}
+        redirectPath={PATH_FUTURE_EVENTS} privacyCondition={!isUserLoggedIn}
         observedParam={isUserLoggedIn}
       />
 

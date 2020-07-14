@@ -17,7 +17,7 @@ export const CreateRacetrackPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
   const [image, setImage] = useState([]);
-  const _racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
+  const racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
 
   const handleCreateRacetrack = (data = PR()) => {
     console.log(data);
@@ -25,7 +25,7 @@ export const CreateRacetrackPage = (props) => {
     if (image.length === 0) {
       warningNotification(strings.createRacetrackPage.imageWarningInfo);
     } else {
-      _racetrackFirebaseStorageController
+      racetrackFirebaseStorageController
         .uploadRacetrackImage(new Date().getUTCMilliseconds() + uuidv4() + image[0].name, image[0],
           () => errorNotification(strings.createRacetrackPage.imageNotSavedError))
         .then((result) => {
