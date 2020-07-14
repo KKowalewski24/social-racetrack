@@ -31,7 +31,7 @@ export const AddCar = (props) => {
       <form onSubmit={handleSubmit(props.handleAddCar)}>
 
         <div className="row">
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="text"
               inputRef={register({required: true})}
@@ -44,7 +44,7 @@ export const AddCar = (props) => {
             />
           </div>
 
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="text"
               inputRef={register({required: true})}
@@ -58,7 +58,7 @@ export const AddCar = (props) => {
         </div>
 
         <div className="row">
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="number"
               inputRef={register({required: true, min: 1900, max: getCurrentYear()})}
@@ -70,7 +70,7 @@ export const AddCar = (props) => {
             />
           </div>
 
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="number"
               inputRef={register({required: true, min: 0})}
@@ -84,7 +84,7 @@ export const AddCar = (props) => {
         </div>
 
         <div className="row">
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <CustomComboBox
               enum={CarType}
               inputRef={register({required: true})}
@@ -93,7 +93,7 @@ export const AddCar = (props) => {
             />
           </div>
 
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <CustomComboBox
               enum={EngineType}
               inputRef={register({required: true})}
@@ -104,7 +104,7 @@ export const AddCar = (props) => {
         </div>
 
         <div className="row">
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="number"
               inputRef={register({required: true, min: 1})}
@@ -116,7 +116,7 @@ export const AddCar = (props) => {
             />
           </div>
 
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <CustomComboBox
               enum={DriveTrainType}
               inputRef={register({required: true})}

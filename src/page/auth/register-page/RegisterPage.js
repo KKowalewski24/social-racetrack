@@ -58,7 +58,7 @@ export const RegisterPage = (props) => {
       <form onSubmit={handleSubmit(handleRegister)} className="mb-4">
 
         <div className="row">
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="text"
               inputRef={register({required: true})}
@@ -71,7 +71,7 @@ export const RegisterPage = (props) => {
             />
           </div>
 
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="text"
               inputRef={register({required: true})}
@@ -104,7 +104,7 @@ export const RegisterPage = (props) => {
           fullWidth
         />
         <div className="row">
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="text"
               inputRef={register({required: true})}
@@ -115,7 +115,7 @@ export const RegisterPage = (props) => {
               fullWidth
             />
           </div>
-          <div className="col-12 col-sm-6">
+          <div className="col-sm-6">
             <TextField
               type="text"
               inputRef={register({required: true})}

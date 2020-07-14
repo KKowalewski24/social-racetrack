@@ -62,7 +62,7 @@ export const CreateRacetrackPage = (props) => {
           />
 
           <div className="row">
-            <div className="col-12 col-sm-6">
+            <div className="col-sm-6">
               <TextField
                 type="text"
                 inputRef={register({required: true})}
@@ -74,7 +74,7 @@ export const CreateRacetrackPage = (props) => {
               />
             </div>
 
-            <div className="col-12 col-sm-6">
+            <div className="col-sm-6">
               <TextField
                 type="text"
                 inputRef={register({required: true})}
@@ -88,7 +88,7 @@ export const CreateRacetrackPage = (props) => {
           </div>
 
           <div className="row">
-            <div className="col-12 col-sm-6">
+            <div className="col-sm-6">
               <TextField
                 type="number"
                 inputRef={register({required: true})}
@@ -100,7 +100,7 @@ export const CreateRacetrackPage = (props) => {
               />
             </div>
 
-            <div className="col-12 col-sm-6">
+            <div className="col-sm-6">
               <TextField
                 type="number"
                 inputRef={register({required: true})}
@@ -114,7 +114,7 @@ export const CreateRacetrackPage = (props) => {
           </div>
 
           <div className="row">
-            <div className="col-12 col-sm-6">
+            <div className="col-sm-6">
               <TextField
                 type="number"
                 inputRef={register({required: true})}
@@ -126,7 +126,7 @@ export const CreateRacetrackPage = (props) => {
               />
             </div>
 
-            <div className="col-12 col-sm-6">
+            <div className="col-sm-6">
               <TextField
                 type="number"
                 inputRef={register({required: true})}
