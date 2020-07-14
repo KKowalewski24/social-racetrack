@@ -57,7 +57,7 @@ export const HomePage = (props) => {
     };
 
     return (
-      <div className="col-sm-6 text-center custom-margin-top-6 mb-4">
+      <div className="col-sm-6 text-center align-self-center mb-4">
         {renderDescription()}
         {renderImage()}
       </div>
