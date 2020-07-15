@@ -157,6 +157,7 @@ export const strings = {
     inputWarningInfo: "All fields are required",
     imageWarningInfo: "Image is required",
     imageNotSavedError: "Image has not been saved!",
+    racetrackNotSavedError: "Racetrack has not been saved!",
     name: "Name",
     country: "Country",
     city: "City",

@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
-import {generateCustomUuidWithSecond, keyValueObjectToArray, PR} from "../../../logic/Helper";
+import {generateCustomUuid, generateCustomUuidWithSecond, keyValueObjectToArray, PR} from "../../../logic/Helper";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
-import strings from "../../../config/constant/string-constants";
-// eslint-disable-next-line max-len
+import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import {RacetrackFirebaseStorageController} from "../../../logic/controller/model/RacetrackFirebaseStorageController";
+import {Racetrack} from "../../../logic/model/racetrack/Racetrack";
+import {PATH_RACETRACKS} from "../../../config/constant/path-constants";
+import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
 import {DropzoneArea} from "material-ui-dropzone";
 import TextField from "@material-ui/core/TextField";
@@ -17,22 +19,27 @@ export const CreateRacetrackPage = (props) => {
   const {register, handleSubmit, errors} = useForm();
   const [image, setImage] = useState([]);
   const racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
+  const racetrackDatabaseController = new RacetrackDatabaseController();
 
   const handleCreateRacetrack = (data = PR()) => {
-    console.log(data);
-
     if (image.length === 0) {
       warningNotification(strings.createRacetrackPage.imageWarningInfo);
     } else {
-      racetrackFirebaseStorageController
-        .uploadRacetrackImage(generateCustomUuidWithSecond() + image[0].name, image[0],
-          () => errorNotification(strings.createRacetrackPage.imageNotSavedError))
-        .then((result) => {
-          const url = result;
-          console.log(url);
-          //TODO ADD IMPL
-          // send to fb storage and then get url and send to
-        });
+      racetrackFirebaseStorageController.uploadRacetrackImage(
+        generateCustomUuidWithSecond() + image[0].name, image[0],
+        () => errorNotification(strings.createRacetrackPage.imageNotSavedError)
+      ).then((imageUrl) => {
+        racetrackDatabaseController.createRacetrack(
+          new Racetrack(
+            generateCustomUuid(), data.name, data.country, data.city, data.length,
+            data.turnsNumber, data.maximumExhaustLoudness, data.minimumRideHeight,
+            data.description, imageUrl
+          ),
+          () => errorNotification(strings.createRacetrackPage.racetrackNotSavedError)
+        );
+
+        window.location.replace(PATH_RACETRACKS);
+      });
     }
   };
 
