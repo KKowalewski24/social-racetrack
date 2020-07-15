@@ -16,11 +16,27 @@ export class DatabaseController {
     }
   };
 
-  readData = async (path = PR(), errorFunction = PR()) => {
+  readSingleData = async (path = PR(), errorFunction = PR()) => {
     try {
       return await config.firestore()
         .doc(path)
         .get();
+    } catch (err) {
+      errorFunction();
+    }
+  };
+
+  readAllData = async (collectionName = PR(), errorFunction = PR()) => {
+    try {
+      const data = await config.firestore()
+        .collection(collectionName)
+        .get();
+
+      const documentsArray = [];
+      data.docs.map((it) => documentsArray.push(it.data()));
+
+      return documentsArray;
+
     } catch (err) {
       errorFunction();
     }
