@@ -7,7 +7,6 @@ import clsx from "clsx";
 import {
   PATH_ACCOUNT,
   PATH_ADMIN_PANEL,
-  PATH_CREATE_EVENT,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
   PATH_LOGIN,
@@ -36,7 +35,6 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import EventIcon from "@material-ui/icons/Event";
 import HistoryIcon from "@material-ui/icons/History";
 import FlagIcon from "@material-ui/icons/Flag";
-import AddBoxIcon from "@material-ui/icons/AddBox";
 import PersonIcon from "@material-ui/icons/Person";
 import BuildIcon from "@material-ui/icons/Build";
 

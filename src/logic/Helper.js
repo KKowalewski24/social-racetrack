@@ -65,7 +65,7 @@ export const convertClassObjectToJsObject = (object) => {
  *
  * @returns {string}
  */
-const generateCustomUuid = () => {
+export const generateCustomUuid = () => {
   return uuidv4();
 };
 
