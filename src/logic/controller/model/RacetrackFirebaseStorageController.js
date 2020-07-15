@@ -8,6 +8,10 @@ export class RacetrackFirebaseStorageController {
   _firebaseStorageController = new FirebaseStorageController();
 
   /*------------------------ METHODS REGION ------------------------*/
+
+  /**
+   * Method returns uploaded image URL
+   */
   uploadRacetrackImage = async (filename = PR(), data = PR(), errorFunction = PR()) => {
     await this._firebaseStorageController
       .uploadFile(PATH_STORAGE_RACETRACK_IMAGE + filename, data, METADATA_IMAGE, errorFunction);

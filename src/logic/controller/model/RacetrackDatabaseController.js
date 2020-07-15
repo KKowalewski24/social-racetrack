@@ -18,14 +18,10 @@ export class RacetrackDatabaseController {
       .catch((err) => errorFunction());
   };
 
-  /**
-   * @param path is object's id
-   * @param errorFunction
-   */
-  readSingleRacetrack = async (path = PR(), errorFunction = PR()) => {
+  readSingleRacetrack = async (id = PR(), errorFunction = PR()) => {
     try {
       return await this._databaseController
-        .readSingleData(PATH_DB_COLLECTION_RACETRACKS + path, errorFunction);
+        .readSingleData(PATH_DB_COLLECTION_RACETRACKS + id, errorFunction);
     } catch (err) {
       errorFunction();
     }
@@ -40,13 +36,9 @@ export class RacetrackDatabaseController {
     }
   };
 
-  /**
-   * @param path is object's id
-   * @param errorFunction
-   */
-  deleteRacetrack = (path = PR(), errorFunction = PR()) => {
+  deleteRacetrack = (id = PR(), errorFunction = PR()) => {
     this._databaseController
-      .deleteData(PATH_DB_COLLECTION_RACETRACKS + path, errorFunction)
+      .deleteData(PATH_DB_COLLECTION_RACETRACKS + id, errorFunction)
       .catch((err) => errorFunction());
   };
 }
