@@ -18,7 +18,7 @@ export class RacetrackDatabaseController {
       .catch((err) => errorFunction());
   };
 
-  readSingleRacetrack = async (id = PR(), errorFunction = PR()) => {
+  readSingleRacetrackById = async (id = PR(), errorFunction = PR()) => {
     try {
       return await this._databaseController
         .readSingleData(PATH_DB_COLLECTION_RACETRACKS + id, errorFunction);
@@ -36,7 +36,7 @@ export class RacetrackDatabaseController {
     }
   };
 
-  deleteRacetrack = (id = PR(), errorFunction = PR()) => {
+  deleteRacetrackById = (id = PR(), errorFunction = PR()) => {
     this._databaseController
       .deleteData(PATH_DB_COLLECTION_RACETRACKS + id, errorFunction)
       .catch((err) => errorFunction());
