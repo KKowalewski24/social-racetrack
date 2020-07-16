@@ -93,7 +93,7 @@ export const DisplayUserData = (props) => {
       return (
         <tbody>
           {
-            props.carsArray.map((it, index) => {
+            props.carsArray && props.carsArray.map((it, index) => {
               return (
                 <tr key={index}>
                   <td>{it.brand}</td>
@@ -157,7 +157,7 @@ export const DisplayUserData = (props) => {
       return (
         <tbody>
           {
-            props.receivedAwardsArray.map((it, index) => {
+            props.receivedAwardsArray && props.receivedAwardsArray.map((it, index) => {
               return (
                 <tr key={index}>
                   <td>{it.description}</td>

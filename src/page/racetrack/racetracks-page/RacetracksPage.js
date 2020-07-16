@@ -89,18 +89,19 @@ export const RacetracksPage = (props) => {
       strings.racetracksPage.cardPropertiesKeysLength
     ];
 
-    return filteredRacetracksArray.map((it, index) => {
-      return (
-        <RacetrackCard
-          key={index}
-          gridStyles={"col-sm-5 col-md-4 col-lg-3 col-xl-2 m-3 p-0"}
-          redirectPath={PATH_RACETRACK_DETAILS}
-          titleStyles={globalStyles.materialBlueFont}
-          racetrackObject={it}
-          racetrackPropertiesKeysArray={cardPropertiesKeysArray}
-        />
-      );
-    });
+    return filteredRacetracksArray
+      && filteredRacetracksArray.map((it, index) => {
+        return (
+          <RacetrackCard
+            key={index}
+            gridStyles={"col-sm-5 col-md-4 col-lg-3 col-xl-2 m-3 p-0"}
+            redirectPath={PATH_RACETRACK_DETAILS}
+            titleStyles={globalStyles.materialBlueFont}
+            racetrackObject={it}
+            racetrackPropertiesKeysArray={cardPropertiesKeysArray}
+          />
+        );
+      });
   };
 
   /*------------------------ RETURN REGION ------------------------*/

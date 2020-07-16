@@ -20,7 +20,7 @@ export const BaseCard = (props) => {
   };
 
   const renderProperties = (propertiesArray = PR()) => {
-    return propertiesArray.map((it, index) => {
+    return propertiesArray && propertiesArray.map((it, index) => {
       return (
         <Fragment key={index}>
           {renderSingleProperty(it.key, it.value)}

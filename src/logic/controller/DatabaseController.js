@@ -36,7 +36,9 @@ export class DatabaseController {
         .get();
 
       const documentsArray = [];
-      data.docs.map((it) => documentsArray.push(it.data()));
+      data.docs && data.docs.map((it) => {
+        return documentsArray.push(it.data());
+      });
 
       return documentsArray;
 
