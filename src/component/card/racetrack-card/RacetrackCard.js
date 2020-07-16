@@ -1,12 +1,17 @@
 import React from "react";
 import propTypes from "prop-types";
 import BaseCard from "../base-card/BaseCard";
+import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
+import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 
 export const RacetrackCard = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const browserStorageController = new BrowserStorageController();
+
   const setChosenRacetrack = () => {
-    //TODO
+    browserStorageController
+      .sessionStorageSaveItem(CHOSEN_RACETRACK_ID, props.racetrackObject.id);
   };
 
   const generatePropertiesArray = () => {
@@ -22,9 +27,9 @@ export const RacetrackCard = (props) => {
       gridStyles={props.gridStyles}
       redirectPath={props.redirectPath}
       handleRedirect={setChosenRacetrack}
-      imagePath={props.racetrackObject._imageUrl}
+      imagePath={props.racetrackObject.imageUrl}
       titleStyles={props.titleStyles}
-      title={props.racetrackObject._name}
+      title={props.racetrackObject.name}
       propertiesArray={generatePropertiesArray()}
     />
   );

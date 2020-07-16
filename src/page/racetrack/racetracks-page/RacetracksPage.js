@@ -6,10 +6,11 @@ import {PATH_CREATE_RACETRACK, PATH_HOME, PATH_RACETRACK_DETAILS} from "../../..
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
 import strings from "../../../config/constant/string-constants";
 import {AuthContext} from "../../../logic/AuthContextProvider";
+import SearchBox from "../../../component/util/search-box/SearchBox";
 import {errorNotification} from "../../../component/util/notification/notification";
 import RacetrackCard from "../../../component/card/racetrack-card/RacetrackCard";
-import GlobalStyles from "../../../main/GlobalStyles";
 import Button from "@material-ui/core/Button";
+import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
 export const RacetracksPage = (props) => {
@@ -17,6 +18,7 @@ export const RacetracksPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {isAdmin} = useContext(AuthContext);
   const [racetracksArray, setRacetracksArray] = useState([]);
+  const [filteredRacetracksArray, setFilteredRacetracksArray] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -28,8 +30,8 @@ export const RacetracksPage = (props) => {
       () => errorNotification(strings.racetracksPage.racetrackLoadingError)
     )
       .then((racetracks) => {
-        console.log(racetracks);
         setRacetracksArray(racetracks);
+        setFilteredRacetracksArray(racetracks);
         setIsLoaded(true);
         setIsError(false);
       })
@@ -56,8 +58,22 @@ export const RacetracksPage = (props) => {
     );
   };
 
+  const renderSearchBox = () => {
+    const handleChange = (event) => {
+      console.log(event.target.value);
+      //  todo
+    };
+
+    return (
+      <SearchBox
+        label={strings.racetracksPage.searchRacetrack}
+        handleChange={handleChange}
+      />
+    );
+  };
+
   const renderRacetrackCards = () => {
-    return racetracksArray.map((it, index) => {
+    return filteredRacetracksArray.map((it, index) => {
       return (
         <RacetrackCard
           key={index}
@@ -82,9 +98,22 @@ export const RacetracksPage = (props) => {
       errorMessageStyles={globalStyles.materialBlueFont}
     >
       <div className="container-fluid">
-        <div className="my-4 mx-2">
-          {isAdmin ? renderTab() : null}
-          <div className="row justify-content-center">
+        <div className="my-4 mb-2">
+          {
+            isAdmin ?
+              <div className="mt-2">
+                {renderTab()}
+              </div>
+              : null
+          }
+
+          <div className="container custom-container-sm">
+            <div className="row  mt-2">
+              {renderSearchBox()}
+            </div>
+          </div>
+
+          <div className="row justify-content-center mt-2">
             {renderRacetrackCards()}
           </div>
         </div>
