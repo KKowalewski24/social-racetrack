@@ -1,4 +1,4 @@
-export const CHOSEN_FUTURE_EVENT_ID = "chosenFutureEventId";
-export const CHOSEN_PAST_EVENT_ID = "chosenPastEventId";
-export const CHOSEN_MEMBER_ID = "chosenMemberId";
-export const CHOSEN_RACETRACK_ID = "chosenRacetrackId";
+export const CHOSEN_FUTURE_EVENTS_ID_ARRAY = "chosenFutureEventsIdArray";
+export const CHOSEN_PAST_EVENTS_ID_ARRAY = "chosenPastEventsIdArray";
+export const CHOSEN_MEMBERS_ID_ARRAY = "chosenMembersIdArray";
+export const CHOSEN_RACETRACKS_ID_ARRAY = "chosenRacetracksArray";
