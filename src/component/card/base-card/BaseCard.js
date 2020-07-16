@@ -1,8 +1,8 @@
 import React, {Fragment} from "react";
 import propTypes from "prop-types";
 import {Link} from "react-router-dom";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import {PR} from "../../../logic/Helper";
+import GradeIcon from "@material-ui/icons/Grade";
 
 export const BaseCard = (props) => {
 
@@ -10,7 +10,7 @@ export const BaseCard = (props) => {
   const renderSingleProperty = (key = PR(), value = PR()) => {
     return (
       <div className="text-dark">
-        <FiberManualRecordIcon fontSize="inherit" className="mb-1"/>
+        <GradeIcon fontSize="inherit" className="mb-1 mr-1"/>
         {key + ": "}
         <span className="text-nowrap">
           {value}
@@ -20,7 +20,7 @@ export const BaseCard = (props) => {
   };
 
   const renderProperties = (propertiesArray = PR()) => {
-    propertiesArray.map((it, index) => {
+    return propertiesArray.map((it, index) => {
       return (
         <Fragment key={index}>
           {renderSingleProperty(it.key, it.value)}
