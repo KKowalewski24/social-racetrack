@@ -62,16 +62,17 @@ export const RacetracksPage = (props) => {
 
     const handleSearch = (event) => {
       const query = event.target.value.toLowerCase();
-      setFilteredRacetracksArray([]);
 
+      const resultArray = [];
       racetracksArray.forEach((it) => {
         if (it.name.toLowerCase().includes(query)) {
-          setFilteredRacetracksArray([...filteredRacetracksArray, it]);
+          resultArray.push(it);
         }
       });
+
+      setFilteredRacetracksArray(resultArray);
     };
 
-    //TODO ADD ON KEY UP
     return (
       <SearchBox
         label={strings.racetracksPage.searchRacetrack}
