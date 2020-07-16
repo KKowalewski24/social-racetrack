@@ -15,11 +15,11 @@ export const ErrorMessage = (props) => {
           {props.title}
         </h1>
         <h2 className="font-weight-bold">
-          {props.message}
+          {props.description}
         </h2>
         <Link to={props.redirectPath} className={props.styles}>
           <h5>
-            {props.redirectMessage}
+            {props.redirectDescription}
           </h5>
         </Link>
       </div>
@@ -29,9 +29,9 @@ export const ErrorMessage = (props) => {
 
 ErrorMessage.propTypes = {
   title: propTypes.string,
-  message: propTypes.string.isRequired,
+  description: propTypes.string.isRequired,
   redirectPath: propTypes.string.isRequired,
-  redirectMessage: propTypes.string.isRequired,
+  redirectDescription: propTypes.string.isRequired,
   styles: propTypes.string,
 };
 
