@@ -173,6 +173,9 @@ export const strings = {
   racetracksPage: {
     addNewRacetrack: "Add New Racetrack",
     searchRacetrack: "Search Racetrack",
+    cardPropertiesKeysCountry: "Country",
+    cardPropertiesKeysCity: "City",
+    cardPropertiesKeysLength: "Length",
     racetrackLoadingError: "An error occurred while loading data",
     backHomePage: "Go back to home page",
   },

@@ -3,6 +3,7 @@ import propTypes from "prop-types";
 import BaseCard from "../base-card/BaseCard";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
+import {PR} from "../../../logic/Helper";
 
 export const RacetrackCard = (props) => {
 
@@ -14,11 +15,24 @@ export const RacetrackCard = (props) => {
       .sessionStorageSaveItem(CHOSEN_RACETRACK_ID, props.racetrackObject.id);
   };
 
-  const generatePropertiesArray = () => {
-    //TODO
-    return [
-      {key: "abc", value: "cde"}
+  const generatePropertiesArray = (racetrackObject = PR(), keysArray = PR()) => {
+    const chosenValueArray = [
+      racetrackObject.country,
+      racetrackObject.city,
+      racetrackObject.length
     ];
+
+    if (keysArray.length !== chosenValueArray.length) {
+      throw new Error("Arrays' length must be equal");
+    }
+
+    const resultArray = [];
+
+    for (let i = 0; i < keysArray.length; i++) {
+      resultArray.push({key: keysArray[i], value: chosenValueArray[i]});
+    }
+
+    return resultArray;
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -30,7 +44,9 @@ export const RacetrackCard = (props) => {
       imagePath={props.racetrackObject.imageUrl}
       titleStyles={props.titleStyles}
       title={props.racetrackObject.name}
-      propertiesArray={generatePropertiesArray()}
+      propertiesArray={
+        generatePropertiesArray(props.racetrackObject, props.racetrackPropertiesKeysArray)
+      }
     />
   );
 };
@@ -40,6 +56,7 @@ RacetrackCard.propTypes = {
   redirectPath: propTypes.string.isRequired,
   titleStyles: propTypes.string.isRequired,
   racetrackObject: propTypes.object.isRequired,
+  racetrackPropertiesKeysArray: propTypes.array.isRequired,
 };
 
 export default RacetrackCard;

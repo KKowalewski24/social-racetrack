@@ -59,20 +59,35 @@ export const RacetracksPage = (props) => {
   };
 
   const renderSearchBox = () => {
-    const handleChange = (event) => {
-      console.log(event.target.value);
-      //  todo
+
+    const handleSearch = (event) => {
+      const query = event.target.value.toLowerCase();
+      setFilteredRacetracksArray([]);
+
+      racetracksArray.forEach((it) => {
+        if (it.name.toLowerCase().includes(query)) {
+          setFilteredRacetracksArray([...filteredRacetracksArray, it]);
+        }
+      });
     };
 
+    //TODO ADD ON KEY UP
     return (
       <SearchBox
         label={strings.racetracksPage.searchRacetrack}
-        handleChange={handleChange}
+        handleChange={handleSearch}
       />
     );
   };
 
   const renderRacetrackCards = () => {
+
+    const cardPropertiesKeysArray = [
+      strings.racetracksPage.cardPropertiesKeysCountry,
+      strings.racetracksPage.cardPropertiesKeysCity,
+      strings.racetracksPage.cardPropertiesKeysLength
+    ];
+
     return filteredRacetracksArray.map((it, index) => {
       return (
         <RacetrackCard
@@ -81,6 +96,7 @@ export const RacetracksPage = (props) => {
           redirectPath={PATH_RACETRACK_DETAILS}
           titleStyles={globalStyles.materialBlueFont}
           racetrackObject={it}
+          racetrackPropertiesKeysArray={cardPropertiesKeysArray}
         />
       );
     });
