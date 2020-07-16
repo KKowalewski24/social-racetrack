@@ -2,7 +2,7 @@ import React from "react";
 import propTypes from "prop-types";
 import BaseCard from "../base-card/BaseCard";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
-import {CHOSEN_RACETRACKS_ID_ARRAY} from "../../../config/constant/browser-storage-contants";
+import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import {PR} from "../../../logic/Helper";
 
 export const RacetrackCard = (props) => {
@@ -12,7 +12,7 @@ export const RacetrackCard = (props) => {
 
   const setChosenRacetrack = () => {
     browserStorageController
-      .localStorageAppendArray(CHOSEN_RACETRACKS_ID_ARRAY, props.racetrackObject.id);
+      .sessionStorageSaveItem(CHOSEN_RACETRACK_ID, props.racetrackObject.id);
   };
 
   const generatePropertiesArray = (racetrackObject = PR(), keysArray = PR()) => {

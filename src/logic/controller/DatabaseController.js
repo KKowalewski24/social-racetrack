@@ -4,7 +4,7 @@ import {PR} from "../Helper";
 export class DatabaseController {
 
   /*------------------------ FIELDS REGION ------------------------*/
-    //TODO CHECK IF WORKS
+
   /*------------------------ METHODS REGION ------------------------*/
   createData = async (path = PR(), data = PR(), errorFunction = PR()) => {
     try {
@@ -18,9 +18,12 @@ export class DatabaseController {
 
   readSingleData = async (path = PR(), errorFunction = PR()) => {
     try {
-      return await config.firestore()
+      const data = await config.firestore()
         .doc(path)
         .get();
+
+      return data.data();
+
     } catch (err) {
       errorFunction();
     }
