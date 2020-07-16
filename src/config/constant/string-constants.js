@@ -172,6 +172,8 @@ export const strings = {
   },
   racetracksPage: {
     addNewRacetrack: "Add New Racetrack",
+    racetrackLoadingError: "An error occurred while loading data",
+    backHomePage:"Go back to home page",
   },
   racetrackDetailsPage: {
     //

@@ -23,7 +23,7 @@ export const BaseCard = (props) => {
     propertiesArray.map((it, index) => {
       return (
         <Fragment key={index}>
-          {renderSingleProperty()}
+          {renderSingleProperty(it.key, it.value)}
         </Fragment>
       );
     });
@@ -58,7 +58,7 @@ BaseCard.propTypes = {
   redirectPath: propTypes.string.isRequired,
   handleRedirect: propTypes.func.isRequired,
   imagePath: propTypes.string.isRequired,
-  titleStyles: propTypes.string,
+  titleStyles: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
   propertiesArray: propTypes.array.isRequired,
 };
