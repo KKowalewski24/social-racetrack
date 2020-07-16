@@ -180,7 +180,8 @@ export const strings = {
     backHomePage: "Go back to home page",
   },
   racetrackDetailsPage: {
-    //
+    racetrackLoadingError: "An error occurred while loading data",
+    backHomePage: "Go back to home page",
   },
   errorPage: {
     title: "404",
