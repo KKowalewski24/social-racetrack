@@ -180,6 +180,8 @@ export const strings = {
     backHomePage: "Go back to home page",
   },
   racetrackDetailsPage: {
+    deleteRacetrack: "Delete Racetrack",
+    deleteRacetrackError: "Racetrack has not been deleted!",
     racetrackLoadingError: "An error occurred while loading data",
     backHomePage: "Go back to home page",
   },

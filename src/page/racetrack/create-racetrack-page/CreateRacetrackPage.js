@@ -18,28 +18,34 @@ export const CreateRacetrackPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
   const [image, setImage] = useState([]);
+  const [createRacetrackCallCounter, setCreateRacetrackCallCounter] = useState(0);
+
   const racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
   const racetrackDatabaseController = new RacetrackDatabaseController();
 
   const handleCreateRacetrack = (data = PR()) => {
-    if (image.length === 0) {
-      warningNotification(strings.createRacetrackPage.imageWarningInfo);
-    } else {
-      racetrackFirebaseStorageController.uploadRacetrackImage(
-        generateCustomUuidWithSecond() + image[0].name, image[0],
-        () => errorNotification(strings.createRacetrackPage.imageNotSavedError)
-      ).then((imageUrl) => {
-        racetrackDatabaseController.createRacetrack(
-          new Racetrack(
-            generateCustomUuid(), data.name, data.country, data.city, data.length,
-            data.turnsNumber, data.maximumExhaustLoudness, data.minimumRideHeight,
-            data.description, imageUrl
-          ),
-          () => errorNotification(strings.createRacetrackPage.racetrackNotSavedError)
-        );
+    if (createRacetrackCallCounter === 0) {
+      if (image.length === 0) {
+        warningNotification(strings.createRacetrackPage.imageWarningInfo);
+      } else {
+        racetrackFirebaseStorageController.uploadRacetrackImage(
+          generateCustomUuidWithSecond() + image[0].name, image[0],
+          () => errorNotification(strings.createRacetrackPage.imageNotSavedError)
+        ).then((imageUrl) => {
+          racetrackDatabaseController.createRacetrack(
+            new Racetrack(
+              generateCustomUuid(), data.name, data.country, data.city, data.length,
+              data.turnsNumber, data.maximumExhaustLoudness, data.minimumRideHeight,
+              data.description, imageUrl
+            ),
+            () => errorNotification(strings.createRacetrackPage.racetrackNotSavedError)
+          );
 
-        window.location.replace(PATH_RACETRACKS);
-      });
+          window.location.replace(PATH_RACETRACKS);
+        });
+      }
+
+      setCreateRacetrackCallCounter(createRacetrackCallCounter + 1);
     }
   };
 

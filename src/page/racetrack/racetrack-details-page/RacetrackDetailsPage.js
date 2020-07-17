@@ -1,17 +1,16 @@
 import React, {useContext, useEffect, useState} from "react";
 import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
-import {PATH_HOME} from "../../../config/constant/path-constants";
+import {PATH_HOME, PATH_RACETRACKS} from "../../../config/constant/path-constants";
 import {AuthContext} from "../../../logic/AuthContextProvider";
 import {errorNotification} from "../../../component/util/notification/notification";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
+import CustomCardImage from "../../../component/util/custom-card-image/CustomCardImage";
+import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
-import CardMedia from "@material-ui/core/CardMedia";
-import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
-import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
-import {PR} from "../../../logic/Helper";
 import "../../../index.css";
 
 export const RacetrackDetailsPage = (props) => {
@@ -46,28 +45,20 @@ export const RacetrackDetailsPage = (props) => {
 
   const renderLeftSide = () => {
     return (
-      <div className="col-sm-6 align-self-center mb-4">
-        <div className="container-fluid">
-          <div className="row justify-content-center">
-            <div className="col-md-12 col-lg-10 col-xl-8">
-              <Card variant="outlined">
-                <CardMedia
-                  component="img"
-                  src={racetrack.imageUrl}
-                />
-              </Card>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CustomCardImage
+        imageUrl={racetrack.imageUrl}
+      />
     );
   };
 
   const renderRightSide = () => {
 
-    const renderHeaderTitle = (text = PR()) => {
+    /**
+     * text cannot be marked as PR() because getting racetrack object is async
+     */
+    const renderHeaderTitle = (text) => {
       return (
-        <div className="row justify-content-center mb-3">
+        <div className="row justify-content-center">
           <div className="col-md-12 text-center font-weight-bold custom-font-size-1-5">
             <b>{text}</b>
           </div>
@@ -75,14 +66,64 @@ export const RacetrackDetailsPage = (props) => {
       );
     };
 
-    return (
-      <div className="col-sm-6">
+    const handleDeleteRacetrack = () => {
+      racetrackDatabaseController.deleteRacetrackById(
+        racetrack.id,
+        () => errorNotification(strings.racetrackDetailsPage.deleteRacetrackError)
+      );
+
+      setTimeout(() => {
+        window.location.replace(PATH_RACETRACKS);
+      }, 1000);
+    };
+
+    const renderTitleBar = () => {
+      return (
         <HorizontalContainer
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"m-0"}
+          margin={"mb-4"}
         >
-        {/*TODO*/}
+          {renderHeaderTitle(racetrack && racetrack.name)}
         </HorizontalContainer>
+      );
+    };
+
+    const renderDetailsBar = () => {
+      return (
+        <HorizontalContainer
+          panelBackgroundColor={globalStyles.materialBlueBackground}
+          margin={"mb-4"}
+        >
+          {/*todo*/}
+        </HorizontalContainer>
+      );
+    };
+
+    const renderDeleteBar = () => {
+      return (
+        <HorizontalContainer
+          panelBackgroundColor={globalStyles.materialBlueBackground}
+          margin={"mb-4"}
+        >
+          <div className="row justify-content-center">
+            <Button
+              onClick={handleDeleteRacetrack}
+              color="secondary"
+              variant="contained"
+              size="medium"
+            >
+              {strings.racetrackDetailsPage.deleteRacetrack}
+            </Button>
+          </div>
+        </HorizontalContainer>
+      );
+    };
+
+    return (
+      <div className="col-sm-6">
+        {renderTitleBar()}
+        {renderDetailsBar()}
+        {isAdmin ? renderDeleteBar() : null}
       </div>
     );
   };
