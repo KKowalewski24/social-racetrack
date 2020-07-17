@@ -21,7 +21,7 @@ export const DisplayUserData = (props) => {
     return (
       <div className="row justify-content-center mb-3">
         <div className="col-md-12 text-center font-weight-bold custom-font-size-1-5">
-          <b>{text}</b>
+          <span>{text}</span>
         </div>
       </div>
     );
@@ -127,10 +127,7 @@ export const DisplayUserData = (props) => {
         {renderHeaderTitle(strings.accountPage.cars)}
 
         <div className="row justify-content-center px-3">
-          <table
-            className="table table-responsive table-striped text-center
-                        w-auto custom-font-size-0-5 text-white"
-          >
+          <table className="table table-responsive table-striped text-center w-auto custom-font-size-0-5 text-white">
             {renderHead()}
             {renderBody()}
           </table>
