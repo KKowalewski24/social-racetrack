@@ -7,10 +7,10 @@ export class Racetrack extends BaseEntityAbst {
   name;
   country;
   city;
-  length;
+  lengthInMeters;
   turnsNumber;
-  maximumExhaustLoudness;
-  minimumRideHeight;
+  maximumExhaustLoudnessInDecibels;
+  minimumRideHeightInMillimeters;
   description;
   imageUrl;
 
@@ -23,10 +23,10 @@ export class Racetrack extends BaseEntityAbst {
     this.name = name;
     this.country = country;
     this.city = city;
-    this.length = length;
+    this.lengthInMeters = length;
     this.turnsNumber = turnsNumber;
-    this.maximumExhaustLoudness = maximumExhaustLoudness;
-    this.minimumRideHeight = minimumRideHeight;
+    this.maximumExhaustLoudnessInDecibels = maximumExhaustLoudness;
+    this.minimumRideHeightInMillimeters = minimumRideHeight;
     this.description = description;
     this.imageUrl = imageUrl;
   }

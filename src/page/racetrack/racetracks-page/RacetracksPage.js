@@ -86,7 +86,7 @@ export const RacetracksPage = (props) => {
     const cardPropertiesKeysArray = [
       strings.racetracksPage.cardPropertiesKeysCountry,
       strings.racetracksPage.cardPropertiesKeysCity,
-      strings.racetracksPage.cardPropertiesKeysLength
+      strings.racetracksPage.cardPropertiesKeysLengthInMeters
     ];
 
     return filteredRacetracksArray

@@ -34,8 +34,8 @@ export const CreateRacetrackPage = (props) => {
         ).then((imageUrl) => {
           racetrackDatabaseController.createRacetrack(
             new Racetrack(
-              generateCustomUuid(), data.name, data.country, data.city, data.length,
-              data.turnsNumber, data.maximumExhaustLoudness, data.minimumRideHeight,
+              generateCustomUuid(), data.name, data.country, data.city, data.lengthInMeters,
+              data.turnsNumber, data.maximumExhaustLoudnessInDecibels, data.minimumRideHeightInMillimeters,
               data.description, imageUrl
             ),
             () => errorNotification(strings.createRacetrackPage.racetrackNotSavedError)
@@ -104,8 +104,8 @@ export const CreateRacetrackPage = (props) => {
               <TextField
                 type="number"
                 inputRef={register({required: true})}
-                name="length"
-                label={strings.createRacetrackPage.length}
+                name="lengthInMeters"
+                label={strings.createRacetrackPage.lengthInMeters}
                 variant="outlined"
                 margin="normal"
                 fullWidth
@@ -130,8 +130,8 @@ export const CreateRacetrackPage = (props) => {
               <TextField
                 type="number"
                 inputRef={register({required: true})}
-                name="maximumExhaustLoudness"
-                label={strings.createRacetrackPage.maximumExhaustLoudness}
+                name="maximumExhaustLoudnessInDecibels"
+                label={strings.createRacetrackPage.maximumExhaustLoudnessInDecibels}
                 variant="outlined"
                 margin="normal"
                 fullWidth
@@ -142,8 +142,8 @@ export const CreateRacetrackPage = (props) => {
               <TextField
                 type="number"
                 inputRef={register({required: true})}
-                name="minimumRideHeight"
-                label={strings.createRacetrackPage.minimumRideHeight}
+                name="minimumRideHeightInMillimeters"
+                label={strings.createRacetrackPage.minimumRideHeightInMillimeters}
                 variant="outlined"
                 margin="normal"
                 fullWidth

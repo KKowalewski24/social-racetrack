@@ -19,7 +19,7 @@ export const RacetrackCard = (props) => {
     const chosenValueArray = [
       racetrackObject.country,
       racetrackObject.city,
-      racetrackObject.length
+      racetrackObject.lengthInMeters
     ];
 
     if (keysArray.length !== chosenValueArray.length) {
