@@ -16,17 +16,17 @@ export class Racetrack extends BaseEntityAbst {
 
   /*------------------------ METHODS REGION ------------------------*/
   constructor(id = PR(), name = PR(), country = PR(),
-              city = PR(), length = PR(), turnsNumber = PR(),
-              maximumExhaustLoudness = PR(), minimumRideHeight = PR(),
+              city = PR(), lengthInMeters = PR(), turnsNumber = PR(),
+              maximumExhaustLoudnessInDecibels = PR(), minimumRideHeightInMillimeters = PR(),
               description = PR(), imageUrl = PR()) {
     super(id);
     this.name = name;
     this.country = country;
     this.city = city;
-    this.lengthInMeters = length;
+    this.lengthInMeters = lengthInMeters;
     this.turnsNumber = turnsNumber;
-    this.maximumExhaustLoudnessInDecibels = maximumExhaustLoudness;
-    this.minimumRideHeightInMillimeters = minimumRideHeight;
+    this.maximumExhaustLoudnessInDecibels = maximumExhaustLoudnessInDecibels;
+    this.minimumRideHeightInMillimeters = minimumRideHeightInMillimeters;
     this.description = description;
     this.imageUrl = imageUrl;
   }
