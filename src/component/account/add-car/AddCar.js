@@ -74,8 +74,8 @@ export const AddCar = (props) => {
             <TextField
               type="number"
               inputRef={register({required: true, min: 0})}
-              name="mileage"
-              label={strings.accountSettingsPage.mileage}
+              name="mileageInKilometers"
+              label={strings.accountSettingsPage.mileageInKilometers}
               variant="outlined"
               margin="normal"
               fullWidth
@@ -108,8 +108,8 @@ export const AddCar = (props) => {
             <TextField
               type="number"
               inputRef={register({required: true, min: 1})}
-              name="enginePower"
-              label={strings.accountSettingsPage.enginePower}
+              name="enginePowerInHorsepower"
+              label={strings.accountSettingsPage.enginePowerInHorsepower}
               variant="outlined"
               margin="normal"
               fullWidth

@@ -7,10 +7,10 @@ export class Car extends BaseEntityAbst {
   brand;
   model;
   productionYear;
-  mileage;
+  mileageInKilometers;
   carType;
   engineType;
-  enginePower;
+  enginePowerInHorsepower;
   driveTrainType;
 
   /*------------------------ METHODS REGION ------------------------*/
@@ -22,10 +22,10 @@ export class Car extends BaseEntityAbst {
     this.brand = brand;
     this.model = model;
     this.productionYear = productionYear;
-    this.mileage = mileage;
+    this.mileageInKilometers = mileage;
     this.carType = carType;
     this.engineType = engineType;
-    this.enginePower = enginePower;
+    this.enginePowerInHorsepower = enginePower;
     this.driveTrainType = driveTrainType;
   }
 }
