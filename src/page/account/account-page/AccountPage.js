@@ -57,6 +57,7 @@ export const AccountPage = (props) => {
   return (
     <div className="container-fluid">
       <DisplayUserAvatar
+        margin={"custom-hor-cont-margin-top-first"}
         firstName={member.firstName}
         lastName={member.lastName}
         avatarRedirectPath={PATH_ACCOUNT_SETTINGS}
@@ -66,6 +67,7 @@ export const AccountPage = (props) => {
 
       <DisplayUserData
         panelBackgroundColor={globalStyles.materialBlueBackground}
+        margin={"custom-hor-cont-margin-bottom"}
         firstName={member.firstName}
         lastName={member.lastName}
         country={member.country}
@@ -82,7 +84,7 @@ export const AccountPage = (props) => {
 
       <HorizontalContainer
         panelBackgroundColor={globalStyles.materialBlueBackground}
-        margin={"mt-3 mb-4"}
+        margin={"custom-hor-cont-margin-bottom-last"}
       >
         <div className="row justify-content-center">
           <Button

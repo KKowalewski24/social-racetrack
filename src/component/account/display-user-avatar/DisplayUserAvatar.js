@@ -15,7 +15,7 @@ export const DisplayUserAvatar = (props) => {
   return (
     <HorizontalContainer
       panelBackgroundColor={props.backgroundStyle}
-      margin={"mt-4 mb-3"}
+      margin={props.margin}
     >
       <div className="row justify-content-center">
         <div>
@@ -42,6 +42,7 @@ export const DisplayUserAvatar = (props) => {
 };
 
 DisplayUserAvatar.propTypes = {
+  margin: propTypes.string.isRequired,
   firstName: propTypes.string.isRequired,
   lastName: propTypes.string.isRequired,
   avatarRedirectPath: propTypes.string.isRequired,

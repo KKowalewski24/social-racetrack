@@ -61,7 +61,7 @@ export const DisplayUserData = (props) => {
     return (
       <HorizontalContainer
         panelBackgroundColor={props.panelBackgroundColor}
-        margin={"mt-3 mb-3"}
+        margin={props.margin}
       >
         {renderHeaderTitle(strings.accountPage.name + ": " + props.firstName + " " + props.lastName)}
 
@@ -129,7 +129,7 @@ export const DisplayUserData = (props) => {
     return (
       <AccountTable
         panelBackgroundColor={props.panelBackgroundColor}
-        margin={"mt-3 mb-3"}
+        margin={props.margin}
         renderTitle={() => renderHeaderTitle(strings.accountPage.cars)}
         renderHead={renderHead}
         renderBody={renderBody}
@@ -181,7 +181,7 @@ export const DisplayUserData = (props) => {
     return (
       <AccountTable
         panelBackgroundColor={props.panelBackgroundColor}
-        margin={"mt-3 mb-3"}
+        margin={props.margin}
         renderTitle={() => renderHeaderTitle(strings.accountPage.awards)}
         renderHead={renderHead}
         renderBody={renderBody}
@@ -201,6 +201,7 @@ export const DisplayUserData = (props) => {
 
 DisplayUserData.propTypes = {
   panelBackgroundColor: propTypes.string.isRequired,
+  margin: propTypes.string.isRequired,
   firstName: propTypes.string.isRequired,
   lastName: propTypes.string.isRequired,
   country: propTypes.string.isRequired,

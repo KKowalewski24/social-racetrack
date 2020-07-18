@@ -9,11 +9,11 @@ import CustomCardImage from "../../../component/details/custom-card-image/Custom
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import {PR} from "../../../logic/Helper";
+import DetailsTable from "../../../component/details/details-table/DetailsTable";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
-import DetailsTable from "../../../component/details/details-table/DetailsTable";
 
 export const RacetrackDetailsPage = (props) => {
 
@@ -91,7 +91,7 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <HorizontalContainer
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"mb-3"}
+          margin={"custom-hor-cont-margin-top-first"}
         >
           {renderHeaderTitle(racetrack.name)}
         </HorizontalContainer>
@@ -134,7 +134,7 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <DetailsTable
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"mb-3"}
+          margin={"custom-hor-cont-margin-bottom"}
           renderBody={renderBody}
         />
       );
@@ -144,7 +144,7 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <HorizontalContainer
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"mb-3"}
+          margin={"custom-hor-cont-margin-bottom"}
         >
           {renderHeaderTitle(strings.racetrackDetailsPage.description)}
           <div className="text-center">
@@ -158,7 +158,7 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <HorizontalContainer
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"mb-3"}
+          margin={"custom-hor-cont-margin-bottom-last"}
         >
           <div className="row justify-content-center">
             <Button
@@ -195,7 +195,7 @@ export const RacetrackDetailsPage = (props) => {
       errorMessageRedirectDescription={strings.racetrackDetailsPage.backHomePage}
       errorMessageStyles={globalStyles.materialBlueFont}
     >
-      <div className="container-fluid mt-4">
+      <div className="container-fluid">
         <div className="row justify-content-center">
           {racetrack ? renderLeftSide() : null}
           {racetrack ? renderRightSide() : null}

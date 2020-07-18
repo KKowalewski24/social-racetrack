@@ -159,3 +159,18 @@
 .custom-prevent-overflow {
     overflow-wrap: break-word;
 }
+
+.custom-hor-cont-margin-top-first {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.custom-hor-cont-margin-bottom {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.custom-hor-cont-margin-bottom-last {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
