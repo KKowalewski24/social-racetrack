@@ -2,8 +2,9 @@ import React from "react";
 import propTypes from "prop-types";
 import strings from "../../../config/constant/string-constants";
 import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
-import Button from "@material-ui/core/Button";
+import AccountTable from "../account-table/AccountTable";
 import {formatDate, PR} from "../../../logic/Helper";
+import Button from "@material-ui/core/Button";
 import "../../../index.css";
 
 export const DisplayUserData = (props) => {
@@ -126,19 +127,13 @@ export const DisplayUserData = (props) => {
     };
 
     return (
-      <HorizontalContainer
+      <AccountTable
         panelBackgroundColor={props.panelBackgroundColor}
         margin={"mt-3 mb-3"}
-      >
-        {renderHeaderTitle(strings.accountPage.cars)}
-
-        <div className="row justify-content-center px-3">
-          <table className="table table-responsive table-striped text-center w-auto text-white">
-            {renderHead()}
-            {renderBody()}
-          </table>
-        </div>
-      </HorizontalContainer>
+        renderTitle={() => renderHeaderTitle(strings.accountPage.cars)}
+        renderHead={renderHead}
+        renderBody={renderBody}
+      />
     );
   };
 
@@ -184,19 +179,13 @@ export const DisplayUserData = (props) => {
     };
 
     return (
-      <HorizontalContainer
+      <AccountTable
         panelBackgroundColor={props.panelBackgroundColor}
         margin={"mt-3 mb-3"}
-      >
-        {renderHeaderTitle(strings.accountPage.awards)}
-
-        <div className="row justify-content-center px-3">
-          <table className="table table-responsive table-striped text-center w-auto text-white">
-            {renderHead()}
-            {renderBody()}
-          </table>
-        </div>
-      </HorizontalContainer>
+        renderTitle={() => renderHeaderTitle(strings.accountPage.awards)}
+        renderHead={renderHead}
+        renderBody={renderBody}
+      />
     );
   };
 
