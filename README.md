@@ -53,14 +53,44 @@ firebase deploy --only storage:rules
 ```
 firebase deploy --only functions
 ```
-Important message - before next deployment remember to remove previous Cloud Function
-
-
-Remember that Deployment of Node.js 8 functions will no longer be allowed after 
+###### Important message
+* Before next deployment remember to remove previous Cloud Function
+* Remember that Deployment of Node.js 8 functions will no longer be allowed after 
 February 15, 2021. Then, executions of already-deployed Node.js 8 functions 
 will stop after March 15, 2021.
+* Node.js 10 cloud functions require payments so finish BSC at the beginning of February
 
-Node.js 10 cloud functions require payments so finish BSC at the beginning of February
+###### Creating first admin user
+In exports.grantAdmin function comment out this parts of code
+```
+    if (context.auth?.token.admin !== true) {
+        return {
+            error: "Request Not Authorizated - Only admin can call this function"
+        }
+    }
+```
+```
+    if (user.customClaims && (user.customClaims as any).admin === true) {
+        return;
+    }
+```
+Then 
+* Delete old cloud functions
+* Redeploy cloud functions
+* In `AccountController` change
+```
+        grantStandardUser({email: email})
+          .then((result) => console.log(result))
+          .catch((error) => createUserErrorFunction());
+```
+To
+```
+    grantAdmin({email: email})
+      .then((result) => console.log(result))
+      .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
+```
+* Create Account as always
+* Then revert all changes in code, delete and redeploy cloud functions
 
 #### Deploy to Firebase Hosting
 * Run below command
