@@ -13,7 +13,10 @@ export const DisplayUserAvatar = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <HorizontalContainer panelBackgroundColor={props.backgroundStyle} margin={"mt-4 mb-3"}>
+    <HorizontalContainer
+      panelBackgroundColor={props.backgroundStyle}
+      margin={"mt-4 mb-3"}
+    >
       <div className="row justify-content-center">
         <div>
           <LetterAvatar

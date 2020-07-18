@@ -58,7 +58,10 @@ export const DisplayUserData = (props) => {
     };
 
     return (
-      <HorizontalContainer panelBackgroundColor={props.panelBackgroundColor} margin={"mt-3 mb-3"}>
+      <HorizontalContainer
+        panelBackgroundColor={props.panelBackgroundColor}
+        margin={"mt-3 mb-3"}
+      >
         {renderHeaderTitle(strings.accountPage.name + ": " + props.firstName + " " + props.lastName)}
 
         <div className="row justify-content-center custom-font-size-1">
@@ -123,7 +126,10 @@ export const DisplayUserData = (props) => {
     };
 
     return (
-      <HorizontalContainer panelBackgroundColor={props.panelBackgroundColor} margin={"mt-3 mb-3"}>
+      <HorizontalContainer
+        panelBackgroundColor={props.panelBackgroundColor}
+        margin={"mt-3 mb-3"}
+      >
         {renderHeaderTitle(strings.accountPage.cars)}
 
         <div className="row justify-content-center px-3">
@@ -178,7 +184,10 @@ export const DisplayUserData = (props) => {
     };
 
     return (
-      <HorizontalContainer panelBackgroundColor={props.panelBackgroundColor} margin={"mt-3 mb-3"}>
+      <HorizontalContainer
+        panelBackgroundColor={props.panelBackgroundColor}
+        margin={"mt-3 mb-3"}
+      >
         {renderHeaderTitle(strings.accountPage.awards)}
 
         <div className="row justify-content-center px-3">
