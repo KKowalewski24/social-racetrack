@@ -12,7 +12,7 @@ export const CustomCardImage = (props) => {
     <div className="col-sm-6 align-self-center mb-4">
       <div className="container-fluid">
         <div className="row justify-content-center">
-          <div className="col-md-12 col-lg-10 col-xl-8">
+          <div className="col-md-12 col-lg-10">
             {
               props.imageUrl ?
                 <Card variant="outlined">

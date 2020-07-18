@@ -13,6 +13,7 @@ import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-cont
 import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
+import DetailsTable from "../../../component/details/details-table/DetailsTable";
 
 export const RacetrackDetailsPage = (props) => {
 
@@ -98,49 +99,50 @@ export const RacetrackDetailsPage = (props) => {
     };
 
     const renderDetailsBar = () => {
+
+      const renderBody = () => {
+        return (
+          <tbody>
+            <tr>
+              <th>{strings.racetrackDetailsPage.country}</th>
+              <td>{racetrack.country}</td>
+            </tr>
+            {/**/}
+            <tr>
+              <th>{strings.racetrackDetailsPage.city}</th>
+              <td>{racetrack.city}</td>
+            </tr>
+            {/**/}
+            <tr>
+              <th>{strings.racetrackDetailsPage.lengthInMeters}</th>
+              <td>{racetrack.lengthInMeters}</td>
+            </tr>
+            {/**/}
+            <tr>
+              <th>{strings.racetrackDetailsPage.turnsNumber}</th>
+              <td>{racetrack.turnsNumber}</td>
+            </tr>
+            {/**/}
+            <tr>
+              <th>{strings.racetrackDetailsPage.maximumExhaustLoudnessInDecibels}</th>
+              <td>{racetrack.maximumExhaustLoudnessInDecibels}</td>
+            </tr>
+            {/**/}
+            <tr>
+              <th>{strings.racetrackDetailsPage.minimumRideHeightInMillimeters}</th>
+              <td>{racetrack.minimumRideHeightInMillimeters}</td>
+            </tr>
+          </tbody>
+        );
+      };
+
       return (
-        <HorizontalContainer
+        <DetailsTable
           panelBackgroundColor={globalStyles.materialBlueBackground}
           margin={"mb-4"}
         >
-          {
-            <div className="row justify-content-center custom-font-size-0-5">
-              <table className="table table-responsive table-bordered text-center w-auto text-white">
-                <tbody>
-                  <tr>
-                    <th>{strings.racetrackDetailsPage.country}</th>
-                    <td>{racetrack.country}</td>
-                  </tr>
-                {/**/}
-                  <tr>
-                    <th>{strings.racetrackDetailsPage.city}</th>
-                    <td>{racetrack.city}</td>
-                  </tr>
-                {/**/}
-                  <tr>
-                    <th>{strings.racetrackDetailsPage.lengthInMeters}</th>
-                    <td>{racetrack.lengthInMeters}</td>
-                  </tr>
-                {/**/}
-                  <tr>
-                    <th>{strings.racetrackDetailsPage.turnsNumber}</th>
-                    <td>{racetrack.turnsNumber}</td>
-                  </tr>
-                {/**/}
-                  <tr>
-                    <th>{strings.racetrackDetailsPage.maximumExhaustLoudnessInDecibels}</th>
-                    <td>{racetrack.maximumExhaustLoudnessInDecibels}</td>
-                  </tr>
-                {/**/}
-                  <tr>
-                    <th>{strings.racetrackDetailsPage.minimumRideHeightInMillimeters}</th>
-                    <td>{racetrack.minimumRideHeightInMillimeters}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          }
-        </HorizontalContainer>
+          {renderBody()}
+        </DetailsTable>
       );
     };
 
