@@ -20,7 +20,7 @@ export const DisplayUserData = (props) => {
   const renderHeaderTitle = (text = PR()) => {
     return (
       <div className="row justify-content-center mb-3">
-        <div className="col-md-12 text-center font-weight-bold custom-font-size-1-5">
+        <div className="col-md-12 text-center font-weight-bold custom-font-size-1-5 custom-prevent-overflow">
           <span>{text}</span>
         </div>
       </div>

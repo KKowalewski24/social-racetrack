@@ -8,6 +8,7 @@ import {BrowserStorageController} from "../../../logic/controller/BrowserStorage
 import CustomCardImage from "../../../component/util/custom-card-image/CustomCardImage";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
+import {PR} from "../../../logic/Helper";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
@@ -17,7 +18,7 @@ export const RacetrackDetailsPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {isAdmin} = useContext(AuthContext);
-  const [racetrack, setRacetrack] = useState({});
+  const [racetrack, setRacetrack] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -43,6 +44,17 @@ export const RacetrackDetailsPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleDeleteRacetrack = () => {
+    racetrackDatabaseController.deleteRacetrackById(
+      racetrack.id,
+      () => errorNotification(strings.racetrackDetailsPage.deleteRacetrackError)
+    );
+
+    setTimeout(() => {
+      window.location.replace(PATH_RACETRACKS);
+    }, 1000);
+  };
+
   const renderLeftSide = () => {
     return (
       <CustomCardImage
@@ -53,28 +65,25 @@ export const RacetrackDetailsPage = (props) => {
 
   const renderRightSide = () => {
 
-    /**
-     * text cannot be marked as PR() because getting racetrack object is async
-     */
-    const renderHeaderTitle = (text) => {
+    const renderBoldText = (text = PR()) => {
       return (
-        <div className="row justify-content-center">
-          <div className="col-md-12 text-center font-weight-bold custom-font-size-1-5">
-            <b>{text}</b>
-          </div>
+        <div className="font-weight-bold mb-1">
+          {text}
         </div>
       );
     };
 
-    const handleDeleteRacetrack = () => {
-      racetrackDatabaseController.deleteRacetrackById(
-        racetrack.id,
-        () => errorNotification(strings.racetrackDetailsPage.deleteRacetrackError)
+    /**
+     * text cannot be marked as PR() because getting racetrack object is async
+     */
+    const renderHeaderTitle = (text = PR()) => {
+      return (
+        <div className="row justify-content-center">
+          <div className="col-md-12 text-center font-weight-bold custom-font-size-1-5 custom-prevent-overflow">
+            <span>{text}</span>
+          </div>
+        </div>
       );
-
-      setTimeout(() => {
-        window.location.replace(PATH_RACETRACKS);
-      }, 1000);
     };
 
     const renderTitleBar = () => {
@@ -83,7 +92,7 @@ export const RacetrackDetailsPage = (props) => {
           panelBackgroundColor={globalStyles.materialBlueBackground}
           margin={"mb-4"}
         >
-          {renderHeaderTitle(racetrack && racetrack.name)}
+          {renderHeaderTitle(racetrack.name)}
         </HorizontalContainer>
       );
     };
@@ -94,7 +103,57 @@ export const RacetrackDetailsPage = (props) => {
           panelBackgroundColor={globalStyles.materialBlueBackground}
           margin={"mb-4"}
         >
-          {/*todo*/}
+          {
+            <div className="row justify-content-center custom-font-size-0-5">
+              <table className="table table-responsive table-bordered text-center w-auto text-white">
+                <tbody>
+                  <tr>
+                    <th>{strings.racetrackDetailsPage.country}</th>
+                    <td>{racetrack.country}</td>
+                  </tr>
+                {/**/}
+                  <tr>
+                    <th>{strings.racetrackDetailsPage.city}</th>
+                    <td>{racetrack.city}</td>
+                  </tr>
+                {/**/}
+                  <tr>
+                    <th>{strings.racetrackDetailsPage.lengthInMeters}</th>
+                    <td>{racetrack.lengthInMeters}</td>
+                  </tr>
+                {/**/}
+                  <tr>
+                    <th>{strings.racetrackDetailsPage.turnsNumber}</th>
+                    <td>{racetrack.turnsNumber}</td>
+                  </tr>
+                {/**/}
+                  <tr>
+                    <th>{strings.racetrackDetailsPage.maximumExhaustLoudnessInDecibels}</th>
+                    <td>{racetrack.maximumExhaustLoudnessInDecibels}</td>
+                  </tr>
+                {/**/}
+                  <tr>
+                    <th>{strings.racetrackDetailsPage.minimumRideHeightInMillimeters}</th>
+                    <td>{racetrack.minimumRideHeightInMillimeters}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          }
+        </HorizontalContainer>
+      );
+    };
+
+    const renderDescriptionBar = () => {
+      return (
+        <HorizontalContainer
+          panelBackgroundColor={globalStyles.materialBlueBackground}
+          margin={"mb-4"}
+        >
+          {renderHeaderTitle(strings.racetrackDetailsPage.description)}
+          <div className="text-center">
+            {renderBoldText(racetrack.description)}
+          </div>
         </HorizontalContainer>
       );
     };
@@ -123,6 +182,7 @@ export const RacetrackDetailsPage = (props) => {
       <div className="col-sm-6">
         {renderTitleBar()}
         {renderDetailsBar()}
+        {renderDescriptionBar()}
         {isAdmin ? renderDeleteBar() : null}
       </div>
     );
@@ -141,8 +201,8 @@ export const RacetrackDetailsPage = (props) => {
     >
       <div className="container-fluid custom-margin-top-2">
         <div className="row justify-content-center">
-          {renderLeftSide()}
-          {renderRightSide()}
+          {racetrack ? renderLeftSide() : null}
+          {racetrack ? renderRightSide() : null}
         </div>
       </div>
     </FetchDataController>

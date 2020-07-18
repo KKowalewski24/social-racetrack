@@ -155,3 +155,7 @@
 .custom-color-inherit:hover {
     color: inherit;
 }
+
+.custom-prevent-overflow {
+    overflow-wrap: break-word;
+}
