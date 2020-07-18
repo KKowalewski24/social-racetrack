@@ -127,7 +127,7 @@ export const DisplayUserData = (props) => {
         {renderHeaderTitle(strings.accountPage.cars)}
 
         <div className="row justify-content-center px-3">
-          <table className="table table-responsive table-striped text-center w-auto custom-font-size-0-5 text-white">
+          <table className="table table-responsive table-striped text-center w-auto text-white">
             {renderHead()}
             {renderBody()}
           </table>
@@ -182,10 +182,7 @@ export const DisplayUserData = (props) => {
         {renderHeaderTitle(strings.accountPage.awards)}
 
         <div className="row justify-content-center px-3">
-          <table
-            className="table table-responsive table-striped text-center
-                        w-auto custom-font-size-0-5 text-white"
-          >
+          <table className="table table-responsive table-striped text-center w-auto text-white">
             {renderHead()}
             {renderBody()}
           </table>
