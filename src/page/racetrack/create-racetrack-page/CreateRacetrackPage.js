@@ -39,13 +39,11 @@ export const CreateRacetrackPage = (props) => {
               data.description, imageUrl
             ),
             () => errorNotification(strings.createRacetrackPage.racetrackNotSavedError)
-          );
-
-          window.location.replace(PATH_RACETRACKS);
+          ).then(() => window.location.replace(PATH_RACETRACKS));
         });
-      }
 
-      setCreateRacetrackCallCounter(createRacetrackCallCounter + 1);
+        setCreateRacetrackCallCounter(createRacetrackCallCounter + 1);
+      }
     }
   };
 

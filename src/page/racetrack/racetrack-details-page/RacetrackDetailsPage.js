@@ -53,9 +53,7 @@ export const RacetrackDetailsPage = (props) => {
     racetrackDatabaseController.deleteRacetrackById(
       racetrack.id, racetrack.imageUrl,
       () => errorNotification(strings.racetrackDetailsPage.deleteRacetrackError)
-    );
-
-    redirectToRacetrackPage();
+    ).then(() => redirectToRacetrackPage());
   };
 
   const redirectToRacetrackPage = () => {

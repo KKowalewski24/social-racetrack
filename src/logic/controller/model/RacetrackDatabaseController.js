@@ -10,14 +10,16 @@ export class RacetrackDatabaseController {
   _racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
 
   /*------------------------ METHODS REGION ------------------------*/
-  createRacetrack = (data = PR(), errorFunction = PR()) => {
-    this._databaseController
-      .createData(
+  createRacetrack = async (data = PR(), errorFunction = PR()) => {
+    try {
+      await this._databaseController.createData(
         PATH_DB_COLLECTION_RACETRACKS + data.id,
         convertClassObjectToJsObject(data),
         errorFunction
-      )
-      .catch((err) => errorFunction());
+      );
+    } catch (err) {
+      errorFunction();
+    }
   };
 
   readSingleRacetrackById = async (id = PR(), errorFunction = PR()) => {
@@ -38,12 +40,14 @@ export class RacetrackDatabaseController {
     }
   };
 
-  deleteRacetrackById = (id = PR(), imageUrl = PR(), errorFunction = PR()) => {
-    this._databaseController
-      .deleteData(PATH_DB_COLLECTION_RACETRACKS + id, errorFunction)
-      .catch((err) => errorFunction());
-
-    this._racetrackFirebaseStorageController
-      .deleteRacetrackImage(imageUrl, errorFunction);
+  deleteRacetrackById = async (id = PR(), imageUrl = PR(), errorFunction = PR()) => {
+    try {
+      await this._databaseController
+        .deleteData(PATH_DB_COLLECTION_RACETRACKS + id, errorFunction);
+      await this._racetrackFirebaseStorageController
+        .deleteRacetrackImage(imageUrl, errorFunction);
+    } catch (err) {
+      errorFunction();
+    }
   };
 }
