@@ -1,6 +1,12 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
-import {generateCustomUuid, generateCustomUuidWithSecond, keyValueObjectToArray, PR} from "../../../logic/Helper";
+import {
+  generateCustomUuid,
+  generateCustomUuidWithSecond,
+  keyValueObjectToArray,
+  PR,
+  redirectToPage
+} from "../../../logic/Helper";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
 import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import {RacetrackFirebaseStorageController} from "../../../logic/controller/model/RacetrackFirebaseStorageController";
@@ -39,7 +45,7 @@ export const CreateRacetrackPage = (props) => {
               data.description, imageUrl
             ),
             () => errorNotification(strings.createRacetrackPage.racetrackNotSavedError)
-          ).then(() => window.location.replace(PATH_RACETRACKS));
+          ).then(() => redirectToPage(PATH_RACETRACKS));
         });
 
         setCreateRacetrackCallCounter(createRacetrackCallCounter + 1);

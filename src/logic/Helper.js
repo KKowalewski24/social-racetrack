@@ -38,7 +38,7 @@ export const getEnumKeyValueArray = (enumObject = PR()) => {
 /**
  * Method convert object created from class to regular JS object e.g. const user = {//...};
  */
-export const convertClassObjectToJsObject = (object) => {
+export const convertClassObjectToJsObject = (object = PR()) => {
   return JSON.parse(JSON.stringify(object));
 };
 
@@ -48,4 +48,14 @@ export const generateCustomUuid = () => {
 
 export const generateCustomUuidWithSecond = () => {
   return new Date().getUTCMilliseconds() + uuidv4();
+};
+
+export const redirectToPage = (path = PR()) => {
+  window.location.replace(path);
+};
+
+export const redirectIfUndefined = (value = PR(), path = PR()) => {
+  if (value === undefined) {
+    redirectToPage(path);
+  }
 };

@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {ToastContainer} from "react-toastify";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import {keyValueObjectToArray, PR} from "../../../logic/Helper";
+import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
 import GlobalStyles from "../../../main/GlobalStyles";
 import {PATH_HOME} from "../../../config/constant/path-constants";
 import {grantAdmin} from "../../../logic/CloudFunctions";
@@ -24,7 +24,7 @@ export const AdminPanelPage = (props) => {
       .then((result) => console.log(result))
       .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
 
-    window.location.replace(PATH_HOME);
+    redirectToPage(PATH_HOME);
   };
 
   const checkInputs = () => {

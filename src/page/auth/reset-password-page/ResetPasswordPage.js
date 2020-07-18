@@ -1,6 +1,6 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import {keyValueObjectToArray, PR} from "../../../logic/Helper";
+import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {warningNotification} from "../../../component/util/notification/notification";
@@ -25,7 +25,7 @@ export const ResetPasswordPage = (props) => {
       data.email,
       () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
     );
-    window.location.replace(PATH_LOGIN);
+    redirectToPage(PATH_LOGIN);
   };
 
   const checkInputs = () => {

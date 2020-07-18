@@ -8,7 +8,7 @@ import {BrowserStorageController} from "../../../logic/controller/BrowserStorage
 import CustomCardImage from "../../../component/details/custom-card-image/CustomCardImage";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
-import {PR} from "../../../logic/Helper";
+import {PR, redirectToPage} from "../../../logic/Helper";
 import DetailsTable from "../../../component/details/details-table/DetailsTable";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import Button from "@material-ui/core/Button";
@@ -36,11 +36,6 @@ export const RacetrackDetailsPage = (props) => {
         setRacetrack(racetrack);
         setIsLoaded(true);
         setIsError(false);
-
-        if (racetrack === undefined) {
-          redirectToRacetrackPage();
-        }
-
       })
       .catch((err) => {
         setIsLoaded(true);
@@ -53,11 +48,7 @@ export const RacetrackDetailsPage = (props) => {
     racetrackDatabaseController.deleteRacetrackById(
       racetrack.id, racetrack.imageUrl,
       () => errorNotification(strings.racetrackDetailsPage.deleteRacetrackError)
-    ).then(() => redirectToRacetrackPage());
-  };
-
-  const redirectToRacetrackPage = () => {
-    window.location.replace(PATH_RACETRACKS);
+    ).then(() => redirectToPage(PATH_RACETRACKS));
   };
 
   const renderLeftSide = () => {
