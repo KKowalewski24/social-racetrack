@@ -17,8 +17,8 @@ export const RacetracksPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {isAdmin} = useContext(AuthContext);
-  const [racetracksArray, setRacetracksArray] = useState([]);
-  const [filteredRacetracksArray, setFilteredRacetracksArray] = useState([]);
+  const [racetracksArray, setRacetracksArray] = useState(undefined);
+  const [filteredRacetracksArray, setFilteredRacetracksArray] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isError, setIsError] = useState(false);
 
