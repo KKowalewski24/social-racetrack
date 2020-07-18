@@ -37,7 +37,7 @@ export const ResetPasswordPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-sm custom-margin-top-4">
+    <div className="container custom-container-sm custom-page-big-margin">
 
       <div className="mb-2">
         <div className="row justify-content-center mb-2">

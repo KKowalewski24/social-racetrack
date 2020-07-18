@@ -39,7 +39,7 @@ export const RegisterPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-sm custom-margin-top-2">
+    <div className="container custom-container-sm custom-page-small-margin">
 
       <div className="mb-2">
         <div className="row justify-content-center mb-2">

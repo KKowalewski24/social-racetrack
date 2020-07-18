@@ -124,7 +124,7 @@ export const HomePage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container-fluid custom-margin-top-2">
+    <div className="container-fluid custom-page-small-margin">
       <div className="row justify-content-center">
         {renderLeftSide()}
         {renderRightSide()}
