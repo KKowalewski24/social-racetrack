@@ -174,3 +174,19 @@
     margin-top: 1rem !important;
     margin-bottom: 1rem !important;
 }
+
+.custom-tab-panel-margin {
+    margin: 1.5rem 0.5rem !important;
+}
+
+.custom-search-box-margin {
+    margin-top: 0.5rem !important;
+}
+
+.custom-render-card-margin {
+    margin-top: 0.5rem !important;
+}
+
+.custom-create-form-margin {
+    margin: 1.5rem 0.5rem !important;
+}

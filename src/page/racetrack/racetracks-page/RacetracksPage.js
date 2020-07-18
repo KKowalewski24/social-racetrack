@@ -116,22 +116,16 @@ export const RacetracksPage = (props) => {
       errorMessageStyles={globalStyles.materialBlueFont}
     >
       <div className="container-fluid">
-        <div className="my-4 mb-2">
-          {
-            isAdmin ?
-              <div className="mt-2">
-                {renderTab()}
-              </div>
-              : null
-          }
+        <div className="custom-tab-panel-margin">
+          {isAdmin ? renderTab() : null}
 
           <div className="container custom-container-sm">
-            <div className="row  mt-2">
+            <div className="row custom-search-box-margin">
               {renderSearchBox()}
             </div>
           </div>
 
-          <div className="row justify-content-center mt-2">
+          <div className="row justify-content-center custom-render-card-margin">
             {renderRacetrackCards()}
           </div>
         </div>

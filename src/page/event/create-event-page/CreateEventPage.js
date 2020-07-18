@@ -30,8 +30,8 @@ export const CreateEventPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-md mt-3">
-      <div className="my-4 mx-2">
+    <div className="container custom-container-md">
+      <div className="custom-create-form-margin">
         <form onSubmit={handleSubmit(handleCreateEvent)}>
 
           {/*TODO ADD ARRAY WITH DATA - REMEMBER TO PROPERLY PARSE - ENUM STYLE*/}

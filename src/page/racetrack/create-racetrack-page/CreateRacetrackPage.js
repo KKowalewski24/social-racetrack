@@ -59,7 +59,7 @@ export const CreateRacetrackPage = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <div className="container custom-container-md mt-3">
-      <div className="my-4 mx-2">
+      <div className="custom-create-form-margin">
         <form onSubmit={handleSubmit(handleCreateRacetrack)}>
 
           <TextField

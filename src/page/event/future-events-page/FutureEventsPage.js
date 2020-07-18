@@ -31,7 +31,7 @@ export const FutureEventsPage = (props) => {
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <div className="container-fluid">
-      <div className="my-4 mx-2">
+      <div className="custom-tab-panel-margin">
         {renderTab()}
         {renderEventCards()}
       </div>
