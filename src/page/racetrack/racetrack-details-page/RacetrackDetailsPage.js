@@ -91,7 +91,7 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <HorizontalContainer
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"mb-4"}
+          margin={"mb-3"}
         >
           {renderHeaderTitle(racetrack.name)}
         </HorizontalContainer>
@@ -107,27 +107,22 @@ export const RacetrackDetailsPage = (props) => {
               <th>{strings.racetrackDetailsPage.country}</th>
               <td>{racetrack.country}</td>
             </tr>
-            {/**/}
             <tr>
               <th>{strings.racetrackDetailsPage.city}</th>
               <td>{racetrack.city}</td>
             </tr>
-            {/**/}
             <tr>
               <th>{strings.racetrackDetailsPage.lengthInMeters}</th>
               <td>{racetrack.lengthInMeters}</td>
             </tr>
-            {/**/}
             <tr>
               <th>{strings.racetrackDetailsPage.turnsNumber}</th>
               <td>{racetrack.turnsNumber}</td>
             </tr>
-            {/**/}
             <tr>
               <th>{strings.racetrackDetailsPage.maximumExhaustLoudnessInDecibels}</th>
               <td>{racetrack.maximumExhaustLoudnessInDecibels}</td>
             </tr>
-            {/**/}
             <tr>
               <th>{strings.racetrackDetailsPage.minimumRideHeightInMillimeters}</th>
               <td>{racetrack.minimumRideHeightInMillimeters}</td>
@@ -139,10 +134,9 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <DetailsTable
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"mb-4"}
-        >
-          {renderBody()}
-        </DetailsTable>
+          margin={"mb-3"}
+          renderBody={renderBody}
+        />
       );
     };
 
@@ -150,7 +144,7 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <HorizontalContainer
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"mb-4"}
+          margin={"mb-3"}
         >
           {renderHeaderTitle(strings.racetrackDetailsPage.description)}
           <div className="text-center">
@@ -164,7 +158,7 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <HorizontalContainer
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"mb-4"}
+          margin={"mb-3"}
         >
           <div className="row justify-content-center">
             <Button
@@ -201,7 +195,7 @@ export const RacetrackDetailsPage = (props) => {
       errorMessageRedirectDescription={strings.racetrackDetailsPage.backHomePage}
       errorMessageStyles={globalStyles.materialBlueFont}
     >
-      <div className="container-fluid custom-margin-top-2">
+      <div className="container-fluid mt-4">
         <div className="row justify-content-center">
           {racetrack ? renderLeftSide() : null}
           {racetrack ? renderRightSide() : null}
