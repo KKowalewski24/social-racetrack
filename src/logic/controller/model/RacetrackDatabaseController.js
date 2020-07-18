@@ -1,11 +1,13 @@
 import {DatabaseController} from "../DatabaseController";
 import {PATH_DB_COLLECTION_RACETRACKS} from "../../../config/constant/firebase-constants";
 import {convertClassObjectToJsObject, PR} from "../../Helper";
+import {RacetrackFirebaseStorageController} from "./RacetrackFirebaseStorageController";
 
 export class RacetrackDatabaseController {
 
   /*------------------------ FIELDS REGION ------------------------*/
   _databaseController = new DatabaseController();
+  _racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
 
   /*------------------------ METHODS REGION ------------------------*/
   createRacetrack = (data = PR(), errorFunction = PR()) => {
@@ -36,9 +38,12 @@ export class RacetrackDatabaseController {
     }
   };
 
-  deleteRacetrackById = (id = PR(), errorFunction = PR()) => {
+  deleteRacetrackById = (id = PR(), imageUrl = PR(), errorFunction = PR()) => {
     this._databaseController
       .deleteData(PATH_DB_COLLECTION_RACETRACKS + id, errorFunction)
       .catch((err) => errorFunction());
+
+    this._racetrackFirebaseStorageController
+      .deleteRacetrackImage(imageUrl, errorFunction);
   };
 }

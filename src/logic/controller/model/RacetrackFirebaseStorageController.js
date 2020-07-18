@@ -20,8 +20,8 @@ export class RacetrackFirebaseStorageController {
       .downloadFile(PATH_STORAGE_RACETRACK_IMAGE + filename, errorFunction);
   };
 
-  deleteRacetrackImage = (path = PR(), errorFunction = PR()) => {
+  deleteRacetrackImage = (imageUrl = PR(), errorFunction = PR()) => {
     this._firebaseStorageController
-      .deleteFile(PATH_STORAGE_RACETRACK_IMAGE, errorFunction);
+      .deleteFileByUrl(imageUrl, errorFunction);
   };
 }

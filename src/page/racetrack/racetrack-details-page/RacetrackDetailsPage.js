@@ -33,10 +33,14 @@ export const RacetrackDetailsPage = (props) => {
       () => errorNotification(strings.racetrackDetailsPage.racetrackLoadingError)
     )
       .then((racetrack) => {
-        console.log(racetrack);
         setRacetrack(racetrack);
         setIsLoaded(true);
         setIsError(false);
+
+        if (racetrack === undefined) {
+          redirectToRacetrackPage();
+        }
+
       })
       .catch((err) => {
         setIsLoaded(true);
@@ -47,13 +51,15 @@ export const RacetrackDetailsPage = (props) => {
 
   const handleDeleteRacetrack = () => {
     racetrackDatabaseController.deleteRacetrackById(
-      racetrack.id,
+      racetrack.id, racetrack.imageUrl,
       () => errorNotification(strings.racetrackDetailsPage.deleteRacetrackError)
     );
 
-    setTimeout(() => {
-      window.location.replace(PATH_RACETRACKS);
-    }, 1000);
+    redirectToRacetrackPage();
+  };
+
+  const redirectToRacetrackPage = () => {
+    window.location.replace(PATH_RACETRACKS);
   };
 
   const renderLeftSide = () => {

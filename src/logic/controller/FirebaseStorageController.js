@@ -29,9 +29,19 @@ export class FirebaseStorageController {
     }
   };
 
-  deleteFile = (path = PR(), errorFunction = PR()) => {
+  deleteFileByPath = (path = PR(), errorFunction = PR()) => {
     config.storage()
       .ref(path)
+      .delete()
+      .catch((err) => {
+        console.log(err);
+        errorFunction();
+      });
+  };
+
+  deleteFileByUrl = (url = PR(), errorFunction = PR()) => {
+    config.storage()
+      .refFromURL(url)
       .delete()
       .catch((err) => {
         console.log(err);
