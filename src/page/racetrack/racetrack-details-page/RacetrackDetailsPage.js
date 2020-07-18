@@ -5,7 +5,7 @@ import {PATH_HOME, PATH_RACETRACKS} from "../../../config/constant/path-constant
 import {AuthContext} from "../../../logic/AuthContextProvider";
 import {errorNotification} from "../../../component/util/notification/notification";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
-import CustomCardImage from "../../../component/util/custom-card-image/CustomCardImage";
+import CustomCardImage from "../../../component/details/custom-card-image/CustomCardImage";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import {PR} from "../../../logic/Helper";

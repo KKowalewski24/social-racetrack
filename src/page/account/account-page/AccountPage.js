@@ -82,7 +82,7 @@ export const AccountPage = (props) => {
 
       <HorizontalContainer
         panelBackgroundColor={globalStyles.materialBlueBackground}
-        margin={"mt-3 mb-3"}
+        margin={"mt-3 mb-4"}
       >
         <div className="row justify-content-center">
           <Button
