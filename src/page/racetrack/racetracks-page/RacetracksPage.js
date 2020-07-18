@@ -64,7 +64,7 @@ export const RacetracksPage = (props) => {
       const query = event.target.value.toLowerCase();
 
       const resultArray = [];
-      racetracksArray.forEach((it) => {
+      racetracksArray && racetracksArray.forEach((it) => {
         if (it.name.toLowerCase().includes(query)) {
           resultArray.push(it);
         }

@@ -13,12 +13,16 @@ export const CustomCardImage = (props) => {
       <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-md-12 col-lg-10 col-xl-8">
-            <Card variant="outlined">
-              <CardMedia
-                component="img"
-                src={props.imageUrl}
-              />
-            </Card>
+            {
+              props.imageUrl ?
+                <Card variant="outlined">
+                  <CardMedia
+                    component="img"
+                    src={props.imageUrl}
+                  />
+                </Card>
+                : null
+            }
           </div>
         </div>
       </div>

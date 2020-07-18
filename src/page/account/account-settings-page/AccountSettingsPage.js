@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import AddCar from "../../../component/account/add-car/AddCar";
 import AddAward from "../../../component/account/add-award/AddAward";
 import AccountTabPanel from "../../../component/account/account-tab-panel/AccountTabPanel";
@@ -9,7 +9,7 @@ export const AccountSettingsPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const tabsIdArray = ["tabCars", "tabAwards"];
-  const [tabIdNumber, setTabIdNumber] = React.useState(tabsIdArray[0]);
+  const [tabIdNumber, setTabIdNumber] = useState(tabsIdArray[0]);
   const globalStyles = GlobalStyles();
 
   const handleTabChange = (value = PR()) => {

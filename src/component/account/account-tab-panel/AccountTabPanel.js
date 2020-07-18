@@ -24,18 +24,20 @@ export const AccountTabPanel = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <TabPanel>
-      {
-        renderButton(strings.accountSettingsPage.add
-          + " " + strings.accountSettingsPage.car,
-          props.tabsIdArray[0], props.tabIdNumber)
-      }
-      {
-        renderButton(strings.accountSettingsPage.add
-          + " " + strings.accountSettingsPage.award,
-          props.tabsIdArray[1], props.tabIdNumber)
-      }
-    </TabPanel>
+    props.tabsIdArray ?
+      <TabPanel>
+        {
+          renderButton(strings.accountSettingsPage.add
+            + " " + strings.accountSettingsPage.car,
+            props.tabsIdArray[0], props.tabIdNumber)
+        }
+        {
+          renderButton(strings.accountSettingsPage.add
+            + " " + strings.accountSettingsPage.award,
+            props.tabsIdArray[1], props.tabIdNumber)
+        }
+      </TabPanel>
+      : null
   );
 };
 
