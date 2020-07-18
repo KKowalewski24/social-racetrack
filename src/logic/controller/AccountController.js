@@ -75,7 +75,6 @@ export class AccountController {
           .currentUser
           .delete()
           .catch(() => deleteAccountErrorFunction());
-      })
-      .catch(() => deleteAccountErrorFunction());
+      });
   };
 }
