@@ -13,6 +13,7 @@ import RacetrackCard from "../../../component/card/racetrack-card/RacetrackCard"
 import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
+import {getCardGridStyles} from "../../../component/card/CardHelper";
 
 export const RacetracksPage = (props) => {
 
@@ -97,7 +98,7 @@ export const RacetracksPage = (props) => {
         return (
           <RacetrackCard
             key={index}
-            gridStyles={"col-sm-5 col-md-4 col-lg-3 col-xl-2 m-3 p-0"}
+            gridStyles={getCardGridStyles()}
             redirectPath={PATH_RACETRACK_DETAILS}
             titleStyles={globalStyles.materialBlueFont}
             racetrackObject={it}

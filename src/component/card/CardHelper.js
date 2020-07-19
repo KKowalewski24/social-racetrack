@@ -12,3 +12,7 @@ export const generatePropertiesArray = (keysArray = PR(), chosenValueArray = PR(
 
   return resultArray;
 };
+
+export const getCardGridStyles = () => {
+  return "col-sm-5 col-md-4 col-lg-3 col-xl-2 m-3 p-0";
+};

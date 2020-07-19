@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import strings from "../../../config/constant/string-constants";
-import {PATH_HOME} from "../../../config/constant/path-constants";
+import {PATH_HOME, PATH_MEMBER_DETAILS} from "../../../config/constant/path-constants";
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
 import {checkIfContains} from "../../../logic/Helper";
 import SearchBox from "../../../component/util/search-box/SearchBox";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
+import MemberCard from "../../../component/card/member-card/MemberCard";
+import {getCardGridStyles} from "../../../component/card/CardHelper";
 import {errorNotification} from "../../../component/util/notification/notification";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
@@ -74,8 +76,14 @@ export const MembersPage = (props) => {
     return filteredMembersArray
       && filteredMembersArray.map((it, index) => {
         return (
-          //  TODO
-          <div></div>
+          <MemberCard
+            key={index}
+            gridStyles={getCardGridStyles()}
+            redirectPath={PATH_MEMBER_DETAILS}
+            titleStyles={globalStyles.materialBlueFont}
+            memberObject={it}
+            memberPropertiesKeysArray={cardPropertiesKeysArray}
+          />
         );
       });
 
