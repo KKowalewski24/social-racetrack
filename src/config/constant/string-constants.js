@@ -150,7 +150,11 @@ export const strings = {
 
   },
   membersPage: {
-    //
+    searchMember: "Search Member",
+    cardPropertiesKeysCountry: "Country",
+    cardPropertiesKeysCity: "City",
+    memberLoadingError: "An error occurred while loading data",
+    backHomePage: "Go back to home page",
   },
   memberDetailsPage: {
     //
