@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
 import strings from "../../../config/constant/string-constants";
-import {PATH_HOME} from "../../../config/constant/path-constants";
+import {PATH_MEMBERS} from "../../../config/constant/path-constants";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
 import {CHOSEN_MEMBER_ID} from "../../../config/constant/browser-storage-contants";
 import {errorNotification} from "../../../component/util/notification/notification";
@@ -46,8 +46,8 @@ export const MemberDetailsPage = (props) => {
         isError={isError}
         errorMessageTitle={""}
         errorMessageDescription={strings.memberDetailsPage.memberLoadingError}
-        errorMessageRedirectPath={PATH_HOME}
-        errorMessageRedirectDescription={strings.memberDetailsPage.backHomePage}
+        errorMessageRedirectPath={PATH_MEMBERS}
+        errorMessageRedirectDescription={strings.memberDetailsPage.backMembersPage}
         errorMessageStyles={globalStyles.materialBlueFont}
       >
         <div className="container-fluid">

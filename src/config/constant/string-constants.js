@@ -157,7 +157,7 @@ export const strings = {
   },
   memberDetailsPage: {
     memberLoadingError: "An error occurred while loading data",
-    backHomePage: "Go back to home page",
+    backMembersPage: "Go back to members page",
   },
   createRacetrackPage: {
     inputWarningInfo: "All fields are required",
@@ -197,7 +197,7 @@ export const strings = {
     deleteRacetrack: "Delete Racetrack",
     deleteRacetrackError: "Racetrack has not been deleted!",
     racetrackLoadingError: "An error occurred while loading data",
-    backHomePage: "Go back to home page",
+    backRacetracksPage: "Go back to racetracks page",
   },
   errorPage: {
     title: "404",

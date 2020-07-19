@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
-import {PATH_HOME, PATH_RACETRACKS} from "../../../config/constant/path-constants";
+import {PATH_RACETRACKS} from "../../../config/constant/path-constants";
 import {AuthContext} from "../../../logic/AuthContextProvider";
 import {errorNotification} from "../../../component/util/notification/notification";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
@@ -186,8 +186,8 @@ export const RacetrackDetailsPage = (props) => {
       isError={isError}
       errorMessageTitle={""}
       errorMessageDescription={strings.racetrackDetailsPage.racetrackLoadingError}
-      errorMessageRedirectPath={PATH_HOME}
-      errorMessageRedirectDescription={strings.racetrackDetailsPage.backHomePage}
+      errorMessageRedirectPath={PATH_RACETRACKS}
+      errorMessageRedirectDescription={strings.racetrackDetailsPage.backRacetracksPage}
       errorMessageStyles={globalStyles.materialBlueFont}
     >
       <div className="container-fluid">
