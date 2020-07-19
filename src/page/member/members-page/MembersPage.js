@@ -27,7 +27,6 @@ export const MembersPage = (props) => {
       () => errorNotification(strings.membersPage.memberLoadingError)
     )
       .then((members) => {
-        console.log(members);
         setMembersArray(members);
         setFilteredMembersArray(members);
         setIsLoaded(true);

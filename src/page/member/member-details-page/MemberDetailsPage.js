@@ -27,7 +27,6 @@ export const MemberDetailsPage = (props) => {
       () => errorNotification(strings.memberDetailsPage.memberLoadingError)
     )
       .then((member) => {
-        console.log(member);
         setMember(member);
         setIsLoaded(true);
         setIsError(false);
@@ -41,7 +40,6 @@ export const MemberDetailsPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    //todo
     member ?
       <FetchDataController
         isLoaded={isLoaded}
@@ -66,7 +64,6 @@ export const MemberDetailsPage = (props) => {
             receivedAwardsArray={member.receivedAwardsArray}
             isEditableForUser={false}
           />
-
         </div>
       </FetchDataController>
       : null
