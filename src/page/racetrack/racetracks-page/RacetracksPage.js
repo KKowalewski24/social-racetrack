@@ -10,10 +10,10 @@ import {checkIfContains} from "../../../logic/Helper";
 import SearchBox from "../../../component/util/search-box/SearchBox";
 import {errorNotification} from "../../../component/util/notification/notification";
 import RacetrackCard from "../../../component/card/racetrack-card/RacetrackCard";
+import {getCardGridStyles} from "../../../component/card/CardHelper";
 import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
-import {getCardGridStyles} from "../../../component/card/CardHelper";
 
 export const RacetracksPage = (props) => {
 
