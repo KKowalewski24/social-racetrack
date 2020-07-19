@@ -17,7 +17,7 @@ export const FutureEventsPage = (props) => {
             variant="contained"
             className="my-1 mx-1"
           >
-            {strings.futureEventsPage.createNewEvent}
+            {strings.eventsPage.futureEventsPage.createNewEvent}
           </Button>
         </Link>
       </TabPanel>

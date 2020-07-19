@@ -125,11 +125,13 @@ export const strings = {
     inputWarningInfo: "All fields are required",
     confirm: "Confirm",
   },
-  futureEventsPage: {
-    createNewEvent: "Create New Event",
-  },
-  pastEventsPage: {
-    //
+  eventsPage: {
+    futureEventsPage: {
+      createNewEvent: "Create New Event",
+    },
+    pastEventsPage: {
+      //
+    },
   },
   eventDetailsPage: {
     //
