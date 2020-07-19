@@ -4,6 +4,7 @@ import BaseCard from "../base-card/BaseCard";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import {PR} from "../../../logic/Helper";
+import {generatePropertiesArray} from "../CardHelper";
 
 export const RacetrackCard = (props) => {
 
@@ -15,24 +16,14 @@ export const RacetrackCard = (props) => {
       .sessionStorageSaveItem(CHOSEN_RACETRACK_ID, props.racetrackObject.id);
   };
 
-  const generatePropertiesArray = (racetrackObject = PR(), keysArray = PR()) => {
+  const createPropertiesArray = (keysArray = PR(), racetrackObject = PR()) => {
     const chosenValueArray = [
       racetrackObject.country,
       racetrackObject.city,
       racetrackObject.lengthInMeters
     ];
 
-    if (keysArray.length !== chosenValueArray.length) {
-      throw new Error("Arrays' length must be equal");
-    }
-
-    const resultArray = [];
-
-    for (let i = 0; i < keysArray.length; i++) {
-      resultArray.push({key: keysArray[i], value: chosenValueArray[i]});
-    }
-
-    return resultArray;
+    return generatePropertiesArray(keysArray, chosenValueArray);
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -45,7 +36,7 @@ export const RacetrackCard = (props) => {
       titleStyles={props.titleStyles}
       title={props.racetrackObject.name}
       propertiesArray={
-        generatePropertiesArray(props.racetrackObject, props.racetrackPropertiesKeysArray)
+        createPropertiesArray(props.racetrackPropertiesKeysArray, props.racetrackObject)
       }
     />
   );
