@@ -59,3 +59,7 @@ export const redirectIfUndefined = (value = PR(), path = PR()) => {
     redirectToPage(path);
   }
 };
+
+export const checkIfContains = (text = PR(), query = PR()) => {
+  return text.toLowerCase().includes(query);
+};

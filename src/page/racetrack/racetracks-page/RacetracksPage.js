@@ -6,6 +6,7 @@ import {PATH_CREATE_RACETRACK, PATH_HOME, PATH_RACETRACK_DETAILS} from "../../..
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
 import strings from "../../../config/constant/string-constants";
 import {AuthContext} from "../../../logic/AuthContextProvider";
+import {checkIfContains} from "../../../logic/Helper";
 import SearchBox from "../../../component/util/search-box/SearchBox";
 import {errorNotification} from "../../../component/util/notification/notification";
 import RacetrackCard from "../../../component/card/racetrack-card/RacetrackCard";
@@ -65,7 +66,9 @@ export const RacetracksPage = (props) => {
 
       const resultArray = [];
       racetracksArray && racetracksArray.forEach((it) => {
-        if (it.name.toLowerCase().includes(query)) {
+        if (checkIfContains(it.name, query)
+          || checkIfContains(it.country, query)
+          || checkIfContains(it.city, query)) {
           resultArray.push(it);
         }
       });
