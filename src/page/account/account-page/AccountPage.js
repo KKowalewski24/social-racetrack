@@ -74,10 +74,11 @@ export const AccountPage = (props) => {
         city={member.city}
         birthDate={member.birthDate}
         email={member.email}
-        joinDate={config.auth().currentUser?.metadata.creationTime}
-        lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
         carsArray={member.carsArray}
         receivedAwardsArray={member.receivedAwardsArray}
+        isEditableForUser={true}
+        joinDate={config.auth().currentUser?.metadata.creationTime}
+        lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
         handleRemoveCar={handleRemoveCar}
         handleRemoveAward={handleRemoveAward}
       />

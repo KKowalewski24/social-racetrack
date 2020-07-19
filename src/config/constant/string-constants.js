@@ -36,7 +36,6 @@ export const strings = {
     },
   },
   accountPage: {
-    name: "Name",
     country: "Country",
     city: "City",
     birthDate: "Birth Date",
@@ -157,7 +156,8 @@ export const strings = {
     backHomePage: "Go back to home page",
   },
   memberDetailsPage: {
-    //
+    memberLoadingError: "An error occurred while loading data",
+    backHomePage: "Go back to home page",
   },
   createRacetrackPage: {
     inputWarningInfo: "All fields are required",
