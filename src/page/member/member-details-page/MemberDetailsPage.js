@@ -55,7 +55,7 @@ export const MemberDetailsPage = (props) => {
         <div className="container-fluid">
           <DisplayUserData
             panelBackgroundColor={globalStyles.materialBlueBackground}
-            margin={"custom-hor-cont-margin-bottom"}
+            margin={"custom-hor-cont-margin-first-last"}
             firstName={member.firstName}
             lastName={member.lastName}
             country={member.country}
