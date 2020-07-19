@@ -60,6 +60,8 @@ export const strings = {
     car: "Car",
     award: "Award",
     or: "or",
+    accountLoadingError: "An error occurred while loading data",
+    backHomePage: "Go back to home page",
     deleteAccount: "Delete Account",
     deleteAccountError: "User account has not been deleted!",
   },
