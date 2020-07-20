@@ -8,7 +8,8 @@ import Button from "@material-ui/core/Button";
 export const AccountTabPanel = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const renderButton = (text = PR(), buttonNumber = PR(), currentlySelected = PR()) => {
+  const renderButton = (text = PR(),
+                        buttonNumber = PR(), currentlySelected = PR()) => {
     return (
       <Button
         onClick={() => props.handleTabChange(buttonNumber)}
@@ -35,6 +36,10 @@ export const AccountTabPanel = (props) => {
           renderButton(strings.accountSettingsPage.add
             + " " + strings.accountSettingsPage.award,
             props.tabsIdArray[1], props.tabIdNumber)
+        }
+        {
+          renderButton(strings.accountSettingsPage.editUser,
+            props.tabsIdArray[2], props.tabIdNumber)
         }
       </TabPanel>
       : null

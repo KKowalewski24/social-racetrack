@@ -7,6 +7,8 @@ import config from "../../../config/config";
 import {errorNotification} from "../../../component/util/notification/notification";
 import {PATH_ACCOUNT} from "../../../config/constant/path-constants";
 import strings from "../../../config/constant/string-constants";
+import EditUserData from "../../../component/account/edit-user-data/EditUserData";
+import {ToastContainer} from "react-toastify";
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
 import {Award} from "../../../logic/model/award/Award";
 import {Car} from "../../../logic/model/car/Car";
@@ -16,7 +18,7 @@ import GlobalStyles from "../../../main/GlobalStyles";
 export const AccountSettingsPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const tabsIdArray = ["tabCars", "tabAwards"];
+  const tabsIdArray = ["tabUser", "tabCars", "tabAwards"];
   const [tabIdNumber, setTabIdNumber] = useState(tabsIdArray[0]);
   const [member, setMember] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -45,6 +47,13 @@ export const AccountSettingsPage = (props) => {
 
   const handleTabChange = (value = PR()) => {
     setTabIdNumber(value);
+  };
+
+  const handleEditUser = (data = PR()) => {
+    console.log(data);
+    if (checkIfReadyToSave()) {
+      //TODO
+    }
   };
 
   const handleAddCar = (data = PR()) => {
@@ -79,10 +88,6 @@ export const AccountSettingsPage = (props) => {
     }
   };
 
-  const checkIfReadyToSave = () => {
-    return isLoaded && !isError;
-  };
-
   const renderChosenTab = () => {
     // eslint-disable-next-line default-case
     switch (tabIdNumber) {
@@ -104,7 +109,28 @@ export const AccountSettingsPage = (props) => {
           />
         );
       }
+      case tabsIdArray[2]: {
+        if (member) {
+          return (
+            <EditUserData
+              handleEditUser={handleEditUser}
+              previousFirstName={member.firstName}
+              previousLastName={member.lastName}
+              previousCountry={member.country}
+              previousCity={member.city}
+              margin="mt-3"
+              backgroundColor={globalStyles.materialBlueBackground}
+            />
+          );
+        } else {
+          errorNotification(strings.accountSettingsPage.accountLoadingError);
+        }
+      }
     }
+  };
+
+  const checkIfReadyToSave = () => {
+    return isLoaded && !isError;
   };
 
   /*------------------------ RETURN REGION ------------------------*/
@@ -119,6 +145,8 @@ export const AccountSettingsPage = (props) => {
 
         {renderChosenTab()}
       </div>
+
+      <ToastContainer/>
     </div>
   );
 };
