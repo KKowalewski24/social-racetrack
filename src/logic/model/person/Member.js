@@ -17,11 +17,11 @@ export class Member extends PersonAbst {
   }
 }
 
-export const getUpdatedCarsArray = (memberObject = PR(), addedCar = PR()) => {
+export const getAddedCarsArray = (memberObject = PR(), addedCar = PR()) => {
   return {carsArray: [...memberObject.carsArray, addedCar]};
 };
 
-export const getUpdatedReceivedAwardsArray = (memberObject = PR(),
+export const getRemovedReceivedAwardsArray = (memberObject = PR(),
                                               addedAward = PR()) => {
   return {receivedAwardsArray: [...memberObject.receivedAwardsArray, addedAward]};
 };

@@ -10,7 +10,7 @@ import strings from "../../../config/constant/string-constants";
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
 import {Award} from "../../../logic/model/award/Award";
 import {Car} from "../../../logic/model/car/Car";
-import {getUpdatedCarsArray, getUpdatedReceivedAwardsArray} from "../../../logic/model/person/Member";
+import {getAddedCarsArray, getRemovedReceivedAwardsArray} from "../../../logic/model/person/Member";
 import GlobalStyles from "../../../main/GlobalStyles";
 
 export const AccountSettingsPage = (props) => {
@@ -57,7 +57,7 @@ export const AccountSettingsPage = (props) => {
 
       memberDatabaseController.updateMember(
         member.id,
-        getUpdatedCarsArray(member, car),
+        getAddedCarsArray(member, car),
         () => errorNotification(strings.accountSettingsPage.itemNotAdded)
       ).then(() => {
         redirectToPage(PATH_ACCOUNT);
@@ -71,7 +71,7 @@ export const AccountSettingsPage = (props) => {
 
       memberDatabaseController.updateMember(
         member.id,
-        getUpdatedReceivedAwardsArray(member, award),
+        getRemovedReceivedAwardsArray(member, award),
         () => errorNotification(strings.accountSettingsPage.itemNotAdded)
       ).then(() => {
         redirectToPage(PATH_ACCOUNT);
