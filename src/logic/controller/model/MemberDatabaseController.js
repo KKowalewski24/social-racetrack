@@ -35,8 +35,13 @@ export class MemberDatabaseController {
     }
   };
 
-  updateMember = async () => {
-//TODO
+  updateMember = async (id = PR(), partialData = PR(), errorFunction = PR()) => {
+    try {
+      return await this._databaseController
+        .updateData(PATH_DB_COLLECTION_MEMBERS + id, partialData, errorFunction);
+    } catch (err) {
+      errorFunction();
+    }
   };
 
   deleteMember = async (id = PR(), errorFunction = PR()) => {

@@ -8,7 +8,7 @@ export class DatabaseController {
   /*------------------------ METHODS REGION ------------------------*/
   createData = async (path = PR(), data = PR(), errorFunction = PR()) => {
     try {
-      await config.firestore()
+      return await config.firestore()
         .doc(path)
         .set(convertClassObjectToJsObject(data));
     } catch (err) {

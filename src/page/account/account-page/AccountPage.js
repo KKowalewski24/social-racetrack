@@ -31,8 +31,6 @@ export const AccountPage = (props) => {
       () => errorNotification(strings.accountPage.accountLoadingError)
     )
       .then((member) => {
-        console.log(member);
-
         setMember(member);
         setIsLoaded(true);
         setIsError(false);

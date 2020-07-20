@@ -80,6 +80,9 @@ export const strings = {
     year: "Year",
     confirm: "Confirm",
     inputWarningInfo: "All fields are required",
+    accountLoadingError: "An error occurred while loading data",
+    itemNotAdded: "Item has not been added",
+    userDataNotUpdated: "User data has not been updated",
   },
   adminPanelPage: {
     grantAdminStatus: "Grant Admin Status",
