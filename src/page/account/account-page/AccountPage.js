@@ -26,7 +26,7 @@ export const AccountPage = (props) => {
   const globalStyles = GlobalStyles();
 
   useEffect(() => {
-    memberDatabaseController.readMemberById(
+    memberDatabaseController.readSingleMemberById(
       config.auth().currentUser.uid,
       () => errorNotification(strings.accountPage.accountLoadingError)
     )

@@ -10,11 +10,11 @@ export class EventDatabaseController {
 //TODO
   };
 
-  readEvent = () => {
+  readSingleEventByID = () => {
 //TODO
   };
 
-  updateEvent = () => {
+  readAllEvents = () => {
 //TODO
   };
 

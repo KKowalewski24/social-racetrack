@@ -20,7 +20,7 @@ export class MemberDatabaseController {
     }
   };
 
-  readMemberById = async (id = PR(), errorFunction = PR()) => {
+  readSingleMemberById = async (id = PR(), errorFunction = PR()) => {
     try {
       return await this._databaseController
         .readSingleData(PATH_DB_COLLECTION_MEMBERS + id, errorFunction);

@@ -22,7 +22,7 @@ export const MemberDetailsPage = (props) => {
   const globalStyles = GlobalStyles();
 
   useEffect(() => {
-    memberDatabaseController.readMemberById(
+    memberDatabaseController.readSingleMemberById(
       browserStorageController.sessionStorageGetItem(CHOSEN_MEMBER_ID),
       () => errorNotification(strings.memberDetailsPage.memberLoadingError)
     )
