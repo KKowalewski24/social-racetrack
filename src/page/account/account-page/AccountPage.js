@@ -57,7 +57,7 @@ export const AccountPage = (props) => {
       memberDatabaseController.updateMember(
         member.id,
         getDeletedCarsArray(member, id),
-        () => errorNotification(strings.accountSettingsPage.userDataNotUpdated)
+        () => errorNotification(strings.accountSettingsPage.itemNotDeleted)
       ).then(() => setShouldUpdate(true));
     }
   };
@@ -67,7 +67,7 @@ export const AccountPage = (props) => {
       memberDatabaseController.updateMember(
         member.id,
         getDeletedReceivedAwardsArray(member, id),
-        () => errorNotification(strings.accountSettingsPage.userDataNotUpdated)
+        () => errorNotification(strings.accountSettingsPage.itemNotDeleted)
       ).then(() => setShouldUpdate(true));
     }
   };

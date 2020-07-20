@@ -14,6 +14,7 @@ import {Award} from "../../../logic/model/award/Award";
 import {Car} from "../../../logic/model/car/Car";
 import {getAddedCarsArray, getAddedReceivedAwardsArray} from "../../../logic/model/person/Member";
 import GlobalStyles from "../../../main/GlobalStyles";
+import {getUpdatedFieldsArray} from "../../../logic/model/person/PersonAbst";
 
 export const AccountSettingsPage = (props) => {
 
@@ -50,9 +51,12 @@ export const AccountSettingsPage = (props) => {
   };
 
   const handleEditUser = (data = PR()) => {
-    console.log(data);
     if (checkIfReadyToSave()) {
-      //TODO
+      memberDatabaseController.updateMember(
+        member.id,
+        getUpdatedFieldsArray(data.firstName, data.lastName, data.country, data.city),
+        () => errorNotification(strings.accountSettingsPage.userDataNotUpdated)
+      ).then(() => redirectToPage(PATH_ACCOUNT));
     }
   };
 
@@ -68,9 +72,7 @@ export const AccountSettingsPage = (props) => {
         member.id,
         getAddedCarsArray(member, car),
         () => errorNotification(strings.accountSettingsPage.itemNotAdded)
-      ).then(() => {
-        redirectToPage(PATH_ACCOUNT);
-      });
+      ).then(() => redirectToPage(PATH_ACCOUNT));
     }
   };
 
@@ -82,9 +84,7 @@ export const AccountSettingsPage = (props) => {
         member.id,
         getAddedReceivedAwardsArray(member, award),
         () => errorNotification(strings.accountSettingsPage.itemNotAdded)
-      ).then(() => {
-        redirectToPage(PATH_ACCOUNT);
-      });
+      ).then(() => redirectToPage(PATH_ACCOUNT));
     }
   };
 

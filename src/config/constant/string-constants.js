@@ -87,6 +87,7 @@ export const strings = {
     inputWarningInfo: "All fields are required",
     accountLoadingError: "An error occurred while loading data",
     itemNotAdded: "Item has not been added",
+    itemNotDeleted: "Item has not been deleted",
     userDataNotUpdated: "User data has not been updated",
   },
   adminPanelPage: {

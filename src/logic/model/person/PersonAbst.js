@@ -24,3 +24,15 @@ export class PersonAbst extends BaseEntityAbst {
     this.email = email;
   }
 }
+
+export const getUpdatedFieldsArray = (editedFirstName = PR(),
+                                      editedLastName = PR(),
+                                      editedCountry = PR(),
+                                      editedCity = PR()) => {
+  return {
+    firstName: editedFirstName,
+    lastName: editedLastName,
+    country: editedCountry,
+    city: editedCity,
+  };
+};
