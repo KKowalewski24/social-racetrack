@@ -5,12 +5,13 @@ import config from "../../../config/config";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
-import Button from "@material-ui/core/Button";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {errorNotification} from "../../../component/util/notification/notification";
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
 import {PR} from "../../../logic/Helper";
 import {PATH_ACCOUNT_SETTINGS, PATH_HOME} from "../../../config/constant/path-constants";
+import {getDeletedCarsArray, getDeletedReceivedAwardsArray} from "../../../logic/model/person/Member";
+import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
@@ -20,6 +21,7 @@ export const AccountPage = (props) => {
   const [member, setMember] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [shouldUpdate, setShouldUpdate] = useState(false);
 
   const memberDatabaseController = new MemberDatabaseController();
   const accountController = new AccountController();
@@ -39,8 +41,10 @@ export const AccountPage = (props) => {
         setIsLoaded(true);
         setIsError(true);
       });
+
+    setShouldUpdate(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [shouldUpdate]);
 
   const handleDeleteUser = () => {
     accountController.deleteAccount(() => {
@@ -49,13 +53,27 @@ export const AccountPage = (props) => {
   };
 
   const handleRemoveCar = (id = PR()) => {
-    console.log("todo");
-    //  TODO ADD IMPL !!!
+    if (checkIfReadyToSave()) {
+      memberDatabaseController.updateMember(
+        member.id,
+        getDeletedCarsArray(member, id),
+        () => errorNotification(strings.accountSettingsPage.userDataNotUpdated)
+      ).then(() => setShouldUpdate(true));
+    }
   };
 
   const handleRemoveAward = (id = PR()) => {
-    console.log("todo");
-    //  TODO ADD IMPL !!!
+    if (checkIfReadyToSave()) {
+      memberDatabaseController.updateMember(
+        member.id,
+        getDeletedReceivedAwardsArray(member, id),
+        () => errorNotification(strings.accountSettingsPage.userDataNotUpdated)
+      ).then(() => setShouldUpdate(true));
+    }
+  };
+
+  const checkIfReadyToSave = () => {
+    return isLoaded && !isError;
   };
 
   /*------------------------ RETURN REGION ------------------------*/
