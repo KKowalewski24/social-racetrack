@@ -1,5 +1,5 @@
 import config from "../../config/config";
-import {PR} from "../Helper";
+import {convertClassObjectToJsObject, PR} from "../Helper";
 
 export class DatabaseController {
 
@@ -10,7 +10,7 @@ export class DatabaseController {
     try {
       await config.firestore()
         .doc(path)
-        .set(data);
+        .set(convertClassObjectToJsObject(data));
     } catch (err) {
       errorFunction();
     }
@@ -47,8 +47,14 @@ export class DatabaseController {
     }
   };
 
-  updateData = async () => {
-    //TODO
+  updateData = async (path = PR(), partialData = PR(), errorFunction = PR()) => {
+    try {
+      return await config.firestore()
+        .doc(path)
+        .update(convertClassObjectToJsObject(partialData));
+    } catch (err) {
+      errorFunction();
+    }
   };
 
   deleteData = async (path = PR(), errorFunction = PR()) => {

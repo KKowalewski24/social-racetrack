@@ -1,7 +1,7 @@
 import {DatabaseController} from "../DatabaseController";
 import {PATH_DB_COLLECTION_RACETRACKS} from "../../../config/constant/firebase-constants";
-import {convertClassObjectToJsObject, PR} from "../../Helper";
 import {RacetrackFirebaseStorageController} from "./RacetrackFirebaseStorageController";
+import {PR} from "../../Helper";
 
 export class RacetrackDatabaseController {
 
@@ -12,11 +12,8 @@ export class RacetrackDatabaseController {
   /*------------------------ METHODS REGION ------------------------*/
   createRacetrack = async (data = PR(), errorFunction = PR()) => {
     try {
-      await this._databaseController.createData(
-        PATH_DB_COLLECTION_RACETRACKS + data.id,
-        convertClassObjectToJsObject(data),
-        errorFunction
-      );
+      await this._databaseController
+        .createData(PATH_DB_COLLECTION_RACETRACKS + data.id, data, errorFunction);
     } catch (err) {
       errorFunction();
     }

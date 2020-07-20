@@ -1,6 +1,6 @@
 import {DatabaseController} from "../DatabaseController";
 import {PATH_DB_COLLECTION_MEMBERS} from "../../../config/constant/firebase-constants";
-import {convertClassObjectToJsObject, PR} from "../../Helper";
+import {PR} from "../../Helper";
 
 export class MemberDatabaseController {
 
@@ -10,11 +10,8 @@ export class MemberDatabaseController {
   /*------------------------ METHODS REGION ------------------------*/
   createMember = async (data = PR(), errorFunction = PR()) => {
     try {
-      return await this._databaseController.createData(
-        PATH_DB_COLLECTION_MEMBERS + data.id,
-        convertClassObjectToJsObject(data),
-        errorFunction
-      );
+      return await this._databaseController
+        .createData(PATH_DB_COLLECTION_MEMBERS + data.id, data, errorFunction);
     } catch (err) {
       errorFunction();
     }
