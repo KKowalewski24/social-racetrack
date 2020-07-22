@@ -1,22 +1,24 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
 import strings from "../../../config/constant/string-constants";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import {ToastContainer} from "react-toastify";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
-import GlobalStyles from "../../../main/GlobalStyles";
 import {PATH_HOME} from "../../../config/constant/path-constants";
 import {grantAdmin} from "../../../logic/CloudFunctions";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
+import TextField from "@material-ui/core/TextField";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
+import GlobalStyles from "../../../main/GlobalStyles";
 
 export const AdminPanelPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const history = useHistory();
   const globalStyles = GlobalStyles();
 
   const handleGrantAdmin = (data = PR()) => {
@@ -24,7 +26,7 @@ export const AdminPanelPage = (props) => {
       .then((result) => console.log(result))
       .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
 
-    redirectToPage(PATH_HOME);
+    redirectToPage(history, PATH_HOME);
   };
 
   const checkInputs = () => {

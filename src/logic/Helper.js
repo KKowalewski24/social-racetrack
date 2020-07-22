@@ -50,8 +50,8 @@ export const generateCustomUuidWithSecond = () => {
   return new Date().getUTCMilliseconds() + uuidv4();
 };
 
-export const redirectToPage = (path = PR()) => {
-  window.location.replace(path);
+export const redirectToPage = (history = PR(), path = PR()) => {
+  history.push(path);
 };
 
 export const redirectIfUndefined = (value = PR(), path = PR()) => {

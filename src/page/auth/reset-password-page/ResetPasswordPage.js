@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
 import {AccountController} from "../../../logic/controller/AccountController";
@@ -6,17 +7,18 @@ import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {warningNotification} from "../../../component/util/notification/notification";
 import {ToastContainer} from "react-toastify";
 import strings from "../../../config/constant/string-constants";
-import GlobalStyles from "../../../main/GlobalStyles";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import RestoreIcon from "@material-ui/icons/Restore";
+import GlobalStyles from "../../../main/GlobalStyles";
 
 export const ResetPasswordPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const history = useHistory();
   const accountController = new AccountController();
   const globalStyles = GlobalStyles();
 
@@ -25,7 +27,7 @@ export const ResetPasswordPage = (props) => {
       data.email,
       () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
     );
-    redirectToPage(PATH_LOGIN);
+    redirectToPage(history, PATH_LOGIN);
   };
 
   const checkInputs = () => {

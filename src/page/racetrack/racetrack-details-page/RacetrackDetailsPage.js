@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
 import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
 import {PATH_RACETRACKS} from "../../../config/constant/path-constants";
@@ -23,6 +24,7 @@ export const RacetrackDetailsPage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const history = useHistory();
   const browserStorageController = new BrowserStorageController();
   const racetrackDatabaseController = new RacetrackDatabaseController();
   const globalStyles = GlobalStyles();
@@ -48,7 +50,7 @@ export const RacetrackDetailsPage = (props) => {
     racetrackDatabaseController.deleteRacetrackById(
       racetrack.id, racetrack.imageUrl,
       () => errorNotification(strings.racetrackDetailsPage.deleteRacetrackError)
-    ).then(() => redirectToPage(PATH_RACETRACKS));
+    ).then(() => redirectToPage(history, PATH_RACETRACKS));
   };
 
   const renderLeftSide = () => {

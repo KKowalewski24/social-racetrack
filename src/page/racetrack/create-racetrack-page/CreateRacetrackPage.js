@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {
   generateCustomUuid,
@@ -26,6 +27,7 @@ export const CreateRacetrackPage = (props) => {
   const [image, setImage] = useState([]);
   const [createRacetrackCallCounter, setCreateRacetrackCallCounter] = useState(0);
 
+  const history = useHistory();
   const racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
   const racetrackDatabaseController = new RacetrackDatabaseController();
 
@@ -45,7 +47,7 @@ export const CreateRacetrackPage = (props) => {
               data.description, imageUrl
             ),
             () => errorNotification(strings.createRacetrackPage.racetrackNotSavedError)
-          ).then(() => redirectToPage(PATH_RACETRACKS));
+          ).then(() => redirectToPage(history, PATH_RACETRACKS));
         });
 
         setCreateRacetrackCallCounter(createRacetrackCallCounter + 1);
