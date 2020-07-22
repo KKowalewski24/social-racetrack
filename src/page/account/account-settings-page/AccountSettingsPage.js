@@ -34,7 +34,6 @@ export const AccountSettingsPage = (props) => {
       () => errorNotification(strings.accountSettingsPage.accountLoadingError)
     )
       .then((member) => {
-        console.log(member);
         setMember(member);
         setIsLoaded(true);
         setIsError(false);
@@ -48,16 +47,6 @@ export const AccountSettingsPage = (props) => {
 
   const handleTabChange = (value = PR()) => {
     setTabIdNumber(value);
-  };
-
-  const handleEditUser = (data = PR()) => {
-    if (checkIfReadyToSave()) {
-      memberDatabaseController.updateMember(
-        member.id,
-        getUpdatedFieldsArray(data.firstName, data.lastName, data.country, data.city),
-        () => errorNotification(strings.accountSettingsPage.userDataNotUpdated)
-      ).then(() => redirectToPage(PATH_ACCOUNT));
-    }
   };
 
   const handleAddCar = (data = PR()) => {
@@ -84,6 +73,16 @@ export const AccountSettingsPage = (props) => {
         member.id,
         getAddedReceivedAwardsArray(member, award),
         () => errorNotification(strings.accountSettingsPage.itemNotAdded)
+      ).then(() => redirectToPage(PATH_ACCOUNT));
+    }
+  };
+
+  const handleEditUser = (data = PR()) => {
+    if (checkIfReadyToSave()) {
+      memberDatabaseController.updateMember(
+        member.id,
+        getUpdatedFieldsArray(data.firstName, data.lastName, data.country, data.city),
+        () => errorNotification(strings.accountSettingsPage.userDataNotUpdated)
       ).then(() => redirectToPage(PATH_ACCOUNT));
     }
   };
