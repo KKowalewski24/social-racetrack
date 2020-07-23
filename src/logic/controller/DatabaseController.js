@@ -1,11 +1,15 @@
-import config from "../../config/config";
 import {convertClassObjectToJsObject, PR} from "../Helper";
+import config from "../../config/config";
 
 export class DatabaseController {
 
   /*------------------------ FIELDS REGION ------------------------*/
 
   /*------------------------ METHODS REGION ------------------------*/
+  getDocumentReference = (path = PR()) => {
+    return config.firestore().doc(path);
+  };
+
   createData = async (path = PR(), data = PR(), errorFunction = PR()) => {
     try {
       return await config.firestore()

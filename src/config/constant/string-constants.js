@@ -134,6 +134,7 @@ export const strings = {
     racetrack: "Racetrack",
     inputWarningInfo: "All fields are required",
     confirm: "Confirm",
+    eventNotSavedError: "Event has not been saved!",
     racetrackLoadingError: "An error occurred while loading racetrack data",
     backFutureEventsPage: "Go back to future events page",
   },
