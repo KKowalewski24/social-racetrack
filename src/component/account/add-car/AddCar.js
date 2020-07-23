@@ -6,9 +6,9 @@ import {ToastContainer} from "react-toastify";
 import {getCurrentYear, keyValueObjectToArray} from "../../../logic/Helper";
 import {warningNotification} from "../../util/notification/notification";
 import {CarType} from "../../../logic/model/car/CarType";
-import CustomComboBox from "../../util/custom-combo-box/CustomComboBox";
 import {EngineType} from "../../../logic/model/car/EngineType";
 import {DriveTrainType} from "../../../logic/model/car/DriveTrainType";
+import EnumComboBox from "../../create/enum-combo-box/EnumComboBox";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../../../index.css";
@@ -85,7 +85,7 @@ export const AddCar = (props) => {
 
         <div className="row">
           <div className="col-sm-6">
-            <CustomComboBox
+            <EnumComboBox
               enum={CarType}
               inputRef={register({required: true})}
               name="carType"
@@ -94,7 +94,7 @@ export const AddCar = (props) => {
           </div>
 
           <div className="col-sm-6">
-            <CustomComboBox
+            <EnumComboBox
               enum={EngineType}
               inputRef={register({required: true})}
               name="engineType"
@@ -117,7 +117,7 @@ export const AddCar = (props) => {
           </div>
 
           <div className="col-sm-6">
-            <CustomComboBox
+            <EnumComboBox
               enum={DriveTrainType}
               inputRef={register({required: true})}
               name="driveTrainType"
