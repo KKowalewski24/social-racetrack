@@ -11,6 +11,7 @@ export const keyValueObjectToArray = (object = PR()) => {
  * PR stands from ParamRequired - throw Error if param is not passed to function call
  */
 export const PR = () => {
+  // TODO DURING DEVELOPMENT PROCESS BELOW LINE SHOULD BE UNCOMMENTED
   throw new Error("Param Is Required!");
 };
 
