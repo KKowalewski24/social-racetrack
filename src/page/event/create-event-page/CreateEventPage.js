@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {ToastContainer} from "react-toastify";
 import {EventDatabaseController} from "../../../logic/controller/model/EventDatabaseController";
-import {keyValueObjectToArray, PR} from "../../../logic/Helper";
+import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
 import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
@@ -21,7 +22,9 @@ export const CreateEventPage = (props) => {
   const [racetracksArray, setRacetracksArray] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [createEventCallCounter, setCreateEventCallCounter] = useState(0);
 
+  const history = useHistory();
   const eventDatabaseController = new EventDatabaseController();
   const racetrackDatabaseController = new RacetrackDatabaseController();
   const globalStyles = GlobalStyles();
@@ -57,8 +60,15 @@ export const CreateEventPage = (props) => {
   };
 
   const handleCreateEvent = (data = PR()) => {
-    console.log(data);
-    //TODO ADD IMPL
+    if (createEventCallCounter === 0) {
+      eventDatabaseController.createEvent(
+        //TODO REMEMBER THAT racetrack SHOULD BE ID AND DATETIME MUST BE DIVIDED INTO TWO INPUTS
+        data.eventName, data.racetrack, new Date(data.dateTime),
+        () => errorNotification(strings.createEventPage.eventNotSavedError)
+      ).then(() => redirectToPage(history, PATH_FUTURE_EVENTS));
+
+      setCreateEventCallCounter(createEventCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {
@@ -104,7 +114,7 @@ export const CreateEventPage = (props) => {
               type="datetime-local"
               inputRef={register({required: true})}
               InputLabelProps={{shrink: true}}
-              name="DateTime"
+              name="dateTime"
               label={strings.createEventPage.dateTime}
               variant="outlined"
               margin="normal"
