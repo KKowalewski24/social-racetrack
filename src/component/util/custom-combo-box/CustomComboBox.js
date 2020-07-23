@@ -12,7 +12,7 @@ export const CustomComboBox = (props) => {
     <Autocomplete
       options={props.keyValueArray}
       getOptionLabel={(it) => it.value}
-      getOptionSelected={(option, value) => option.value === value.value}
+      getOptionSelected={(option, value) => option.key === value.key}
       renderInput={(params) => {
         return (
           <TextField

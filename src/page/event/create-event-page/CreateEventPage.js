@@ -7,7 +7,7 @@ import {RacetrackDatabaseController} from "../../../logic/controller/model/Racet
 import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
-import CustomComboBox from "../../../component/util/custom-combo-box/CustomComboBox";
+import ArrayComboBox from "../../../component/create/array-combo-box/ArrayComboBox";
 import strings from "../../../config/constant/string-constants";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -46,7 +46,7 @@ export const CreateEventPage = (props) => {
   const getRacetrackKeyValueArray = () => {
     const keyValueArray = [];
 
-    racetracksArray.forEach((it) => {
+    racetracksArray && racetracksArray.forEach((it) => {
       keyValueArray.push({
         key: it.id,
         value: it.name
@@ -93,14 +93,12 @@ export const CreateEventPage = (props) => {
               fullWidth
             />
 
-            {/*TODO ADD ARRAY WITH DATA - REMEMBER TO PROPERLY PARSE - ENUM STYLE*/}
-            {/*<CustomComboBox*/}
-            {/*  dataArray={racetracksArray}*/}
-            {/*  getDataArrayKeyValueArray={getRacetrackKeyValueArray}*/}
-            {/*  inputRef={register({required: true})}*/}
-            {/*  name="racetrack"*/}
-            {/*  label={strings.createEventPage.racetrack}*/}
-            {/*/>*/}
+            <ArrayComboBox
+              dataArray={getRacetrackKeyValueArray()}
+              inputRef={register({required: true})}
+              name="racetrack"
+              label={strings.createEventPage.racetrack}
+            />
 
             <TextField
               type="datetime-local"
