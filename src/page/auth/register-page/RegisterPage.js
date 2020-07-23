@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_LOGIN} from "../../../config/constant/path-constants";
@@ -18,16 +18,22 @@ export const RegisterPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const [createMemberCallCounter, setCreateMemberCallCounter] = useState(0);
+
   const accountController = new AccountController();
   const globalStyles = GlobalStyles();
 
   const handleRegister = (data = PR()) => {
-    accountController.registerUser(
-      data.firstName, data.lastName, data.email, data.password,
-      data.country, data.city, new Date(data.birthDate),
-      () => warningNotification(strings.registerPage.verificationEmailNotSent),
-      () => errorNotification(strings.registerPage.userAccountNotCreated)
-    );
+    if (createMemberCallCounter === 0) {
+      accountController.registerUser(
+        data.firstName, data.lastName, data.email, data.password,
+        data.country, data.city, new Date(data.birthDate),
+        () => warningNotification(strings.registerPage.verificationEmailNotSent),
+        () => errorNotification(strings.registerPage.userAccountNotCreated)
+      );
+
+      setCreateMemberCallCounter(createMemberCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {
