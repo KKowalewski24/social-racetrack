@@ -1,7 +1,11 @@
 import {DatabaseController} from "../DatabaseController";
 import {generateCustomUuid, PR} from "../../Helper";
-import {PATH_DB_COLLECTION_EVENTS, PATH_DB_COLLECTION_MEMBERS} from "../../../config/constant/firebase-constants";
 import {Event} from "../../model/event/Event";
+import {
+  PATH_DB_COLLECTION_EVENTS,
+  PATH_DB_COLLECTION_MEMBERS,
+  PATH_DB_COLLECTION_RACETRACKS
+} from "../../../config/constant/firebase-constants";
 
 export class EventDatabaseController {
 
@@ -15,7 +19,7 @@ export class EventDatabaseController {
     try {
       const event = new Event(
         generateCustomUuid(), eventName,
-        PATH_DB_COLLECTION_EVENTS + racetrackId,
+        PATH_DB_COLLECTION_RACETRACKS + racetrackId,
         PATH_DB_COLLECTION_MEMBERS + creatorId,
         [], eventDate
       );
@@ -37,18 +41,7 @@ export class EventDatabaseController {
       const event = await this._databaseController
         .readSingleData(PATH_DB_COLLECTION_EVENTS + id, errorFunction);
 
-      event.racetrackData = await this._databaseController
-        .readSingleData(event.racetrackRefPath, errorFunction);
-
-      event.eventCreatorData = await this._databaseController
-        .readSingleData(event.eventCreatorRefPath, errorFunction);
-
-      event.membersDataArray = [];
-      for (const it of event.membersRefPathArray) {
-        event.membersDataArray.push(
-          await this._databaseController.readSingleData(it, errorFunction)
-        );
-      }
+      await this._fetchRefPathData(event, errorFunction);
 
       return event;
 
@@ -57,8 +50,21 @@ export class EventDatabaseController {
     }
   };
 
-  readAllEvents = async () => {
-//TODO
+  readAllEvents = async (errorFunction = PR()) => {
+    try {
+      const eventsArray = await this._databaseController
+        .readAllData(PATH_DB_COLLECTION_EVENTS, errorFunction);
+
+      const resultArray = [];
+      for (const it of eventsArray) {
+        resultArray.push(await this.readSingleEventByID(it.id, errorFunction));
+      }
+
+      return resultArray;
+
+    } catch (err) {
+      errorFunction();
+    }
   };
 
   updateEvent = async () => {
@@ -71,6 +77,21 @@ export class EventDatabaseController {
         .deleteData(PATH_DB_COLLECTION_EVENTS + id, errorFunction);
     } catch (err) {
       errorFunction();
+    }
+  };
+
+  _fetchRefPathData = async (eventObject = PR(), errorFunction = PR()) => {
+    eventObject.racetrackData = await this._databaseController
+      .readSingleData(eventObject.racetrackRefPath, errorFunction);
+
+    eventObject.eventCreatorData = await this._databaseController
+      .readSingleData(eventObject.eventCreatorRefPath, errorFunction);
+
+    eventObject.membersDataArray = [];
+    for (const it of eventObject.membersRefPathArray) {
+      eventObject.membersDataArray.push(
+        await this._databaseController.readSingleData(it, errorFunction)
+      );
     }
   };
 }
