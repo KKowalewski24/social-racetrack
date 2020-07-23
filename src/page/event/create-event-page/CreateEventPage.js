@@ -62,8 +62,8 @@ export const CreateEventPage = (props) => {
   const handleCreateEvent = (data = PR()) => {
     if (createEventCallCounter === 0) {
       eventDatabaseController.createEvent(
-        //TODO REMEMBER THAT racetrack SHOULD BE ID AND DATETIME MUST BE DIVIDED INTO TWO INPUTS
-        data.eventName, data.racetrack, new Date(data.dateTime),
+        //TODO REMEMBER THAT racetrack SHOULD BE ID
+        data.eventName, data.racetrack, new Date(data.date + " " + data.time),
         () => errorNotification(strings.createEventPage.eventNotSavedError)
       ).then(() => redirectToPage(history, PATH_FUTURE_EVENTS));
 
@@ -110,16 +110,33 @@ export const CreateEventPage = (props) => {
               label={strings.createEventPage.racetrack}
             />
 
-            <TextField
-              type="datetime-local"
-              inputRef={register({required: true})}
-              InputLabelProps={{shrink: true}}
-              name="dateTime"
-              label={strings.createEventPage.dateTime}
-              variant="outlined"
-              margin="normal"
-              fullWidth
-            />
+            <div className="row">
+              <div className="col-sm-6">
+                <TextField
+                  type="date"
+                  inputRef={register({required: true})}
+                  InputLabelProps={{shrink: true}}
+                  name="date"
+                  label={strings.createEventPage.date}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                />
+              </div>
+
+              <div className="col-sm-6">
+                <TextField
+                  type="time"
+                  inputRef={register({required: true})}
+                  InputLabelProps={{shrink: true}}
+                  name="time"
+                  label={strings.createEventPage.time}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                />
+              </div>
+            </div>
 
             <div className="d-flex justify-content-center">
               <Button

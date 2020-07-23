@@ -130,7 +130,8 @@ export const strings = {
   },
   createEventPage: {
     eventName: "Event Name",
-    dateTime: "Date and Time",
+    date: "Date",
+    time: "Time",
     racetrack: "Racetrack",
     inputWarningInfo: "All fields are required",
     confirm: "Confirm",
