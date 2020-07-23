@@ -1,6 +1,6 @@
 import {DatabaseController} from "../DatabaseController";
 import {generateCustomUuid, PR} from "../../Helper";
-import {PATH_DB_COLLECTION_EVENTS} from "../../../config/constant/firebase-constants";
+import {PATH_DB_COLLECTION_EVENTS, PATH_DB_COLLECTION_MEMBERS} from "../../../config/constant/firebase-constants";
 import {Event} from "../../model/event/Event";
 
 export class EventDatabaseController {
@@ -10,12 +10,15 @@ export class EventDatabaseController {
 
   /*------------------------ METHODS REGION ------------------------*/
   createEvent = async (eventName = PR(), racetrackId = PR(),
-                       eventDate = PR(), errorFunction = PR()) => {
+                       creatorId = PR(), eventDate = PR(),
+                       errorFunction = PR()) => {
     try {
-      const racetrackRefPath = PATH_DB_COLLECTION_EVENTS + racetrackId;
-
-      const event = new Event(generateCustomUuid(),
-        eventName, racetrackRefPath, [], eventDate);
+      const event = new Event(
+        generateCustomUuid(), eventName,
+        PATH_DB_COLLECTION_EVENTS + racetrackId,
+        PATH_DB_COLLECTION_MEMBERS + creatorId,
+        [], eventDate
+      );
 
       await this._databaseController
         .createData(PATH_DB_COLLECTION_EVENTS + event.id, event, errorFunction);

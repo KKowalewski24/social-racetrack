@@ -5,17 +5,20 @@ export class Event extends BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
   name;
-  racetrackRef;
-  membersRefArray;
+  racetrackRefPath;
+  eventCreatorRefPath;
+  membersRefPathArray;
   eventDate;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(id = PR(), name = PR(), racetrackRef = PR(),
-              membersRefArray = PR(), eventDate = PR()) {
+  constructor(id = PR(), name = PR(), racetrackRefPath = PR(),
+              eventCreatorRefPath = PR(), membersRefPathArray = PR(),
+              eventDate = PR()) {
     super(id);
     this.name = name;
-    this.racetrackRef = racetrackRef;
-    this.membersRefArray = membersRefArray;
+    this.racetrackRefPath = racetrackRefPath;
+    this.eventCreatorRefPath = eventCreatorRefPath;
+    this.membersRefPathArray = membersRefPathArray;
     this.eventDate = eventDate;
   }
 }

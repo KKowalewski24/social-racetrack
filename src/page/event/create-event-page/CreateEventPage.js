@@ -11,6 +11,7 @@ import FetchDataController from "../../../component/util/fetch-data-controller/F
 import ArrayComboBox from "../../../component/create/array-combo-box/ArrayComboBox";
 import strings from "../../../config/constant/string-constants";
 import Button from "@material-ui/core/Button";
+import config from "../../../config/config";
 import TextField from "@material-ui/core/TextField";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
@@ -34,7 +35,6 @@ export const CreateEventPage = (props) => {
       () => errorNotification(strings.createEventPage.racetrackLoadingError)
     )
       .then((racetracks) => {
-        console.log(racetracks);
         setRacetracksArray(racetracks);
         setIsLoaded(true);
         setIsError(false);
@@ -61,9 +61,13 @@ export const CreateEventPage = (props) => {
 
   const handleCreateEvent = (data = PR()) => {
     if (createEventCallCounter === 0) {
+      //TODO REMEMBER THAT racetrack SHOULD BE ID
+      const racetrackId = data.racetrack;
+
       eventDatabaseController.createEvent(
-        //TODO REMEMBER THAT racetrack SHOULD BE ID
-        data.eventName, data.racetrack, new Date(data.date + " " + data.time),
+        data.eventName, racetrackId,
+        config.auth().currentUser && config.auth().currentUser.uid,
+        new Date(data.date + " " + data.time),
         () => errorNotification(strings.createEventPage.eventNotSavedError)
       ).then(() => redirectToPage(history, PATH_FUTURE_EVENTS));
 
