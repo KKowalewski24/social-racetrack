@@ -129,10 +129,13 @@ export const strings = {
     sendEmail: "Send email",
   },
   createEventPage: {
-    racetrack: "Racetrack",
+    eventName: "Event Name",
     dateTime: "Date and Time",
+    racetrack: "Racetrack",
     inputWarningInfo: "All fields are required",
     confirm: "Confirm",
+    racetrackLoadingError: "An error occurred while loading racetrack data",
+    backFutureEventsPage: "Go back to future events page",
   },
   eventsPage: {
     futureEventsPage: {

@@ -4,16 +4,18 @@ import {PR} from "../../Helper";
 export class Event extends BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  racetrack;
-  membersArray;
+  name;
+  racetrackRef;
+  membersRefArray;
   eventDate;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(id = PR(), racetrack = PR(),
-              membersArray = PR(), eventDate = PR()) {
+  constructor(id = PR(), name = PR(), racetrackRef = PR(),
+              membersRefArray = PR(), eventDate = PR()) {
     super(id);
-    this.racetrack = racetrack;
-    this.membersArray = membersArray;
+    this.name = name;
+    this.racetrackRef = racetrackRef;
+    this.membersRefArray = membersRefArray;
     this.eventDate = eventDate;
   }
 }
