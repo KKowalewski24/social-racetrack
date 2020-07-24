@@ -1,6 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
-import BaseCard from "../base-card/BaseCard";
+import Card from "../../util/card/Card";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import {PR} from "../../../logic/Helper";
@@ -28,7 +28,7 @@ export const RacetrackCard = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <BaseCard
+    <Card
       gridStyles={props.gridStyles}
       redirectPath={props.redirectPath}
       handleRedirect={setChosenRacetrack}

@@ -4,7 +4,7 @@ import {BrowserStorageController} from "../../../logic/controller/BrowserStorage
 import {CHOSEN_MEMBER_ID} from "../../../config/constant/browser-storage-contants";
 import {PR} from "../../../logic/Helper";
 import {generatePropertiesArray} from "../CardHelper";
-import BaseCard from "../base-card/BaseCard";
+import Card from "../../util/card/Card";
 import userImage from "../../../assets/user-image.svg";
 
 export const MemberCard = (props) => {
@@ -28,7 +28,7 @@ export const MemberCard = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <BaseCard
+    <Card
       gridStyles={props.gridStyles}
       redirectPath={props.redirectPath}
       handleRedirect={setChosenMember}

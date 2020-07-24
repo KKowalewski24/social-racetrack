@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {PR} from "../../../logic/Helper";
 import GradeIcon from "@material-ui/icons/Grade";
 
-export const BaseCard = (props) => {
+export const Card = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const renderSingleProperty = (key = PR(), value = PR()) => {
@@ -53,7 +53,7 @@ export const BaseCard = (props) => {
   );
 };
 
-BaseCard.propTypes = {
+Card.propTypes = {
   gridStyles: propTypes.string.isRequired,
   redirectPath: propTypes.string.isRequired,
   handleRedirect: propTypes.func.isRequired,
@@ -63,4 +63,4 @@ BaseCard.propTypes = {
   propertiesArray: propTypes.array.isRequired,
 };
 
-export default BaseCard;
+export default Card;
