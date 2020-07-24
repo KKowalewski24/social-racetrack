@@ -42,17 +42,30 @@ with data with proper order
 ```
 firebase deploy --only firestore:rules
 ```
+OR use preconfigured script
+```
+yarn fb:db
+```
 
 #### Deploy Storage Rules
 * Run below command to deploy rules
 ```
 firebase deploy --only storage:rules
 ```
+OR use preconfigured script
+```
+yarn fb:stor
+```
 
 #### Deploy Cloud Functions
 ```
 firebase deploy --only functions
 ```
+OR use preconfigured script
+```
+yarn fb:fun
+```
+
 ###### Important message
 * Before next deployment remember to remove previous Cloud Function
 * Remember that Deployment of Node.js 8 functions will no longer be allowed after 
@@ -98,3 +111,14 @@ To
 yarn build
 firebase deploy --only hosting
 ```
+OR use preconfigured script
+```
+yarn fb:host
+```
+
+#### Access levels
+Depends on user there are different functionality available
+* Guess user(not log in) - Home Page, Racetrack Page, Racetrack Details Page
+* Log in user - all functionality except of additionally for admin user
+* Admin - all functionality - additionally admin user has possibility 
+to create, delete racetrack, admin panel for grant admin user, 
