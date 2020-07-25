@@ -41,7 +41,7 @@ export const RenderEvents = (props) => {
 
     if (props.isFuture) {
       eventDatabaseController.readFutureEvents(
-        () => errorNotification(strings.eventsPage.futureEventsPage.eventLoadingError)
+        () => errorNotification(strings.eventsPage.eventLoadingError)
       )
         .then((futureEvents) => {
           setSuccessfullyFetchedValue(futureEvents);
@@ -51,7 +51,7 @@ export const RenderEvents = (props) => {
         });
     } else {
       eventDatabaseController.readPastEvents(
-        () => errorNotification(strings.eventsPage.futureEventsPage.eventLoadingError)
+        () => errorNotification(strings.eventsPage.eventLoadingError)
       )
         .then((pastEvents) => {
           setSuccessfullyFetchedValue(pastEvents);
@@ -99,7 +99,7 @@ export const RenderEvents = (props) => {
 
     return (
       <SearchBox
-        label={strings.eventsPage.futureEventsPage.searchEvent}
+        label={strings.eventsPage.searchEvent}
         handleChange={handleSearch}
       />
     );
@@ -121,9 +121,9 @@ export const RenderEvents = (props) => {
         isLoaded={isLoaded}
         isError={isError}
         errorMessageTitle={""}
-        errorMessageDescription={strings.eventsPage.futureEventsPage.eventLoadingError}
+        errorMessageDescription={strings.eventsPage.eventLoadingError}
         errorMessageRedirectPath={PATH_ACCOUNT}
-        errorMessageRedirectDescription={strings.eventsPage.futureEventsPage.backAccountPage}
+        errorMessageRedirectDescription={strings.eventsPage.backAccountPage}
         errorMessageStyles={globalStyles.materialBlueFont}
       >
         <div className="container-fluid">

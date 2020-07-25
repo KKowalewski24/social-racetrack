@@ -142,16 +142,16 @@ export const strings = {
   eventsPage: {
     futureEventsPage: {
       createNewEvent: "Create New Event",
-      searchEvent: "Search Event",
-      cardPropertiesKeysRacetrack: "Racetrack",
-      cardPropertiesKeysCountry: "Country",
-      cardPropertiesKeysCity: "City",
-      eventLoadingError: "An error occurred while loading data",
-      backAccountPage: "Go back to account page",
     },
     pastEventsPage: {
       //
     },
+    searchEvent: "Search Event",
+    cardPropertiesKeysRacetrack: "Racetrack",
+    cardPropertiesKeysCountry: "Country",
+    cardPropertiesKeysCity: "City",
+    eventLoadingError: "An error occurred while loading data",
+    backAccountPage: "Go back to account page",
   },
   eventDetailsPage: {
     //

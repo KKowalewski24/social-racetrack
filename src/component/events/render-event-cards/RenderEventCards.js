@@ -9,9 +9,9 @@ export const RenderEventCards = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const cardPropertiesKeysArray = [
-    strings.eventsPage.futureEventsPage.cardPropertiesKeysRacetrack,
-    strings.eventsPage.futureEventsPage.cardPropertiesKeysCountry,
-    strings.eventsPage.futureEventsPage.cardPropertiesKeysCity
+    strings.eventsPage.cardPropertiesKeysRacetrack,
+    strings.eventsPage.cardPropertiesKeysCountry,
+    strings.eventsPage.cardPropertiesKeysCity
   ];
 
   /*------------------------ RETURN REGION ------------------------*/
