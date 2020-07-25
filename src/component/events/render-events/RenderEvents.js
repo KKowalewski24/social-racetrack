@@ -116,33 +116,35 @@ export const RenderEvents = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    eventsArray && filteredEventsArray ?
-      <FetchDataController
-        isLoaded={isLoaded}
-        isError={isError}
-        errorMessageTitle={""}
-        errorMessageDescription={strings.eventsPage.eventLoadingError}
-        errorMessageRedirectPath={PATH_ACCOUNT}
-        errorMessageRedirectDescription={strings.eventsPage.backAccountPage}
-        errorMessageStyles={globalStyles.materialBlueFont}
-      >
-        <div className="container-fluid">
-          <div className="custom-tab-panel-margin">
-            {props.isFuture ? renderTab() : null}
+    <FetchDataController
+      isLoaded={isLoaded}
+      isError={isError}
+      errorMessageTitle={""}
+      errorMessageDescription={strings.eventsPage.eventLoadingError}
+      errorMessageRedirectPath={PATH_ACCOUNT}
+      errorMessageRedirectDescription={strings.eventsPage.backAccountPage}
+      errorMessageStyles={globalStyles.materialBlueFont}
+    >
+      <div className="container-fluid">
+        <div className="custom-tab-panel-margin">
+          {props.isFuture ? renderTab() : null}
 
-            <div className="container custom-container-sm">
-              <div className="row custom-search-box-margin">
-                {renderSearchBox()}
-              </div>
-            </div>
-
-            <div className="row justify-content-center custom-render-card-margin">
-              {renderEventCards()}
+          <div className="container custom-container-sm">
+            <div className="row custom-search-box-margin">
+              {renderSearchBox()}
             </div>
           </div>
+
+          {
+            eventsArray && filteredEventsArray ?
+              <div className="row justify-content-center custom-render-card-margin">
+                {renderEventCards()}
+              </div>
+              : null
+          }
         </div>
-      </FetchDataController>
-      : null
+      </div>
+    </FetchDataController>
   );
 };
 

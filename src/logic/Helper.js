@@ -23,6 +23,14 @@ export const getCurrentYear = () => {
   return new Date().getFullYear();
 };
 
+export const getYesterday = () => {
+  return new Date(new Date().setDate(new Date().getDate() - 1));
+};
+
+export const getTomorrow = () => {
+  return new Date(new Date().setDate(new Date().getDate() + 1));
+};
+
 export const getEnumKeyValueArray = (enumObject = PR()) => {
   const keyValueArray = [];
 

@@ -1,10 +1,10 @@
 import {DatabaseController} from "../DatabaseController";
-import {generateCustomUuid, PR} from "../../Helper";
+import {generateCustomUuid, getTomorrow, PR} from "../../Helper";
 import {Event} from "../../model/event/Event";
 import {
   PATH_DB_COLLECTION_EVENTS,
   PATH_DB_COLLECTION_MEMBERS,
-  PATH_DB_COLLECTION_RACETRACKS, QUERY_OPERATOR_EQUAL
+  PATH_DB_COLLECTION_RACETRACKS
 } from "../../../config/constant/firebase-constants";
 
 export class EventDatabaseController {
@@ -55,13 +55,7 @@ export class EventDatabaseController {
       const eventsArray = await this._databaseController
         .readAllData(PATH_DB_COLLECTION_EVENTS, errorFunction);
 
-      const resultArray = [];
-      for (const it of eventsArray) {
-        await this._fetchRefPathData(it, errorFunction);
-        resultArray.push(it);
-      }
-
-      return resultArray;
+      return await this._doFetchRefPathDataOnArray(eventsArray, errorFunction);
 
     } catch (err) {
       errorFunction();
@@ -70,20 +64,38 @@ export class EventDatabaseController {
 
   readFutureEvents = async (errorFunction = PR()) => {
     try {
+      const eventsArray = await this.readAllEvents(errorFunction);
+
+      const futureEventsArray = [];
+      for (const it of eventsArray) {
+        if (new Date(it.eventDate) > getTomorrow()) {
+          futureEventsArray.push(it);
+        }
+      }
+
+      return await this._doFetchRefPathDataOnArray(futureEventsArray, errorFunction);
 
     } catch (err) {
       errorFunction();
     }
-    //TODO
   };
 
   readPastEvents = async (errorFunction = PR()) => {
     try {
+      const eventsArray = await this.readAllEvents(errorFunction);
+
+      const pastEventsArray = [];
+      for (const it of eventsArray) {
+        if (new Date(it.eventDate) < getTomorrow()) {
+          pastEventsArray.push(it);
+        }
+      }
+
+      return await this._doFetchRefPathDataOnArray(pastEventsArray, errorFunction);
 
     } catch (err) {
       errorFunction();
     }
-    //TODO
   };
 
   updateEvent = async () => {
@@ -97,6 +109,17 @@ export class EventDatabaseController {
     } catch (err) {
       errorFunction();
     }
+  };
+
+  /*----- PRIVATE METHODS -----*/
+  _doFetchRefPathDataOnArray = async (dataArray = PR(), errorFunction = PR()) => {
+    const resultArray = [];
+    for (const it of dataArray) {
+      await this._fetchRefPathData(it, errorFunction);
+      resultArray.push(it);
+    }
+
+    return resultArray;
   };
 
   _fetchRefPathData = async (eventObject = PR(), errorFunction = PR()) => {
