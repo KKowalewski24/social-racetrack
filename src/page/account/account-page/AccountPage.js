@@ -78,62 +78,64 @@ export const AccountPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    member ?
-      <FetchDataController
-        isLoaded={isLoaded}
-        isError={isError}
-        errorMessageTitle={""}
-        errorMessageDescription={strings.accountPage.accountLoadingError}
-        errorMessageRedirectPath={PATH_HOME}
-        errorMessageRedirectDescription={strings.accountPage.backHomePage}
-        errorMessageStyles={globalStyles.materialBlueFont}
-      >
-        <div className="container-fluid">
-          <DisplayUserAvatar
-            margin={"custom-hor-cont-margin-top-first"}
-            firstName={member.firstName}
-            lastName={member.lastName}
-            avatarRedirectPath={PATH_ACCOUNT_SETTINGS}
-            backgroundStyle={globalStyles.materialBlueBackground}
-            addIconColor={globalStyles.greyFont100}
-          />
+    <FetchDataController
+      isLoaded={isLoaded}
+      isError={isError}
+      errorMessageTitle={""}
+      errorMessageDescription={strings.accountPage.accountLoadingError}
+      errorMessageRedirectPath={PATH_HOME}
+      errorMessageRedirectDescription={strings.accountPage.backHomePage}
+      errorMessageStyles={globalStyles.materialBlueFont}
+    >
+      {
+        member ?
+          <div className="container-fluid">
+            <DisplayUserAvatar
+              margin={"custom-hor-cont-margin-top-first"}
+              firstName={member.firstName}
+              lastName={member.lastName}
+              avatarRedirectPath={PATH_ACCOUNT_SETTINGS}
+              backgroundStyle={globalStyles.materialBlueBackground}
+              addIconColor={globalStyles.greyFont100}
+            />
 
-          <DisplayUserData
-            panelBackgroundColor={globalStyles.materialBlueBackground}
-            margin={"custom-hor-cont-margin-bottom"}
-            firstName={member.firstName}
-            lastName={member.lastName}
-            country={member.country}
-            city={member.city}
-            birthDate={member.birthDate}
-            email={member.email}
-            carsArray={member.carsArray}
-            receivedAwardsArray={member.receivedAwardsArray}
-            isEditableForUser={true}
-            joinDate={config.auth().currentUser?.metadata.creationTime}
-            lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
-            handleRemoveCar={handleRemoveCar}
-            handleRemoveAward={handleRemoveAward}
-          />
+            <DisplayUserData
+              panelBackgroundColor={globalStyles.materialBlueBackground}
+              margin={"custom-hor-cont-margin-bottom"}
+              firstName={member.firstName}
+              lastName={member.lastName}
+              country={member.country}
+              city={member.city}
+              birthDate={member.birthDate}
+              email={member.email}
+              carsArray={member.carsArray}
+              receivedAwardsArray={member.receivedAwardsArray}
+              isEditableForUser={true}
+              joinDate={config.auth().currentUser?.metadata.creationTime}
+              lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
+              handleRemoveCar={handleRemoveCar}
+              handleRemoveAward={handleRemoveAward}
+            />
 
-          <HorizontalContainer
-            panelBackgroundColor={globalStyles.materialBlueBackground}
-            margin={"custom-hor-cont-margin-bottom-last"}
-          >
-            <div className="row justify-content-center">
-              <Button
-                onClick={handleDeleteUser}
-                color="secondary"
-                variant="contained"
-                size="large"
-              >
-                {strings.accountPage.deleteAccount}
-              </Button>
-            </div>
-          </HorizontalContainer>
-        </div>
-      </FetchDataController>
-      : null
+            <HorizontalContainer
+              panelBackgroundColor={globalStyles.materialBlueBackground}
+              margin={"custom-hor-cont-margin-bottom-last"}
+            >
+              <div className="row justify-content-center">
+                <Button
+                  onClick={handleDeleteUser}
+                  color="secondary"
+                  variant="contained"
+                  size="large"
+                >
+                  {strings.accountPage.deleteAccount}
+                </Button>
+              </div>
+            </HorizontalContainer>
+          </div>
+          : null
+      }
+    </FetchDataController>
   );
 };
 

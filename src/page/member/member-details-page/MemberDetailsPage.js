@@ -40,33 +40,35 @@ export const MemberDetailsPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    member ?
-      <FetchDataController
-        isLoaded={isLoaded}
-        isError={isError}
-        errorMessageTitle={""}
-        errorMessageDescription={strings.memberDetailsPage.memberLoadingError}
-        errorMessageRedirectPath={PATH_MEMBERS}
-        errorMessageRedirectDescription={strings.memberDetailsPage.backMembersPage}
-        errorMessageStyles={globalStyles.materialBlueFont}
-      >
-        <div className="container-fluid">
-          <DisplayUserData
-            panelBackgroundColor={globalStyles.materialBlueBackground}
-            margin={"custom-hor-cont-margin-first-last"}
-            firstName={member.firstName}
-            lastName={member.lastName}
-            country={member.country}
-            city={member.city}
-            birthDate={member.birthDate}
-            email={member.email}
-            carsArray={member.carsArray}
-            receivedAwardsArray={member.receivedAwardsArray}
-            isEditableForUser={false}
-          />
-        </div>
-      </FetchDataController>
-      : null
+    <FetchDataController
+      isLoaded={isLoaded}
+      isError={isError}
+      errorMessageTitle={""}
+      errorMessageDescription={strings.memberDetailsPage.memberLoadingError}
+      errorMessageRedirectPath={PATH_MEMBERS}
+      errorMessageRedirectDescription={strings.memberDetailsPage.backMembersPage}
+      errorMessageStyles={globalStyles.materialBlueFont}
+    >
+      {
+        member ?
+          <div className="container-fluid">
+            <DisplayUserData
+              panelBackgroundColor={globalStyles.materialBlueBackground}
+              margin={"custom-hor-cont-margin-first-last"}
+              firstName={member.firstName}
+              lastName={member.lastName}
+              country={member.country}
+              city={member.city}
+              birthDate={member.birthDate}
+              email={member.email}
+              carsArray={member.carsArray}
+              receivedAwardsArray={member.receivedAwardsArray}
+              isEditableForUser={false}
+            />
+          </div>
+          : null
+      }
+    </FetchDataController>
   );
 };
 

@@ -192,12 +192,16 @@ export const RacetrackDetailsPage = (props) => {
       errorMessageRedirectDescription={strings.racetrackDetailsPage.backRacetracksPage}
       errorMessageStyles={globalStyles.materialBlueFont}
     >
-      <div className="container-fluid">
-        <div className="row justify-content-center">
-          {racetrack ? renderLeftSide() : null}
-          {racetrack ? renderRightSide() : null}
-        </div>
-      </div>
+      {
+        racetrack ?
+          <div className="container-fluid">
+            <div className="row justify-content-center">
+              {renderLeftSide()}
+              {renderRightSide()}
+            </div>
+          </div>
+          : null
+      }
     </FetchDataController>
   );
 };
