@@ -6,7 +6,13 @@ export class Event extends BaseEntityAbst {
   /*------------------------ FIELDS REGION ------------------------*/
   name;
   racetrackRefPath;
+  /**
+   * Person who create an event
+   */
   eventCreatorRefPath;
+  /**
+   * Array of person that joined to event
+   */
   membersRefPathArray;
   eventDate;
 

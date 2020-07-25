@@ -84,9 +84,6 @@ export class MemberDatabaseController {
     for (const it of memberObject.eventsDataArray) {
       it.racetrackData = await this._databaseController
         .readSingleData(it.racetrackRefPath, errorFunction);
-
-      it.eventCreatorData = await this._databaseController
-        .readSingleData(it.eventCreatorRefPath, errorFunction);
     }
   };
 }
