@@ -121,4 +121,4 @@ Depends on user there are different functionality available
 * Guess user(not log in) - Home Page, Racetrack Page, Racetrack Details Page
 * Log in user - all functionality except of additionally for admin user
 * Admin - all functionality - additionally admin user has possibility 
-to create, delete racetrack, admin panel for grant admin user, 
+to create, delete racetrack, admin panel for grant admin user, deleting events
