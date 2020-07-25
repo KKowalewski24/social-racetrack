@@ -10,7 +10,8 @@ export class DatabaseController {
     return config.firestore().doc(path);
   };
 
-  createData = async (path = PR(), data = PR(), errorFunction = PR()) => {
+  createData = async (path = PR(),
+                      data = PR(), errorFunction = PR()) => {
     try {
       return await config.firestore()
         .doc(path)
@@ -51,7 +52,8 @@ export class DatabaseController {
     }
   };
 
-  updateData = async (path = PR(), partialData = PR(), errorFunction = PR()) => {
+  updateData = async (path = PR(),
+                      partialData = PR(), errorFunction = PR()) => {
     try {
       return await config.firestore()
         .doc(path)
@@ -66,6 +68,27 @@ export class DatabaseController {
       return await config.firestore()
         .doc(path)
         .delete();
+    } catch (err) {
+      errorFunction();
+    }
+  };
+
+  singleQuery = async (collectionName = PR(), queryField = PR(),
+                       queryOperator = PR(), querySearchedValue = PR(),
+                       errorFunction = PR()) => {
+    try {
+      const data = await config.firestore()
+        .collection(collectionName)
+        .where(queryField, queryOperator, querySearchedValue)
+        .get();
+
+      const documentsArray = [];
+      data.docs && data.docs.map((it) => {
+        return documentsArray.push(it.data());
+      });
+
+      return documentsArray;
+
     } catch (err) {
       errorFunction();
     }

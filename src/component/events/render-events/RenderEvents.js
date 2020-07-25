@@ -7,7 +7,7 @@ import strings from "../../../config/constant/string-constants";
 import RenderEventCards from "../render-event-cards/RenderEventCards";
 import TabPanel from "../../util/tab-panel/TabPanel";
 import {PATH_ACCOUNT, PATH_CREATE_EVENT} from "../../../config/constant/path-constants";
-import {checkIfContains} from "../../../logic/Helper";
+import {checkIfContains, PR} from "../../../logic/Helper";
 import SearchBox from "../../util/search-box/SearchBox";
 import FetchDataController from "../../util/fetch-data-controller/FetchDataController";
 import Button from "@material-ui/core/Button";
@@ -26,30 +26,40 @@ export const RenderEvents = (props) => {
   const globalStyles = GlobalStyles();
 
   useEffect(() => {
-    eventDatabaseController.readAllEvents(
-      () => errorNotification(strings.eventsPage.futureEventsPage.eventLoadingError)
-    )
-      .then((events) => {
 
-        if (props.isFuture) {
-          //TODO ADD FILTERING BELOW
-          const futureEvents = events;
-          setEventsArray(futureEvents);
-          setFilteredEventsArray(futureEvents);
-        } else {
-          //TODO ADD FILTERING BELOW
-          const pastEvents = events;
-          setEventsArray(pastEvents);
-          setFilteredEventsArray(pastEvents);
-        }
+    const setSuccessfullyFetchedValue = (value = PR()) => {
+      setEventsArray(value);
+      setFilteredEventsArray(value);
+      setIsLoaded(true);
+      setIsError(false);
+    };
 
-        setIsLoaded(true);
-        setIsError(false);
-      })
-      .catch((err) => {
-        setIsLoaded(true);
-        setIsError(true);
-      });
+    const setErrorCaseValue = () => {
+      setIsLoaded(true);
+      setIsError(true);
+    };
+
+    if (props.isFuture) {
+      eventDatabaseController.readFutureEvents(
+        () => errorNotification(strings.eventsPage.futureEventsPage.eventLoadingError)
+      )
+        .then((futureEvents) => {
+          setSuccessfullyFetchedValue(futureEvents);
+        })
+        .catch((err) => {
+          setErrorCaseValue();
+        });
+    } else {
+      eventDatabaseController.readPastEvents(
+        () => errorNotification(strings.eventsPage.futureEventsPage.eventLoadingError)
+      )
+        .then((pastEvents) => {
+          setSuccessfullyFetchedValue(pastEvents);
+        })
+        .catch((err) => {
+          setErrorCaseValue();
+        });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

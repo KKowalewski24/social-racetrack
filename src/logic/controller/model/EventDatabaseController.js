@@ -4,7 +4,7 @@ import {Event} from "../../model/event/Event";
 import {
   PATH_DB_COLLECTION_EVENTS,
   PATH_DB_COLLECTION_MEMBERS,
-  PATH_DB_COLLECTION_RACETRACKS
+  PATH_DB_COLLECTION_RACETRACKS, QUERY_OPERATOR_EQUAL
 } from "../../../config/constant/firebase-constants";
 
 export class EventDatabaseController {
@@ -57,7 +57,8 @@ export class EventDatabaseController {
 
       const resultArray = [];
       for (const it of eventsArray) {
-        resultArray.push(await this.readSingleEventByID(it.id, errorFunction));
+        await this._fetchRefPathData(it, errorFunction);
+        resultArray.push(it);
       }
 
       return resultArray;
@@ -65,6 +66,24 @@ export class EventDatabaseController {
     } catch (err) {
       errorFunction();
     }
+  };
+
+  readFutureEvents = async (errorFunction = PR()) => {
+    try {
+
+    } catch (err) {
+      errorFunction();
+    }
+    //TODO
+  };
+
+  readPastEvents = async (errorFunction = PR()) => {
+    try {
+
+    } catch (err) {
+      errorFunction();
+    }
+    //TODO
   };
 
   updateEvent = async () => {
