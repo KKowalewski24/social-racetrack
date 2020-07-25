@@ -7,6 +7,7 @@ import strings from "../../../config/constant/string-constants";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {errorNotification} from "../../../component/util/notification/notification";
+import RenderEventCards from "../../../component/events/render-event-cards/RenderEventCards";
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
 import {PR} from "../../../logic/Helper";
 import {PATH_ACCOUNT_SETTINGS, PATH_HOME} from "../../../config/constant/path-constants";
@@ -116,6 +117,13 @@ export const AccountPage = (props) => {
               handleRemoveCar={handleRemoveCar}
               handleRemoveAward={handleRemoveAward}
             />
+
+            <div className="row justify-content-center custom-render-card-margin">
+              <RenderEventCards
+                filteredEventsArray={member.eventsDataArray}
+                titleStyles={globalStyles.materialBlueFont}
+              />
+            </div>
 
             <HorizontalContainer
               panelBackgroundColor={globalStyles.materialBlueBackground}

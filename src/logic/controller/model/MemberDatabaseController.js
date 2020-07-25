@@ -19,8 +19,13 @@ export class MemberDatabaseController {
 
   readSingleMemberById = async (id = PR(), errorFunction = PR()) => {
     try {
-      return await this._databaseController
+      const member = await this._databaseController
         .readSingleData(PATH_DB_COLLECTION_MEMBERS + id, errorFunction);
+
+      await this._fetchRefPathData(member, errorFunction);
+
+      return member;
+
     } catch (err) {
       errorFunction();
     }
@@ -28,8 +33,11 @@ export class MemberDatabaseController {
 
   readAllMembers = async (errorFunction = PR()) => {
     try {
-      return await this._databaseController
+      const membersArray = await this._databaseController
         .readAllData(PATH_DB_COLLECTION_MEMBERS, errorFunction);
+
+      return await this._doFetchRefPathDataOnArray(membersArray, errorFunction);
+
     } catch (err) {
       errorFunction();
     }
@@ -50,6 +58,35 @@ export class MemberDatabaseController {
         .deleteData(PATH_DB_COLLECTION_MEMBERS + id, errorFunction);
     } catch (err) {
       errorFunction();
+    }
+  };
+
+  /*----- PRIVATE METHODS -----*/
+  _doFetchRefPathDataOnArray = async (dataArray = PR(), errorFunction = PR()) => {
+    const resultArray = [];
+    for (const it of dataArray) {
+      await this._fetchRefPathData(it, errorFunction);
+      resultArray.push(it);
+    }
+
+    return resultArray;
+  };
+
+  _fetchRefPathData = async (memberObject = PR(), errorFunction = PR()) => {
+    memberObject.eventsDataArray = [];
+
+    for (const it of memberObject.eventsRefPathArray) {
+      memberObject.eventsDataArray.push(
+        await this._databaseController.readSingleData(it, errorFunction)
+      );
+    }
+
+    for (const it of memberObject.eventsDataArray) {
+      it.racetrackData = await this._databaseController
+        .readSingleData(it.racetrackRefPath, errorFunction);
+
+      it.eventCreatorData = await this._databaseController
+        .readSingleData(it.eventCreatorRefPath, errorFunction);
     }
   };
 }

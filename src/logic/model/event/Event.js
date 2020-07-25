@@ -22,3 +22,17 @@ export class Event extends BaseEntityAbst {
     this.eventDate = eventDate;
   }
 }
+
+//TODO CHECK IF WORKS
+export const getAddedMembersRefPathArray = (eventObject = PR(),
+                                            addedMemberRefPath = PR()) => {
+  return {membersRefPathArray: [...eventObject?.membersRefPathArray, addedMemberRefPath]};
+};
+
+export const getDeletedMembersRefPathArray = (eventObject = PR(),
+                                              deletedMemberRefPath = PR()) => {
+  const resultArray = eventObject
+    .membersRefPathArray?.filter((it) => it !== deletedMemberRefPath);
+
+  return {membersRefPathArray: resultArray};
+};

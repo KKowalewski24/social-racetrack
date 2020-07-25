@@ -27,7 +27,7 @@ export class AccountController {
 
         this._memberDatabaseController.createMember(
           new Member(
-            result.user.uid, firstName, lastName, birthDate, country, city, email, [], []
+            result.user.uid, firstName, lastName, birthDate, country, city, email, [], [], []
           ),
           createUserErrorFunction
         );

@@ -6,14 +6,17 @@ export class Member extends PersonAbst {
   /*------------------------ FIELDS REGION ------------------------*/
   carsArray;
   receivedAwardsArray;
+  eventsRefPathArray;
 
   /*------------------------ METHODS REGION ------------------------*/
   constructor(id = PR(), firstName = PR(), lastName = PR(),
               birthDate = PR(), country = PR(), city = PR(),
-              email = PR(), carsArray = PR(), receivedAwardsArray = PR()) {
+              email = PR(), carsArray = PR(),
+              receivedAwardsArray = PR(), eventsRefPathArray = PR()) {
     super(id, firstName, lastName, birthDate, country, city, email);
     this.carsArray = carsArray;
     this.receivedAwardsArray = receivedAwardsArray;
+    this.eventsRefPathArray = eventsRefPathArray;
   }
 }
 
@@ -40,4 +43,18 @@ export const getDeletedReceivedAwardsArray = (memberObject = PR(),
     .receivedAwardsArray?.filter((it) => it.id !== deletedAwardId);
 
   return {receivedAwardsArray: resultArray};
+};
+
+//TODO CHECK IF WORKS
+export const getAddedEventsRefPathArray = (memberObject = PR(),
+                                           addedEventRefPath = PR()) => {
+  return {eventsRefPathArray: [...memberObject?.eventsRefPathArray, addedEventRefPath]};
+};
+
+export const getDeletedEventsRefPathArray = (memberObject = PR(),
+                                             deletedEventRefPath = PR()) => {
+  const resultArray = memberObject
+    .eventsRefPathArray?.filter((it) => it !== deletedEventRefPath);
+
+  return {eventsRefPathArray: resultArray};
 };

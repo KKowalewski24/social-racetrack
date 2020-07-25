@@ -1,6 +1,9 @@
 import {DatabaseController} from "../DatabaseController";
 import {generateCustomUuid, getTomorrow, PR} from "../../Helper";
 import {Event} from "../../model/event/Event";
+import {MemberDatabaseController} from "./MemberDatabaseController";
+import {getAddedEventsRefPathArray} from "../../model/person/Member";
+import config from "../../../config/config";
 import {
   PATH_DB_COLLECTION_EVENTS,
   PATH_DB_COLLECTION_MEMBERS,
@@ -11,6 +14,7 @@ export class EventDatabaseController {
 
   /*------------------------ FIELDS REGION ------------------------*/
   _databaseController = new DatabaseController();
+  _memberDatabaseController = new MemberDatabaseController();
 
   /*------------------------ METHODS REGION ------------------------*/
   createEvent = async (eventName = PR(), racetrackId = PR(),
@@ -24,8 +28,23 @@ export class EventDatabaseController {
         [], eventDate
       );
 
+      const updatedRefPathArray = getAddedEventsRefPathArray(
+        await this._memberDatabaseController.readSingleMemberById(
+          config.auth().currentUser && config.auth().currentUser.uid,
+          errorFunction
+        ),
+        PATH_DB_COLLECTION_EVENTS + event.id
+      );
+
+      await this._memberDatabaseController.updateMember(
+        config.auth().currentUser && config.auth().currentUser.uid,
+        updatedRefPathArray,
+        errorFunction
+      );
+
       await this._databaseController
         .createData(PATH_DB_COLLECTION_EVENTS + event.id, event, errorFunction);
+
     } catch (err) {
       errorFunction();
     }
@@ -98,8 +117,13 @@ export class EventDatabaseController {
     }
   };
 
-  updateEvent = async () => {
-//TODO
+  updateEvent = async (id = PR(), partialData = PR(), errorFunction = PR()) => {
+    try {
+      return await this._databaseController
+        .updateData(PATH_DB_COLLECTION_EVENTS + id, partialData, errorFunction);
+    } catch (err) {
+      errorFunction();
+    }
   };
 
   deleteEvent = async (id = PR(), errorFunction = PR()) => {
