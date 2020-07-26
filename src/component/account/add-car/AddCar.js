@@ -12,6 +12,7 @@ import EnumComboBox from "../../creation/enum-combo-box/EnumComboBox";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../../../index.css";
+import EditConfirmButton from "../edit-confirm-button/EditConfirmButton";
 
 export const AddCar = (props) => {
 
@@ -126,17 +127,10 @@ export const AddCar = (props) => {
           </div>
         </div>
 
-        <div className="d-flex justify-content-center">
-          <Button
-            onClick={checkInputs}
-            type="submit"
-            className="mt-4"
-            variant="contained"
-            color="primary"
-          >
-            {strings.accountSettingsPage.confirm}
-          </Button>
-        </div>
+        <EditConfirmButton
+          checkInputs={checkInputs}
+          buttonTextContent={strings.accountSettingsPage.confirm}
+        />
       </form>
 
       <ToastContainer/>

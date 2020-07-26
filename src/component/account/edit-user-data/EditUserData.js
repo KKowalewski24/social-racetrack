@@ -3,9 +3,9 @@ import propTypes from "prop-types";
 import {useForm} from "react-hook-form";
 import {keyValueObjectToArray} from "../../../logic/Helper";
 import {warningNotification} from "../../util/notification/notification";
+import EditConfirmButton from "../edit-confirm-button/EditConfirmButton";
 import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 export const EditUserData = (props) => {
@@ -70,17 +70,10 @@ export const EditUserData = (props) => {
           fullWidth
         />
 
-        <div className="d-flex justify-content-center">
-          <Button
-            onClick={checkInputs}
-            type="submit"
-            className="mt-4"
-            variant="contained"
-            color="primary"
-          >
-            {strings.accountSettingsPage.confirm}
-          </Button>
-        </div>
+        <EditConfirmButton
+          checkInputs={checkInputs}
+          buttonTextContent={strings.accountSettingsPage.confirm}
+        />
       </form>
 
       <ToastContainer/>
