@@ -154,7 +154,10 @@ export const strings = {
     backAccountPage: "Go back to account page",
   },
   eventDetailsPage: {
-    //
+    deleteEvent: "Delete Event",
+    eventLoadingError: "An error occurred while loading data",
+    backEventsPage: "Go back to events page",
+    deleteEventError: "Event has not been deleted!",
   },
   homePage: {
     socialRacetrack: "Social Racetrack",
