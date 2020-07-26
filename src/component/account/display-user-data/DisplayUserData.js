@@ -28,6 +28,20 @@ export const DisplayUserData = (props) => {
     );
   };
 
+  const renderRemoveButton = (handleRemove = PR(),
+                              buttonTextContent = PR()) => {
+    return (
+      <Button
+        onClick={handleRemove}
+        color="secondary"
+        variant="contained"
+        size="small"
+      >
+        {buttonTextContent}
+      </Button>
+    );
+  };
+
   const renderUserInformation = () => {
 
     const renderLeftSide = () => {
@@ -115,14 +129,12 @@ export const DisplayUserData = (props) => {
                   {
                     props.isEditableForUser ?
                       <td>
-                        <Button
-                          onClick={() => props.handleRemoveCar(it.id)}
-                          color="secondary"
-                          variant="contained"
-                          size="small"
-                        >
-                          {strings.accountPage.remove}
-                        </Button>
+                        {
+                          renderRemoveButton(
+                            () => props.handleRemoveCar(it.id),
+                            strings.accountPage.remove
+                          )
+                        }
                       </td>
                       : null
                   }
@@ -175,14 +187,12 @@ export const DisplayUserData = (props) => {
                   {
                     props.isEditableForUser ?
                       <td>
-                        <Button
-                          onClick={() => props.handleRemoveAward(it.id)}
-                          color="secondary"
-                          variant="contained"
-                          size="small"
-                        >
-                          {strings.accountPage.remove}
-                        </Button>
+                        {
+                          renderRemoveButton(
+                            () => props.handleRemoveAward(it.id),
+                            strings.accountPage.remove
+                          )
+                        }
                       </td>
                       : null
                   }
