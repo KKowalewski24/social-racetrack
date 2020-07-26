@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constant/path-constants";
@@ -19,14 +19,20 @@ export const LoginPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const [loginCallCounter, setLoginCallCounter] = useState(0);
+
   const accountController = new AccountController();
   const globalStyles = GlobalStyles();
 
   const handleLogin = (data = PR()) => {
-    accountController.loginUser(
-      data.email, data.password,
-      () => errorNotification(strings.loginPage.wrongEmailPassword)
-    );
+    if (loginCallCounter === 0) {
+      accountController.loginUser(
+        data.email, data.password,
+        () => errorNotification(strings.loginPage.wrongEmailPassword)
+      );
+
+      setLoginCallCounter(loginCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {

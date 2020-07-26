@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import strings from "../../../config/constant/string-constants";
@@ -18,15 +18,20 @@ export const AdminPanelPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const [grantAdminCallCounter, setGrantAdminCallCounter] = useState(0);
   const history = useHistory();
   const globalStyles = GlobalStyles();
 
   const handleGrantAdmin = (data = PR()) => {
-    grantAdmin({email: data.email})
-      .then((result) => console.log(result))
-      .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
+    if (grantAdminCallCounter === 0) {
+      grantAdmin({email: data.email})
+        .then((result) => console.log(result))
+        .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
 
-    redirectToPage(history, PATH_HOME);
+      redirectToPage(history, PATH_HOME);
+
+      setGrantAdminCallCounter(grantAdminCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {

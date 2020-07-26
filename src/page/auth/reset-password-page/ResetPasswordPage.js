@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
@@ -18,16 +18,22 @@ export const ResetPasswordPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const [resetPasswordCallCounter, setResetPasswordCallCounter] = useState(0);
+
   const history = useHistory();
   const accountController = new AccountController();
   const globalStyles = GlobalStyles();
 
   const handleResetPassword = (data = PR()) => {
-    accountController.resetUserPassword(
-      data.email,
-      () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
-    );
-    redirectToPage(history, PATH_LOGIN);
+    if (resetPasswordCallCounter === 0) {
+      accountController.resetUserPassword(
+        data.email,
+        () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
+      );
+      redirectToPage(history, PATH_LOGIN);
+
+      setResetPasswordCallCounter(resetPasswordCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {
