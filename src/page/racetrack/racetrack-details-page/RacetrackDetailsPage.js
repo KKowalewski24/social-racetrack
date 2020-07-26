@@ -10,9 +10,9 @@ import CustomCardImage from "../../../component/details/custom-card-image/Custom
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import {PR, redirectToPage} from "../../../logic/Helper";
+import HorizontalDeleteButton from "../../../component/details/horizontal-delete-button/HorizontalDeleteButton";
 import DetailsTable from "../../../component/details/details-table/DetailsTable";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
-import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
@@ -153,21 +153,11 @@ export const RacetrackDetailsPage = (props) => {
 
     const renderDeleteBar = () => {
       return (
-        <HorizontalContainer
+        <HorizontalDeleteButton
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"custom-hor-cont-margin-bottom-last"}
-        >
-          <div className="row justify-content-center">
-            <Button
-              onClick={handleDeleteRacetrack}
-              color="secondary"
-              variant="contained"
-              size="medium"
-            >
-              {strings.racetrackDetailsPage.deleteRacetrack}
-            </Button>
-          </div>
-        </HorizontalContainer>
+          handleDelete={handleDeleteRacetrack}
+          buttonTextContent={strings.racetrackDetailsPage.deleteRacetrack}
+        />
       );
     };
 

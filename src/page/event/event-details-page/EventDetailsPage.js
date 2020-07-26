@@ -9,9 +9,9 @@ import CustomCardImage from "../../../component/details/custom-card-image/Custom
 import {PR, redirectToPage} from "../../../logic/Helper";
 import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
 import {CHOSEN_EVENT_ID} from "../../../config/constant/browser-storage-contants";
+import HorizontalDeleteButton from "../../../component/details/horizontal-delete-button/HorizontalDeleteButton";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
-import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
@@ -101,24 +101,14 @@ export const EventDetailsPage = (props) => {
         </HorizontalContainer>
       );
     };
-
+    //TODO
     const renderDeleteBar = () => {
       return (
-        <HorizontalContainer
+        <HorizontalDeleteButton
           panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"custom-hor-cont-margin-bottom-last"}
-        >
-          <div className="row justify-content-center">
-            <Button
-              onClick={handleDeleteEvent}
-              color="secondary"
-              variant="contained"
-              size="medium"
-            >
-              {strings.eventDetailsPage.deleteEvent}
-            </Button>
-          </div>
-        </HorizontalContainer>
+          handleDelete={handleDeleteEvent}
+          buttonTextContent={strings.eventDetailsPage.deleteEvent}
+        />
       );
     };
 

@@ -2,17 +2,16 @@ import React, {useEffect, useState} from "react";
 import DisplayUserData from "../../../component/account/display-user-data/DisplayUserData";
 import DisplayUserAvatar from "../../../component/account/display-user-avatar/DisplayUserAvatar";
 import config from "../../../config/config";
-import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {errorNotification} from "../../../component/util/notification/notification";
 import RenderEventCards from "../../../component/events/render-event-cards/RenderEventCards";
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
+import HorizontalDeleteButton from "../../../component/details/horizontal-delete-button/HorizontalDeleteButton";
 import {PR} from "../../../logic/Helper";
 import {PATH_ACCOUNT_SETTINGS, PATH_HOME} from "../../../config/constant/path-constants";
 import {getDeletedCarsArray, getDeletedReceivedAwardsArray} from "../../../logic/model/person/Member";
-import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
@@ -125,21 +124,11 @@ export const AccountPage = (props) => {
               />
             </div>
 
-            <HorizontalContainer
+            <HorizontalDeleteButton
               panelBackgroundColor={globalStyles.materialBlueBackground}
-              margin={"custom-hor-cont-margin-bottom-last"}
-            >
-              <div className="row justify-content-center">
-                <Button
-                  onClick={handleDeleteUser}
-                  color="secondary"
-                  variant="contained"
-                  size="large"
-                >
-                  {strings.accountPage.deleteAccount}
-                </Button>
-              </div>
-            </HorizontalContainer>
+              handleDelete={handleDeleteUser}
+              buttonTextContent={strings.accountPage.deleteAccount}
+            />
           </div>
           : null
       }
