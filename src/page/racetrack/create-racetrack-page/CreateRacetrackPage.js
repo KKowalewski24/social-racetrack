@@ -12,12 +12,12 @@ import {errorNotification, warningNotification} from "../../../component/util/no
 import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import {RacetrackFirebaseStorageController} from "../../../logic/controller/model/RacetrackFirebaseStorageController";
 import {Racetrack} from "../../../logic/model/racetrack/Racetrack";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
 import {PATH_RACETRACKS} from "../../../config/constant/path-constants";
 import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
 import {DropzoneArea} from "material-ui-dropzone";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import "../../../index.css";
 
 export const CreateRacetrackPage = (props) => {
@@ -179,17 +179,10 @@ export const CreateRacetrackPage = (props) => {
             />
           </div>
 
-          <div className="d-flex justify-content-center">
-            <Button
-              onClick={checkInputs}
-              type="submit"
-              className="mt-4"
-              variant="contained"
-              color="primary"
-            >
-              {strings.createRacetrackPage.confirm}
-            </Button>
-          </div>
+          <ConfirmButton
+            checkInputs={checkInputs}
+            buttonTextContent={strings.createRacetrackPage.confirm}
+          />
         </form>
       </div>
 

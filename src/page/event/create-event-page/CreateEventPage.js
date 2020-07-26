@@ -9,8 +9,8 @@ import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
 import ArrayComboBox from "../../../component/creation/array-combo-box/ArrayComboBox";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
 import strings from "../../../config/constant/string-constants";
-import Button from "@material-ui/core/Button";
 import config from "../../../config/config";
 import TextField from "@material-ui/core/TextField";
 import GlobalStyles from "../../../main/GlobalStyles";
@@ -142,17 +142,10 @@ export const CreateEventPage = (props) => {
               </div>
             </div>
 
-            <div className="d-flex justify-content-center">
-              <Button
-                onClick={checkInputs}
-                type="submit"
-                className="mt-4"
-                variant="contained"
-                color="primary"
-              >
-                {strings.createEventPage.confirm}
-              </Button>
-            </div>
+            <ConfirmButton
+              checkInputs={checkInputs}
+              buttonTextContent={strings.createEventPage.confirm}
+            />
           </form>
         </div>
 

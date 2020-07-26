@@ -2,7 +2,7 @@ import React from "react";
 import propTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 
-export const EditConfirmButton = (props) => {
+export const ConfirmButton = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
 
@@ -18,12 +18,13 @@ export const EditConfirmButton = (props) => {
       >
         {props.buttonTextContent}
       </Button>
-    </div>);
+    </div>
+  );
 };
 
-EditConfirmButton.propTypes = {
+ConfirmButton.propTypes = {
   checkInputs: propTypes.func.isRequired,
   buttonTextContent: propTypes.string.isRequired,
 };
 
-export default EditConfirmButton;
+export default ConfirmButton;

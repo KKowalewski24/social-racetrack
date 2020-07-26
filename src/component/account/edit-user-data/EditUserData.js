@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import {useForm} from "react-hook-form";
 import {keyValueObjectToArray} from "../../../logic/Helper";
 import {warningNotification} from "../../util/notification/notification";
-import EditConfirmButton from "../edit-confirm-button/EditConfirmButton";
+import ConfirmButton from "../../rest/confirm-button/ConfirmButton";
 import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
 import TextField from "@material-ui/core/TextField";
@@ -70,7 +70,7 @@ export const EditUserData = (props) => {
           fullWidth
         />
 
-        <EditConfirmButton
+        <ConfirmButton
           checkInputs={checkInputs}
           buttonTextContent={strings.accountSettingsPage.confirm}
         />

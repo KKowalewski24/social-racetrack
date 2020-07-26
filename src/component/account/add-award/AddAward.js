@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import {useForm} from "react-hook-form";
 import strings from "../../../config/constant/string-constants";
 import {getCurrentYear, keyValueObjectToArray} from "../../../logic/Helper";
-import EditConfirmButton from "../edit-confirm-button/EditConfirmButton";
+import ConfirmButton from "../../rest/confirm-button/ConfirmButton";
 import {ToastContainer} from "react-toastify";
 import {warningNotification} from "../../util/notification/notification";
 import TextField from "@material-ui/core/TextField";
@@ -48,7 +48,7 @@ export const AddAward = (props) => {
           />
         </div>
 
-        <EditConfirmButton
+        <ConfirmButton
           checkInputs={checkInputs}
           buttonTextContent={strings.accountSettingsPage.confirm}
         />
