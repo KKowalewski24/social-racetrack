@@ -7,7 +7,9 @@ import config from "../../../config/config";
 import {
   PATH_DB_COLLECTION_EVENTS,
   PATH_DB_COLLECTION_MEMBERS,
-  PATH_DB_COLLECTION_RACETRACKS, QUERY_FIELD_EVENT_MODEL_EVENT_REF_PATH_ARRAY, QUERY_OPERATOR_ARRAY_CONTAINS
+  PATH_DB_COLLECTION_RACETRACKS,
+  QUERY_FIELD_EVENT_MODEL_EVENT_REF_PATH_ARRAY,
+  QUERY_OPERATOR_ARRAY_CONTAINS
 } from "../../../config/constant/firebase-constants";
 
 export class EventDatabaseController {
@@ -127,24 +129,9 @@ export class EventDatabaseController {
 
   deleteEventById = async (id = PR(), errorFunction = PR()) => {
     try {
-      const chosenIdMemberArray = await this._databaseController.singleQuery(
-        PATH_DB_COLLECTION_MEMBERS,
-        QUERY_FIELD_EVENT_MODEL_EVENT_REF_PATH_ARRAY,
-        QUERY_OPERATOR_ARRAY_CONTAINS,
-        PATH_DB_COLLECTION_EVENTS + id,
-        errorFunction
+      await deleteEventById(
+        id, this._databaseController, this._memberDatabaseController, errorFunction
       );
-
-      for (const it of chosenIdMemberArray) {
-        await this._memberDatabaseController.updateMemberById(
-          it.id,
-          getDeletedEventsRefPathArray(it, PATH_DB_COLLECTION_EVENTS + id),
-          errorFunction
-        );
-      }
-
-      await this._databaseController
-        .deleteData(PATH_DB_COLLECTION_EVENTS + id, errorFunction);
     } catch (err) {
       errorFunction();
     }
@@ -185,3 +172,32 @@ export class EventDatabaseController {
     }
   };
 }
+
+/**
+ * Impl of deleteEventById has been moved here because there is an issue
+ * with circular creating object in EventDatabaseController
+ * and MemberDatabaseController - maximum call stack
+ */
+export const deleteEventById = async (id = PR(),
+                                      databaseController = PR(),
+                                      memberDatabaseController = PR(),
+                                      errorFunction = PR()) => {
+  const chosenIdMemberArray = await databaseController.singleQuery(
+    PATH_DB_COLLECTION_MEMBERS,
+    QUERY_FIELD_EVENT_MODEL_EVENT_REF_PATH_ARRAY,
+    QUERY_OPERATOR_ARRAY_CONTAINS,
+    PATH_DB_COLLECTION_EVENTS + id,
+    errorFunction
+  );
+
+  for (const it of chosenIdMemberArray) {
+    await memberDatabaseController.updateMemberById(
+      it.id,
+      getDeletedEventsRefPathArray(it, PATH_DB_COLLECTION_EVENTS + id),
+      errorFunction
+    );
+  }
+
+  await databaseController
+    .deleteData(PATH_DB_COLLECTION_EVENTS + id, errorFunction);
+};

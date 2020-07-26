@@ -1,6 +1,12 @@
 import {DatabaseController} from "../DatabaseController";
-import {PATH_DB_COLLECTION_MEMBERS} from "../../../config/constant/firebase-constants";
+import {deleteEventById} from "./EventDatabaseController";
 import {PR} from "../../Helper";
+import {
+  PATH_DB_COLLECTION_EVENTS,
+  PATH_DB_COLLECTION_MEMBERS,
+  QUERY_FIELD_EVENT_MODEL_CREATOR_REF_PATH,
+  QUERY_OPERATOR_EQUAL
+} from "../../../config/constant/firebase-constants";
 
 export class MemberDatabaseController {
 
@@ -54,6 +60,20 @@ export class MemberDatabaseController {
 
   deleteMemberById = async (id = PR(), errorFunction = PR()) => {
     try {
+      const chosenIdEventArray = await this._databaseController.singleQuery(
+        PATH_DB_COLLECTION_EVENTS,
+        QUERY_FIELD_EVENT_MODEL_CREATOR_REF_PATH,
+        QUERY_OPERATOR_EQUAL,
+        PATH_DB_COLLECTION_MEMBERS + id,
+        errorFunction
+      );
+
+      for (const it of chosenIdEventArray) {
+        await deleteEventById(
+          it.id, this._databaseController, new MemberDatabaseController(), errorFunction
+        );
+      }
+
       return await this._databaseController
         .deleteData(PATH_DB_COLLECTION_MEMBERS + id, errorFunction);
     } catch (err) {
