@@ -66,7 +66,7 @@ export class AccountController {
   };
 
   deleteAccount = (deleteAccountErrorFunction = PR()) => {
-    this._memberDatabaseController.deleteMember(
+    this._memberDatabaseController.deleteMemberById(
       config.auth().currentUser && config.auth().currentUser.uid,
       deleteAccountErrorFunction
     )

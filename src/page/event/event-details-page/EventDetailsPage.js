@@ -46,7 +46,7 @@ export const EventDetailsPage = (props) => {
   }, []);
 
   const handleDeleteEvent = () => {
-    eventDatabaseController.deleteEvent(
+    eventDatabaseController.deleteEventById(
       event.id,
       () => errorNotification(strings.eventDetailsPage.deleteEventError)
     ).then(() => redirectToPage(history, PATH_FUTURE_EVENTS));

@@ -54,7 +54,7 @@ export const AccountPage = (props) => {
 
   const handleRemoveCar = (id = PR()) => {
     if (checkIfReadyToSave()) {
-      memberDatabaseController.updateMember(
+      memberDatabaseController.updateMemberById(
         member.id,
         getDeletedCarsArray(member, id),
         () => errorNotification(strings.accountSettingsPage.itemNotDeleted)
@@ -64,7 +64,7 @@ export const AccountPage = (props) => {
 
   const handleRemoveAward = (id = PR()) => {
     if (checkIfReadyToSave()) {
-      memberDatabaseController.updateMember(
+      memberDatabaseController.updateMemberById(
         member.id,
         getDeletedReceivedAwardsArray(member, id),
         () => errorNotification(strings.accountSettingsPage.itemNotDeleted)

@@ -59,7 +59,7 @@ export const AccountSettingsPage = (props) => {
         data.enginePowerInHorsepower, data.driveTrainType
       );
 
-      memberDatabaseController.updateMember(
+      memberDatabaseController.updateMemberById(
         member.id,
         getAddedCarsArray(member, car),
         () => errorNotification(strings.accountSettingsPage.itemNotAdded)
@@ -71,7 +71,7 @@ export const AccountSettingsPage = (props) => {
     if (checkIfReadyToSave()) {
       const award = new Award(generateCustomUuid(), data.description, data.year);
 
-      memberDatabaseController.updateMember(
+      memberDatabaseController.updateMemberById(
         member.id,
         getAddedReceivedAwardsArray(member, award),
         () => errorNotification(strings.accountSettingsPage.itemNotAdded)
@@ -81,7 +81,7 @@ export const AccountSettingsPage = (props) => {
 
   const handleEditUser = (data = PR()) => {
     if (checkIfReadyToSave()) {
-      memberDatabaseController.updateMember(
+      memberDatabaseController.updateMemberById(
         member.id,
         getUpdatedFieldsArray(data.firstName, data.lastName, data.country, data.city),
         () => errorNotification(strings.accountSettingsPage.userDataNotUpdated)

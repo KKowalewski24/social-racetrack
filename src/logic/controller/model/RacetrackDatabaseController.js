@@ -2,12 +2,14 @@ import {DatabaseController} from "../DatabaseController";
 import {PATH_DB_COLLECTION_RACETRACKS} from "../../../config/constant/firebase-constants";
 import {RacetrackFirebaseStorageController} from "./RacetrackFirebaseStorageController";
 import {PR} from "../../Helper";
+import {EventDatabaseController} from "./EventDatabaseController";
 
 export class RacetrackDatabaseController {
 
   /*------------------------ FIELDS REGION ------------------------*/
   _databaseController = new DatabaseController();
   _racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
+  _eventDatabaseController = new EventDatabaseController();
 
   /*------------------------ METHODS REGION ------------------------*/
   createRacetrack = async (data = PR(), errorFunction = PR()) => {

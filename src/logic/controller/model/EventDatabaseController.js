@@ -36,7 +36,7 @@ export class EventDatabaseController {
         PATH_DB_COLLECTION_EVENTS + event.id
       );
 
-      await this._memberDatabaseController.updateMember(
+      await this._memberDatabaseController.updateMemberById(
         config.auth().currentUser && config.auth().currentUser.uid,
         updatedRefPathArray,
         errorFunction
@@ -116,7 +116,7 @@ export class EventDatabaseController {
     }
   };
 
-  updateEvent = async (id = PR(), partialData = PR(), errorFunction = PR()) => {
+  updateEventById = async (id = PR(), partialData = PR(), errorFunction = PR()) => {
     try {
       return await this._databaseController
         .updateData(PATH_DB_COLLECTION_EVENTS + id, partialData, errorFunction);
@@ -125,7 +125,7 @@ export class EventDatabaseController {
     }
   };
 
-  deleteEvent = async (id = PR(), errorFunction = PR()) => {
+  deleteEventById = async (id = PR(), errorFunction = PR()) => {
     try {
       await this._databaseController
         .deleteData(PATH_DB_COLLECTION_EVENTS + id, errorFunction);

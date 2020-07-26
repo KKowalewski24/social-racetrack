@@ -43,7 +43,7 @@ export class MemberDatabaseController {
     }
   };
 
-  updateMember = async (id = PR(), partialData = PR(), errorFunction = PR()) => {
+  updateMemberById = async (id = PR(), partialData = PR(), errorFunction = PR()) => {
     try {
       return await this._databaseController
         .updateData(PATH_DB_COLLECTION_MEMBERS + id, partialData, errorFunction);
@@ -52,7 +52,7 @@ export class MemberDatabaseController {
     }
   };
 
-  deleteMember = async (id = PR(), errorFunction = PR()) => {
+  deleteMemberById = async (id = PR(), errorFunction = PR()) => {
     try {
       return await this._databaseController
         .deleteData(PATH_DB_COLLECTION_MEMBERS + id, errorFunction);
