@@ -1,8 +1,12 @@
 import {DatabaseController} from "../DatabaseController";
-import {PATH_DB_COLLECTION_RACETRACKS} from "../../../config/constant/firebase-constants";
 import {RacetrackFirebaseStorageController} from "./RacetrackFirebaseStorageController";
 import {PR} from "../../Helper";
 import {EventDatabaseController} from "./EventDatabaseController";
+import {
+  PATH_DB_COLLECTION_EVENTS,
+  PATH_DB_COLLECTION_RACETRACKS,
+  QUERY_FIELD_EVENT_MODEL_RACETRACK_REF_PATH, QUERY_OPERATOR_EQUAL
+} from "../../../config/constant/firebase-constants";
 
 export class RacetrackDatabaseController {
 
@@ -41,6 +45,18 @@ export class RacetrackDatabaseController {
 
   deleteRacetrackById = async (id = PR(), imageUrl = PR(), errorFunction = PR()) => {
     try {
+      const chosenIdEventArray = await this._databaseController.singleQuery(
+        PATH_DB_COLLECTION_EVENTS,
+        QUERY_FIELD_EVENT_MODEL_RACETRACK_REF_PATH,
+        QUERY_OPERATOR_EQUAL,
+        PATH_DB_COLLECTION_RACETRACKS + id,
+        errorFunction
+      );
+
+      for (const it of chosenIdEventArray) {
+        await this._eventDatabaseController.deleteEventById(it.id, errorFunction);
+      }
+
       await this._databaseController
         .deleteData(PATH_DB_COLLECTION_RACETRACKS + id, errorFunction);
       await this._racetrackFirebaseStorageController

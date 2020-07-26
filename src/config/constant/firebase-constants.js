@@ -24,3 +24,4 @@ export const QUERY_OPERATOR_GREATER_EQUAL = ">=";
 export const QUERY_OPERATOR_GREATER = ">";
 
 export const QUERY_FIELD_ID = "id";
+export const QUERY_FIELD_EVENT_MODEL_RACETRACK_REF_PATH = "racetrackRefPath";
