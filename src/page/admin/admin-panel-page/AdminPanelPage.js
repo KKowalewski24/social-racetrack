@@ -7,9 +7,9 @@ import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
 import {PATH_HOME} from "../../../config/constant/path-constants";
 import {grantAdmin} from "../../../logic/CloudFunctions";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
 import TextField from "@material-ui/core/TextField";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import GlobalStyles from "../../../main/GlobalStyles";
@@ -66,16 +66,12 @@ export const AdminPanelPage = (props) => {
           autoFocus
         />
 
-        <Button
-          onClick={checkInputs}
-          type="submit"
-          className="mt-2"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
-          {strings.adminPanelPage.confirm}
-        </Button>
+        <ConfirmButton
+          checkInputs={checkInputs}
+          buttonTextContent={strings.adminPanelPage.confirm}
+          isFullWidth={true}
+          optionMargin={"mt-2"}
+        />
       </form>
 
       <ToastContainer/>

@@ -12,9 +12,10 @@ export const ConfirmButton = (props) => {
       <Button
         onClick={props.checkInputs}
         type="submit"
-        className="mt-4"
+        className={!!props.optionMargin ? props.optionMargin : "mt-4"}
         variant="contained"
         color="primary"
+        fullWidth={props.isFullWidth}
       >
         {props.buttonTextContent}
       </Button>
@@ -22,9 +23,14 @@ export const ConfirmButton = (props) => {
   );
 };
 
+/**
+ * Default margin is "mt-4"
+ */
 ConfirmButton.propTypes = {
   checkInputs: propTypes.func.isRequired,
   buttonTextContent: propTypes.string.isRequired,
+  isFullWidth: propTypes.bool,
+  optionMargin: propTypes.string,
 };
 
 export default ConfirmButton;

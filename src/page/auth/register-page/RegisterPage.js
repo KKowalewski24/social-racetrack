@@ -6,8 +6,8 @@ import {AccountController} from "../../../logic/controller/AccountController";
 import {keyValueObjectToArray, PR} from "../../../logic/Helper";
 import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -145,16 +145,11 @@ export const RegisterPage = (props) => {
           fullWidth
         />
 
-        <Button
-          onClick={checkInputs}
-          type="submit"
-          className="mt-4"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
-          {strings.registerPage.signUp}
-        </Button>
+        <ConfirmButton
+          checkInputs={checkInputs}
+          buttonTextContent={strings.registerPage.signUp}
+          isFullWidth={true}
+        />
 
         <div className="row justify-content-center mt-2">
           <Link to={PATH_LOGIN} className={globalStyles.materialBlueFont}>
