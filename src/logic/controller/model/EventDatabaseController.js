@@ -2,12 +2,12 @@ import {DatabaseController} from "../DatabaseController";
 import {generateCustomUuid, getTomorrow, PR} from "../../Helper";
 import {Event} from "../../model/event/Event";
 import {MemberDatabaseController} from "./MemberDatabaseController";
-import {getAddedEventsRefPathArray} from "../../model/person/Member";
+import {getAddedEventsRefPathArray, getDeletedEventsRefPathArray} from "../../model/person/Member";
 import config from "../../../config/config";
 import {
   PATH_DB_COLLECTION_EVENTS,
   PATH_DB_COLLECTION_MEMBERS,
-  PATH_DB_COLLECTION_RACETRACKS
+  PATH_DB_COLLECTION_RACETRACKS, QUERY_FIELD_EVENT_MODEL_EVENT_REF_PATH_ARRAY, QUERY_OPERATOR_ARRAY_CONTAINS
 } from "../../../config/constant/firebase-constants";
 
 export class EventDatabaseController {
@@ -127,6 +127,22 @@ export class EventDatabaseController {
 
   deleteEventById = async (id = PR(), errorFunction = PR()) => {
     try {
+      const chosenIdMemberArray = await this._databaseController.singleQuery(
+        PATH_DB_COLLECTION_MEMBERS,
+        QUERY_FIELD_EVENT_MODEL_EVENT_REF_PATH_ARRAY,
+        QUERY_OPERATOR_ARRAY_CONTAINS,
+        PATH_DB_COLLECTION_EVENTS + id,
+        errorFunction
+      );
+
+      for (const it of chosenIdMemberArray) {
+        await this._memberDatabaseController.updateMemberById(
+          it.id,
+          getDeletedEventsRefPathArray(it, PATH_DB_COLLECTION_EVENTS + id),
+          errorFunction
+        );
+      }
+
       await this._databaseController
         .deleteData(PATH_DB_COLLECTION_EVENTS + id, errorFunction);
     } catch (err) {
