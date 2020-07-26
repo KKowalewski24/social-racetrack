@@ -1,5 +1,5 @@
 import React from "react";
-import RenderEvents from "../../../component/events/render-events/RenderEvents";
+import RenderEvents from "../../../component/events-display/render-events/RenderEvents";
 
 export const PastEventsPage = (props) => {
 

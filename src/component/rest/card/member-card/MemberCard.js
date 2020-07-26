@@ -1,11 +1,11 @@
 import React from "react";
 import propTypes from "prop-types";
-import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
-import {CHOSEN_MEMBER_ID} from "../../../config/constant/browser-storage-contants";
-import {PR} from "../../../logic/Helper";
+import {BrowserStorageController} from "../../../../logic/controller/BrowserStorageController";
+import {CHOSEN_MEMBER_ID} from "../../../../config/constant/browser-storage-contants";
+import {PR} from "../../../../logic/Helper";
 import {generatePropertiesArray} from "../CardHelper";
-import Card from "../../util/card/Card";
-import userImage from "../../../assets/user-image.svg";
+import Card from "../../../util/card/Card";
+import userImage from "../../../../assets/user-image.svg";
 
 export const MemberCard = (props) => {
 

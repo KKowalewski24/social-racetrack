@@ -1,4 +1,4 @@
-import {PR} from "../../logic/Helper";
+import {PR} from "../../../logic/Helper";
 
 export const generatePropertiesArray = (keysArray = PR(), chosenValueArray = PR()) => {
   if (keysArray.length !== chosenValueArray.length) {

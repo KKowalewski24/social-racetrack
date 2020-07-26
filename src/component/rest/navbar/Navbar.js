@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
-import {PR} from "../../logic/Helper";
+import {PR} from "../../../logic/Helper";
 import {Link} from "react-router-dom";
-import {strings} from "../../config/constant/string-constants";
+import {strings} from "../../../config/constant/string-constants";
 import clsx from "clsx";
 import {
   PATH_ACCOUNT,
@@ -13,7 +13,7 @@ import {
   PATH_MEMBERS,
   PATH_PAST_EVENTS,
   PATH_RACETRACKS
-} from "../../config/constant/path-constants";
+} from "../../../config/constant/path-constants";
 import {
   AppBar,
   Divider,
@@ -39,7 +39,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import BuildIcon from "@material-ui/icons/Build";
 
 import NavbarStyles from "./NavbarStyles";
-import "../../index.css";
+import "../../../index.css";
 
 export const Navbar = (props) => {
 

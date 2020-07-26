@@ -8,7 +8,7 @@ import {warningNotification} from "../../util/notification/notification";
 import {CarType} from "../../../logic/model/car/CarType";
 import {EngineType} from "../../../logic/model/car/EngineType";
 import {DriveTrainType} from "../../../logic/model/car/DriveTrainType";
-import EnumComboBox from "../../create/enum-combo-box/EnumComboBox";
+import EnumComboBox from "../../creation/enum-combo-box/EnumComboBox";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../../../index.css";

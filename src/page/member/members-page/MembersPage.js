@@ -5,8 +5,8 @@ import {MemberDatabaseController} from "../../../logic/controller/model/MemberDa
 import {checkIfContains} from "../../../logic/Helper";
 import SearchBox from "../../../component/util/search-box/SearchBox";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
-import MemberCard from "../../../component/card/member-card/MemberCard";
-import {getCardGridStyles} from "../../../component/card/CardHelper";
+import MemberCard from "../../../component/rest/card/member-card/MemberCard";
+import {getCardGridStyles} from "../../../component/rest/card/CardHelper";
 import {errorNotification} from "../../../component/util/notification/notification";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";

@@ -3,7 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import Routes from "./Routes";
 import {AuthContext} from "../logic/AuthContextProvider";
 import {AccountController} from "../logic/controller/AccountController";
-import Navbar from "../component/navbar/Navbar";
+import Navbar from "../component/rest/navbar/Navbar";
 import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";

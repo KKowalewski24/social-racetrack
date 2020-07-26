@@ -5,11 +5,11 @@ import FetchDataController from "../../../component/util/fetch-data-controller/F
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
 import {EventDatabaseController} from "../../../logic/controller/model/EventDatabaseController";
 import {errorNotification} from "../../../component/util/notification/notification";
-import CustomCardImage from "../../../component/details/custom-card-image/CustomCardImage";
+import CustomCardImage from "../../../component/details-display/custom-card-image/CustomCardImage";
 import {PR, redirectToPage} from "../../../logic/Helper";
 import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
 import {CHOSEN_EVENT_ID} from "../../../config/constant/browser-storage-contants";
-import HorizontalDeleteButton from "../../../component/details/horizontal-delete-button/HorizontalDeleteButton";
+import HorizontalDeleteButton from "../../../component/details-display/horizontal-delete-button/HorizontalDeleteButton";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
 import GlobalStyles from "../../../main/GlobalStyles";

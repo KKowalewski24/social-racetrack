@@ -1,8 +1,8 @@
 import React from "react";
 import propTypes from "prop-types";
 import strings from "../../../config/constant/string-constants";
-import EventCard from "../../card/event-card/EventCard";
-import {getCardGridStyles} from "../../card/CardHelper";
+import EventCard from "../../rest/card/event-card/EventCard";
+import {getCardGridStyles} from "../../rest/card/CardHelper";
 import {PATH_EVENT_DETAILS} from "../../../config/constant/path-constants";
 
 export const RenderEventCards = (props) => {

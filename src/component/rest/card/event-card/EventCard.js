@@ -1,9 +1,9 @@
 import React from "react";
 import propTypes from "prop-types";
-import Card from "../../util/card/Card";
-import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
-import {CHOSEN_EVENT_ID} from "../../../config/constant/browser-storage-contants";
-import {PR} from "../../../logic/Helper";
+import Card from "../../../util/card/Card";
+import {BrowserStorageController} from "../../../../logic/controller/BrowserStorageController";
+import {CHOSEN_EVENT_ID} from "../../../../config/constant/browser-storage-contants";
+import {PR} from "../../../../logic/Helper";
 import {generatePropertiesArray} from "../CardHelper";
 
 export const EventCard = (props) => {
