@@ -71,11 +71,10 @@ export class EventDatabaseController {
 
   readAllEvents = async (errorFunction = PR()) => {
     try {
-      const eventsArray = await this._databaseController
-        .readAllData(PATH_DB_COLLECTION_EVENTS, errorFunction);
-
-      return await this._doFetchRefPathDataOnArray(eventsArray, errorFunction);
-
+      return await this._doFetchRefPathDataOnArray(
+        await this._shallowReadAllEvents(errorFunction),
+        errorFunction
+      );
     } catch (err) {
       errorFunction();
     }
@@ -83,7 +82,7 @@ export class EventDatabaseController {
 
   readFutureEvents = async (errorFunction = PR()) => {
     try {
-      const eventsArray = await this.readAllEvents(errorFunction);
+      const eventsArray = await this._shallowReadAllEvents(errorFunction);
 
       const futureEventsArray = [];
       for (const it of eventsArray) {
@@ -101,7 +100,7 @@ export class EventDatabaseController {
 
   readPastEvents = async (errorFunction = PR()) => {
     try {
-      const eventsArray = await this.readAllEvents(errorFunction);
+      const eventsArray = await this._shallowReadAllEvents(errorFunction);
 
       const pastEventsArray = [];
       for (const it of eventsArray) {
@@ -136,6 +135,15 @@ export class EventDatabaseController {
   };
 
   /*----- PRIVATE METHODS -----*/
+  _shallowReadAllEvents = async (errorFunction = PR()) => {
+    try {
+      return await this._databaseController
+        .readAllData(PATH_DB_COLLECTION_EVENTS, errorFunction);
+    } catch (err) {
+      errorFunction();
+    }
+  };
+
   _doFetchRefPathDataOnArray = async (dataArray = PR(), errorFunction = PR()) => {
     const resultArray = [];
     for (const it of dataArray) {
