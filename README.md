@@ -132,3 +132,8 @@ DB contains 3 collections
 Not generic DatabaseController e.g. EventDatabaseController fetch object 
 or array of objects from DB and then fetch all refPath objects to have 'full' object
 not only references to them 
+
+Cascade delete 
+* Deleting racetrack also deletes events on this racetrack
+* Deleting event also deletes refPath from members who create event or join
+* Deleting member also deletes events created by him/her
