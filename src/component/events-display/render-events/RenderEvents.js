@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 import propTypes from "prop-types";
 import {EventDatabaseController} from "../../../logic/controller/model/EventDatabaseController";
 import {errorNotification} from "../../util/notification/notification";
 import strings from "../../../config/constant/string-constants";
 import RenderEventCards from "../render-event-cards/RenderEventCards";
-import TabPanel from "../../util/tab-panel/TabPanel";
 import {PATH_ACCOUNT, PATH_CREATE_EVENT} from "../../../config/constant/path-constants";
 import {checkIfContains, PR} from "../../../logic/Helper";
 import SearchBox from "../../util/search-box/SearchBox";
+import TabPanelSingleButton from "../../rest/tab-panel-single-button/TabPanelSingleButton";
 import FetchDataController from "../../util/fetch-data-controller/FetchDataController";
-import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
@@ -65,17 +63,10 @@ export const RenderEvents = (props) => {
 
   const renderTab = () => {
     return (
-      <TabPanel>
-        <Link to={PATH_CREATE_EVENT} className="custom-color-inherit">
-          <Button
-            color="primary"
-            variant="contained"
-            className="my-1 mx-1"
-          >
-            {strings.eventsPage.futureEventsPage.createNewEvent}
-          </Button>
-        </Link>
-      </TabPanel>
+      <TabPanelSingleButton
+        redirectPath={PATH_CREATE_EVENT}
+        buttonTextContent={strings.eventsPage.futureEventsPage.createNewEvent}
+      />
     );
   };
 

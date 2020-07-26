@@ -9,10 +9,9 @@ import {CarType} from "../../../logic/model/car/CarType";
 import {EngineType} from "../../../logic/model/car/EngineType";
 import {DriveTrainType} from "../../../logic/model/car/DriveTrainType";
 import EnumComboBox from "../../creation/enum-combo-box/EnumComboBox";
-import Button from "@material-ui/core/Button";
+import EditConfirmButton from "../edit-confirm-button/EditConfirmButton";
 import TextField from "@material-ui/core/TextField";
 import "../../../index.css";
-import EditConfirmButton from "../edit-confirm-button/EditConfirmButton";
 
 export const AddCar = (props) => {
 

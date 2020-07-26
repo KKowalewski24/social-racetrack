@@ -1,6 +1,4 @@
 import React, {useContext, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import TabPanel from "../../../component/util/tab-panel/TabPanel";
 import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import {PATH_CREATE_RACETRACK, PATH_HOME, PATH_RACETRACK_DETAILS} from "../../../config/constant/path-constants";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
@@ -8,10 +6,10 @@ import strings from "../../../config/constant/string-constants";
 import {AuthContext} from "../../../logic/AuthContextProvider";
 import {checkIfContains} from "../../../logic/Helper";
 import SearchBox from "../../../component/util/search-box/SearchBox";
+import TabPanelSingleButton from "../../../component/rest/tab-panel-single-button/TabPanelSingleButton";
 import {errorNotification} from "../../../component/util/notification/notification";
 import RacetrackCard from "../../../component/rest/card/racetrack-card/RacetrackCard";
 import {getCardGridStyles} from "../../../component/rest/card/CardHelper";
-import Button from "@material-ui/core/Button";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
@@ -46,17 +44,10 @@ export const RacetracksPage = (props) => {
 
   const renderTab = () => {
     return (
-      <TabPanel>
-        <Link to={PATH_CREATE_RACETRACK} className="custom-color-inherit">
-          <Button
-            color="primary"
-            variant="contained"
-            className="my-1 mx-1"
-          >
-            {strings.racetracksPage.addNewRacetrack}
-          </Button>
-        </Link>
-      </TabPanel>
+      <TabPanelSingleButton
+        redirectPath={PATH_CREATE_RACETRACK}
+        buttonTextContent={strings.racetracksPage.addNewRacetrack}
+      />
     );
   };
 
