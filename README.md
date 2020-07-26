@@ -122,3 +122,13 @@ Depends on user there are different functionality available
 * Log in user - all functionality except of additionally for admin user
 * Admin - all functionality - additionally admin user has possibility 
 to create, delete racetrack, admin panel for grant admin user, deleting events
+
+#### Database structure and refPath
+DB contains 3 collections
+* Racetracks (no refPath)
+* Members (refPath to created or joined events)
+* Events (refPath to racetrack, creator and people who participate)
+
+Not generic DatabaseController e.g. EventDatabaseController fetch object 
+or array of objects from DB and then fetch all refPath objects to have 'full' object
+not only references to them 
