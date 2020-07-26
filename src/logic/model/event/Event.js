@@ -11,7 +11,7 @@ export class Event extends BaseEntityAbst {
    */
   eventCreatorRefPath;
   /**
-   * Array of person that joined to event
+   * Array of persons that joined to event
    */
   membersRefPathArray;
   eventDate;

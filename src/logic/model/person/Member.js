@@ -6,6 +6,9 @@ export class Member extends PersonAbst {
   /*------------------------ FIELDS REGION ------------------------*/
   carsArray;
   receivedAwardsArray;
+  /**
+   * Array of events that user created or joined
+   */
   eventsRefPathArray;
 
   /*------------------------ METHODS REGION ------------------------*/
