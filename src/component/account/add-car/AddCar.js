@@ -5,6 +5,11 @@ import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
 import {getCurrentYear, keyValueObjectToArray} from "../../../logic/Helper";
 import {warningNotification} from "../../util/notification/notification";
+import {
+  MIN_ENGINE_POWER_IN_HP,
+  MIN_MILEAGE_IN_KM,
+  MIN_YEAR_CAR_PRODUCTION
+} from "../../../config/constant/legal-constants";
 import {CarType} from "../../../logic/model/car/CarType";
 import {EngineType} from "../../../logic/model/car/EngineType";
 import {DriveTrainType} from "../../../logic/model/car/DriveTrainType";
@@ -61,7 +66,11 @@ export const AddCar = (props) => {
           <div className="col-sm-6">
             <TextField
               type="number"
-              inputRef={register({required: true, min: 1900, max: getCurrentYear()})}
+              inputRef={register({
+                required: true,
+                min: MIN_YEAR_CAR_PRODUCTION,
+                max: getCurrentYear()
+              })}
               name="productionYear"
               label={strings.accountSettingsPage.productionYear}
               variant="outlined"
@@ -73,7 +82,7 @@ export const AddCar = (props) => {
           <div className="col-sm-6">
             <TextField
               type="number"
-              inputRef={register({required: true, min: 0})}
+              inputRef={register({required: true, min: MIN_MILEAGE_IN_KM})}
               name="mileageInKilometers"
               label={strings.accountSettingsPage.mileageInKilometers}
               variant="outlined"
@@ -107,7 +116,7 @@ export const AddCar = (props) => {
           <div className="col-sm-6">
             <TextField
               type="number"
-              inputRef={register({required: true, min: 1})}
+              inputRef={register({required: true, min: MIN_ENGINE_POWER_IN_HP})}
               name="enginePowerInHorsepower"
               label={strings.accountSettingsPage.enginePowerInHorsepower}
               variant="outlined"

@@ -74,7 +74,7 @@ export const LoginPage = (props) => {
 
         <TextField
           type="password"
-          inputRef={register({required: true, min: 1})}
+          inputRef={register({required: true})}
           name="password"
           label={strings.loginPage.password}
           variant="outlined"
