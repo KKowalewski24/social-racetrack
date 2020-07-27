@@ -9,6 +9,7 @@ import {errorNotification} from "../../../component/util/notification/notificati
 import {PATH_DB_COLLECTION_EVENTS, PATH_DB_COLLECTION_MEMBERS} from "../../../config/constant/firebase-constants";
 import CustomCardImage from "../../../component/util/custom-card-image/CustomCardImage";
 import {PR, redirectToPage} from "../../../logic/Helper";
+import RacetrackDetailsTable from "../../../component/details-display/racetrack-details-table/RacetrackDetailsTable";
 import config from "../../../config/config";
 import {
   getAddedEventsRefPathArray,
@@ -179,6 +180,15 @@ export const EventDetailsPage = (props) => {
       );
     };
 
+    const renderRacetrackTable = () => {
+      return (
+        <RacetrackDetailsTable
+          racetrack={event.racetrackData}
+          isShowRacetrackName={true}
+        />
+      );
+    };
+
     const renderDeleteBar = () => {
       return (
         <HorizontalDeleteButton
@@ -192,6 +202,7 @@ export const EventDetailsPage = (props) => {
     return (
       <div className="col-sm-6">
         {renderTitleBar()}
+        {renderRacetrackTable()}
         {isAdmin ? renderDeleteBar() : null}
       </div>
     );

@@ -13,6 +13,14 @@ export const RacetrackDetailsTable = (props) => {
   const renderBody = () => {
     return (
       <tbody>
+        {
+          props.isShowRacetrackName ?
+            <tr>
+              <th>{strings.racetrackDetailsPage.racetrackName}</th>
+              <td>{props.racetrack.name}</td>
+            </tr>
+            : null
+        }
         <tr>
           <th>{strings.racetrackDetailsPage.country}</th>
           <td>{props.racetrack.country}</td>
@@ -53,6 +61,7 @@ export const RacetrackDetailsTable = (props) => {
 
 RacetrackDetailsTable.propTypes = {
   racetrack: propTypes.object.isRequired,
+  isShowRacetrackName: propTypes.bool.isRequired,
 };
 
 export default RacetrackDetailsTable;

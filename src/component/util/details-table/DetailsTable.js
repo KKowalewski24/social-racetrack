@@ -14,10 +14,12 @@ export const DetailsTable = (props) => {
     >
       {props.renderTitle && props.renderTitle()}
       <div className="row justify-content-center px-3">
-        <table className="table table-responsive table-bordered text-center w-auto text-white mb-0">
-          {props.renderHead && props.renderHead()}
-          {props.renderBody && props.renderBody()}
-        </table>
+        <div className="table-responsive">
+          <table className="table table-bordered text-center text-white mb-0">
+            {props.renderHead && props.renderHead()}
+            {props.renderBody && props.renderBody()}
+          </table>
+        </div>
       </div>
     </HorizontalContainer>
   );

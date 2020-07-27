@@ -216,7 +216,7 @@ export const strings = {
     backHomePage: "Go back to home page",
   },
   racetrackDetailsPage: {
-    name: "Name",
+    racetrackName: "Racetrack Name",
     country: "Country",
     city: "City",
     lengthInMeters: "Length [m]",

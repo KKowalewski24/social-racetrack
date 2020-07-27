@@ -11,7 +11,6 @@ import HorizontalContainer from "../../../component/util/horizontal-container/Ho
 import strings from "../../../config/constant/string-constants";
 import {PR, redirectToPage} from "../../../logic/Helper";
 import HorizontalDeleteButton from "../../../component/details-display/horizontal-delete-button/HorizontalDeleteButton";
-import DetailsTable from "../../../component/util/details-table/DetailsTable";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
@@ -102,6 +101,7 @@ export const RacetrackDetailsPage = (props) => {
       return (
         <RacetrackDetailsTable
           racetrack={racetrack}
+          isShowRacetrackName={false}
         />
       );
     };
