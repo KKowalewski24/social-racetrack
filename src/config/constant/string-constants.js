@@ -156,6 +156,11 @@ export const strings = {
   eventDetailsPage: {
     participateEvent: "Participate in the event",
     cancelParticipation: "Cancel Participation",
+    orderSign: "#",
+    firstName: "First Name",
+    lastName: "Last Name",
+    country: "Country",
+    city: "City",
     deleteEvent: "Delete Event",
     eventLoadingError: "An error occurred while loading event data",
     memberLoadingError: "An error occurred while loading member data",

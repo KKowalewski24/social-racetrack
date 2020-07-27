@@ -10,6 +10,7 @@ import {PATH_DB_COLLECTION_EVENTS, PATH_DB_COLLECTION_MEMBERS} from "../../../co
 import CustomCardImage from "../../../component/util/custom-card-image/CustomCardImage";
 import {PR, redirectToPage} from "../../../logic/Helper";
 import RacetrackDetailsTable from "../../../component/details-display/racetrack-details-table/RacetrackDetailsTable";
+import EventParticipantsTable from "../../../component/details-display/event-participants-table/EventParticipantsTable";
 import config from "../../../config/config";
 import {
   getAddedEventsRefPathArray,
@@ -189,6 +190,14 @@ export const EventDetailsPage = (props) => {
       );
     };
 
+    const renderEventParticipants = () => {
+      return (
+        <EventParticipantsTable
+          membersDataArray={event.membersDataArray}
+        />
+      );
+    };
+
     const renderDeleteBar = () => {
       return (
         <HorizontalDeleteButton
@@ -203,6 +212,7 @@ export const EventDetailsPage = (props) => {
       <div className="col-sm-6">
         {renderTitleBar()}
         {renderRacetrackTable()}
+        {renderEventParticipants()}
         {isAdmin ? renderDeleteBar() : null}
       </div>
     );
