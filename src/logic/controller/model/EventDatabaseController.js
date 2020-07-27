@@ -31,17 +31,14 @@ export class EventDatabaseController {
         eventDate
       );
 
-      const updatedRefPathArray = getAddedEventsRefPathArray(
-        await this._memberDatabaseController.readSingleMemberById(
-          config.auth().currentUser && config.auth().currentUser.uid,
-          errorFunction
-        ),
-        PATH_DB_COLLECTION_EVENTS + event.id
+      const member = await this._memberDatabaseController.readSingleMemberById(
+        config.auth().currentUser && config.auth().currentUser.uid,
+        errorFunction
       );
 
       await this._memberDatabaseController.updateMemberById(
-        config.auth().currentUser && config.auth().currentUser.uid,
-        updatedRefPathArray,
+        member.id,
+        getAddedEventsRefPathArray(member, PATH_DB_COLLECTION_EVENTS + event.id),
         errorFunction
       );
 
