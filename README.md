@@ -142,3 +142,4 @@ not only references to them
 * All legal assumptions are stored in legal-constants.js file
 * Member who creates event also participate in this event and he/she cannot 
 cancel participation
+* Event becomes past exactly one day (24h) before its start datetime
