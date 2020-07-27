@@ -149,14 +149,6 @@ export const EventDetailsPage = (props) => {
 
   const renderRightSide = () => {
 
-    const renderBoldText = (text = PR()) => {
-      return (
-        <div className="font-weight-bold mb-1">
-          {text}
-        </div>
-      );
-    };
-
     /**
      * text cannot be marked as PR() because getting racetrack object is async
      */
