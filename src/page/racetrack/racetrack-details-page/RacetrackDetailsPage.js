@@ -15,6 +15,7 @@ import DetailsTable from "../../../component/util/details-table/DetailsTable";
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
+import RacetrackDetailsTable from "../../../component/details-display/racetrack-details-table/RacetrackDetailsTable";
 
 export const RacetrackDetailsPage = (props) => {
 
@@ -98,43 +99,9 @@ export const RacetrackDetailsPage = (props) => {
     };
 
     const renderDetailsBar = () => {
-
-      const renderBody = () => {
-        return (
-          <tbody>
-            <tr>
-              <th>{strings.racetrackDetailsPage.country}</th>
-              <td>{racetrack.country}</td>
-            </tr>
-            <tr>
-              <th>{strings.racetrackDetailsPage.city}</th>
-              <td>{racetrack.city}</td>
-            </tr>
-            <tr>
-              <th>{strings.racetrackDetailsPage.lengthInMeters}</th>
-              <td>{racetrack.lengthInMeters}</td>
-            </tr>
-            <tr>
-              <th>{strings.racetrackDetailsPage.turnsNumber}</th>
-              <td>{racetrack.turnsNumber}</td>
-            </tr>
-            <tr>
-              <th>{strings.racetrackDetailsPage.maximumExhaustLoudnessInDecibels}</th>
-              <td>{racetrack.maximumExhaustLoudnessInDecibels}</td>
-            </tr>
-            <tr>
-              <th>{strings.racetrackDetailsPage.minimumRideHeightInMillimeters}</th>
-              <td>{racetrack.minimumRideHeightInMillimeters}</td>
-            </tr>
-          </tbody>
-        );
-      };
-
       return (
-        <DetailsTable
-          panelBackgroundColor={globalStyles.materialBlueBackground}
-          margin={"custom-hor-cont-margin-bottom"}
-          renderBody={renderBody}
+        <RacetrackDetailsTable
+          racetrack={racetrack}
         />
       );
     };
