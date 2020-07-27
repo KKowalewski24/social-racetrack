@@ -55,9 +55,11 @@ export const RacetrackDetailsPage = (props) => {
 
   const renderLeftSide = () => {
     return (
-      <CustomCardImage
-        imageUrl={racetrack.imageUrl}
-      />
+      <div className="col-sm-6 align-self-center mb-4">
+        <CustomCardImage
+          imageUrl={racetrack.imageUrl}
+        />
+      </div>
     );
   };
 
