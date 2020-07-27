@@ -14,6 +14,8 @@ import {getAddedEventsRefPathArray, getDeletedEventsRefPathArray} from "../../..
 import {getAddedMembersRefPathArray, getDeletedMembersRefPathArray} from "../../../logic/model/event/Event";
 import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
 import {CHOSEN_EVENT_ID} from "../../../config/constant/browser-storage-contants";
+import TabPanelParticipationButtons
+  from "../../../component/events-display/horizontal-participation-buttons/TabPanelParticipationButtons";
 import HorizontalDeleteButton from "../../../component/details-display/horizontal-delete-button/HorizontalDeleteButton";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
@@ -105,6 +107,22 @@ export const EventDetailsPage = (props) => {
     });
   };
 
+  const renderParticipationHandleButtons = () => {
+    return (
+      <div className="custom-tab-panel-margin">
+        {/*TODO*/}
+        <TabPanelParticipationButtons
+          panelBackgroundColor={globalStyles.materialBlueBackground}
+          handleParticipateEvent={handleParticipateEvent}
+          participateEventButtonContent={strings.eventDetailsPage.participateEvent}
+          handleCancelParticipateEvent={handleCancelParticipateEvent}
+          cancelParticipateEventButtonContent={strings.eventDetailsPage.cancelParticipation}
+          isParticipationImpossible={false}
+        />
+      </div>
+    );
+  };
+
   const renderLeftSide = () => {
     return (
       <CustomCardImage
@@ -147,12 +165,6 @@ export const EventDetailsPage = (props) => {
       );
     };
 
-    const renderParticipationHandleButtons = () => {
-      return (
-        <></>
-      );
-    };
-
     const renderDeleteBar = () => {
       return (
         <HorizontalDeleteButton
@@ -166,7 +178,6 @@ export const EventDetailsPage = (props) => {
     return (
       <div className="col-sm-6">
         {renderTitleBar()}
-        {renderParticipationHandleButtons()}
         {isAdmin ? renderDeleteBar() : null}
       </div>
     );
@@ -185,8 +196,14 @@ export const EventDetailsPage = (props) => {
       errorMessageStyles={globalStyles.materialBlueFont}
     >
       {
-        event ?
+        event && member ?
           <div className="container-fluid">
+            {
+              event.eventCreatorRefPath === PATH_DB_COLLECTION_MEMBERS + member.id ?
+                renderParticipationHandleButtons()
+                : null
+            }
+
             <div className="row justify-content-center">
               {renderLeftSide()}
               {renderRightSide()}
