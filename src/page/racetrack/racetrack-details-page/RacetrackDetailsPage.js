@@ -6,6 +6,7 @@ import {PATH_RACETRACKS} from "../../../config/constant/path-constants";
 import {AuthContext} from "../../../logic/AuthContextProvider";
 import {errorNotification} from "../../../component/util/notification/notification";
 import {BrowserStorageController} from "../../../logic/controller/BrowserStorageController";
+import RacetrackDetailsTable from "../../../component/details-display/racetrack-details-table/RacetrackDetailsTable";
 import CustomCardImage from "../../../component/util/custom-card-image/CustomCardImage";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
@@ -14,7 +15,6 @@ import HorizontalDeleteButton from "../../../component/details-display/horizonta
 import {CHOSEN_RACETRACK_ID} from "../../../config/constant/browser-storage-contants";
 import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
-import RacetrackDetailsTable from "../../../component/details-display/racetrack-details-table/RacetrackDetailsTable";
 
 export const RacetrackDetailsPage = (props) => {
 
@@ -55,7 +55,7 @@ export const RacetrackDetailsPage = (props) => {
 
   const renderLeftSide = () => {
     return (
-      <div className="col-sm-6 align-self-center mb-4">
+      <div className="col-sm-6 align-self-center custom-card-image-margin-top">
         <CustomCardImage
           imageUrl={racetrack.imageUrl}
         />
