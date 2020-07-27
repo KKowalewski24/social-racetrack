@@ -1,6 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
-import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
+import HorizontalContainer from "../horizontal-container/HorizontalContainer";
 
 export const DetailsTable = (props) => {
 

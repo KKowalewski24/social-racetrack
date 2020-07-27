@@ -7,7 +7,7 @@ import {EventDatabaseController} from "../../../logic/controller/model/EventData
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
 import {errorNotification} from "../../../component/util/notification/notification";
 import {PATH_DB_COLLECTION_EVENTS, PATH_DB_COLLECTION_MEMBERS} from "../../../config/constant/firebase-constants";
-import CustomCardImage from "../../../component/details-display/custom-card-image/CustomCardImage";
+import CustomCardImage from "../../../component/util/custom-card-image/CustomCardImage";
 import {PR, redirectToPage} from "../../../logic/Helper";
 import config from "../../../config/config";
 import {
@@ -24,7 +24,7 @@ import {
 import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
 import {CHOSEN_EVENT_ID} from "../../../config/constant/browser-storage-contants";
 import TabPanelParticipationButtons
-  from "../../../component/events-display/horizontal-participation-buttons/TabPanelParticipationButtons";
+  from "../../../component/details-display/horizontal-participation-buttons/TabPanelParticipationButtons";
 import HorizontalDeleteButton from "../../../component/details-display/horizontal-delete-button/HorizontalDeleteButton";
 import HorizontalContainer from "../../../component/util/horizontal-container/HorizontalContainer";
 import strings from "../../../config/constant/string-constants";
