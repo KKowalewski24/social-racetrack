@@ -117,12 +117,16 @@ export const AccountPage = (props) => {
               handleRemoveAward={handleRemoveAward}
             />
 
-            <div className="row justify-content-center custom-render-card-margin">
-              <RenderEventCards
-                filteredEventsArray={member.eventsDataArray}
-                titleStyles={globalStyles.materialBlueFont}
-              />
-            </div>
+            {
+              member.eventsDataArray && member.eventsDataArray.length !== 0 ?
+                <div className="row justify-content-center custom-render-card-margin">
+                  <RenderEventCards
+                    filteredEventsArray={member.eventsDataArray}
+                    titleStyles={globalStyles.materialBlueFont}
+                  />
+                </div>
+                : null
+            }
 
             <HorizontalDeleteButton
               panelBackgroundColor={globalStyles.materialBlueBackground}
