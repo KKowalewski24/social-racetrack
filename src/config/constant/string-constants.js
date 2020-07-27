@@ -1,4 +1,3 @@
-// TODO ALL STRING CONSTANTS SHOULD BE HERE
 export const strings = {
   app: {
     title: "Social Racetrack",
@@ -59,7 +58,7 @@ export const strings = {
     car: "Car",
     award: "Award",
     or: "or",
-    accountLoadingError: "An error occurred while loading data",
+    accountLoadingError: "An error occurred while loading user data",
     backHomePage: "Go back to home page",
     deleteAccount: "Delete Account",
     deleteAccountError: "User account has not been deleted!",
@@ -85,7 +84,7 @@ export const strings = {
     year: "Year",
     confirm: "Confirm",
     inputWarningInfo: "All fields are required",
-    accountLoadingError: "An error occurred while loading data",
+    accountLoadingError: "An error occurred while loading user data",
     itemNotAdded: "Item has not been added",
     itemNotDeleted: "Item has not been deleted",
     userDataNotUpdated: "User data has not been updated",
@@ -150,13 +149,16 @@ export const strings = {
     cardPropertiesKeysRacetrack: "Racetrack",
     cardPropertiesKeysCountry: "Country",
     cardPropertiesKeysCity: "City",
-    eventLoadingError: "An error occurred while loading data",
+    eventLoadingError: "An error occurred while loading events data",
     backAccountPage: "Go back to account page",
   },
   eventDetailsPage: {
     deleteEvent: "Delete Event",
-    eventLoadingError: "An error occurred while loading data",
+    eventLoadingError: "An error occurred while loading event data",
+    memberLoadingError: "An error occurred while loading member data",
     backEventsPage: "Go back to events page",
+    participateEventError: "Member has not been added to event!",
+    cancelParticipateEventError: "Member has not been removed from event!",
     deleteEventError: "Event has not been deleted!",
   },
   homePage: {
@@ -177,11 +179,11 @@ export const strings = {
     searchMember: "Search Member",
     cardPropertiesKeysCountry: "Country",
     cardPropertiesKeysCity: "City",
-    memberLoadingError: "An error occurred while loading data",
+    memberLoadingError: "An error occurred while loading members data",
     backHomePage: "Go back to home page",
   },
   memberDetailsPage: {
-    memberLoadingError: "An error occurred while loading data",
+    memberLoadingError: "An error occurred while loading member data",
     backMembersPage: "Go back to members page",
   },
   createRacetrackPage: {
@@ -207,7 +209,7 @@ export const strings = {
     cardPropertiesKeysCountry: "Country",
     cardPropertiesKeysCity: "City",
     cardPropertiesKeysLengthInMeters: "Length [m]",
-    racetrackLoadingError: "An error occurred while loading data",
+    racetrackLoadingError: "An error occurred while loading racetracks data",
     backHomePage: "Go back to home page",
   },
   racetrackDetailsPage: {
@@ -221,7 +223,7 @@ export const strings = {
     description: "Description",
     deleteRacetrack: "Delete Racetrack",
     deleteRacetrackError: "Racetrack has not been deleted!",
-    racetrackLoadingError: "An error occurred while loading data",
+    racetrackLoadingError: "An error occurred while loading racetrack data",
     backRacetracksPage: "Go back to racetracks page",
   },
   errorPage: {

@@ -27,7 +27,8 @@ export class EventDatabaseController {
         generateCustomUuid(), eventName,
         PATH_DB_COLLECTION_RACETRACKS + racetrackId,
         PATH_DB_COLLECTION_MEMBERS + creatorId,
-        [], eventDate
+        [PATH_DB_COLLECTION_MEMBERS + creatorId],
+        eventDate
       );
 
       const updatedRefPathArray = getAddedEventsRefPathArray(

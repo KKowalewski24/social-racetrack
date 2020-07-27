@@ -29,7 +29,6 @@ export class Event extends BaseEntityAbst {
   }
 }
 
-//TODO CHECK IF WORKS
 export const getAddedMembersRefPathArray = (eventObject = PR(),
                                             addedMemberRefPath = PR()) => {
   return {membersRefPathArray: [...eventObject?.membersRefPathArray, addedMemberRefPath]};

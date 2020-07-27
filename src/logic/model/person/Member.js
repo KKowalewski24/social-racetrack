@@ -48,7 +48,6 @@ export const getDeletedReceivedAwardsArray = (memberObject = PR(),
   return {receivedAwardsArray: resultArray};
 };
 
-//TODO CHECK IF WORKS
 export const getAddedEventsRefPathArray = (memberObject = PR(),
                                            addedEventRefPath = PR()) => {
   return {eventsRefPathArray: [...memberObject?.eventsRefPathArray, addedEventRefPath]};
