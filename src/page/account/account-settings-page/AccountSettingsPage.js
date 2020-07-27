@@ -32,7 +32,7 @@ export const AccountSettingsPage = (props) => {
 
   useEffect(() => {
     memberDatabaseController.readSingleMemberById(
-      config.auth().currentUser.uid,
+      config.auth().currentUser && config.auth().currentUser.uid,
       () => errorNotification(strings.accountSettingsPage.accountLoadingError)
     )
       .then((member) => {
