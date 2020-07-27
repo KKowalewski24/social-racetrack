@@ -3,10 +3,11 @@ import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {AccountController} from "../../../logic/controller/AccountController";
-import {keyValueObjectToArray, PR} from "../../../logic/Helper";
+import {getDateInPastMovedByYearValue, keyValueObjectToArray, PR} from "../../../logic/Helper";
 import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
 import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
+import {MIN_AGE_CREATE_ACCOUNT, MIN_PASSWORD_LENGTH} from "../../../config/constant/legal-constants";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -24,15 +25,19 @@ export const RegisterPage = (props) => {
   const globalStyles = GlobalStyles();
 
   const handleRegister = (data = PR()) => {
-    if (createMemberCallCounter === 0) {
-      accountController.registerUser(
-        data.firstName, data.lastName, data.email, data.password,
-        data.country, data.city, new Date(data.birthDate),
-        () => warningNotification(strings.registerPage.verificationEmailNotSent),
-        () => errorNotification(strings.registerPage.userAccountNotCreated)
-      );
+    if (new Date(data.birthDate) < getDateInPastMovedByYearValue(MIN_AGE_CREATE_ACCOUNT)) {
+      if (createMemberCallCounter === 0) {
+        accountController.registerUser(
+          data.firstName, data.lastName, data.email, data.password,
+          data.country, data.city, new Date(data.birthDate),
+          () => warningNotification(strings.registerPage.verificationEmailNotSent),
+          () => errorNotification(strings.registerPage.userAccountNotCreated)
+        );
 
-      setCreateMemberCallCounter(createMemberCallCounter + 1);
+        setCreateMemberCallCounter(createMemberCallCounter + 1);
+      }
+    } else {
+      warningNotification(strings.registerPage.tooYoungInfo);
     }
   };
 
@@ -102,7 +107,7 @@ export const RegisterPage = (props) => {
 
         <TextField
           type="password"
-          inputRef={register({required: true})}
+          inputRef={register({required: true, min: MIN_PASSWORD_LENGTH})}
           name="password"
           label={strings.registerPage.password}
           variant="outlined"

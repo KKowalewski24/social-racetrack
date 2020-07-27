@@ -23,6 +23,10 @@ export const getCurrentYear = () => {
   return new Date().getFullYear();
 };
 
+export const getDateInPastMovedByYearValue = (yearDifference = PR()) => {
+  return new Date(new Date().setFullYear(new Date().getFullYear() - yearDifference));
+};
+
 export const getYesterday = () => {
   return new Date(new Date().setDate(new Date().getDate() - 1));
 };
