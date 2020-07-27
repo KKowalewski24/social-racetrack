@@ -55,7 +55,7 @@ export const RacetrackDetailsPage = (props) => {
 
   const renderLeftSide = () => {
     return (
-      <div className="col-sm-6 align-self-center custom-card-image-margin-top">
+      <div className="col-md-6 align-self-center custom-card-image-margin-top">
         <CustomCardImage
           imageUrl={racetrack.imageUrl}
         />
@@ -131,7 +131,7 @@ export const RacetrackDetailsPage = (props) => {
     };
 
     return (
-      <div className="col-sm-6">
+      <div className="col-md-6">
         {renderTitleBar()}
         {renderDetailsBar()}
         {renderDescriptionBar()}

@@ -139,7 +139,7 @@ export const EventDetailsPage = (props) => {
 
   const renderLeftSide = () => {
     return (
-      <div className="col-sm-6 align-self-center">
+      <div className="col-md-6 align-self-center custom-card-image-margin-top">
         <CustomCardImage
           imageUrl={event.racetrackData.imageUrl}
         />
@@ -209,7 +209,7 @@ export const EventDetailsPage = (props) => {
     };
 
     return (
-      <div className="col-sm-6">
+      <div className="col-md-6">
         {renderTitleBar()}
         {renderRacetrackTable()}
         {renderEventParticipants()}
