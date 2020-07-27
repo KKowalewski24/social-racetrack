@@ -24,6 +24,7 @@ export const CreateEventPage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isError, setIsError] = useState(false);
   const [createEventCallCounter, setCreateEventCallCounter] = useState(0);
+  const [racetrackId, setRacetrackId] = useState("");
 
   const history = useHistory();
   const eventDatabaseController = new EventDatabaseController();
@@ -60,10 +61,7 @@ export const CreateEventPage = (props) => {
   };
 
   const handleCreateEvent = (data = PR()) => {
-    if (createEventCallCounter === 0) {
-      //TODO REMEMBER THAT racetrack SHOULD BE ID
-      const racetrackId = data.racetrack;
-
+    if (createEventCallCounter === 0 && racetrackId !== "") {
       eventDatabaseController.createEvent(
         data.eventName, racetrackId,
         config.auth().currentUser && config.auth().currentUser.uid,
@@ -77,7 +75,7 @@ export const CreateEventPage = (props) => {
 
   const checkInputs = () => {
     // eslint-disable-next-line no-unused-expressions
-    if (keyValueObjectToArray(errors).length > 0) {
+    if (keyValueObjectToArray(errors).length > 0 || racetrackId === "") {
       warningNotification(strings.createEventPage.inputWarningInfo);
     }
   };
@@ -108,9 +106,9 @@ export const CreateEventPage = (props) => {
             />
 
             <ArrayComboBox
-              dataArray={getRacetrackKeyValueArray()}
-              inputRef={register({required: true})}
-              name="racetrack"
+              keyValueDataArray={getRacetrackKeyValueArray()}
+              chosenOption={racetrackId}
+              setChosenOption={setRacetrackId}
               label={strings.createEventPage.racetrack}
             />
 
