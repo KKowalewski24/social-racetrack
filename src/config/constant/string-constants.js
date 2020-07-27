@@ -153,6 +153,8 @@ export const strings = {
     backAccountPage: "Go back to account page",
   },
   eventDetailsPage: {
+    participateEvent: "Participate in the event",
+    cancelParticipation: "Cancel Participation",
     deleteEvent: "Delete Event",
     eventLoadingError: "An error occurred while loading event data",
     memberLoadingError: "An error occurred while loading member data",
