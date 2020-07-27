@@ -1,6 +1,6 @@
 import {DatabaseController} from "../DatabaseController";
-import {generateCustomUuid, getTomorrow, PR} from "../../Helper";
-import {Event} from "../../model/event/Event";
+import {generateCustomUuid, PR} from "../../Helper";
+import {Event, isFutureEvent, isPastEvent} from "../../model/event/Event";
 import {MemberDatabaseController} from "./MemberDatabaseController";
 import {getAddedEventsRefPathArray, getDeletedEventsRefPathArray} from "../../model/person/Member";
 import config from "../../../config/config";
@@ -86,7 +86,7 @@ export class EventDatabaseController {
 
       const futureEventsArray = [];
       for (const it of eventsArray) {
-        if (new Date(it.eventDate) > getTomorrow()) {
+        if (isFutureEvent(it.eventDate)) {
           futureEventsArray.push(it);
         }
       }
@@ -104,7 +104,7 @@ export class EventDatabaseController {
 
       const pastEventsArray = [];
       for (const it of eventsArray) {
-        if (new Date(it.eventDate) < getTomorrow()) {
+        if (isPastEvent(it.eventDate)) {
           pastEventsArray.push(it);
         }
       }

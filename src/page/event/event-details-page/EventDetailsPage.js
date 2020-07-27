@@ -10,8 +10,17 @@ import {PATH_DB_COLLECTION_EVENTS, PATH_DB_COLLECTION_MEMBERS} from "../../../co
 import CustomCardImage from "../../../component/details-display/custom-card-image/CustomCardImage";
 import {PR, redirectToPage} from "../../../logic/Helper";
 import config from "../../../config/config";
-import {getAddedEventsRefPathArray, getDeletedEventsRefPathArray} from "../../../logic/model/person/Member";
-import {getAddedMembersRefPathArray, getDeletedMembersRefPathArray} from "../../../logic/model/event/Event";
+import {
+  getAddedEventsRefPathArray,
+  getDeletedEventsRefPathArray,
+  isMemberParticipate
+} from "../../../logic/model/person/Member";
+import {
+  getAddedMembersRefPathArray,
+  getDeletedMembersRefPathArray,
+  isFutureEvent,
+  isMemberIsEventCreator
+} from "../../../logic/model/event/Event";
 import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
 import {CHOSEN_EVENT_ID} from "../../../config/constant/browser-storage-contants";
 import TabPanelParticipationButtons
@@ -94,7 +103,7 @@ export const EventDetailsPage = (props) => {
   const handleCancelParticipateEvent = () => {
     memberDatabaseController.updateMemberById(
       member.id,
-      getDeletedEventsRefPathArray(member.id, PATH_DB_COLLECTION_EVENTS + event.id),
+      getDeletedEventsRefPathArray(member, PATH_DB_COLLECTION_EVENTS + event.id),
       () => errorNotification(strings.eventDetailsPage.cancelParticipateEventError)
     ).then(() => {
       eventDatabaseController.updateEventById(
@@ -108,19 +117,22 @@ export const EventDetailsPage = (props) => {
   };
 
   const renderParticipationHandleButtons = () => {
-    return (
-      <div className="custom-tab-panel-margin">
-        {/*TODO*/}
-        <TabPanelParticipationButtons
-          panelBackgroundColor={globalStyles.materialBlueBackground}
-          handleParticipateEvent={handleParticipateEvent}
-          participateEventButtonContent={strings.eventDetailsPage.participateEvent}
-          handleCancelParticipateEvent={handleCancelParticipateEvent}
-          cancelParticipateEventButtonContent={strings.eventDetailsPage.cancelParticipation}
-          isParticipationImpossible={false}
-        />
-      </div>
-    );
+    if (isFutureEvent(event.eventDate) && !isMemberIsEventCreator(event, member)) {
+      return (
+        <div className="custom-tab-panel-margin">
+          <TabPanelParticipationButtons
+            panelBackgroundColor={globalStyles.materialBlueBackground}
+            handleParticipateEvent={handleParticipateEvent}
+            participateEventButtonContent={strings.eventDetailsPage.participateEvent}
+            handleCancelParticipateEvent={handleCancelParticipateEvent}
+            cancelParticipateEventButtonContent={strings.eventDetailsPage.cancelParticipation}
+            isAlreadyParticipate={isMemberParticipate(member, event)}
+          />
+        </div>
+      );
+    } else {
+      return null;
+    }
   };
 
   const renderLeftSide = () => {
@@ -198,11 +210,7 @@ export const EventDetailsPage = (props) => {
       {
         event && member ?
           <div className="container-fluid">
-            {
-              event.eventCreatorRefPath === PATH_DB_COLLECTION_MEMBERS + member.id ?
-                renderParticipationHandleButtons()
-                : null
-            }
+            {renderParticipationHandleButtons()}
 
             <div className="row justify-content-center">
               {renderLeftSide()}

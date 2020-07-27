@@ -12,7 +12,7 @@ export const TabPanelParticipationButtons = (props) => {
     return (
       <Button
         onClick={handleAction}
-        color="secondary"
+        color="primary"
         variant="contained"
         className="my-1 mx-1"
         disabled={isDisabled}
@@ -29,14 +29,14 @@ export const TabPanelParticipationButtons = (props) => {
         renderSingleButton(
           props.handleParticipateEvent,
           props.participateEventButtonContent,
-          props.isParticipationImpossible
+          props.isAlreadyParticipate
         )
       }
       {
         renderSingleButton(
           props.handleCancelParticipateEvent,
           props.cancelParticipateEventButtonContent,
-          !props.isParticipationImpossible
+          !props.isAlreadyParticipate
         )
       }
     </TabPanel
@@ -44,13 +44,17 @@ export const TabPanelParticipationButtons = (props) => {
   );
 };
 
+/**
+ * If user already participate then button for
+ * participate is not shown - button for cancel is shown
+ */
 TabPanelParticipationButtons.propTypes = {
   panelBackgroundColor: propTypes.string.isRequired,
   handleParticipateEvent: propTypes.func.isRequired,
   participateEventButtonContent: propTypes.string.isRequired,
   handleCancelParticipateEvent: propTypes.func.isRequired,
   cancelParticipateEventButtonContent: propTypes.string.isRequired,
-  isParticipationImpossible: propTypes.bool.isRequired,
+  isAlreadyParticipate: propTypes.bool.isRequired,
 };
 
 export default TabPanelParticipationButtons;

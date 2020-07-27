@@ -1,5 +1,6 @@
 import {BaseEntityAbst} from "../base/BaseEntityAbst";
-import {PR} from "../../Helper";
+import {getTomorrow, PR} from "../../Helper";
+import {PATH_DB_COLLECTION_MEMBERS} from "../../../config/constant/firebase-constants";
 
 export class Event extends BaseEntityAbst {
 
@@ -40,4 +41,17 @@ export const getDeletedMembersRefPathArray = (eventObject = PR(),
     .membersRefPathArray?.filter((it) => it !== deletedMemberRefPath);
 
   return {membersRefPathArray: resultArray};
+};
+
+export const isFutureEvent = (eventDate = PR()) => {
+  return new Date(eventDate) > getTomorrow();
+};
+
+export const isPastEvent = (eventDate = PR()) => {
+  return new Date(eventDate) < getTomorrow();
+};
+
+export const isMemberIsEventCreator = (eventObject = PR(),
+                                       memberObject = PR()) => {
+  return eventObject.eventCreatorRefPath === PATH_DB_COLLECTION_MEMBERS + memberObject.id;
 };

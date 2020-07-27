@@ -1,5 +1,6 @@
 import {PersonAbst} from "./PersonAbst";
 import {PR} from "../../Helper";
+import {PATH_DB_COLLECTION_EVENTS} from "../../../config/constant/firebase-constants";
 
 export class Member extends PersonAbst {
 
@@ -59,4 +60,11 @@ export const getDeletedEventsRefPathArray = (memberObject = PR(),
     .eventsRefPathArray?.filter((it) => it !== deletedEventRefPath);
 
   return {eventsRefPathArray: resultArray};
+};
+
+export const isMemberParticipate = (memberObject = PR(),
+                                    eventObject = PR()) => {
+  return memberObject
+    .eventsRefPathArray
+    .includes(PATH_DB_COLLECTION_EVENTS + eventObject.id);
 };
