@@ -41,6 +41,7 @@ export const strings = {
     email: "Email",
     lastLogin: "Last Login",
     joinDate: "Join Date",
+    memberIsAdmin: "Member has admin privileges",
     cars: "Cars",
     brand: "Brand",
     model: "Model",

@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import {AuthContext} from "../../../logic/AuthContextProvider";
 import DisplayUserData from "../../../component/account/display-user-data/DisplayUserData";
 import DisplayUserAvatar from "../../../component/account/display-user-avatar/DisplayUserAvatar";
 import config from "../../../config/config";
@@ -18,6 +19,7 @@ import "../../../index.css";
 export const AccountPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
+  const {isAdmin} = useContext(AuthContext);
   const [member, setMember] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -110,6 +112,7 @@ export const AccountPage = (props) => {
               email={member.email}
               carsArray={member.carsArray}
               receivedAwardsArray={member.receivedAwardsArray}
+              isAdmin={isAdmin}
               isEditableForUser={true}
               joinDate={config.auth().currentUser?.metadata.creationTime}
               lastLogin={config.auth().currentUser?.metadata.lastSignInTime}
