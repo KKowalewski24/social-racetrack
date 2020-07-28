@@ -55,7 +55,7 @@ PrivateRoute.propTypes = {
   privacyCondition: propTypes.any,
   redirectPath: propTypes.string,
   defaultPath: propTypes.string,
-  observedParam: propTypes.bool.isRequired,
+  observedParam: propTypes.bool,
 };
 
 export default PrivateRoute;

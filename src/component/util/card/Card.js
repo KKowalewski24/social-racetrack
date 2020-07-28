@@ -1,16 +1,16 @@
 import React, {Fragment} from "react";
 import propTypes from "prop-types";
 import {Link} from "react-router-dom";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import {PR} from "../../../logic/Helper";
+import GradeIcon from "@material-ui/icons/Grade";
 
-export const BaseCard = (props) => {
+export const Card = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const renderSingleProperty = (key = PR(), value = PR()) => {
     return (
       <div className="text-dark">
-        <FiberManualRecordIcon fontSize="inherit" className="mb-1"/>
+        <GradeIcon fontSize="inherit" className="mb-1 mr-1"/>
         {key + ": "}
         <span className="text-nowrap">
           {value}
@@ -20,10 +20,10 @@ export const BaseCard = (props) => {
   };
 
   const renderProperties = (propertiesArray = PR()) => {
-    propertiesArray.map((it, index) => {
+    return propertiesArray && propertiesArray.map((it, index) => {
       return (
         <Fragment key={index}>
-          {renderSingleProperty()}
+          {renderSingleProperty(it.key, it.value)}
         </Fragment>
       );
     });
@@ -53,14 +53,14 @@ export const BaseCard = (props) => {
   );
 };
 
-BaseCard.propTypes = {
+Card.propTypes = {
   gridStyles: propTypes.string.isRequired,
   redirectPath: propTypes.string.isRequired,
   handleRedirect: propTypes.func.isRequired,
   imagePath: propTypes.string.isRequired,
-  titleStyles: propTypes.string,
+  titleStyles: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
   propertiesArray: propTypes.array.isRequired,
 };
 
-export default BaseCard;
+export default Card;

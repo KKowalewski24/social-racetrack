@@ -1,41 +1,15 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import TabPanel from "../../../component/util/tab-panel/TabPanel";
-import strings from "../../../config/constant/string-constants";
-import {PATH_CREATE_EVENT} from "../../../config/constant/path-constants";
-import Button from "@material-ui/core/Button";
+import RenderEvents from "../../../component/events-display/render-events/RenderEvents";
 
 export const FutureEventsPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const renderTab = () => {
-    return (
-      <TabPanel>
-        <Link to={PATH_CREATE_EVENT} className="custom-color-inherit">
-          <Button
-            color="primary"
-            variant="contained"
-            className="my-1 mx-1"
-          >
-            {strings.futureEventsPage.createNewEvent}
-          </Button>
-        </Link>
-      </TabPanel>
-    );
-  };
-
-  const renderEventCards = () => {
-    //TODO
-  };
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container-fluid">
-      <div className="my-4 mx-2">
-        {renderTab()}
-        {renderEventCards()}
-      </div>
-    </div>
+    <RenderEvents
+      isFuture={true}
+    />
   );
 };
 

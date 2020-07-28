@@ -13,7 +13,10 @@ export const DisplayUserAvatar = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <HorizontalContainer panelBackgroundColor={props.backgroundStyle} margin={"mt-4 mb-3"}>
+    <HorizontalContainer
+      panelBackgroundColor={props.backgroundStyle}
+      margin={props.margin}
+    >
       <div className="row justify-content-center">
         <div>
           <LetterAvatar
@@ -39,6 +42,7 @@ export const DisplayUserAvatar = (props) => {
 };
 
 DisplayUserAvatar.propTypes = {
+  margin: propTypes.string.isRequired,
   firstName: propTypes.string.isRequired,
   lastName: propTypes.string.isRequired,
   avatarRedirectPath: propTypes.string.isRequired,

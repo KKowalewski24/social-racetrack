@@ -13,6 +13,17 @@ export class BrowserStorageController {
     return JSON.parse(sessionStorage.getItem(key));
   };
 
+  sessionStorageAppendArray = (key = PR(), item = PR()) => {
+    const dataArray = this.sessionStorageGetItem(key);
+
+    if (dataArray !== null) {
+      dataArray.push(item);
+      this.sessionStorageSaveItem(key, dataArray);
+    } else {
+      this.sessionStorageSaveItem(key, [item]);
+    }
+  };
+
   sessionStorageRemoveItem = (key = PR()) => {
     sessionStorage.removeItem(key);
   };
@@ -27,6 +38,17 @@ export class BrowserStorageController {
 
   localStorageGetItem = (key = PR()) => {
     return JSON.parse(localStorage.getItem(key));
+  };
+
+  localStorageAppendArray = (key = PR(), item = PR()) => {
+    const dataArray = this.localStorageGetItem(key);
+
+    if (dataArray !== null) {
+      dataArray.push(item);
+      this.localStorageSaveItem(key, dataArray);
+    } else {
+      this.localStorageSaveItem(key, [item]);
+    }
   };
 
   localStorageRemoveItem = (key = PR()) => {

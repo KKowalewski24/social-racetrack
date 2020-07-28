@@ -13,9 +13,9 @@ export const ErrorPage = (props) => {
   return (
     <ErrorMessage
       title={strings.errorPage.title}
-      message={strings.errorPage.message}
+      description={strings.errorPage.message}
       redirectPath={PATH_HOME}
-      redirectMessage={strings.errorPage.redirectMessage}
+      redirectDescription={strings.errorPage.redirectMessage}
       styles={globalStyles.materialBlueFont}
     />
   );

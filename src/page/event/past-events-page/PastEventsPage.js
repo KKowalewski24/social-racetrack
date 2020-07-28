@@ -1,4 +1,5 @@
 import React from "react";
+import RenderEvents from "../../../component/events-display/render-events/RenderEvents";
 
 export const PastEventsPage = (props) => {
 
@@ -6,9 +7,9 @@ export const PastEventsPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <>
-
-    </>
+    <RenderEvents
+      isFuture={false}
+    />
   );
 };
 

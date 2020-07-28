@@ -106,11 +106,11 @@
     }
 }
 
-.custom-margin-top-2 {
+.custom-page-small-margin {
     margin-top: 2rem;
 }
 
-.custom-margin-top-4 {
+.custom-page-big-margin {
     margin-top: 4rem;
 }
 
@@ -129,7 +129,7 @@
 }
 
 .custom-font-size-0-5 {
-    font-size: 0.2rem !important;
+    font-size: 0.5rem !important;
 }
 
 .custom-font-size-1 {
@@ -154,4 +154,48 @@
 
 .custom-color-inherit:hover {
     color: inherit;
+}
+
+.custom-prevent-overflow {
+    overflow-wrap: break-word;
+}
+
+.custom-hor-cont-margin-top-first {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.custom-hor-cont-margin-first-last {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.custom-hor-cont-margin-bottom {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.custom-hor-cont-margin-bottom-last {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.custom-tab-panel-margin {
+    margin: 1.5rem 0.5rem !important;
+}
+
+.custom-search-box-margin {
+    margin-top: 0.5rem !important;
+}
+
+.custom-render-card-margin {
+    margin-top: 0.5rem !important;
+}
+
+.custom-create-form-margin {
+    margin: 1.5rem 0.5rem !important;
+}
+
+.custom-card-image-margin-top {
+    margin-top: 1rem !important;
 }

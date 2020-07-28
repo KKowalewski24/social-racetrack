@@ -8,6 +8,10 @@ export class RacetrackFirebaseStorageController {
   _firebaseStorageController = new FirebaseStorageController();
 
   /*------------------------ METHODS REGION ------------------------*/
+
+  /**
+   * Method returns uploaded image URL
+   */
   uploadRacetrackImage = async (filename = PR(), data = PR(), errorFunction = PR()) => {
     await this._firebaseStorageController
       .uploadFile(PATH_STORAGE_RACETRACK_IMAGE + filename, data, METADATA_IMAGE, errorFunction);
@@ -16,8 +20,8 @@ export class RacetrackFirebaseStorageController {
       .downloadFile(PATH_STORAGE_RACETRACK_IMAGE + filename, errorFunction);
   };
 
-  deleteRacetrackImage = (path = PR(), errorFunction = PR()) => {
+  deleteRacetrackImage = (imageUrl = PR(), errorFunction = PR()) => {
     this._firebaseStorageController
-      .deleteFile(PATH_STORAGE_RACETRACK_IMAGE, errorFunction);
+      .deleteFileByUrl(imageUrl, errorFunction);
   };
 }

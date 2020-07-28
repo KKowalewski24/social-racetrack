@@ -1,20 +1,19 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
-import {PR} from "../../logic/Helper";
+import {PR} from "../../../logic/Helper";
 import {Link} from "react-router-dom";
-import {strings} from "../../config/constant/string-constants";
+import {strings} from "../../../config/constant/string-constants";
 import clsx from "clsx";
 import {
   PATH_ACCOUNT,
   PATH_ADMIN_PANEL,
-  PATH_CREATE_EVENT,
   PATH_FUTURE_EVENTS,
   PATH_HOME,
   PATH_LOGIN,
   PATH_MEMBERS,
   PATH_PAST_EVENTS,
   PATH_RACETRACKS
-} from "../../config/constant/path-constants";
+} from "../../../config/constant/path-constants";
 import {
   AppBar,
   Divider,
@@ -36,12 +35,11 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import EventIcon from "@material-ui/icons/Event";
 import HistoryIcon from "@material-ui/icons/History";
 import FlagIcon from "@material-ui/icons/Flag";
-import AddBoxIcon from "@material-ui/icons/AddBox";
 import PersonIcon from "@material-ui/icons/Person";
 import BuildIcon from "@material-ui/icons/Build";
 
 import NavbarStyles from "./NavbarStyles";
-import "../../index.css";
+import "../../../index.css";
 
 export const Navbar = (props) => {
 

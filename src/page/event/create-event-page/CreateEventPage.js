@@ -1,74 +1,155 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {ToastContainer} from "react-toastify";
 import {EventDatabaseController} from "../../../logic/controller/model/EventDatabaseController";
-import {keyValueObjectToArray, PR} from "../../../logic/Helper";
-import {warningNotification} from "../../../component/util/notification/notification";
-import CustomComboBox from "../../../component/util/custom-combo-box/CustomComboBox";
+import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
+import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
+import {PATH_FUTURE_EVENTS} from "../../../config/constant/path-constants";
+import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
+import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
+import ArrayComboBox from "../../../component/creation/array-combo-box/ArrayComboBox";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
 import strings from "../../../config/constant/string-constants";
-import Button from "@material-ui/core/Button";
+import config from "../../../config/config";
 import TextField from "@material-ui/core/TextField";
+import GlobalStyles from "../../../main/GlobalStyles";
 import "../../../index.css";
 
 export const CreateEventPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const [racetracksArray, setRacetracksArray] = useState(undefined);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [createEventCallCounter, setCreateEventCallCounter] = useState(0);
+  const [racetrackId, setRacetrackId] = useState("");
+
+  const history = useHistory();
   const eventDatabaseController = new EventDatabaseController();
+  const racetrackDatabaseController = new RacetrackDatabaseController();
+  const globalStyles = GlobalStyles();
+
+  useEffect(() => {
+    racetrackDatabaseController.readAllRacetracks(
+      () => errorNotification(strings.createEventPage.racetrackLoadingError)
+    )
+      .then((racetracks) => {
+        setRacetracksArray(racetracks);
+        setIsLoaded(true);
+        setIsError(false);
+      })
+      .catch((err) => {
+        setIsLoaded(true);
+        setIsError(true);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getRacetrackKeyValueArray = () => {
+    const keyValueArray = [];
+
+    racetracksArray && racetracksArray.forEach((it) => {
+      keyValueArray.push({
+        key: it.id,
+        value: it.name
+      });
+    });
+
+    return keyValueArray;
+  };
 
   const handleCreateEvent = (data = PR()) => {
-    console.log(data);
-    //TODO ADD IMPL
+    if (createEventCallCounter === 0 && racetrackId !== "") {
+      eventDatabaseController.createEvent(
+        data.eventName, racetrackId,
+        config.auth().currentUser && config.auth().currentUser.uid,
+        new Date(data.date + " " + data.time),
+        () => errorNotification(strings.createEventPage.eventNotSavedError)
+      ).then(() => redirectToPage(history, PATH_FUTURE_EVENTS));
+
+      setCreateEventCallCounter(createEventCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {
     // eslint-disable-next-line no-unused-expressions
-    if (keyValueObjectToArray(errors).length > 0) {
+    if (keyValueObjectToArray(errors).length > 0 || racetrackId === "") {
       warningNotification(strings.createEventPage.inputWarningInfo);
     }
   };
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-md mt-3">
-      <div className="my-4 mx-2">
-        <form onSubmit={handleSubmit(handleCreateEvent)}>
+    <FetchDataController
+      isLoaded={isLoaded}
+      isError={isError}
+      errorMessageTitle={""}
+      errorMessageDescription={strings.createEventPage.racetrackLoadingError}
+      errorMessageRedirectPath={PATH_FUTURE_EVENTS}
+      errorMessageRedirectDescription={strings.createEventPage.backFutureEventsPage}
+      errorMessageStyles={globalStyles.materialBlueFont}
+    >
+      <div className="container custom-container-md">
+        <div className="custom-create-form-margin">
+          <form onSubmit={handleSubmit(handleCreateEvent)}>
 
-          {/*TODO ADD ARRAY WITH DATA - REMEMBER TO PROPERLY PARSE - ENUM STYLE*/}
-          <CustomComboBox
-            dataArray={[]}
-            inputRef={register({required: true})}
-            name="racetrack"
-            label={strings.createEventPage.racetrack}
-          />
+            <TextField
+              type="text"
+              inputRef={register({required: true})}
+              name="eventName"
+              label={strings.createEventPage.eventName}
+              variant="outlined"
+              margin="normal"
+              fullWidth
+            />
 
-          <TextField
-            type="datetime-local"
-            inputRef={register({required: true})}
-            InputLabelProps={{shrink: true}}
-            name="DateTime"
-            label={strings.createEventPage.dateTime}
-            variant="outlined"
-            margin="normal"
-            fullWidth
-          />
+            <ArrayComboBox
+              keyValueDataArray={getRacetrackKeyValueArray()}
+              chosenOption={racetrackId}
+              setChosenOption={setRacetrackId}
+              label={strings.createEventPage.racetrack}
+            />
 
-          <div className="d-flex justify-content-center">
-            <Button
-              onClick={checkInputs}
-              type="submit"
-              className="mt-4"
-              variant="contained"
-              color="primary"
-            >
-              {strings.createEventPage.confirm}
-            </Button>
-          </div>
-        </form>
+            <div className="row">
+              <div className="col-sm-6">
+                <TextField
+                  type="date"
+                  inputRef={register({required: true})}
+                  InputLabelProps={{shrink: true}}
+                  name="date"
+                  label={strings.createEventPage.date}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                />
+              </div>
+
+              <div className="col-sm-6">
+                <TextField
+                  type="time"
+                  inputRef={register({required: true})}
+                  InputLabelProps={{shrink: true}}
+                  name="time"
+                  label={strings.createEventPage.time}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                />
+              </div>
+            </div>
+
+            <ConfirmButton
+              checkInputs={checkInputs}
+              buttonTextContent={strings.createEventPage.confirm}
+            />
+          </form>
+        </div>
+
+        <ToastContainer/>
       </div>
-
-      <ToastContainer/>
-    </div>
+    </FetchDataController>
   );
 };
 

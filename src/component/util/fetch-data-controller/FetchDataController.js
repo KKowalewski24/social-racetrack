@@ -41,11 +41,11 @@ export const FetchDataController = (props) => {
     } else {
       return (
         <ErrorMessage
-          title={props.errorMessageObject.title}
-          message={props.errorMessageObject.message}
-          redirectPath={props.errorMessageObject.redirectPath}
-          redirectMessage={props.errorMessageObject.redirectMessage}
-          styles={props.errorMessageObject.styles}
+          title={props.errorMessageTitle}
+          description={props.errorMessageDescription}
+          redirectPath={props.errorMessageRedirectPath}
+          redirectDescription={props.errorMessageRedirectDescription}
+          styles={props.errorMessageStyles}
         />
       );
     }
@@ -62,7 +62,11 @@ export const FetchDataController = (props) => {
 FetchDataController.propTypes = {
   isLoaded: propTypes.bool.isRequired,
   isError: propTypes.bool.isRequired,
-  errorMessageObject: propTypes.object.isRequired,
+  errorMessageTitle: propTypes.string.isRequired,
+  errorMessageDescription: propTypes.string.isRequired,
+  errorMessageRedirectPath: propTypes.string.isRequired,
+  errorMessageRedirectDescription: propTypes.string.isRequired,
+  errorMessageStyles: propTypes.string.isRequired,
 };
 
 export default FetchDataController;

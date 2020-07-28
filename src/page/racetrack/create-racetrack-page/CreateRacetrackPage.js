@@ -1,15 +1,30 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {keyValueObjectToArray, PR} from "../../../logic/Helper";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
-import strings from "../../../config/constant/string-constants";
-// eslint-disable-next-line max-len
+import {RacetrackDatabaseController} from "../../../logic/controller/model/RacetrackDatabaseController";
 import {RacetrackFirebaseStorageController} from "../../../logic/controller/model/RacetrackFirebaseStorageController";
+import {Racetrack} from "../../../logic/model/racetrack/Racetrack";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
+import {PATH_RACETRACKS} from "../../../config/constant/path-constants";
+import strings from "../../../config/constant/string-constants";
 import {ToastContainer} from "react-toastify";
-import {v4 as uuidv4} from "uuid";
 import {DropzoneArea} from "material-ui-dropzone";
+import {
+  generateCustomUuid,
+  generateCustomUuidWithSecond,
+  keyValueObjectToArray,
+  PR,
+  redirectToPage
+} from "../../../logic/Helper";
+import {
+  MAX_RACETRACK_LOUDNESS,
+  MIN_RACETRACK_LENGTH_IN_M,
+  MIN_RACETRACK_LOUDNESS,
+  MIN_RACETRACK_NUM_OF_TURNS,
+  MIN_RACETRACK_RIDE_HEIGHT
+} from "../../../config/constant/legal-constants";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import "../../../index.css";
 
 export const CreateRacetrackPage = (props) => {
@@ -17,23 +32,33 @@ export const CreateRacetrackPage = (props) => {
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
   const [image, setImage] = useState([]);
+  const [createRacetrackCallCounter, setCreateRacetrackCallCounter] = useState(0);
+
+  const history = useHistory();
   const racetrackFirebaseStorageController = new RacetrackFirebaseStorageController();
+  const racetrackDatabaseController = new RacetrackDatabaseController();
 
   const handleCreateRacetrack = (data = PR()) => {
-    console.log(data);
-
-    if (image.length === 0) {
-      warningNotification(strings.createRacetrackPage.imageWarningInfo);
-    } else {
-      racetrackFirebaseStorageController
-        .uploadRacetrackImage(new Date().getUTCMilliseconds() + uuidv4() + image[0].name, image[0],
-          () => errorNotification(strings.createRacetrackPage.imageNotSavedError))
-        .then((result) => {
-          const url = result;
-          console.log(url);
-          //TODO ADD IMPL
-          // send to fb storage and then get url and send to
+    if (createRacetrackCallCounter === 0) {
+      if (image.length === 0) {
+        warningNotification(strings.createRacetrackPage.imageWarningInfo);
+      } else {
+        racetrackFirebaseStorageController.uploadRacetrackImage(
+          generateCustomUuidWithSecond() + image[0].name, image[0],
+          () => errorNotification(strings.createRacetrackPage.imageNotSavedError)
+        ).then((imageUrl) => {
+          racetrackDatabaseController.createRacetrack(
+            new Racetrack(
+              generateCustomUuid(), data.name, data.country, data.city, data.lengthInMeters,
+              data.turnsNumber, data.maximumExhaustLoudnessInDecibels, data.minimumRideHeightInMillimeters,
+              data.description, imageUrl
+            ),
+            () => errorNotification(strings.createRacetrackPage.racetrackNotSavedError)
+          ).then(() => redirectToPage(history, PATH_RACETRACKS));
         });
+
+        setCreateRacetrackCallCounter(createRacetrackCallCounter + 1);
+      }
     }
   };
 
@@ -46,8 +71,8 @@ export const CreateRacetrackPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-md mt-3">
-      <div className="my-4 mx-2">
+    <div className="container custom-container-md">
+      <div className="custom-create-form-margin">
         <form onSubmit={handleSubmit(handleCreateRacetrack)}>
 
           <TextField
@@ -91,9 +116,9 @@ export const CreateRacetrackPage = (props) => {
             <div className="col-sm-6">
               <TextField
                 type="number"
-                inputRef={register({required: true})}
-                name="length"
-                label={strings.createRacetrackPage.length}
+                inputRef={register({required: true, min: MIN_RACETRACK_LENGTH_IN_M})}
+                name="lengthInMeters"
+                label={strings.createRacetrackPage.lengthInMeters}
                 variant="outlined"
                 margin="normal"
                 fullWidth
@@ -103,7 +128,7 @@ export const CreateRacetrackPage = (props) => {
             <div className="col-sm-6">
               <TextField
                 type="number"
-                inputRef={register({required: true})}
+                inputRef={register({required: true, min: MIN_RACETRACK_NUM_OF_TURNS})}
                 name="turnsNumber"
                 label={strings.createRacetrackPage.turnsNumber}
                 variant="outlined"
@@ -117,9 +142,13 @@ export const CreateRacetrackPage = (props) => {
             <div className="col-sm-6">
               <TextField
                 type="number"
-                inputRef={register({required: true})}
-                name="maximumExhaustLoudness"
-                label={strings.createRacetrackPage.maximumExhaustLoudness}
+                inputRef={register({
+                  required: true,
+                  min: MIN_RACETRACK_LOUDNESS,
+                  max: MAX_RACETRACK_LOUDNESS
+                })}
+                name="maximumExhaustLoudnessInDecibels"
+                label={strings.createRacetrackPage.maximumExhaustLoudnessInDecibels}
                 variant="outlined"
                 margin="normal"
                 fullWidth
@@ -129,9 +158,9 @@ export const CreateRacetrackPage = (props) => {
             <div className="col-sm-6">
               <TextField
                 type="number"
-                inputRef={register({required: true})}
-                name="minimumRideHeight"
-                label={strings.createRacetrackPage.minimumRideHeight}
+                inputRef={register({required: true, min: MIN_RACETRACK_RIDE_HEIGHT})}
+                name="minimumRideHeightInMillimeters"
+                label={strings.createRacetrackPage.minimumRideHeightInMillimeters}
                 variant="outlined"
                 margin="normal"
                 fullWidth
@@ -161,17 +190,10 @@ export const CreateRacetrackPage = (props) => {
             />
           </div>
 
-          <div className="d-flex justify-content-center">
-            <Button
-              onClick={checkInputs}
-              type="submit"
-              className="mt-4"
-              variant="contained"
-              color="primary"
-            >
-              {strings.createRacetrackPage.confirm}
-            </Button>
-          </div>
+          <ConfirmButton
+            checkInputs={checkInputs}
+            buttonTextContent={strings.createRacetrackPage.confirm}
+          />
         </form>
       </div>
 

@@ -3,6 +3,7 @@ import {PR} from "../Helper";
 import config from "../../config/config";
 import {grantStandardUser} from "../CloudFunctions";
 import strings from "../../config/constant/string-constants";
+import {Member} from "../model/person/Member";
 
 export class AccountController {
 
@@ -18,15 +19,18 @@ export class AccountController {
                   createUserErrorFunction = PR()) => {
     config.auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((result) => {
 
         grantStandardUser({email: email})
           .then((result) => console.log(result))
           .catch((error) => createUserErrorFunction());
 
-        //TODO CHECK IF ADDING USERS TO DB WORKS WELL
-        this._memberDatabaseController
-          .createMember(firstName, lastName, email, country, city, birthDate);
+        this._memberDatabaseController.createMember(
+          new Member(
+            result.user.uid, firstName, lastName, birthDate, country, city, email, [], [], []
+          ),
+          createUserErrorFunction
+        );
 
         config.auth()
           .currentUser
@@ -62,9 +66,15 @@ export class AccountController {
   };
 
   deleteAccount = (deleteAccountErrorFunction = PR()) => {
-    config.auth()
-      .currentUser
-      .delete()
-      .catch(() => deleteAccountErrorFunction());
+    this._memberDatabaseController.deleteMemberById(
+      config.auth().currentUser && config.auth().currentUser.uid,
+      deleteAccountErrorFunction
+    )
+      .then(() => {
+        config.auth()
+          .currentUser
+          .delete()
+          .catch(() => deleteAccountErrorFunction());
+      });
   };
 }

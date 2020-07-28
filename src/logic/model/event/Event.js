@@ -1,43 +1,57 @@
 import {BaseEntityAbst} from "../base/BaseEntityAbst";
-import {PR} from "../../Helper";
+import {getTomorrow, PR} from "../../Helper";
+import {PATH_DB_COLLECTION_MEMBERS} from "../../../config/constant/firebase-constants";
 
 export class Event extends BaseEntityAbst {
 
   /*------------------------ FIELDS REGION ------------------------*/
-  _racetrack;
-  _membersArray;
-  _eventDate;
+  name;
+  racetrackRefPath;
+  /**
+   * Person who create an event
+   */
+  eventCreatorRefPath;
+  /**
+   * Array of persons that joined to event
+   */
+  membersRefPathArray;
+  eventDate;
 
   /*------------------------ METHODS REGION ------------------------*/
-  constructor(id = PR(), racetrack = PR(),
-              membersArray = PR(), eventDate = PR()) {
+  constructor(id = PR(), name = PR(), racetrackRefPath = PR(),
+              eventCreatorRefPath = PR(), membersRefPathArray = PR(),
+              eventDate = PR()) {
     super(id);
-    this._racetrack = racetrack;
-    this._membersArray = membersArray;
-    this._eventDate = eventDate;
-  }
-
-  get racetrack() {
-    return this._racetrack;
-  }
-
-  set racetrack(value) {
-    this._racetrack = value;
-  }
-
-  get membersArray() {
-    return this._membersArray;
-  }
-
-  set membersArray(value) {
-    this._membersArray = value;
-  }
-
-  get eventDate() {
-    return this._eventDate;
-  }
-
-  set eventDate(value) {
-    this._eventDate = value;
+    this.name = name;
+    this.racetrackRefPath = racetrackRefPath;
+    this.eventCreatorRefPath = eventCreatorRefPath;
+    this.membersRefPathArray = membersRefPathArray;
+    this.eventDate = eventDate;
   }
 }
+
+export const getAddedMembersRefPathArray = (eventObject = PR(),
+                                            addedMemberRefPath = PR()) => {
+  return {membersRefPathArray: [...eventObject?.membersRefPathArray, addedMemberRefPath]};
+};
+
+export const getDeletedMembersRefPathArray = (eventObject = PR(),
+                                              deletedMemberRefPath = PR()) => {
+  const resultArray = eventObject
+    .membersRefPathArray?.filter((it) => it !== deletedMemberRefPath);
+
+  return {membersRefPathArray: resultArray};
+};
+
+export const isFutureEvent = (eventDate = PR()) => {
+  return new Date(eventDate) > getTomorrow();
+};
+
+export const isPastEvent = (eventDate = PR()) => {
+  return new Date(eventDate) < getTomorrow();
+};
+
+export const isMemberIsEventCreator = (eventObject = PR(),
+                                       memberObject = PR()) => {
+  return eventObject.eventCreatorRefPath === PATH_DB_COLLECTION_MEMBERS + memberObject.id;
+};

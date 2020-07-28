@@ -1,31 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {keyValueObjectToArray, PR} from "../../../logic/Helper";
+import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {warningNotification} from "../../../component/util/notification/notification";
 import {ToastContainer} from "react-toastify";
 import strings from "../../../config/constant/string-constants";
-import GlobalStyles from "../../../main/GlobalStyles";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import RestoreIcon from "@material-ui/icons/Restore";
+import GlobalStyles from "../../../main/GlobalStyles";
 
 export const ResetPasswordPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const [resetPasswordCallCounter, setResetPasswordCallCounter] = useState(0);
+
+  const history = useHistory();
   const accountController = new AccountController();
   const globalStyles = GlobalStyles();
 
   const handleResetPassword = (data = PR()) => {
-    accountController.resetUserPassword(
-      data.email,
-      () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
-    );
-    window.location.replace(PATH_LOGIN);
+    if (resetPasswordCallCounter === 0) {
+      accountController.resetUserPassword(
+        data.email,
+        () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
+      );
+      redirectToPage(history, PATH_LOGIN);
+
+      setResetPasswordCallCounter(resetPasswordCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {
@@ -37,7 +45,7 @@ export const ResetPasswordPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-sm custom-margin-top-4">
+    <div className="container custom-container-sm custom-page-big-margin">
 
       <div className="mb-2">
         <div className="row justify-content-center mb-2">
@@ -65,16 +73,12 @@ export const ResetPasswordPage = (props) => {
           autoFocus
         />
 
-        <Button
-          onClick={checkInputs}
-          type="submit"
-          className="mt-2"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
-          {strings.resetPasswordPage.sendEmail}
-        </Button>
+        <ConfirmButton
+          checkInputs={checkInputs}
+          buttonTextContent={strings.resetPasswordPage.sendEmail}
+          isFullWidth={true}
+          optionMargin={"mt-2"}
+        />
       </form>
 
       <ToastContainer/>

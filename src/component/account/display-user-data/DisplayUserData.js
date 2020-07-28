@@ -2,8 +2,9 @@ import React from "react";
 import propTypes from "prop-types";
 import strings from "../../../config/constant/string-constants";
 import HorizontalContainer from "../../util/horizontal-container/HorizontalContainer";
-import Button from "@material-ui/core/Button";
+import AccountTable from "../account-table/AccountTable";
 import {formatDate, PR} from "../../../logic/Helper";
+import Button from "@material-ui/core/Button";
 import "../../../index.css";
 
 export const DisplayUserData = (props) => {
@@ -20,10 +21,24 @@ export const DisplayUserData = (props) => {
   const renderHeaderTitle = (text = PR()) => {
     return (
       <div className="row justify-content-center mb-3">
-        <div className="col-md-12 text-center font-weight-bold custom-font-size-1-5">
-          <b>{text}</b>
+        <div className="col-md-12 text-center font-weight-bold custom-font-size-1-5 custom-prevent-overflow">
+          <span>{text}</span>
         </div>
       </div>
+    );
+  };
+
+  const renderRemoveButton = (handleRemove = PR(),
+                              buttonTextContent = PR()) => {
+    return (
+      <Button
+        onClick={handleRemove}
+        color="secondary"
+        variant="contained"
+        size="small"
+      >
+        {buttonTextContent}
+      </Button>
     );
   };
 
@@ -35,7 +50,7 @@ export const DisplayUserData = (props) => {
           {renderBoldText(strings.accountPage.country + ": " + props.country)}
           {renderBoldText(strings.accountPage.city + ": " + props.city)}
           {
-            props.joinDate ?
+            props.isEditableForUser && props.joinDate ?
               renderBoldText(strings.accountPage.joinDate + ": " + props.joinDate)
               : null
           }
@@ -46,10 +61,10 @@ export const DisplayUserData = (props) => {
     const renderRightSide = () => {
       return (
         <div className="col-md-6 text-center">
-          {renderBoldText(strings.accountPage.birthDate + ": " + formatDate(props.birthDate))}
+          {renderBoldText(strings.accountPage.birthDate + ": " + formatDate(new Date(props.birthDate)))}
           {renderBoldText(strings.accountPage.email + ": " + props.email)}
           {
-            props.lastLogin ?
+            props.isEditableForUser && props.lastLogin ?
               renderBoldText(strings.accountPage.lastLogin + ": " + props.lastLogin)
               : null
           }
@@ -58,8 +73,11 @@ export const DisplayUserData = (props) => {
     };
 
     return (
-      <HorizontalContainer panelBackgroundColor={props.panelBackgroundColor} margin={"mt-3 mb-3"}>
-        {renderHeaderTitle(strings.accountPage.name + ": " + props.firstName + " " + props.lastName)}
+      <HorizontalContainer
+        panelBackgroundColor={props.panelBackgroundColor}
+        margin={props.margin}
+      >
+        {renderHeaderTitle(props.firstName + " " + props.lastName)}
 
         <div className="row justify-content-center custom-font-size-1">
           {renderLeftSide()}
@@ -78,12 +96,16 @@ export const DisplayUserData = (props) => {
             <th>{strings.accountPage.brand}</th>
             <th>{strings.accountPage.model}</th>
             <th>{strings.accountPage.productionYear}</th>
-            <th>{strings.accountPage.mileage}</th>
+            <th>{strings.accountPage.mileageInKilometers}</th>
             <th>{strings.accountPage.carType}</th>
             <th>{strings.accountPage.engineType}</th>
-            <th>{strings.accountPage.enginePower}</th>
+            <th>{strings.accountPage.enginePowerInHorsepower}</th>
             <th>{strings.accountPage.driveTrainType}</th>
-            <th>{strings.accountPage.remove}</th>
+            {
+              props.isEditableForUser ?
+                <th>{strings.accountPage.remove}</th>
+                : null
+            }
           </tr>
         </thead>
       );
@@ -93,27 +115,29 @@ export const DisplayUserData = (props) => {
       return (
         <tbody>
           {
-            props.carsArray.map((it, index) => {
+            props.carsArray && props.carsArray.map((it, index) => {
               return (
                 <tr key={index}>
                   <td>{it.brand}</td>
                   <td>{it.model}</td>
                   <td>{it.productionYear}</td>
-                  <td>{it.mileage}</td>
+                  <td>{it.mileageInKilometers}</td>
                   <td>{it.carType}</td>
                   <td>{it.engineType}</td>
-                  <td>{it.enginePower}</td>
+                  <td>{it.enginePowerInHorsepower}</td>
                   <td>{it.driveTrainType}</td>
-                  <td>
-                    <Button
-                      onClick={() => props.handleRemoveCar(it.id)}
-                      color="secondary"
-                      variant="contained"
-                      size="small"
-                    >
-                      {strings.accountPage.remove}
-                    </Button>
-                  </td>
+                  {
+                    props.isEditableForUser ?
+                      <td>
+                        {
+                          renderRemoveButton(
+                            () => props.handleRemoveCar(it.id),
+                            strings.accountPage.remove
+                          )
+                        }
+                      </td>
+                      : null
+                  }
                 </tr>
               );
             })
@@ -123,19 +147,13 @@ export const DisplayUserData = (props) => {
     };
 
     return (
-      <HorizontalContainer panelBackgroundColor={props.panelBackgroundColor} margin={"mt-3 mb-3"}>
-        {renderHeaderTitle(strings.accountPage.cars)}
-
-        <div className="row justify-content-center px-3">
-          <table
-            className="table table-responsive table-striped text-center
-                        w-auto custom-font-size-0-5 text-white"
-          >
-            {renderHead()}
-            {renderBody()}
-          </table>
-        </div>
-      </HorizontalContainer>
+      <AccountTable
+        panelBackgroundColor={props.panelBackgroundColor}
+        margin={props.margin}
+        renderTitle={() => renderHeaderTitle(strings.accountPage.cars)}
+        renderHead={renderHead}
+        renderBody={renderBody}
+      />
     );
   };
 
@@ -147,7 +165,11 @@ export const DisplayUserData = (props) => {
           <tr>
             <th>{strings.accountPage.description}</th>
             <th>{strings.accountPage.year}</th>
-            <th>{strings.accountPage.remove}</th>
+            {
+              props.isEditableForUser ?
+                <th>{strings.accountPage.remove}</th>
+                : null
+            }
           </tr>
         </thead>
       );
@@ -157,21 +179,23 @@ export const DisplayUserData = (props) => {
       return (
         <tbody>
           {
-            props.receivedAwardsArray.map((it, index) => {
+            props.receivedAwardsArray && props.receivedAwardsArray.map((it, index) => {
               return (
                 <tr key={index}>
                   <td>{it.description}</td>
                   <td>{it.year}</td>
-                  <td>
-                    <Button
-                      onClick={() => props.handleRemoveAward(it.id)}
-                      color="secondary"
-                      variant="contained"
-                      size="small"
-                    >
-                      {strings.accountPage.remove}
-                    </Button>
-                  </td>
+                  {
+                    props.isEditableForUser ?
+                      <td>
+                        {
+                          renderRemoveButton(
+                            () => props.handleRemoveAward(it.id),
+                            strings.accountPage.remove
+                          )
+                        }
+                      </td>
+                      : null
+                  }
                 </tr>
               );
             })
@@ -181,19 +205,13 @@ export const DisplayUserData = (props) => {
     };
 
     return (
-      <HorizontalContainer panelBackgroundColor={props.panelBackgroundColor} margin={"mt-3 mb-3"}>
-        {renderHeaderTitle(strings.accountPage.awards)}
-
-        <div className="row justify-content-center px-3">
-          <table
-            className="table table-responsive table-striped text-center
-                        w-auto custom-font-size-0-5 text-white"
-          >
-            {renderHead()}
-            {renderBody()}
-          </table>
-        </div>
-      </HorizontalContainer>
+      <AccountTable
+        panelBackgroundColor={props.panelBackgroundColor}
+        margin={props.margin}
+        renderTitle={() => renderHeaderTitle(strings.accountPage.awards)}
+        renderHead={renderHead}
+        renderBody={renderBody}
+      />
     );
   };
 
@@ -207,20 +225,32 @@ export const DisplayUserData = (props) => {
   );
 };
 
+/**
+ * When `isEditableForUser` is passed or set to true below props must be also passes
+ * lastLogin: propTypes.string,
+ * joinDate: propTypes.string,
+ * handleRemoveCar: propTypes.func,
+ * handleRemoveAward: propTyp
+ *
+ * Remember that if props is not passed then its value is false
+ *
+ */
 DisplayUserData.propTypes = {
   panelBackgroundColor: propTypes.string.isRequired,
+  margin: propTypes.string.isRequired,
   firstName: propTypes.string.isRequired,
   lastName: propTypes.string.isRequired,
   country: propTypes.string.isRequired,
   city: propTypes.string.isRequired,
-  birthDate: propTypes.instanceOf(Date).isRequired,
-  email: propTypes.string,
-  lastLogin: propTypes.string,
-  joinDate: propTypes.string,
+  birthDate: propTypes.string.isRequired,
+  email: propTypes.string.isRequired,
   carsArray: propTypes.array.isRequired,
   receivedAwardsArray: propTypes.array.isRequired,
-  handleRemoveCar: propTypes.func.isRequired,
-  handleRemoveAward: propTypes.func.isRequired,
+  isEditableForUser: propTypes.bool,
+  lastLogin: propTypes.string,
+  joinDate: propTypes.string,
+  handleRemoveCar: propTypes.func,
+  handleRemoveAward: propTypes.func,
 };
 
 export default DisplayUserData;

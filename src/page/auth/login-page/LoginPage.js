@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {PATH_REGISTER, PATH_RESET_PASSWORD} from "../../../config/constant/path-constants";
@@ -6,9 +6,9 @@ import {AccountController} from "../../../logic/controller/AccountController";
 import {keyValueObjectToArray, PR} from "../../../logic/Helper";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
 import strings from "../../../config/constant/string-constants";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
 import {ToastContainer} from "react-toastify";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -19,14 +19,20 @@ export const LoginPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const [loginCallCounter, setLoginCallCounter] = useState(0);
+
   const accountController = new AccountController();
   const globalStyles = GlobalStyles();
 
   const handleLogin = (data = PR()) => {
-    accountController.loginUser(
-      data.email, data.password,
-      () => errorNotification(strings.loginPage.wrongEmailPassword)
-    );
+    if (loginCallCounter === 0) {
+      accountController.loginUser(
+        data.email, data.password,
+        () => errorNotification(strings.loginPage.wrongEmailPassword)
+      );
+
+      setLoginCallCounter(loginCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {
@@ -38,7 +44,7 @@ export const LoginPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-sm custom-margin-top-4">
+    <div className="container custom-container-sm custom-page-big-margin">
 
       <div className="mb-2">
         <div className="row justify-content-center mb-2">
@@ -68,7 +74,7 @@ export const LoginPage = (props) => {
 
         <TextField
           type="password"
-          inputRef={register({required: true, min: 1})}
+          inputRef={register({required: true})}
           name="password"
           label={strings.loginPage.password}
           variant="outlined"
@@ -76,16 +82,11 @@ export const LoginPage = (props) => {
           fullWidth
         />
 
-        <Button
-          onClick={checkInputs}
-          type="submit"
-          className="mt-4"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
-          {strings.loginPage.signIn}
-        </Button>
+        <ConfirmButton
+          checkInputs={checkInputs}
+          buttonTextContent={strings.loginPage.signIn}
+          isFullWidth={true}
+        />
 
         <div className="row justify-content-center mt-2">
           <Link to={PATH_RESET_PASSWORD} className={globalStyles.materialBlueFont}>

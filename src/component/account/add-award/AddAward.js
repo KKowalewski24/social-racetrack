@@ -3,9 +3,10 @@ import propTypes from "prop-types";
 import {useForm} from "react-hook-form";
 import strings from "../../../config/constant/string-constants";
 import {getCurrentYear, keyValueObjectToArray} from "../../../logic/Helper";
+import ConfirmButton from "../../rest/confirm-button/ConfirmButton";
+import {MIN_YEAR_AWARD} from "../../../config/constant/legal-constants";
 import {ToastContainer} from "react-toastify";
 import {warningNotification} from "../../util/notification/notification";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 export const AddAward = (props) => {
@@ -39,7 +40,7 @@ export const AddAward = (props) => {
         <div className="container custom-container-sm">
           <TextField
             type="number"
-            inputRef={register({required: true, min: 1900, max: getCurrentYear()})}
+            inputRef={register({required: true, min: MIN_YEAR_AWARD, max: getCurrentYear()})}
             name="year"
             label={strings.accountSettingsPage.year}
             variant="outlined"
@@ -48,17 +49,10 @@ export const AddAward = (props) => {
           />
         </div>
 
-        <div className="d-flex justify-content-center">
-          <Button
-            onClick={checkInputs}
-            type="submit"
-            className="mt-4"
-            variant="contained"
-            color="primary"
-          >
-            {strings.accountSettingsPage.confirm}
-          </Button>
-        </div>
+        <ConfirmButton
+          checkInputs={checkInputs}
+          buttonTextContent={strings.accountSettingsPage.confirm}
+        />
       </form>
 
       <ToastContainer/>

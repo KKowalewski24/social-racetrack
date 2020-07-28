@@ -1,32 +1,18 @@
 import React from "react";
 import propTypes from "prop-types";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import {getEnumKeyValueArray} from "../../../logic/Helper";
 import TextField from "@material-ui/core/TextField";
 
 export const CustomComboBox = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
-  const getPassedValue = () => {
-    if (!!props.enum && !!props.dataArray) {
-      throw new Error("Passing either enum and dataArray is not allowed");
-    }
-
-    if (!!props.enum) {
-      return getEnumKeyValueArray(props.enum);
-    } else if (!!props.dataArray) {
-      return props.dataArray;
-    } else {
-      throw new Error("It is required to pass enum or dataArray");
-    }
-  };
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
     <Autocomplete
-      options={getPassedValue()}
+      options={props.keyValueArray}
       getOptionLabel={(it) => it.value}
-      getOptionSelected={(option, value) => option.value === value.value}
+      getOptionSelected={(option, value) => option.key === value.key}
       renderInput={(params) => {
         return (
           <TextField
@@ -45,11 +31,10 @@ export const CustomComboBox = (props) => {
 };
 
 /**
- * Passing an enum or dataArray is allowed, but now both of them
+ * keyValueArray must contains object with key and value properties e.g obj = {key: "k", value: "v"}
  */
 CustomComboBox.propTypes = {
-  enum: propTypes.object,
-  dataArray: propTypes.array,
+  keyValueArray: propTypes.array.isRequired,
   inputRef: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,

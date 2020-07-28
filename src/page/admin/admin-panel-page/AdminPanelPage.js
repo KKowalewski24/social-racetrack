@@ -1,30 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
 import strings from "../../../config/constant/string-constants";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import {ToastContainer} from "react-toastify";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import {keyValueObjectToArray, PR} from "../../../logic/Helper";
-import GlobalStyles from "../../../main/GlobalStyles";
+import {keyValueObjectToArray, PR, redirectToPage} from "../../../logic/Helper";
 import {PATH_HOME} from "../../../config/constant/path-constants";
 import {grantAdmin} from "../../../logic/CloudFunctions";
 import {errorNotification, warningNotification} from "../../../component/util/notification/notification";
+import ConfirmButton from "../../../component/rest/confirm-button/ConfirmButton";
+import TextField from "@material-ui/core/TextField";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
+import GlobalStyles from "../../../main/GlobalStyles";
 
 export const AdminPanelPage = (props) => {
 
   /*----------------------- VARIABLE REGION -----------------------*/
   const {register, handleSubmit, errors} = useForm();
+  const [grantAdminCallCounter, setGrantAdminCallCounter] = useState(0);
+  const history = useHistory();
   const globalStyles = GlobalStyles();
 
   const handleGrantAdmin = (data = PR()) => {
-    grantAdmin({email: data.email})
-      .then((result) => console.log(result))
-      .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
+    if (grantAdminCallCounter === 0) {
+      grantAdmin({email: data.email})
+        .then((result) => console.log(result))
+        .catch((error) => errorNotification(strings.adminPanelPage.grantAdminError));
 
-    window.location.replace(PATH_HOME);
+      redirectToPage(history, PATH_HOME);
+
+      setGrantAdminCallCounter(grantAdminCallCounter + 1);
+    }
   };
 
   const checkInputs = () => {
@@ -36,7 +43,7 @@ export const AdminPanelPage = (props) => {
 
   /*------------------------ RETURN REGION ------------------------*/
   return (
-    <div className="container custom-container-sm custom-margin-top-4">
+    <div className="container custom-container-sm custom-page-big-margin">
 
       <div className="mb-2">
         <div className="row justify-content-center mb-2">
@@ -64,16 +71,12 @@ export const AdminPanelPage = (props) => {
           autoFocus
         />
 
-        <Button
-          onClick={checkInputs}
-          type="submit"
-          className="mt-2"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
-          {strings.adminPanelPage.confirm}
-        </Button>
+        <ConfirmButton
+          checkInputs={checkInputs}
+          buttonTextContent={strings.adminPanelPage.confirm}
+          isFullWidth={true}
+          optionMargin={"mt-2"}
+        />
       </form>
 
       <ToastContainer/>
