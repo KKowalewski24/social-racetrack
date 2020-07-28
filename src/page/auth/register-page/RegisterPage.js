@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {PATH_LOGIN} from "../../../config/constant/path-constants";
 import {AccountController} from "../../../logic/controller/AccountController";
 import {getDateInPastMovedByYearValue, keyValueObjectToArray, PR} from "../../../logic/Helper";
@@ -21,6 +21,7 @@ export const RegisterPage = (props) => {
   const {register, handleSubmit, errors} = useForm();
   const [createMemberCallCounter, setCreateMemberCallCounter] = useState(0);
 
+  const history = useHistory();
   const accountController = new AccountController();
   const globalStyles = GlobalStyles();
 
@@ -29,7 +30,7 @@ export const RegisterPage = (props) => {
       if (createMemberCallCounter === 0) {
         accountController.registerUser(
           data.firstName, data.lastName, data.email, data.password,
-          data.country, data.city, new Date(data.birthDate),
+          data.country, data.city, new Date(data.birthDate), history,
           () => warningNotification(strings.registerPage.verificationEmailNotSent),
           () => errorNotification(strings.registerPage.userAccountNotCreated)
         );

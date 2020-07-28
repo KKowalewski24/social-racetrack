@@ -1,5 +1,5 @@
 import {MemberDatabaseController} from "./model/MemberDatabaseController";
-import {PR} from "../Helper";
+import {PR, reloadPage} from "../Helper";
 import config from "../../config/config";
 import {grantStandardUser} from "../CloudFunctions";
 import strings from "../../config/constant/string-constants";
@@ -14,7 +14,7 @@ export class AccountController {
   registerUser = (firstName = PR(), lastName = PR(),
                   email = PR(), password = PR(),
                   country = PR(), city = PR(),
-                  birthDate = PR(),
+                  birthDate = PR(), history = PR(),
                   verificationEmailErrorFunction = PR(),
                   createUserErrorFunction = PR()) => {
     config.auth()
@@ -42,14 +42,20 @@ export class AccountController {
           this.logoutUser();
         }, 1000);
 
-      })
-      .catch(() => createUserErrorFunction());
+      }).catch(() => {
+      createUserErrorFunction();
+      reloadPage(history);
+    });
   };
 
-  loginUser = (email = PR(), password = PR(), wrongCredentialsErrorFunction = PR()) => {
+  loginUser = (email = PR(), password = PR(),
+               history = PR(), wrongCredentialsErrorFunction = PR()) => {
     config.auth()
       .signInWithEmailAndPassword(email, password)
-      .catch(() => wrongCredentialsErrorFunction());
+      .catch(() => {
+        wrongCredentialsErrorFunction();
+        reloadPage(history);
+      });
   };
 
   logoutUser = () => {
@@ -59,10 +65,14 @@ export class AccountController {
       });
   };
 
-  resetUserPassword = (email = PR(), resetUserPasswordErrorFunction = PR()) => {
+  resetUserPassword = (email = PR(), history = PR(),
+                       resetUserPasswordErrorFunction = PR()) => {
     config.auth()
       .sendPasswordResetEmail(email)
-      .catch(() => resetUserPasswordErrorFunction());
+      .catch(() => {
+        resetUserPasswordErrorFunction();
+        reloadPage(history);
+      });
   };
 
   deleteAccount = (deleteAccountErrorFunction = PR()) => {
