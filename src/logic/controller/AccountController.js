@@ -69,12 +69,12 @@ export class AccountController {
     this._memberDatabaseController.deleteMemberById(
       config.auth().currentUser && config.auth().currentUser.uid,
       deleteAccountErrorFunction
-    )
-      .then(() => {
-        config.auth()
-          .currentUser
-          .delete()
-          .catch(() => deleteAccountErrorFunction());
-      });
+    ).then(() => {
+      config.auth()
+        .currentUser
+        .delete()
+        .catch(() => {
+        });
+    });
   };
 }
