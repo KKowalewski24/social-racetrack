@@ -11,7 +11,7 @@
 
 ## Run Social-Racetrack in Development Mode
 * Download source code
-* In project main directory `yarn start` and wait till the development server will start up
+* In project main directory run `yarn install` and then run `yarn start` and wait till the development server will start up
 * Open selected browser and open `localhost:3000`
 
 ## Firebase Backend Installation Process
@@ -22,7 +22,9 @@
 * Create new project and set its name
 
 #### Local Machine
-* Go to project directory 
+* Go to project main directory 
+* Go to `functions` directory and run `npm install`
+* Go back to project main directory
 * Run below commands
 ```
 npm install -g firebase-tools
@@ -108,7 +110,11 @@ To
 #### Deploy to Firebase Hosting
 * Run below command
 ```
+yarn install
 yarn build
+```
+* Then run
+```
 firebase deploy --only hosting
 ```
 OR use preconfigured script
