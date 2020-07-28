@@ -41,6 +41,7 @@ export const strings = {
     email: "Email",
     lastLogin: "Last Login",
     joinDate: "Join Date",
+    memberIsAdmin: "Member has admin privileges",
     cars: "Cars",
     brand: "Brand",
     model: "Model",
@@ -174,7 +175,7 @@ export const strings = {
     siteIntroFirst: "helps people exchange information between sports car enthusiasts.",
     siteIntroSecond: "Our foundation firmly believes that everyone should have access to a free " +
       "social networking site dedicated to sports car lovers that provides " +
-      "full data privacy and security.",
+      "full data privacy and security. The minimum age to create an account is 15 years",
     registerLoginDescription: "Register or Login!",
     fastAndEasy: "It is fast and easy",
     registerNow: "Register Now!",

@@ -83,6 +83,14 @@ export const DisplayUserData = (props) => {
           {renderLeftSide()}
           {renderRightSide()}
         </div>
+
+        {
+          props.isEditableForUser && props.isAdmin ?
+            <div className="row justify-content-center custom-prevent-overflow custom-font-size-1">
+              {renderBoldText(strings.accountPage.memberIsAdmin)}
+            </div>
+            : null
+        }
       </HorizontalContainer>
     );
   };
@@ -246,6 +254,7 @@ DisplayUserData.propTypes = {
   email: propTypes.string.isRequired,
   carsArray: propTypes.array.isRequired,
   receivedAwardsArray: propTypes.array.isRequired,
+  isAdmin: propTypes.bool,
   isEditableForUser: propTypes.bool,
   lastLogin: propTypes.string,
   joinDate: propTypes.string,

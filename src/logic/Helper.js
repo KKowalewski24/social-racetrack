@@ -12,7 +12,7 @@ export const keyValueObjectToArray = (object = PR()) => {
  */
 export const PR = () => {
   // TODO DURING DEVELOPMENT PROCESS BELOW LINE SHOULD BE UNCOMMENTED
-  throw new Error("Param Is Required!");
+  // throw new Error("Param Is Required!");
 };
 
 export const formatDate = (date = PR()) => {
@@ -61,6 +61,10 @@ export const generateCustomUuid = () => {
 
 export const generateCustomUuidWithSecond = () => {
   return new Date().getUTCMilliseconds() + uuidv4();
+};
+
+export const reloadPage = (history = PR()) => {
+  history.go(0);
 };
 
 export const redirectToPage = (history = PR(), path = PR()) => {

@@ -27,7 +27,7 @@ export const ResetPasswordPage = (props) => {
   const handleResetPassword = (data = PR()) => {
     if (resetPasswordCallCounter === 0) {
       accountController.resetUserPassword(
-        data.email,
+        data.email, history,
         () => warningNotification(strings.resetPasswordPage.checkEmailCorrect)
       );
       redirectToPage(history, PATH_LOGIN);
