@@ -111,10 +111,10 @@ To
 * Run below command
 ```
 yarn install
-yarn build
 ```
 * Then run
 ```
+yarn build
 firebase deploy --only hosting
 ```
 OR use preconfigured script
