@@ -5,11 +5,9 @@ import DisplayUserAvatar from "../../../component/account/display-user-avatar/Di
 import config from "../../../config/config";
 import strings from "../../../config/constant/string-constants";
 import FetchDataController from "../../../component/util/fetch-data-controller/FetchDataController";
-import {AccountController} from "../../../logic/controller/AccountController";
 import {errorNotification} from "../../../component/util/notification/notification";
 import RenderEventCards from "../../../component/events-display/render-event-cards/RenderEventCards";
 import {MemberDatabaseController} from "../../../logic/controller/model/MemberDatabaseController";
-import HorizontalDeleteButton from "../../../component/details-display/horizontal-delete-button/HorizontalDeleteButton";
 import {PR} from "../../../logic/Helper";
 import {PATH_ACCOUNT_SETTINGS, PATH_HOME} from "../../../config/constant/path-constants";
 import {getDeletedCarsArray, getDeletedReceivedAwardsArray} from "../../../logic/model/person/Member";
@@ -26,7 +24,6 @@ export const AccountPage = (props) => {
   const [shouldUpdate, setShouldUpdate] = useState(false);
 
   const memberDatabaseController = new MemberDatabaseController();
-  const accountController = new AccountController();
   const globalStyles = GlobalStyles();
 
   useEffect(() => {
@@ -47,12 +44,6 @@ export const AccountPage = (props) => {
     setShouldUpdate(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldUpdate]);
-
-  const handleDeleteUser = () => {
-    accountController.deleteAccount(() => {
-      return errorNotification(strings.accountPage.deleteAccountError);
-    });
-  };
 
   const handleRemoveCar = (id = PR()) => {
     if (checkIfReadyToSave()) {
@@ -130,12 +121,6 @@ export const AccountPage = (props) => {
                 </div>
                 : null
             }
-
-            <HorizontalDeleteButton
-              panelBackgroundColor={globalStyles.materialBlueBackground}
-              handleDelete={handleDeleteUser}
-              buttonTextContent={strings.accountPage.deleteAccount}
-            />
           </div>
           : null
       }

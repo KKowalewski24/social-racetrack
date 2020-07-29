@@ -61,8 +61,6 @@ export const strings = {
     or: "or",
     accountLoadingError: "An error occurred while loading user data",
     backHomePage: "Go back to home page",
-    deleteAccount: "Delete Account",
-    deleteAccountError: "User account has not been deleted!",
   },
   accountSettingsPage: {
     editUser: "Edit User Data",
