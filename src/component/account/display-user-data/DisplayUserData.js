@@ -51,7 +51,9 @@ export const DisplayUserData = (props) => {
           {renderBoldText(strings.accountPage.city + ": " + props.city)}
           {
             props.isEditableForUser && props.joinDate ?
-              renderBoldText(strings.accountPage.joinDate + ": " + props.joinDate)
+              renderBoldText(
+                strings.accountPage.joinDate + ": " + formatDate(new Date(props.joinDate))
+              )
               : null
           }
         </div>
@@ -65,7 +67,9 @@ export const DisplayUserData = (props) => {
           {renderBoldText(strings.accountPage.email + ": " + props.email)}
           {
             props.isEditableForUser && props.lastLogin ?
-              renderBoldText(strings.accountPage.lastLogin + ": " + props.lastLogin)
+              renderBoldText(
+                strings.accountPage.lastLogin + ": " + formatDate(new Date(props.lastLogin))
+              )
               : null
           }
         </div>
