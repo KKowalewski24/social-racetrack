@@ -12,7 +12,7 @@ export const Card = (props) => {
       <div className="text-dark">
         <GradeIcon fontSize="inherit" className="mb-1 mr-1"/>
         {key + ": "}
-        <span className="text-nowrap">
+        <span>
           {value}
         </span>
       </div>

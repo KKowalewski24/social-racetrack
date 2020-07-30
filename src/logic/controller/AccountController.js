@@ -74,17 +74,4 @@ export class AccountController {
         reloadPage(history);
       });
   };
-
-  deleteAccount = (deleteAccountErrorFunction = PR()) => {
-    this._memberDatabaseController.deleteMemberById(
-      config.auth().currentUser && config.auth().currentUser.uid,
-      deleteAccountErrorFunction
-    ).then(() => {
-      config.auth()
-        .currentUser
-        .delete()
-        .catch(() => {
-        });
-    });
-  };
 }
