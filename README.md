@@ -22,7 +22,7 @@
 * Create new project and set its name
 
 #### Local Machine
-* Go to project main directory 
+* Go to project main directory and run `yarn install`
 * Go to `functions` directory and run `npm install`
 * Go back to project main directory
 * Run below commands
