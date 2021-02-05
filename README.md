@@ -1,9 +1,5 @@
 # Bachelor of Science Thesis
 
-## Storage
-#### [Firebase Hosting Deployed Project](https://social-racetrack.web.app/)
-#### [Google Drive Report](https://drive.google.com/open?id=1QU418ihDzM2fBo6UxbA8GqxavGlbpZGK)
-
 ### Required Software
 * Node.js
 * Yarn 
