@@ -1,0 +1,9 @@
+  const renderRightSide = () => {
+    const renderDescription = () => { //... };
+    const renderButtons = () => { //... };
+
+    return ( <div className="col-sm-6 text-center font-weight-bold mb-4">
+        {renderDescription()}
+        {renderButtons()}
+      </div> );
+  };

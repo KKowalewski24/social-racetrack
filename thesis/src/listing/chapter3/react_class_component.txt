@@ -1,0 +1,39 @@
+import React, {Component} from "react";
+import propTypes from "prop-types";
+import Avatar from "react-avatar";
+
+const colorsArray = [
+  "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#f44336", "#e91e63",
+  "#9c27b0", "#673ab7",
+];
+
+export class LetterAvatar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: ""
+    };
+  }
+
+  componentDidMount() {
+    this.setState({color: this.getRandomColor()});
+  }
+
+  getRandomNumber(begin, end) {
+    const min = Math.ceil(begin);
+    const max = Math.floor(end);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  getRandomColor() {
+    return colorsArray[this.getRandomNumber(0, colorsArray.length)];
+  }
+
+  render() {
+    return (
+      <Avatar color={this.state.color} name={this.props.fullname}
+              size={this.props.fontSize} round={true}
+      />
+    );
+  }
+}

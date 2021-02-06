@@ -1,0 +1,135 @@
+\documentclass[a4paper,12pt,polish,twoside]{extreport}
+
+% ustawienia marginesów
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    top=28mm,
+    % Asymmetric margins below - maybe usefull for printing and binding
+    % inner=35mm,
+    % outer=25mm,
+    inner=30mm,
+    outer=30mm,
+    bottom=28mm,
+}
+% Ustawienie wciecia paragrafow
+\usepackage{indentfirst}
+
+% Ustawnienie spisu tresci aby rowniez zawieral \subsubsection
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% Komenda wyrozniajca fragmenty komend terminala w tekscie
+\newcommand{\shellcmd}[1]{\texttt{\footnotesize #1}}
+
+% ustawienie interlinii na 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% zmiana punktowania list na myślniki
+%\renewcommand\labelitemi{---}
+
+% Pakiet do zmiany odleglosci w itemize
+\usepackage{enumitem}
+
+%----------------------------------%
+% Development with local python script (pdflatex)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+\usepackage{times}
+
+% Release with Overleaf, import zipped project and choose Xelatex as compiler in Overleaf
+%\usepackage{fontspec}
+%\setmainfont{Times New Roman}
+%\usepackage[polish]{babel}
+%----------------------------------%
+
+% bibliografia
+\usepackage{csquotes}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage{hyperref}
+
+% listingi i spis listingów
+\usepackage{listings}
+\usepackage[center]{caption}
+\DeclareCaptionType{code}[Listing][Spis listingów]
+\lstset{breaklines=true,basicstyle=\ttfamily\scriptsize,numbers=left}
+
+% rysunki i spis rysunków
+\usepackage{float}
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+\usepackage[nottoc]{tocbibind}
+
+% tabele
+\floatstyle{plaintop}
+\restylefloat{table}
+\captionsetup[table]{name=Tabela}
+
+% strona tytułowa
+\usepackage{pdfpages}
+\usepackage{subfiles}
+
+% treść
+\begin{document} {
+    \pagenumbering{gobble}
+
+    \includepdf[pages={1}]{pdf/title_page}
+
+    \null\newpage
+
+    \pagenumbering{arabic}
+    \tableofcontents
+
+    \chapter*{Streszczenie}
+    \label{chapter0:streszczenie} {
+        \subfile{chapter/chapter0.tex}
+    }
+    \addcontentsline{toc}{chapter}{Streszczenie}
+
+    \chapter{Wstęp}
+    \label{chapter1:wstep} {
+        \subfile{chapter/chapter1.tex}
+    }
+
+    \chapter{Wprowadzenie do świata sportów samochodowych}
+    \label{chapter2:wprowadzenie_sporty} {
+        \subfile{chapter/chapter2.tex}
+    }
+
+    \chapter{Wykorzystane technologie w aplikacji \textit{Social Racetrack}}
+    \label{chapter3:technologie} {
+        \subfile{chapter/chapter3.tex}
+    }
+
+    \chapter{Dokumentacja techniczna aplikacji \textit{Social Racetrack}}
+    \label{chapter4:dok_techniczna} {
+        \subfile{chapter/chapter4.tex}
+    }
+
+    \chapter{Dokumentacja użytkownika aplikacji \textit{Social Racetrack}}
+    \label{chapter5:dok_uzytkownika} {
+        \subfile{chapter/chapter5.tex}
+    }
+
+    \chapter{Podsumowanie}
+    \label{chapter6:podsumowanie} {
+        \subfile{chapter/chapter6.tex}
+    }
+
+    \newpage
+    \listoffigures
+
+    \newpage
+    \listofcodes
+
+    \newpage
+    \renewcommand{\listtablename}{Spis tabel}
+    \listoftables
+
+    \newpage
+    \printbibliography[heading=bibintoc,title={Bibliografia}]
+}
+\end{document}

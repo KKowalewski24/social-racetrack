@@ -1,0 +1,788 @@
+\documentclass[../Kamil_Kowalewski_Main.tex]{subfiles}
+
+\begin{document} {
+
+    Projekt stworzony w ramach niniejszej pracy inżynierskiej składa się z~dwóch
+    części. Pierwszą z~nich jest aplikacja po stronie klienta, która została
+    przygotowana w~języku JavaScript\cite{website:javascript} uruchamianym w~środowisku
+    Node.js\cite{website:nodejs}. W~celu utworzenia aplikacji o~większym poziomie
+    rozszerzalności została użyta biblioteka React\cite{website:react}. Drugą częścią
+    pracy inżynierskiej jest aplikacja po stronie serwera. W~tym przypadku przyszła~z
+    pomocą platforma chmurowa Firebase\cite{website:firebase}. Komunikacja między
+    dwiema częściami aplikacji jest zapewniona poprzez protokół HTTP\cite{website:http}.
+
+    \section{Uzasadnienie wyboru technologii}
+    \label{chapter3:technologie:uzasadnienie} {
+        Przez ostatnie paręnaście lat nie trudno zauważyć ogromny rozwój
+        aplikacji internetowych, co za tym idzie bardzo rozwinęły się języki
+        programowania, frameworki oraz środowiska uruchomieniowe. Przykładami takiego
+        oprogramowania jest chociażby język programowania Java\cite{website:java}
+        w~połączeniu z~Spring Framework\cite{website:spring}, język programowania
+        C\#\cite{website:csharp} połączony z frameworkiem ASP.NET Core\cite{website:aspnetcore}
+        uruchamianym na platformie .NET Core\cite{website:netcoreplatform}
+        lub wcześniej już wspomnianym i~wykorzystanym w aplikacji środowisku
+        uruchomieniowym Node.js\cite{website:nodejs} z~wykorzystaniem języka programowania
+        JavaScript\cite{website:javascript}.
+        Jego bardzo dużymi zaletami są:
+        \begin{itemize}
+            \item Dystrybucja na zasadach otwartego oprogramowania (ang. open source)
+            \item Możliwość programowania w~różnych generacjach JavaScript oraz
+            TypeScript\cite{website:typescript}
+            \item Bardzo duża społeczność korzystająca z tej technologii
+            \item Duża liczba bibliotek i~frameworków
+            \item Mnogość poradników dzięki, którym tworzenie oprogramowania jest
+            jeszcze szybsze
+            \item Wysoka wydajność dzięki silnikowi V8 oraz procesowi kompilacji kodu
+            zamiast jego interpretacji
+        \end{itemize}
+    }
+
+    \section{Środowisko uruchomieniowe Node.js}
+    \label{chapter3:technologie:node} {
+        Node.js\cite{website:nodejs} jest asynchronicznym, sterowanym zdarzeniami
+        środowiskiem uruchomieniowym języka JavaScript. Został zaprojektowany do budowy
+        skalowalnych aplikacji sieciowych. Jest to środowisko, które nie udostępnia
+        programiście możliwości korzystania z wielu wątków natomiast samo w tle
+        korzysta z wielu wątków w celu wykonywania asynchronicznych fragmentów kodu
+        programu. Jest to odmienna filozofia w~stosunku do języka Java, gdzie
+        programista może sam tworzyć współbieżne oprogramowanie i~w~tym celu są
+        wykorzystywane wątki systemu operacyjnego. Ogromną zaletą podejścia
+        jednowątkowego w~aplikacjach sieciowych jest wzrost wydajności oraz
+        łatwość w~użyciu. Co więcej, same funkcje w Node.js praktycznie nie
+        przeprowadzają operacji wejścia / wyjścia oraz poprzez brak blokad zostaje
+        wyeliminowany problem zakleszczenia (ang. deadlock). Wszystkie wyżej wymienione
+        zalety Node.js powodują, że wybór tego środowiska do tworzenia nowoczesnych, skalowalnych
+        i~łatwych w rozbudowie systemów jest bardzo dobrą decyzją. Warto podkreślić,
+        że brak wielowątkowości nie oznacza braku możliwości korzystania z~wielu
+        rdzeni danego procesora w maszynie. Aby tego dokonać, zostało
+        stworzone \textit{child\_process.fork API}, zapewnia ono tworzenie procesów
+        dzieci (ang. child processes) i łatwą komunikację między tymi procesami.
+
+        \subsection{Silnik V8}
+        \label{chapter3:technologie:node:v8} {
+            Sercem środowiska uruchomieniowego Node.js jest silnik V8\cite{website:v8engine}
+            (ang. V8 engine). Jest on odpowiedzialny za parsowanie i wykonywanie
+            kodu języka JavaScript. Jego autorem jest Google Open Source. Jest
+            wykorzystywany przede wszystkim w przeglądarce Chrome\cite{website:chrome}
+            oraz w~jej otwartoźródłowej wersji Chromium\cite{website:chromium}. Jego
+            twórcy położyli ogromny nacisk na wydajność, przez co został stworzony w
+            języku C++ i~jest ciągle udoskonalany. Z zasady JavaScript jest językiem
+            interpretowanym przez przeglądarkę natomiast dzięki silnikowi V8 jest on
+            kompilowany w procesie JIT (ang. Just-In-Time compilation). Zapewnia to
+            diametralne przyspieszenie wykonywania programów a~co za tym idzie jego
+            zastosowanie są znacznie szersze.
+        }
+
+        \subsection{Protokół HTTP w Node.js}
+        \label{chapter3:technologie:node:http_node} {
+            Jedną z podstawowych składowych środowiska jest protokół HTTP\cite{website:http},
+            dzięki temu Node.js staje się serwerem HTTP. Sam protokół jest bezpołączeniowy,
+            zapewnia niskie opóźnienia oraz został stworzony z~myślą o~przesyłaniu
+            strumieniowym.
+        }
+
+        \subsection{Menadżer pakietów Yarn}
+        \label{chapter3:technologie:node:yarn} {
+            W sekcji~\ref{chapter3:technologie:uzasadnienie} została wspomniana zaleta
+            dotycząca bardzo dużej społeczności a~co za tym idzie rozwoju tej
+            technologii i~powstawania coraz większej liczby bibliotek i~pakietów. Aby
+            mieć możliwość skutecznego udostępniania i~pobierania do użytku przez
+            innych programistów wspomnianych wcześniej bibliotek oraz pakietów Node.js
+            oferuje NPM\cite{website:npm} (ang. Node Package Manager).
+            Jest to domyślny menadżer pakietów dla języka JavaScript
+            w~środowisku Node.js, który powstał w 2010 roku. W~jego skład wchodzi CLI
+            (ang. Command Line Interface) oraz zdalne repozytorium zawierające pakiety.
+            Niestety jego wydajność pozostawia wiele do życzenia. Z tego powodu w 2016
+            roku powstał Yarn\cite{website:yarn}. Nie posiada on wprawdzie własnego
+            repozytorium z~pakietami tylko korzysta z~innych repozytoriów takich jak
+            na przykład NPM. Poprzez odmienny sposób działania zapewnia dużo
+            wydajniejsze instalowanie pakietów. Sam plik typu lockfile zawiera dokładne
+            informacje o~wymaganych zależnościach aby ich kod źródłowy mógł zostać pobrany
+            i~umieszczony w~folderze node\_modules po wykonaniu komendy \textit{npm install} lub
+            \textit{yarn install}. W~czasie wykonywania tych komend jest zapisywana informacja
+            o~używanych pakietach w~cache w~celu szybszego działania gdy ten sam pakiet będzie
+            jeszcze pobierany. Poniżej została przedstawiona tabela
+            porównująca wybrane parametry i~czas wykonania dla obydwu menedżerów przy
+            instalowaniu pakietów poleceniami \textit{npm install} oraz \textit{yarn install}
+            odpowiednio dla NPM oraz Yarn. Przedstawione wartości zostały oparte
+            rezultatach uzyskanych w artykule autorstwa
+            pnpm\cite{website:npmvsyarn-pnpmbenchmark}.
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                    & NPM & Yarn \\ \hline
+                    Brak cache, lockfile i~katalogu node\_modules & 43.2s & 43.2s \\\hline
+                    Brak lockfile i~katalogu node\_modules & 30.4s & 27.0s \\ \hline
+                    Brak cache & 8.5s & 811ms \\ \hline
+                    Brak katalogu node\_modules & 21.9s & 12.9s \\ \hline
+                \end{tabular}
+                \caption
+                [Porównanie szybkości działania menadżerów NPM oraz Yarn]
+                {Porównanie szybkości działania menadżerów NPM oraz Yarn}
+                \label{chapter3:technologie:node:yarn:tabela_porow}
+            \end{table}
+        }
+    }
+
+    \section{Serwis hostingowy GitHub}
+    \label{chapter3:technologie:github} {
+
+        \subsection{System kontroli wersji Git}
+        \label{chapter3:technologie:github:git} {
+            Git\cite{website:git} jest systemem kontroli wersji stworzonym przez
+            Linusa Torvaldsa, twórcę systemu Linux, w~2005 roku. W~kolejnych latach był
+            on rozwijany przez innych programistów, gdyż jest to projekt otwartoźródłowy.
+            Jego celem jest kontrolowanie zmian w~czasie tworzenia oprogramowania. Możliwości
+            tego oprogramowania są dużo szersze, gdyż może on kontrolować dowolne pliki.
+            Jest głównie używany przez deweloperów tworzących oprogramowanie. Można
+            powiedzieć, że podejście zastosowane w~systemie Git było przełomowe w zakresie
+            wersjonowania plików. Poprzednie systemy kontroli wersji były mocno zależne od zdalnego
+            serwera. Gdy programista zdecydował się na zatwierdzenie pewnej zmiany
+            w~plikach, musiał je od razu przesłać na serwer poprzez wykonanie odpowiednich
+            komend. Z~drugiej strony, każde repozytorium Git, które znajdowało czy też znajduje
+            się na komputerze zawiera, w~przeciwieństwie do starszych systemów, pełną historię
+            operacji oraz wszystkie funkcjonalności. Co więcej, Git jest w~pełni niezależny
+            od zdalnego serwera, repozytorium może istnieć bez zdalnej kopii.
+            Z~doświadczenia autora wynika, że system kontroli Git jest bardzo często
+            wybierany w czasie przygotowania i~rozwijania nowych projektów
+            informatycznych.
+        }
+
+        \subsection{Platforma GitHub}
+        \label{chapter3:technologie:github:github} {
+            GitHub jest produktem firmy GitHub, Inc. zapewniającej hosting systemu
+            kontroli wersji Git oraz wspiera tworzenie oprogramowania. Powstał on w
+            2008 roku do tego momentu zgromadził ponad 50 milionów użytkowników.
+            Wszystkie funkcje udostępnione przez rozproszony system kontroli wersji Git
+            są zapewnia a~ponadto GitHub zapewnia dodatkowe funkcjonalności takie jak
+            publiczne i~prywatne repozytoria, statystyki aktywność, możliwość
+            współpracy z~wieloma osobami, dzielenie się kodem źródłowym, GitHub Issues
+            czy Pull Requests oraz mnóstwo innych. Jedynym warunkiem aby mieć do tego
+            dostęp jest założenie darmowego konta. Istnieją również usługi płatne jeszcze
+            bardziej zwiększające możliwości platformy. Co ważne, studenci mają dostęp
+            do płatnych funkcjonalności całkowicie za darmo, wymagane jest jedynie
+            poświadczenie, iż jest się aktualnie studentem danej uczelni. Tak jak zostało
+            już wspomniane, została utworzona gigantyczna społeczność, która tworzy
+            i~rozwija projekty mają wpływ na światowe trendy w informatyce i~przemyśle
+            z~nim związanym. Takim właśnie projektem jest .NET Core wspomniany w~sekcji
+            \ref{chapter3:technologie:uzasadnienie}. Z racji na bardzo dużą popularność
+            portalu GitHub oraz jego bardzo użyteczne funkcje kod źródłowy aplikacji
+            \textit{Social Racetrack} jest właśnie tam przechowywany.
+        }
+    }
+
+    \section{Framework Bootstrap}
+    \label{chapter3:technologie:bootstrap} {
+        Razem z~rozwojem urządzeń mobilnych ze zróżnicowaną rozdzielczością oraz
+        proporcjami ekranu pojawił się problem z~tworzeniem stron internetowych, które
+        wyglądałyby dobrze zarówno gdy korzysta się z~komputera z~relatywnie dużym
+        wyświetlaczem jak i~z~telefonu z~mały ekranem. W poprzedniej dekadzie tego stulecia
+        częstym rozwiązaniem było tworzenie mobilnych wersji stron internetowych. Idea
+        ta miała wiele wad, takich jak potrzeba tworzenia danej
+        witryny całkowicie od nowa co drastycznie zwiększało koszty danego
+        przedsięwzięcia. Co więcej, same wersje mobilne nie zawierały wszystkich
+        funkcjonalności danej strony a~często kluczowe funkcje były pomijane gdyż ich
+        stworzenie mogłyby wygenerować znaczące koszty. Rozwiązaniem okazał się stworzonym w 2011
+        roku
+        przez programistów portalu Twitter, framework Bootstrap\cite{website:bootstrap}. Bazuje
+        on na technologiach CSS3 oraz HTML5. Zapewnia on bardzo łatwe użycie tych technologii,
+        dzięki czemu nawet osoba bez dużego doświadczenia jest w~stanie szybko nauczyć się
+        tworzenia witryn internetowych stosując ideę RWD (ang. Responsive Web Design).
+
+        \subsection{RWD}
+        \label{chapter3:technologie:bootstrap:rwd} {
+            Responsive web design został stworzony w~celu uzyskania dobrego wyglądu stron
+            internetowych na wszystkich urządzeniach. Jego zadaniem jest automatyczne
+            dostosowywanie rozłożenia komponentów na stronie w zależności od wysokości oraz
+            szerokości ekranu danego urządzenia. Wcześniej wspomniane zmienne rozłożenie
+            komponentów jest często realizowane poprzez zmianę wymiarów danego elementu, zmiana
+            stanu na niewidoczny lub zwiększanie i~zmniejszanie wybranych komponentów
+            w~celu uzyskania żądanego efektu spełniającego aktualne standardy
+            projektowania warstwy widoku stron internetowych. Realizacja tego konceptu
+            może być zaimplementowana poprzez zastosowanie Media Queries w~języku CSS
+            (ang. Cascading Style Sheets). W~przykładzie przedstawiony poniżej, elementy stylizowane
+            przy pomocy klas \textit{.left}, \textit{.main}, \textit{.right} do szerokości ekranu
+            800px będą zajmowały 100\% dostępne miejsca.
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/bootstrap_media_queries.txt}
+                \caption
+                [Przykład użycia Media Queries do tworzenia RWD]
+                {Przykład użycia Media Queries do tworzenia RWD}
+                \label{chapter3:technologie:bootstrap:rwd:media_queries}
+            \end{code}
+
+            Drugim rozwiązaniem jest skorzystanie z~responsywnej siatki Bootstrap, która
+            zapewnia stosowne style zmieniające pozycję komponentów w~zależności od
+            wymiarów ekranu.
+        }
+
+        \subsection{Responsywna siatka}
+        \label{chapter3:technologie:bootstrap:siatka} {
+            Jedną z~kluczowych elementów wchodzących w~skład technologii Bootstrap jest
+            siatka (ang. grid). W~celu zapewnienia maksimum możliwości wykorzystuje ona
+            kontenery, rzędy oraz kolumny. Ma to na celu układanie i~wyrównywanie
+            zawartości strony internetowej. Jest to możliwe dzięki zastosowaniu
+            technologii występującej w~CSS o~nazwie flexbox. Sama siatka składa się
+            z~12 kolumn. Liczba 12 nie została wybrana przypadkowo gdyż zawiera
+            stosunkowo dużo dzielników, dzięki czemu możliwy jest bardzo dokładny
+            podział strony zgodnie z~wymaganiami założonymi w projekcie. Aby móc
+            korzystać z~tej siatki musi zostać zachowana ściśle określona hierarchia
+            klas. Na samej górze musi znajdować się komponent stylizowany poprzez klasę
+            \textit{container} lub \textit{container-fluid}, następnie musi zostać użyta
+            klasa \textit{row} w celu wyznaczeniu liczby rzędów a~na samym końcu musi
+            zostać określona liczba zajmowanych przez element kolumn oraz wartość
+            w~pikselach od jakiej obowiązuje. Jest to uzyskiwane przy
+            pomocy klasy na przykład \textit{col-sm-6}. Przykładowa hierarchia klas
+            na podstawie oficjalnej dokumentacji technologii została przedstawiona poniżej.
+            Zapewnia ona, że od szerokości ekranu 576px element o zawartości
+            \textit{first column} będzie zajmował 2 z 12 kolumn, element o zawartości
+            \textit{second column} będzie zajmował 3 z 12 kolumn natomiast element o zawartości
+            \textit{third column} będzie zajmował 7 z 12 kolumn
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/bootstrap_classes.txt}
+                \caption
+                [Hierarchia klas elementów]
+                {Hierarchia klas elementów}
+                \label{chapter3:technologie:bootstrap:classes}
+            \end{code}
+
+            Bardzo ważny jest podział klas ze względu na szerokość ekranu w~pikselach,
+            poniżej zostało to przedstawione w formie tabeli:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                    Rodzaj ekranu & Minimalna szerokość & Nazwa klasy \\ \hline
+                    Bardzo mały & Brak & \textit{.col} \\ \hline
+                    Mały & 576px & \textit{.col-sm}  \\ \hline
+                    Średni & 768px & \textit{.col-md}  \\ \hline
+                    Duży & 992px & \textit{.col-lg}  \\ \hline
+                    Bardzo duży & 1200px & \textit{.col-xl}  \\ \hline
+                \end{tabular}
+                \caption
+                [Minimalne szerokości ekranu oraz nazwy odpowiadających im klas]
+                {Minimalne szerokości ekranu oraz nazwy odpowiadających im klas}
+                \label{chapter3:technologie:bootstrap:siatka:col_size}
+            \end{table}
+        }
+
+        \subsection{Komponenty stylizowane}
+        \label{chapter3:technologie:bootstrap:komponenty} {
+            Plik CSS wydawany przez autorów technologii Bootstrap nie zawiera tylko
+            klas do tworzenia responsywnych witryn lecz zapewnia zdecydowanie więcej
+            możliwości. Korzystając z przygotowanych klas w łatwy i~szybki sposób
+            można dokonać stylizacji przycisków, formularzy czy nawet głównych pasków
+            nawigacyjnych (ang. Navigation bar).
+        }
+
+        \subsection{Projekty rozszerzające funkcjonalności Bootstrap}
+        \label{chapter3:technologie:bootstrap:mdb} {
+            Ze względu na to, że Framework ten jest udostępniany jako oprogramowanie
+            otwartoźródłowe, możliwe jest rozwijanie przez innych autorów.
+            Jednym z~nich jest zespół
+            MDBootstrap tworzący projekt o tej samej nazwie\cite{website:mdbootstrap},
+            który jest rozwinięciem technologii Bootstrap poprzez dodanie
+            \textit{Material design}, który został opisany w sekcji
+            \ref{chapter3:technologie:bootstrap:mdb:material_design}. Zespół ten
+            zapewnia znakomitą większość komponentów dostępnych w~Bootstrap ze
+            zmienionym wyglądem oraz dużą pulę nowych komponentów, które są płatne.
+            Wszystkie te komponenty są dostępne do użycia w~technologiach
+            React\cite{website:react}, Angular\cite{website:angular},
+            Vue\cite{website:vue} oraz jQuery\cite{website:jquery} co zapewnia
+            możliwość korzystania z~nich bez względu na technologię jaka została użyta
+            do stworzenia projektu.
+
+            \subsubsection{Material design}
+            \label{chapter3:technologie:bootstrap:mdb:material_design} {
+                Material Design\cite{website:material_design} jest to styl wyglądu
+                stworzony przez Google w 2014 roku. Jest on używany we flagowych
+                produktach tej firmy takich jak Gmail, YouTube czy też Google Drive.
+                Głównymi zasadami tego wzornictwa są:
+                \begin{itemize}
+                    \item Elementy takie jak przyciski powinny sprawiać wrażenie
+                    rzeczywistych, co uzyskuje się poprzez korzystanie z~cieni aby
+                    podkreślić zapewnić wrażenie trójwymiarowości
+                    \item Kolorystyka powinna być barwna i~odważna oraz tworzyć
+                    przejrzyste wrażenia na przykład poprzez negatywną przestrzeń. Same
+                    elementy powinny być duże i~zdecydowane
+                    \item Animacja i~ruch to podstawa, dzięki nim możemy przekazywać
+                    użytkownikom informacje zwrotne i~nakierowywać ich na ustalone akcje
+                    w~celu ułatwienia obsługi.
+                \end{itemize}
+
+                Projekt tego wyglądu, ze względu na swój sukces rynkowy jest rozwijany
+                i~wykorzystywany w~coraz to większej liczbie projektów informatycznych
+                w, których ważne są odczucia użytkownika (ang. User Experience).
+            }
+        }
+    }
+
+    \section{Biblioteka do tworzenia interfejsu użytkownika React.js}
+    \label{chapter3:technologie:react} {
+        Koncept aplikacji typu SPA (ang. Single Page Application) został zapoczątkowany
+        tuż po rozpoczęciu nowego tysiąclecia. Polega on na tym, że dana aplikacja ma
+        tylko jeden plik o~rozszerzeniu HTML i~wszystkie niezbędne pliki CSS oraz
+        JavaScript są pobierane przy pierwszym załadowania strony natomiast zmiany
+        widoczne przez użytkownika są jedynie przeładowywaniem komponentów zamiast
+        ładowania całych stron od nowa. Celem konceptu jest zapewnienie płynniejszego
+        działania oraz odwzorowanie odczuć użytkownika jak przy korzystania z aplikacji
+        desktopowych.
+
+        \subsection{Technologie wspierające koncept SPA}
+        \label{chapter3:technologie:react:spa_frameworks} {
+            Jedną z pierwszych technologii implementujących koncept SPA był
+            AngularJS\cite{website:angular}. Powstał on w 2009 roku i~jego twórcą była
+            firma Google. W podobnym okresie czasu zostało wydane środowisko
+            uruchomieniowe Node.js, którego opis został umieszczony w sekcji
+            \ref{chapter3:technologie:node}. Od tego czasu z roku na rok rozwój języka
+            programowania JavaScript bardzo wzrastał. W 2013 roku powstała biblioteka
+            React.js\cite{website:react} a rok później został zaprezentowany framework
+            Vue.js\cite{website:vue}. Wymienione powyżej technologie są aktualnie
+            jednymi z najbardziej popularnych i~najczęściej używanych zarówno w~projektach
+            otwartoźródłowych jak i~komercyjnych.
+        }
+
+        \subsection{Założenia biblioteki React.js}
+        \label{chapter3:technologie:react:zalozenia} {
+            Głównym założeniem biblioteki React jest ułatwienie tworzenia interaktywnego
+            interfejsu użytkownika z~łatwą obsługą stanu aplikacji i~wydajnym
+            przeładowywaniem komponentów. Same widoki dzięki tej technologii są
+            tworzone w sposób deklaratywny przez co kod jest bardziej przewidywalny
+            i~łatwiejsze jest do usuwania ukrytych błędów. Podział na izolowane
+            komponenty, które zarządzają własnym stanem oraz są zdatne do
+            ponownego użycia jest jednym z~głównych fundamentów tej technologii. Co
+            więcej, sama logika komponentów jest tworzona w języka JavaScript zamiast
+            w~szablonach a~zatem przekazywanie zaawansowanych struktur danych staje
+            się znacząco łatwiejsze. Co więcej, jednym z przełomowych elementów
+            biblioteki React jest wirtualny DOM\cite{website:dom}
+            (ang. Document Object Model), który jest koncepcją programistyczną. Ma ona
+            w~zamyśle przechowywanie wirtualnej reprezentacji interfejsu użytkownika
+            w~pamięci oraz jej synchronizację z~modelem DOM obecnym w~przeglądarce.
+            Przykładem biblioteki implementującej tą koncepcje jest
+            ReactDOM\cite{website:reactdom}. Jest to realizowane poprzez wykorzystanie
+            deklaratywnego interfejsu, który zapewnia automatyczną obsługę zdarzeń,
+            manipulację atrybutami oraz zwalnia z~obowiązku ręcznej aktualizacji modelu
+            DOM.
+        }
+
+        \subsection{Składnia JSX oraz idea komponentów}
+        \label{chapter3:technologie:react:jsx} {
+            Składnia JSX jest jedną ze składowych, dzięki której biblioteka React
+            zyskała bardzo dużą popularność. Jest to rozszerzenie składni języka
+            JavaScript, który łudząco przypomina HTML\cite{website:html}. Dzięki temu
+            oprócz możliwości tworzenie zmiennych, stałych, funkcji, klas czy też obiektów
+            istnieje możliwość wstawiania szablonów. Z tego powodu w~łatwy sposób możliwe jest
+            wykorzystanie wybranych komponentów w~zależności na przykład od działań
+            użytkownika, poniżej został przedstawiony przykład:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_conditional_render.txt}
+                \caption
+                [Wyświetlanie warunkowe z wykorzystaniem składni JSX]
+                {Wyświetlanie warunkowe z wykorzystaniem składni JSX}
+                \label{chapter3:technologie:react:jsx:conditional_render}
+            \end{code}
+
+            Jednym z ważnych założeń przyjętych przez twórców biblioteki React jest to,
+            że zarówno logika biznesowa jak i~interfejs użytkownika z~jego logiką są
+            powiązane ze sobą i~nie powinny być rozdzielane. Zamiast tego
+            wykorzystywany jest koncept podziału na komponenty, które mogą być
+            wielokrotnie wykorzystywane. Sama składnia nie jest obowiązkowa natomiast
+            jest bardzo popularna i~wykorzystywana przez społeczność. Poniżej zostały
+            przedstawione dwa analogiczne fragmenty kodu, pierwsza z~nich
+            z~wykorzystaniem składni JSX natomiast druga bez jej wykorzystania:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_with_jsx.txt}
+                \caption
+                [Przykład komponentu z wykorzystaniem JSX]
+                {Przykład komponentu z wykorzystaniem JSX}
+                \label{chapter3:technologie:react:jsx:with_jsx}
+            \end{code}
+
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_without_jsx.txt}
+                \caption
+                [Przykład komponentu bez wykorzystania JSX]
+                {Przykład komponentu bez wykorzystania JSX}
+                \label{chapter3:technologie:react:jsx:without_jsx}
+            \end{code}
+
+            W~celu wyświetlenia stworzonych powyżej komponentów należy skorzystać
+            z~biblioteki ReactDOM przedstawionej w~sekcji
+            \ref{chapter3:technologie:react:zalozenia}. Samo użycie zostało
+            przedstawione poniżej:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_basic_render.txt}
+                \caption
+                [Wyświetlanie stworzonych komponentów]
+                {Wyświetlanie stworzonych komponentów}
+                \label{chapter3:technologie:react:jsx:basic_render}
+            \end{code}
+
+            Warto dodać, że w~większości aplikacji przedstawiony powyżej sposób
+            jest używany tylko raz w~celu wyświetlenia głównego komponentu, który
+            zawiera określoną liczbę podkomponentów. Przykład takiego wykorzystania
+            został przedstawiony poniżej:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_app_render.txt}
+                \caption
+                [Wyświetlanie głównego komponentu aplikacji]
+                {Wyświetlanie głównego komponentu aplikacji}
+                \label{chapter3:technologie:react:jsx:app_render}
+            \end{code}
+
+            Składnia ta również pozwala na przekazywania wartości do komponentów przez
+            co możliwa jest ich parametryzacja co zapewnia zwiększenie ich
+            uniwersalności w~projekcie. Poniżej zostało przedstawione użycie komponentu
+            z~parametrem oraz jego definicja:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_props_usage.txt}
+                \caption
+                [Użycie komponentu z parametrem]
+                {Użycie komponentu z parametrem}
+                \label{chapter3:technologie:react:jsx:props_usage}
+            \end{code}
+
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_props_def.txt}
+                \caption
+                [Definicja komponentu z parametrem]
+                {Definicja komponentu z parametrem}
+                \label{chapter3:technologie:react:jsx:props_def}
+            \end{code}
+
+        }
+
+        \subsection{Rodzaje komponentów}
+        \label{chapter3:technologie:react:komponenty} {
+            Pisząc oprogramowanie z~użyciem biblioteki React korzystamy głównie ze składni
+            języka JavaScript. Skutkuje to tym, że komponenty mogą być tworzone na
+            podstawie klas oraz funkcji. Są one nazywane kolejno komponentami klasowymi
+            oraz komponentami funkcyjnymi. Do czasu powstania React Hooks, które
+            zostały opisane w sekcji \ref{chapter3:technologie:react:hooks} znaczenie
+            komponentów funkcyjnych było marginalne i~sprowadzało się tworzenia do
+            tworzenia komponentów o~niskim stopniu złożoności, które nie posiadały
+            własnego stanu. Skutkiem czego większość komponentów było tworzone jako
+            komponenty klasowe. Charakteryzują się one tym, że klasa w~języku
+            JavaScript dziedziczy po klasie \textit{React.Component}, dzięki czemu są
+            dostępne określone metody cyklu życia (ang. Lifecycle methods) oraz
+            wymagana metoda \textit{render()} odpowiadająca za wyświetlanie wybranych
+            komponentów. Jednymi z najczęściej używanych metod cyklu życia są
+            \begin{enumerate}
+                \item componentDidMount()
+                \item componentDidUpdate()
+                \item componentWillUnmount()
+            \end{enumerate}
+            Pierwsza z~nich jest uruchamiania w~czasie montowania w~drzewie DOM i~jest
+            uruchamiana tylko raz, dzięki czemu jest to świetne miejsce do pobrania
+            danych na przykład z~REST API. Druga z~nich jest uruchamiana gdy w~danym
+            komponencie zachodzą zmiany w~drzewie DOM. Ostatnia z~tych metod jest uruchamiana
+            w~czasie usuwania komponentu z~drzewa DOM. Jest to miejsce, w~którym możemy
+            dokonać na przykład oczyszczania po komponencie czy też zamknięcia połączenia.
+
+            W~technologii React Hooks komponenty funkcyjne zyskały możliwość
+            przechowywania stanu, dzięki czemu mogą zapewniać analogiczne możliwości co
+            komponenty klasowe. Ponadto użycie ich jest znacząco łatwiejsze oraz
+            została zmniejszona nadmiarowość powtarzającego się kodu, które nic nie
+            wnosi (ang. boilerplate code). Poniżej zostały przedstawione dwa komponenty
+            o~identycznym działaniu, pierwszy z~nich na listingu
+            \ref{chapter3:technologie:react:komponenty:class_component} jest to komponentem
+            klasowych natomiast drugi z~nich na listingu
+            \ref{chapter3:technologie:react:komponenty:function_component}
+            jest to komponentem funkcyjnym. Warto zauważyć jak
+            wiele linijek kodu zostało zaoszczędzone dzięki zastosowaniu komponentów
+            opartych na funkcjach, które są zalecane przez twórców biblioteki React. Co
+            więcej warto dodać, że nie ma planów usunięcia komponentów klasowych więc
+            została pozostawiona dowolność wyboru rodzaju komponentu oraz możliwość ich łączenia.
+
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_class_component.txt}
+                \caption
+                [Przykład komponentu klasowego]
+                {Przykład komponentu klasowego}
+                \label{chapter3:technologie:react:komponenty:class_component}
+            \end{code}
+
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_function_component.txt}
+                \caption
+                [Przykład komponentu funkcyjnego]
+                {Przykład komponentu funkcyjnego}
+                \label{chapter3:technologie:react:komponenty:function_component}
+            \end{code}
+        }
+
+        \subsection{React Hooks}
+        \label{chapter3:technologie:react:hooks} {
+            Jedną z~przełomowych nowości zaprezentowanych w~2019 roku przez twórców
+            technologii React są React Hooks. Są to funkcje, które pozwalają na
+            wydzielanie logiki i~korzystanie z~niej w~wielu komponentach. Istnieje
+            możliwość tworzenia własnych React Hooks oraz korzystania z~zapewnionych przez
+            twórców technologii.
+
+            Hook \textit{useState()} zapewnia możliwość deklarowania zmiennej stanu,
+            dzięki czemu w przypadku gdy komponent potrzebuje przetrzymywać w~sobie
+            stan nie musimy zmieniać typu komponentu z~funkcyjnego na klasowy. Zmienną
+            stanową możemy zainicjalizować poprzez przekazanie wybranej wartości jako
+            parametr do funkcji \textit{useState()}, domyślnie jest to wartość
+            \textit{undefined}. Sama funkcja zwraca zmienną stanową oraz funkcje do jej
+            zmieniana. Jest ona wymagana z~powodu tego, że zmienianie zawartości
+            zmiennej stanowej poprzez bezpośrednie przypisanie do niej wartości jest
+            zabronione, gdyż może powodować nieprzewidywalne skutki takie jak brak
+            przeładowania komponentu. Poniżej został przedstawiony przykład dla
+            zmiennej stanowej \textit{color}:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_use_state.txt}
+                \caption
+                [Przykład użycia \textit{useState()}]
+                {Przykład użycia \textit{useState()}}
+                \label{chapter3:technologie:react:hooks:usestate}
+            \end{code}
+
+            Hook \textit{useEffect()} zapewnia funkcjonalności metod cyklu życia. Jako
+            parametr przyjmuje ona funkcję, której zawartość ma zostać wykonana oraz
+            opcjonalny drugi parametr od, którego zależy zachowanie tego hooka. Gdy nie
+            zostanie przekazany drugi parametr, hook zachowuje się jak metoda
+            \textit{componentDidUpdate()}, gdy zostanie przekazana pusta tablica jego
+            zachowanie jest analogiczne do metody \textit{componentDidMount()}
+            natomiast gdy chcemy aby przekazana funkcja została wykonana gdy zmienna
+            stanowa ulegnie aktualizacji wtedy należy przekazać tą zmienną umieszczoną
+            w~tablicy. Sprzątanie, czyli analogia do metody \textit{componentWillUnmount()}
+            jest realizowana poprzez słowo kluczowe return na końcu \textit{useEffect()}.
+            Wszystkie powyżej wspomniane metody zostały opisane w sekcji
+            \ref{chapter3:technologie:react:komponenty}. Poniżej zostały przedstawione
+            wszystkie warianty użycia tego hooka:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_use_effect.txt}
+                \caption
+                [Przykład użycia \textit{useEffect()}]
+                {Przykład użycia \textit{useEffect()}}
+                \label{chapter3:technologie:react:hooks:useeffect}
+            \end{code}
+
+            Hook \textit{useContext()} zapewnia możliwość korzystania z~kontekstu
+            aplikacji czy zmiennych lub stałych globalnych dostępnych w~określonych
+            komponentach. Poniżej zostało przedstawione jego użycie:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/react_use_content.txt}
+                \caption
+                [Przykład użycia \textit{useContext()}]
+                {Przykład użycia \textit{useContext()}}
+                \label{chapter3:technologie:react:hooks:usecontext}
+            \end{code}
+
+            W~niniejszym podrozdziale zostały przedstawione podstawowe Hooki, natomiast istnieją ich
+            wyspecjalizowane wersje na przykład dla \textit{useState()} istnieje hook
+            \textit{useMemo()} w, którym należy przechowywać dane wymagające dużego
+            nakładu obliczeniowego komputera.
+        }
+    }
+
+    \section{Plaforma chmurowa Firebase}
+    \label{chapter3:technologie:firebase} {
+        Firebase\cite{website:firebase} jest projektem zapoczątkowanym w~2011 roku przez startup
+        założony przez Jamesa Tamplina oraz Andrew Lee. Trzy lata później, w~roku 2014
+        został on odkupiony przez firmę Google, Inc. Firebase jest platformą chmurową typu SaaS
+        (ang. Software as a Service). Skutkuje to tym, że zapewnia ona kompleksowy
+        pakiet oprogramowania w chmurze. W~przeciwieństwie do IaaS
+        (ang. Infrastructure as a Service) czy też PaaS (ang. Platform as a Service)
+        zazwyczaj spełnia potrzeby użytkownika końcowego a~co za tym idzie ułatwia
+        korzystanie, zmniejsza potrzebną ilość wiedzy technicznej do zarządzania
+        systemem co skutkuje przyspieszeniem rozwoju aplikacji oraz zmniejszeniem jego
+        kosztów poprzez brak potrzeby zatrudniania specjalistów z~danych dziedzin. Sama
+        platforma Firebase składa się z~kilkunastu produktów. Najpopularniejsze
+        i~najbardziej przełomowe zostały przedstawione poniżej w~formie poszczególnych
+        rozdziałów. Produkty te w łatwy sposób można kontrolować poprzez narzędzie Firebase
+        Console. Zapewnia ono możliwości zarządzania danym projektem.
+
+        \subsection{Authentification}
+        \label{chapter3:technologie:firebase:auth} {
+            Authentification jest modułem zapewniającym funkcje rejestracji, logowania,
+            przywracania hasła oraz określania różnych stopni dostępu co w~bardziej
+            rozbudowanych systemach jest niesamowicie potrzebne. Samo logowanie może
+            odbywać się poprzez login i~hasło oraz przez przesyłanie na dany adres email
+            linku autentykacyjnego (ang. email link Authentication). Dodatkowo jest
+            zapewnione logowanie poprzez popularne portale, dzięki temu użytkownik
+            posiadający konto na danym portalu może zalogować się podając dane
+            z~wcześniej wspomnianego portalu. Odbywa się to oczywiście przez
+            przekierowanie na wybrany portal w~celu zapewnienia maksymalnego
+            bezpieczeństwa. Poniżej została przedstawiona lista oferowanych portali:
+            \begin{itemize}
+                \item Google
+                \item Facebook
+                \item Apple
+                \item Twitter
+                \item GitHub
+                \item Microsoft
+                \item Yahoo
+            \end{itemize}
+
+            Możliwe jest też logowanie przez numer telefonu. Odbywa się to poprzez
+            przesłanie na wskazany adres wiadomości SMS z~jednorazowym kodem do
+            logowania.\\
+
+            Sama konsola administratora zapewnia możliwości:
+            \begin{itemize}
+                \item Ręcznego dodawanie konta użytkowników
+                \item Resetowania hasła
+                \item Wyłączenia konta
+                \item Usuwania konta
+            \end{itemize}
+        }
+
+        \subsection{Cloud Firestore}
+        \label{chapter3:technologie:firebase:firestore} {
+            Cloud Firestore jest nierelacyjną bazą danych (ang. NoSQL), która jest
+            hostowana w~chmurze Firebase (ang. cloud-hosted). Na wiele popularnych technologii
+            takich jak Node.js, Java oraz Python platform jest zapewnione SDK
+            (ang. Software Development Kit) oraz komunikacja poprzez
+            REST\cite{website:rest}. Zgodnie z~regułami obowiązującymi w~nierelacyjnych
+            bazach danych, przechowywanie danych ma miejsce w~dokumentach zawierających
+            pola mapowane na wartości. Same dokumenty są przechowywane w~kolekcjach,
+            na których mogą być tworzone zapytania. Typy dokumentów mogą być bardzo
+            zróżnicowane zaczynając od łańcuchów znaków a~kończąc na zagnieżdżonych
+            obiektach. Istnieje możliwość tworzenia podkolekcji w~dokumentach a~co za
+            tym idzie budowania struktur danych o charakterze hierarchicznym. Zapytania
+            tworzone w Cloud Firestore zapewniają możliwość płytkich zapytań.
+            Skutkuje to brakiem pobierania całej kolekcji lub zagnieżdżonych podkolekcji
+            przez co są wydajne i~elastyczne. Zapewniona jest możliwość filtrowania,
+            sortowania, ograniczania liczby zwracanych dokumentów oraz podział
+            uzyskanych danych na strony. Bardzo przydatną funkcjonalnością są zasady
+            dostępu do danych (ang. Security Rules), dzięki nim wybrane dane mogą być
+            dostępne dla określonej grupy użytkowników. Przykład takich zasad został
+            przedstawiony poniżej:
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/firestore_rules.txt}
+                \caption
+                [Zasady dostępu do kolekcji w Cloud Firestore]
+                {Zasady dostępu do kolekcji w Cloud Firestore}
+                \label{chapter3:technologie:firebase:firestore:firestore_rules}
+            \end{code}
+
+            Samo użycie wcześniej wspomnianego SDK jest wyjątkowo proste a~jednocześnie
+            daje ogromne możliwości. Kolejno na listingach
+            \ref{chapter3:technologie:firebase:firestore:firestore_set_data}
+            \ref{chapter3:technologie:firebase:firestore:firestore_get_data}
+            \ref{chapter3:technologie:firebase:firestore:firestore_update_data}
+            \ref{chapter3:technologie:firebase:firestore:firestore_delete_data}
+            zostały przedstawione operacje zapisu, odczytu, aktualizacji oraz usuwania.
+            Przykłady te zostały przeniesione bezpośrednio z~oficjalnej dokumentacji technicznej
+            Cloud Firestore\cite{website:firebase}.
+
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/firestore_set_data.txt}
+                \caption
+                [Przykładowy zapis danych do bazy danych]
+                {Przykładowy zapis danych do bazy danych}
+                \label{chapter3:technologie:firebase:firestore:firestore_set_data}
+            \end{code}
+
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/firestore_get_data.txt}
+                \caption
+                [Przykładowy odczyt danych z bazy danych]
+                {Przykładowy odczyt danych z bazy danych}
+                \label{chapter3:technologie:firebase:firestore:firestore_get_data}
+            \end{code}
+
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/firestore_update_data.txt}
+                \caption
+                [Przykładowa aktualizacja danych w bazie danych]
+                {Przykładowa aktualizacja danych w bazie danych}
+                \label{chapter3:technologie:firebase:firestore:firestore_update_data}
+            \end{code}
+
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/firestore_delete_data.txt}
+                \caption
+                [Przykładowe usuwanie danych z bazy danych]
+                {Przykładowe usuwanie danych z bazy danych}
+                \label{chapter3:technologie:firebase:firestore:firestore_delete_data}
+            \end{code}
+        }
+
+        \subsection{Storage}
+        \label{chapter3:technologie:firebase:storage} {
+            Storage jest kolejnym produktem wchodzącym w~skład platformy Firebase. Jego
+            zadaniem jest zapewnienie możliwość przechowywania plików binarnych takich jak
+            zdjęcia czy też filmy video. Co więcej, same dane są przechowywane bezpośrednio
+            w~zasobniku Google Cloud Storage. Rozwiązanie to zapewnia możliwość
+            przechowywania obiektów z~dużą dostępnością oraz globalną dostępnością aż do
+            skali eksabajta. Tak jak w przypadku Cloud Firestore opisanej w~sekcji
+            \ref{chapter3:technologie:firebase:firestore} zapewnione jest SDK dzięki,
+            któremu możliwe jest szybkie i~łatwe dodawanie, pobierania oraz usuwanie
+            plików. Kolejną zaletą jest funkcjonalność kontroli pobierania i~dodawania
+            plików, dzięki której przy problemach z~dostępnością sieci przesyłanie
+            zostanie automatycznie przerwane przy utracie połączenia. Zostanie wznowione tuż
+            po ponownych uzyskania dostępu do sieci. Co ważne, każdy plik posiada
+            unikalną ścieżkę dostępu, którą można przechowywać w~bazie danych Cloud
+            Firestore w~celu zapewniania na przykład zdjęcia profilowego dla użytkowników
+            systemu informatycznego. Analogicznie jak w~przypadku bazy danych dostępnej
+            w~platformie Firebase, zapewnione zostały reguły dostępowe, dzięki którym
+            jest możliwość określenia grup użytkowników, dla których dane treści są
+            dostępne. Przykład takich zasad został przedstawiony na listingu
+            \ref{chapter3:technologie:firebase:storage:storage_rules}
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/storage_rules.txt}
+                \caption
+                [Zasady dostępu do plików w Storage]
+                {Zasady dostępu do plików w Storage}
+                \label{chapter3:technologie:firebase:storage:storage_rules}
+            \end{code}
+        }
+
+        \subsection{Hosting}
+        \label{chapter3:technologie:firebase:hosting} {
+            Firebase Hosting jest to usługa zapewniająca możliwość łatwego udostępnienia
+            statycznej strony czy też aplikacji internetowej. Ciekawą nowością jest
+            opcja tworzenia i~rozmieszczania mikroserwisów (ang. microservices). Bardzo
+            dużą zaletą jest darmowy certyfikat SSL\cite{website:ssl} nie wymagający żadnej
+            konfiguracji, który zapewnia bezpieczeństwo witryny. Co ważne Firebase
+            Hosting zapewnia ważną i~dosyć unikalną funkcjonalność jaką jest
+            optymalizacja do obsługi aplikacji typu SPA (ang. Single Page Application)
+            oraz statycznych stron internetowych. Samo dostarczanie zasobów statycznych
+            takich jak HTML, CSS lub JavaScript odbywa sie poprzez globalna sieć CDN
+            rozproszoną po wszystkich głównych lokalizacjach na świecie oraz przy
+            pomocy pamięci masowej SSD. Jedną z~kluczowych spraw jest domena, która
+            zapewnia ułatwienie dla człowieka poprzez zapewnienie nazwy zamiast
+            konieczności zapamiętywania adresu IP. Sam produkt zapewnia domyślną domenę
+            natomiast możliwe jest też ustawienie własnej nazwy domenowej. Warto dodać,
+            że szczególnie w~aplikacjach biznesowych chwytliwa nazwa domeny może
+            znacznie zwiększyć ruch sieciowy na danej stronie co najprawdopodobniej
+            będzie skutkować zwiększeniem zysków.
+        }
+
+        \subsection{Functions}
+        \label{chapter3:technologie:firebase:functions} {
+            Cloud Functions daje możliwość tworzenia funkcji uruchamianych
+            bezpośrednio w chmurze Firebase, zapewniając automatycznie działający kodu
+            po stronie serwera. Dane funkcje mogą być wywoływane poprzez żądanie HTTPS.
+            Same funkcje mogą być tworzone zarówno w~języku programowania JavaScript
+            jak i~TypeScript. W~planach jest również rozszerzenie o możliwość tworzenia
+            wcześniej wspomnianych funkcji w~języku Python. W przypadku rozwoju
+            aplikacji i~zwiększenia mocy obliczeniowej oczywiście nie jest to problemem.
+            Sposób tworzenia funkcji jak i~jej udostępniania nie przysparza problemów gdyż
+            jest bardzo intuicyjny a~sama dokumentacja techniczna jest niesamowicie
+            pomocna i~bardzo zrozumiała. Na listingu
+            \ref{chapter3:technologie:firebase:functions:functions_grant_admin}
+            został przedstawiony przykład funkcji,
+            która jest odpowiedzialna za przyznawanie uprawnień administratora
+            z~wykorzystaniem Firebase Custom Claims. Sam kod został podzielony na dwie
+            części, pierwsza z~nich jest funkcja wywoływana poprzez żądanie HTTPS
+            a~w~niej są sprawdzane stosowne warunki logiczne i~jeżeli są one zgodne to
+            wywoływana jest funkcja, która odpowiada za przyznanie wcześniej
+            wspomnianych uprawnień. Sam kod jest czytelny, prosty do zrozumienia oraz
+            nie wymaga dużej ilości czasu aby go napisać i~przetestować.
+            \begin{code}[H]
+                \lstinputlisting{../listing/chapter3/functions_grant_admin.txt}
+                \caption
+                [Przykład funkcji zapewniającej przyznawanie uprawnień administratora]
+                {Przykład funkcji zapewniającej przyznawanie uprawnień administratora}
+                \label{chapter3:technologie:firebase:functions:functions_grant_admin}
+            \end{code}
+        }
+    }
+}
+\end{document}

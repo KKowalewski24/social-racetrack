@@ -1,0 +1,36 @@
+  const renderLeftSide = () => {
+    const renderDescription = () => {
+      return ( <div className="container-fluid">
+          <div className="row justify-content-center">
+            <div className="col-md-12 col-lg-10 col-xl-8 custom-font-size-1 text-justify font-weight-bold mb-3">
+              <span className={globalStyles.materialBlueFont}>
+                {strings.homePage.socialRacetrack + " "}
+              </span>
+              <span>
+                {strings.homePage.siteIntroFirst + " "}
+              </span>
+              <span>
+                {strings.homePage.siteIntroSecond}
+              </span>
+            </div>
+          </div>
+        </div> );
+    };
+
+    const renderImage = () => {
+      return ( <div className="container-fluid">
+          <div className="row justify-content-center">
+            <div className="col-md-12 col-lg-10 col-xl-8">
+              <Card variant="outlined">
+                <CardMedia component="img" src={porscheImage}/>
+              </Card>
+            </div>
+          </div>
+        </div> );
+    };
+
+    return ( <div className="col-sm-6 text-center align-self-center mb-4">
+        {renderDescription()}
+        {renderImage()}
+      </div> );
+  };

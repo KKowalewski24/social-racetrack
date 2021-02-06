@@ -1,0 +1,12 @@
+export class FirebaseStorageController {
+  uploadFile = async (path, data, metadata, errorFunction) => {
+    try { return await config.storage().ref(path).put(data, metadata); }
+     catch (err) { errorFunction(); }
+  };
+
+  downloadFile = async (path, errorFunction) => {
+    try { return await config.storage().ref(path).getDownloadURL(); }
+     catch (err) { errorFunction(); }
+  };
+  //...
+}

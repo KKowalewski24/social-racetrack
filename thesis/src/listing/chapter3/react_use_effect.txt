@@ -1,0 +1,9 @@
+useEffect(() => { console.log("componentDidUpdate"); });
+
+useEffect(() => { console.log("componentDidMount"); }, []);
+
+useEffect(() => {
+    console.log("Wywolanie podczas aktualizacji wybranej zmiennej stanowej");
+}, [color]);
+
+useEffect(() => { return () => { console.log("componentWillUnmount") }; }, []);

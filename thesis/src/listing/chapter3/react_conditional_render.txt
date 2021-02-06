@@ -1,0 +1,7 @@
+export const conditionalRedirect = (redirectPath, lastLocation) => {
+    if (redirectPath !== "/") {
+      return (<Redirect to={redirectPath}/>);
+    } else {
+      return (<Redirect to={lastLocation}/>);
+    }
+};

@@ -1,0 +1,17 @@
+const AppContext = React.createContext(null);
+
+function App() {
+    const context = useContext(AppContext);
+    return (
+      <button>
+        {context.day}
+      </button>
+    );
+}
+
+ReactDOM.render(
+    <AppContext.Provider value={{day: "monday"}}>
+      <App/>
+    </AppContext.Provider>,
+    document.getElementById("root")
+);
