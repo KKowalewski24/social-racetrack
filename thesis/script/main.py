@@ -77,7 +77,6 @@ def build_project() -> None:
     generate_pdf()
     generate_bibliography()
     generate_pdf()
-    generate_pdf()
 
 
 def generate_pdf() -> None:
